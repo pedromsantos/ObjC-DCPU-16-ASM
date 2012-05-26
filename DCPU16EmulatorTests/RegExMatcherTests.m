@@ -114,18 +114,18 @@
 
 - (void)testMatchCanMatchInstruction
 {
-    NSString *pattern = @"\\b(\\bdat\\b|\\bset\\b|\\badd\\b|\\bsub\\b|\\bmul\\b|\\bdiv\\b|\\bmod\\b|\\bshl\\b|\\bshr\\b|\\band\\b|\\bbor\\b|\\bxor\\b|\\bife\\b|\\bifn\\b|\\bifg\\b|\\bifb\\b|\\bjsr\\b|\\b\\bSET\\b|\\bADD\\b|\\bSUB\\b|\\bMUL\\b|\\bDIV\\b|\\bMOD\\b|\\bSHL\\b|\\bSHR\\b|\\bAND\\b|\\bBOR\\b|\\bXOR\\b|\\bIFE\\b|\\bIFN\\b|\\bIFG\\b|\\bIFB\\b|\\bJSR\\b|\\bDAT\\b)";
+    NSString *pattern = @"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b";
     
     RegexMatcher *matcher = [[RegexMatcher alloc] initWithPattern:pattern];
     
-    int index = [matcher match:@"set"];
+    int index = [matcher match:@"Set"];
     
     STAssertTrue(index > 0, nil);
 }
 
 - (void)testMatchCanMatchRegister
 {
-    NSString *pattern = @"(\\ba\\b|\\bb\\b|\\bc\\b|\\bx\\b|\\by\\b|\\bz\\b|\\bi\\b|\\bj\\b|\\bpop\\b|\\bpush\\b|\\bpeek\\b|\\bpc\\b|\\bsp|\\bo\\b|\\bA\\b|\\bB\\b|\\bC\\b|\\bX\\b|\\bY\\b|\\bZ\\b|\\bI\\b|\\bJ\\b|\\bPOP\\b|\\bPUSH\\b|\\bPEEK\\b|\\bPC\\b|\\bSP\\b|\\bO\\b)";
+    NSString *pattern = @"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b";
     
     RegexMatcher *matcher = [[RegexMatcher alloc] initWithPattern:pattern];
     
