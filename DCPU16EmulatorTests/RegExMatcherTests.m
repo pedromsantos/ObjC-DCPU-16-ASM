@@ -136,22 +136,22 @@
 
 - (void)testMatchCanMatchString
 {
-    NSString *pattern = @"[\\]\\)]";
+    NSString *pattern = @"@?\"(\"\"|[^\"])*\"";
     
     RegexMatcher *matcher = [[RegexMatcher alloc] initWithPattern:pattern];
     
-    int index = [matcher match:@"]"];
+    int index = [matcher match:@"\"string\""];
     
     STAssertTrue(index > 0, nil);
 }
 
 - (void)testMatchCanMatchLabelRef
 {
-    NSString *pattern = @"@?\"(\"\"|[^\"])*\"";
+    NSString *pattern = @"[a-zA-Z0-9_]+";
     
     RegexMatcher *matcher = [[RegexMatcher alloc] initWithPattern:pattern];
     
-    int index = [matcher match:@"\"string\""];
+    int index = [matcher match:@"labelref"];
     
     STAssertTrue(index > 0, nil);
 }
