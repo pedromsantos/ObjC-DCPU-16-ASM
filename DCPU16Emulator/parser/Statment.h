@@ -1,5 +1,10 @@
 #import "Operand.h"
 
+#define OPCODE_WIDTH 4
+#define OPERAND_WIDTH 6
+#define OPERAND_LITERAL_MAX 0x1F
+#define OPERAND_LITERAL_OFFSET 0x20
+
 @interface Statment : NSObject
 
 @property (nonatomic, strong) NSString* label;
