@@ -27,6 +27,8 @@
 
 - (BOOL)parseStatment
 {
+    Statment *statment = [[Statment alloc] init];
+    
     [self parseEmptyLines];
     
     BOOL canKeepLexing = [self.lexer peek];
@@ -38,12 +40,12 @@
     
     if(self.lexer.token == LABEL)
     {
-        [self parseLabel];
+        [self parseLabelForStatment:statment];
     }
     
-    [self parseMenemonic];
+    [self parseMenemonicForStatment:statment];
     
-    [self parseOperandsForStatment:[self.statments lastObject]];
+    [self parseOperandsForStatment:statment];
     
     [self.lexer peek];
     
@@ -51,6 +53,8 @@
     {
         [self.lexer next];
     }
+    
+    [self.statments addObject:statment];
     
     return YES;
 }
@@ -60,22 +64,29 @@
     [self.lexer peek];
     BOOL canKeepLexing = true;
     
-    while (self.lexer.token == COMMENT && canKeepLexing) 
+    while ((self.lexer.token == COMMENT || self.lexer.token == WHITESPACE) && canKeepLexing) 
     {
-        canKeepLexing = [self.lexer next];
+        [self.lexer peek];
+        
+        if(self.lexer.token == COMMENT || self.lexer.token == WHITESPACE)
+        {
+            canKeepLexing = [self.lexer next];
+        }
+        else 
+        {
+            canKeepLexing = NO;
+        }
     }
 }
 
-- (void)parseLabel
+- (void)parseLabelForStatment:(Statment*)statment
 {
     [self.lexer next];
     
-    Statment *statment = [[Statment alloc] init];
     statment.label = self.lexer.tokenContents;
-    [self.statments addObject:statment];
 }
 
-- (void)parseMenemonic
+- (void)parseMenemonicForStatment:(Statment*)statment
 {
     [self.lexer next];
     
@@ -84,11 +95,9 @@
         @throw @"espected INSTRUCTION";
     }
     
-    Statment *statment = [[Statment alloc] init];
     statment.menemonic = self.lexer.tokenContents;
     
     [self parseOpcodeForMenemonic:statment];
-    [self.statments addObject:statment];
 }
 
 - (void)parseOpcodeForMenemonic:(Statment*)statment

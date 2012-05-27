@@ -4,17 +4,13 @@
 
 @implementation Assembler
 
+@synthesize labelDef;
 @synthesize labelRef;
 @synthesize program;
 
-typedef struct 
-{
-    int word_count;
-    uint16_t word[3];
-} instruction_t;
-
 - (void)assembleStatments:(NSArray*)statments
 {
+    self.labelDef = [[NSMutableDictionary alloc] init];
     self.labelRef = [[NSMutableDictionary alloc] init];
     self.program = [[NSMutableArray alloc] init];
     
@@ -22,6 +18,8 @@ typedef struct
     {
         [self assembleStatment:statment];
     }
+    
+    [self resolveLabelReferences];
 }
 
 - (void)assembleStatment:(Statment*)statment
@@ -30,10 +28,9 @@ typedef struct
     
     if ([statment.label length] > 0)
     {
-        [self.labelRef setObject:statment.label forKey:[NSNumber numberWithInt:[self.program count]]];
+        [self.labelDef setObject:[NSNumber numberWithInt:[self.program count]] forKey:[statment.label substringFromIndex:1]];
     }
-    
-    if (statment.opcode == 0)
+    else if (statment.opcode == 0)
     {
         if (statment.secondOperand.operandType != O_NULL)
         {
@@ -63,6 +60,9 @@ typedef struct
     }
     
     [self addOpCode:opCode];
+    
+    [self assembleRemainingOperand:statment.firstOperand];
+    [self assembleRemainingOperand:statment.secondOperand];
 }
 
 - (void)addOpCode:(int)opCode
@@ -84,10 +84,6 @@ typedef struct
         case O_INDIRECT_NW_OFFSET:
         {
             opCode |= (0x10 + operand.registerValue) << shift;
-            
-            // TODO fix
-            //int opCodeNext = operand.nextWord;
-            
             break;
         }
         case O_NW:
@@ -100,15 +96,6 @@ typedef struct
             else
             {
                 opCode |= operand.operandType << shift;
-                
-                if (operand.label)
-                {
-                    opCode = [[self.labelRef objectForKey:operand.label] intValue];
-                }
-                else
-                {
-                    opCode = operand.nextWord;
-                }
             }
             break;
         }
@@ -129,6 +116,44 @@ typedef struct
     }
     
     return opCode;
+}
+
+- (void)assembleRemainingOperand:(Operand*)operand
+{
+    if(operand.operandType == O_INDIRECT_NW_OFFSET)
+    {
+        [self addOpCode:operand.nextWord];
+    }
+    
+    if (operand.operandType == O_NW || operand.operandType == O_INDIRECT_NW)
+    {
+        if([operand.label length] > 0)
+        {
+            [self.labelRef setObject:operand.label forKey:[NSNumber numberWithInt:[self.program count]]];
+            [self addOpCode:0];
+        }
+        else if(operand.nextWord > OPERAND_LITERAL_MAX)
+        {
+            [self addOpCode:operand.nextWord];
+        }
+    }
+}
+
+- (void)resolveLabelReferences
+{
+    for (NSNumber *instruction in labelRef.keyEnumerator)
+    {
+        NSString* label = [labelRef objectForKey:instruction];
+        
+        BOOL containsKey = ([labelDef objectForKey:label] != nil);
+        
+        if(containsKey)
+        {
+            int index = [instruction intValue];
+            NSNumber *key = [labelDef objectForKey:label];
+            [self.program replaceObjectAtIndex:index withObject:key];
+        }
+    }
 }
 
 @end

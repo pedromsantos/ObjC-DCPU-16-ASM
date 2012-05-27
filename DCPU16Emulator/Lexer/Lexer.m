@@ -102,7 +102,7 @@
             self.position += matched;
             self.token = def.token;
             
-            if(!self.ahead)
+            if(!self.ahead || (def.token == WHITESPACE && ignoreWhiteSpace))
             {
                 self.tokenContents = [self.lineRemaining  substringWithRange:NSMakeRange(0, matched)];
                 self.lineRemaining = [self.lineRemaining substringFromIndex:matched];
