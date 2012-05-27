@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 #import "Matcher.h"
 
 @interface RegexMatcher : NSObject <Matcher>

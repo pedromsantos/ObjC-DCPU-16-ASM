@@ -16,6 +16,7 @@
 		C38A01A715715D9B00E38C42 /* Operand.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A615715D9B00E38C42 /* Operand.m */; };
 		C38A01AA15715DAD00E38C42 /* Statment.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A915715DAD00E38C42 /* Statment.m */; };
 		C38A01AD15717CCD00E38C42 /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01AC15717CCD00E38C42 /* ParserTests.m */; };
+		C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1806B15727CFA0057F9D5 /* Assembler.m */; };
 		C3B6BA33153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA35153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
 		C3B6BA37153DE4FE0013163A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA36153DE4FE0013163A /* CoreGraphics.framework */; };
@@ -61,6 +62,8 @@
 		C38A01A915715DAD00E38C42 /* Statment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statment.m; sourceTree = "<group>"; };
 		C38A01AB15717CCD00E38C42 /* ParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserTests.h; sourceTree = "<group>"; };
 		C38A01AC15717CCD00E38C42 /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
+		C3B1806A15727CFA0057F9D5 /* Assembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assembler.h; sourceTree = "<group>"; };
+		C3B1806B15727CFA0057F9D5 /* Assembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assembler.m; sourceTree = "<group>"; };
 		C3B6BA2E153DE4FE0013163A /* DCPU16Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCPU16Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B6BA32153DE4FE0013163A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3B6BA34153DE4FE0013163A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,15 @@
 			path = parser;
 			sourceTree = "<group>";
 		};
+		C3B1806915727CE50057F9D5 /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				C3B1806A15727CFA0057F9D5 /* Assembler.h */,
+				C3B1806B15727CFA0057F9D5 /* Assembler.m */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
 		C3B6BA23153DE4FD0013163A = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +179,7 @@
 		C3B6BA38153DE4FE0013163A /* DCPU16Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				C3B1806915727CE50057F9D5 /* Assembler */,
 				C38A01A115715D7300E38C42 /* parser */,
 				C3B6BA41153DE4FE0013163A /* AppDelegate.h */,
 				C3B6BA42153DE4FE0013163A /* AppDelegate.m */,
@@ -331,6 +344,7 @@
 				C38A01A415715D7300E38C42 /* Parser.m in Sources */,
 				C38A01A715715D9B00E38C42 /* Operand.m in Sources */,
 				C38A01AA15715DAD00E38C42 /* Statment.m in Sources */,
+				C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

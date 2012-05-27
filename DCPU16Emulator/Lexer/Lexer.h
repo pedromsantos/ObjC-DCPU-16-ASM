@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 #import "TokenDefinition.h"
 
 @interface Lexer : NSObject

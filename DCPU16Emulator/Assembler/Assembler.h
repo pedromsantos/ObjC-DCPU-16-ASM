@@ -1,0 +1,3 @@
+@interface Assembler : NSObject
+
+@end
