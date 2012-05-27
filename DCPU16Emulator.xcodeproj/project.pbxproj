@@ -12,6 +12,7 @@
 		C35D848E15703C2500990B0A /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848715703C2500990B0A /* Lexer.m */; };
 		C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848B15703C2500990B0A /* RegexMatcher.m */; };
 		C35D849015703C2500990B0A /* TokenDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848D15703C2500990B0A /* TokenDefinition.m */; };
+		C38A019F1571546200E38C42 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A019E1571546200E38C42 /* Parser.m */; };
 		C3B6BA33153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA35153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
 		C3B6BA37153DE4FE0013163A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA36153DE4FE0013163A /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 		C35D848B15703C2500990B0A /* RegexMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexMatcher.m; sourceTree = "<group>"; };
 		C35D848C15703C2500990B0A /* TokenDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDefinition.h; sourceTree = "<group>"; };
 		C35D848D15703C2500990B0A /* TokenDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDefinition.m; sourceTree = "<group>"; };
+		C38A019D1571546200E38C42 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		C38A019E1571546200E38C42 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		C3B6BA2E153DE4FE0013163A /* DCPU16Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCPU16Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B6BA32153DE4FE0013163A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3B6BA34153DE4FE0013163A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,6 +153,8 @@
 				C3B6BA39153DE4FE0013163A /* Supporting Files */,
 				C3B6BA4A153DE4FE0013163A /* ViewController.h */,
 				C3B6BA4B153DE4FE0013163A /* ViewController.m */,
+				C38A019D1571546200E38C42 /* Parser.h */,
+				C38A019E1571546200E38C42 /* Parser.m */,
 			);
 			path = DCPU16Emulator;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				C35D848E15703C2500990B0A /* Lexer.m in Sources */,
 				C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */,
 				C35D849015703C2500990B0A /* TokenDefinition.m in Sources */,
+				C38A019F1571546200E38C42 /* Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
