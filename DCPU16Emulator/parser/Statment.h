@@ -1,13 +1,12 @@
-//
-//  Statment.h
-//  DCPU16Emulator
-//
-//  Created by Jordi Plana on 5/26/12.
-//  Copyright (c) 2012 Spenta Consulting SL. All rights reserved.
-//
-
-#import <Foundation/Foundation.h>
+#import "Operand.h"
 
 @interface Statment : NSObject
+
+@property (nonatomic, strong) NSString* label;
+@property (nonatomic, strong) NSString* menemonic;
+@property (nonatomic, assign) uint8_t opcode;
+@property (nonatomic, assign) uint8_t opcodeNonBasic;
+@property (nonatomic, strong) Operand* firstOperand;
+@property (nonatomic, strong) Operand* secondOperand;
 
 @end

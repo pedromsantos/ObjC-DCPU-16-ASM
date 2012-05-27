@@ -28,7 +28,39 @@
     [super setUp];
 }
 
-- (void)testNextCalledWithEmptySourceDoesNotGenerateCorrectTokens
+- (void)testNextCosumesAndReturnsNextToken
+{
+    NSString *code = @"SET A, 0x30";
+    NSScanner *codeScanner = [NSScanner scannerWithString:code];
+    
+    Lexer *lexer = [[Lexer alloc] initWithTokenDefinitions:self.tokenDefinitions scanner:codeScanner];
+    
+    [lexer next];
+    int token1 = lexer.token;
+    [lexer next];
+    int token2 = lexer.token;
+    
+    STAssertTrue(token1 != token2, nil);
+}
+
+- (void)testPeekReadsWithoutConsumingToken
+{
+    NSString *code = @"SET A, 0x30";
+    NSScanner *codeScanner = [NSScanner scannerWithString:code];
+    
+    Lexer *lexer = [[Lexer alloc] initWithTokenDefinitions:self.tokenDefinitions scanner:codeScanner];
+    
+    [lexer peek];
+    int token1 = lexer.token;
+    [lexer peek];
+    int token2 = lexer.token;
+    [lexer next];
+    int token3 = lexer.token;
+    
+    STAssertTrue(token1 == token2 && token1 == token3, nil);
+}
+
+- (void)testNextCalledWithEmptySourceNotGenerateTokens
 {
     NSString *code = @"";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
@@ -40,7 +72,7 @@
     STAssertNil(lexer.tokenContents, nil);
 }
 
-- (void)testNextCalledWithCommentOnlyDoesNotGenerateCorrectTokens
+- (void)testNextCalledWithCommentOnlyGenertesCorrectTokens
 {
     NSString *code = @"; Try some basic stuff";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
@@ -50,6 +82,23 @@
     [lexer next];
     
     STAssertTrue(lexer.token == COMMENT, nil);
+}
+
+- (void)testNextCalledWithIgnoreWhitespaceGenertesCorrectTokens
+{
+    NSString *code = @"SET A, 0x30";
+    NSScanner *codeScanner = [NSScanner scannerWithString:code];
+    
+    Lexer *lexer = [[Lexer alloc] initWithTokenDefinitions:self.tokenDefinitions scanner:codeScanner];
+    lexer.ignoreWhiteSpace = YES;
+    
+    int expectedTokens[4] = { INSTRUCTION, REGISTER, COMMA, HEX };
+    
+    for (int i = 0; i < 4; i++) 
+    {
+        [lexer next];
+        STAssertTrue(lexer.token == expectedTokens[i], nil);
+    }
 }
 
 - (void)testNextCalledWithSetRegisterWithLiteralGenertesCorrectTokens
@@ -86,30 +135,14 @@
 
 - (void)testNextCalledWithSetRegisterWithDecimalLiteralGenertesCorrectInstructionSet
 {
-    NSString *code = @"SET I 10";
+    NSString *code = @"SET I, 10";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenDefinitions:self.tokenDefinitions scanner:codeScanner];
     
-    int expectedTokens[5] = { INSTRUCTION, WHITESPACE, REGISTER, WHITESPACE, INT };
+    int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT };
     
-    for (int i = 0; i < 5; i++) 
-    {
-        [lexer next];
-        STAssertTrue(lexer.token == expectedTokens[i], nil);
-    }
-}
-
-- (void)testNextCalledWithSetRegisterWithHexLiteralGenertesCorrectInstructionSet
-{
-    NSString *code = @"SET A 0x2000";
-    NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
-    Lexer *lexer = [[Lexer alloc] initWithTokenDefinitions:self.tokenDefinitions scanner:codeScanner];
-    
-    int expectedTokens[5] = { INSTRUCTION, WHITESPACE, REGISTER, WHITESPACE, HEX };
-    
-    for (int i = 0; i < 5; i++) 
+    for (int i = 0; i < 6; i++) 
     {
         [lexer next];
         STAssertTrue(lexer.token == expectedTokens[i], nil);

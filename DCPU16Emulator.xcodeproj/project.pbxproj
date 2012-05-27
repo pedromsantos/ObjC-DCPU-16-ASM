@@ -12,7 +12,10 @@
 		C35D848E15703C2500990B0A /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848715703C2500990B0A /* Lexer.m */; };
 		C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848B15703C2500990B0A /* RegexMatcher.m */; };
 		C35D849015703C2500990B0A /* TokenDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848D15703C2500990B0A /* TokenDefinition.m */; };
-		C38A019F1571546200E38C42 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A019E1571546200E38C42 /* Parser.m */; };
+		C38A01A415715D7300E38C42 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A315715D7300E38C42 /* Parser.m */; };
+		C38A01A715715D9B00E38C42 /* Operand.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A615715D9B00E38C42 /* Operand.m */; };
+		C38A01AA15715DAD00E38C42 /* Statment.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A915715DAD00E38C42 /* Statment.m */; };
+		C38A01AD15717CCD00E38C42 /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01AC15717CCD00E38C42 /* ParserTests.m */; };
 		C3B6BA33153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA35153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
 		C3B6BA37153DE4FE0013163A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA36153DE4FE0013163A /* CoreGraphics.framework */; };
@@ -50,8 +53,14 @@
 		C35D848B15703C2500990B0A /* RegexMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexMatcher.m; sourceTree = "<group>"; };
 		C35D848C15703C2500990B0A /* TokenDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDefinition.h; sourceTree = "<group>"; };
 		C35D848D15703C2500990B0A /* TokenDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDefinition.m; sourceTree = "<group>"; };
-		C38A019D1571546200E38C42 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
-		C38A019E1571546200E38C42 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		C38A01A215715D7300E38C42 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		C38A01A315715D7300E38C42 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		C38A01A515715D9B00E38C42 /* Operand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operand.h; sourceTree = "<group>"; };
+		C38A01A615715D9B00E38C42 /* Operand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operand.m; sourceTree = "<group>"; };
+		C38A01A815715DAD00E38C42 /* Statment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statment.h; sourceTree = "<group>"; };
+		C38A01A915715DAD00E38C42 /* Statment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statment.m; sourceTree = "<group>"; };
+		C38A01AB15717CCD00E38C42 /* ParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserTests.h; sourceTree = "<group>"; };
+		C38A01AC15717CCD00E38C42 /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
 		C3B6BA2E153DE4FE0013163A /* DCPU16Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCPU16Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B6BA32153DE4FE0013163A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3B6BA34153DE4FE0013163A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,6 +121,19 @@
 			path = Lexer;
 			sourceTree = "<group>";
 		};
+		C38A01A115715D7300E38C42 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				C38A01A215715D7300E38C42 /* Parser.h */,
+				C38A01A315715D7300E38C42 /* Parser.m */,
+				C38A01A515715D9B00E38C42 /* Operand.h */,
+				C38A01A615715D9B00E38C42 /* Operand.m */,
+				C38A01A815715DAD00E38C42 /* Statment.h */,
+				C38A01A915715DAD00E38C42 /* Statment.m */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
 		C3B6BA23153DE4FD0013163A = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +167,7 @@
 		C3B6BA38153DE4FE0013163A /* DCPU16Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				C38A01A115715D7300E38C42 /* parser */,
 				C3B6BA41153DE4FE0013163A /* AppDelegate.h */,
 				C3B6BA42153DE4FE0013163A /* AppDelegate.m */,
 				C35D848515703C2500990B0A /* Lexer */,
@@ -153,8 +176,6 @@
 				C3B6BA39153DE4FE0013163A /* Supporting Files */,
 				C3B6BA4A153DE4FE0013163A /* ViewController.h */,
 				C3B6BA4B153DE4FE0013163A /* ViewController.m */,
-				C38A019D1571546200E38C42 /* Parser.h */,
-				C38A019E1571546200E38C42 /* Parser.m */,
 			);
 			path = DCPU16Emulator;
 			sourceTree = "<group>";
@@ -175,6 +196,8 @@
 			children = (
 				C35D84821570383D00990B0A /* LexerTests.h */,
 				C35D84831570383D00990B0A /* LexerTests.m */,
+				C38A01AB15717CCD00E38C42 /* ParserTests.h */,
+				C38A01AC15717CCD00E38C42 /* ParserTests.m */,
 				C3B6BA5F153DE4FE0013163A /* RegExMatcherTests.h */,
 				C35D847F157033EB00990B0A /* RegExMatcherTests.m */,
 				C3B6BA5A153DE4FE0013163A /* Supporting Files */,
@@ -305,7 +328,9 @@
 				C35D848E15703C2500990B0A /* Lexer.m in Sources */,
 				C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */,
 				C35D849015703C2500990B0A /* TokenDefinition.m in Sources */,
-				C38A019F1571546200E38C42 /* Parser.m in Sources */,
+				C38A01A415715D7300E38C42 /* Parser.m in Sources */,
+				C38A01A715715D9B00E38C42 /* Operand.m in Sources */,
+				C38A01AA15715DAD00E38C42 /* Statment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +340,7 @@
 			files = (
 				C35D8480157033EB00990B0A /* RegExMatcherTests.m in Sources */,
 				C35D84841570383D00990B0A /* LexerTests.m in Sources */,
+				C38A01AD15717CCD00E38C42 /* ParserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

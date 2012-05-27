@@ -1,5 +1,3 @@
-#import <Foundation/Foundation.h>
-
 enum LexerTokenType
 {
     INSTRUCTION = 0,
