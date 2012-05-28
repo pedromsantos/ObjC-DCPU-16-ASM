@@ -33,14 +33,37 @@
 #define LIT             @"LIT" // literals
 #define MEM             @"MEM" // memory
 
+typedef int(^memoryOperation)(int, int);
+
 @interface Ram : NSObject
 
 - (id)init;
 
 - (void)setLiteral:(int)literal atIndex:(int)index;
-- (void)setMemoryValue:(NSNumber*)value atIndex:(int)index;
+- (void)setMemoryValue:(int)value atIndex:(int)index;
+- (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area;
+- (void)setOverflowRegisterToValue:(int)value;
 
 - (int)getLiteralAtIndex:(int)index;
 - (int)getMemoryValueAtIndex:(int)index;
+- (int)getValueForRegister:(int)reg;
+
+- (int)peekInstructionAtProgramCounter;
+- (int)readInstructionAtProgramCounter;
+- (void)setProgramCounter:(int)value;
+- (void)incrementProgramCounter;
+
+- (void)stackPush:(int)value;
+- (int)peekInstructionAtStackPointer;
+- (int)readInstructionAtStackPointer;
+- (int)decrementAndReadInstructionAtStackPointer;
+
+- (void)assignResultOfOperation:(memoryOperation)block 
+         usingOperand1AtAddress:(int)address1 
+                   inMemoryArea:(NSString*)area1
+           andOperand2AtAddress:(int)address2
+                   inMemoryArea:(NSString*)area2
+                      toAddress:(int)address
+                   inMemoryArea:(NSString*)area;
 
 @end

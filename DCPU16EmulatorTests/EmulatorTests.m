@@ -20,29 +20,46 @@
  * SOFTWARE.
  */
 
-#import "Ram.h"
+#import "EmulatorTests.h"
+#import "Emulator.h"
+#import "Assembler.h"
+#import "Parser.h"
 
-// Masks to get clear results from an INT.
-#define OP_MASK         0xF
-#define A_MASK          0x3F
-#define B_MASK          0x3F
-#define SHORT_MASK      0xFFFF
+@implementation EmulatorTests
 
-// Shift width to get clear results from an INT.
-#define A_SHIFT         4
-#define B_SHIFT         10
-#define SHORT_SHIFT     16
-
-@interface Emulator : NSObject
+- (void)testStepCalledWithEmptyProgramReturns
 {
-    NSString* rp;
+    NSString *code = @"; Try some basic stuff";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    
+    STAssertFalse([emulator step], nil);
 }
 
-@property (nonatomic, strong) Ram *ram;
-
-- (id)initWithProgram:(NSArray*)program;
-- (BOOL)step;
-
-- (int)getValueForRegister:(int)reg;
+- (void)testStepCalledWithSetRegisterWithDecimalLiteralExecutesProgram
+{
+    NSString *code = @"SET I, 10";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    
+    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator getValueForRegister:6] == 10, nil);
+}
 
 @end

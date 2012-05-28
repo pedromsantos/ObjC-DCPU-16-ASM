@@ -20,29 +20,8 @@
  * SOFTWARE.
  */
 
-#import "Ram.h"
+#import <SenTestingKit/SenTestingKit.h>
 
-// Masks to get clear results from an INT.
-#define OP_MASK         0xF
-#define A_MASK          0x3F
-#define B_MASK          0x3F
-#define SHORT_MASK      0xFFFF
-
-// Shift width to get clear results from an INT.
-#define A_SHIFT         4
-#define B_SHIFT         10
-#define SHORT_SHIFT     16
-
-@interface Emulator : NSObject
-{
-    NSString* rp;
-}
-
-@property (nonatomic, strong) Ram *ram;
-
-- (id)initWithProgram:(NSArray*)program;
-- (BOOL)step;
-
-- (int)getValueForRegister:(int)reg;
+@interface EmulatorTests : SenTestCase
 
 @end

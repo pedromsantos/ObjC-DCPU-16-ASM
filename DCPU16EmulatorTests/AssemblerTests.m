@@ -35,7 +35,11 @@
     
     [p parseSource:code];
     
-    STAssertTrue([p.statments count] == 0, nil);
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    STAssertTrue([assembler.program count] == 0, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithOnlyCommentsDoesNotGenerateProgram
