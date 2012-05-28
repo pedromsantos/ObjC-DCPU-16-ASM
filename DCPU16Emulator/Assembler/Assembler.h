@@ -21,9 +21,6 @@
  */
 
 @interface Assembler : NSObject
-{
-    int currentMemorySize;
-}
 
 @property (nonatomic, strong) NSMutableDictionary* labelDef;
 @property (nonatomic, strong) NSMutableDictionary* labelRef;

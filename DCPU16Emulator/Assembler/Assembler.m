@@ -35,7 +35,6 @@
     self.labelDef = [[NSMutableDictionary alloc] init];
     self.labelRef = [[NSMutableDictionary alloc] init];
     self.program = [[NSMutableArray alloc] init];
-    currentMemorySize = 0;
     
     for (Statment *statment in statments)
     {
@@ -51,8 +50,7 @@
     
     if ([statment.label length] > 0)
     {
-        currentMemorySize = [program count];
-        [self.labelDef setObject:[NSNumber numberWithInt:currentMemorySize] forKey:[statment.label substringFromIndex:1]];
+        [self.labelDef setObject:[NSNumber numberWithInt:[program count]] forKey:[statment.label substringFromIndex:1]];
     }
     
     if (statment.opcode == 0)
