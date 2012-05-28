@@ -20,34 +20,27 @@
  * SOFTWARE.
  */
 
-#import "Emulator.h"
+// Size variables to define the environment.
+#define MEMORY_SIZE     65536
+#define NUM_ITERALS     32
+#define NUM_REGISTERS   8
 
-@implementation Emulator
+// Indices for the RAM
+#define PC              @"PC" // program counter
+#define SP              @"SP" // stack pointer
+#define OV              @"OV" // overflow
+#define REG             @"REG" // register
+#define LIT             @"LIT" // literals
+#define MEM             @"MEM" // memory
 
-@synthesize ram;
+@interface Ram : NSObject
 
-- (id)initWithProgram:(NSArray*)program
-{
-    self = [super init];
-    
-    self.ram = [[Ram alloc] init];
-    
-    for (int i = 0; i < NUM_ITERALS; i++) 
-    {
-        [self.ram setLiteral:i atIndex:i];
-    }
-    
-    for (int i = 0; i < [program count]; i++) 
-    {
-        [self.ram setMemoryValue:[program objectAtIndex:i] atIndex:i];
-    }
-    
-    return self;
-}
+- (id)init;
 
-- (BOOL)step
-{
-    return YES;
-}
+- (void)setLiteral:(int)literal atIndex:(int)index;
+- (void)setMemoryValue:(NSNumber*)value atIndex:(int)index;
+
+- (int)getLiteralAtIndex:(int)index;
+- (int)getMemoryValueAtIndex:(int)index;
 
 @end
