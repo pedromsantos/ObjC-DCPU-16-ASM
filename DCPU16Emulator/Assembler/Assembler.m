@@ -35,6 +35,7 @@
     self.labelDef = [[NSMutableDictionary alloc] init];
     self.labelRef = [[NSMutableDictionary alloc] init];
     self.program = [[NSMutableArray alloc] init];
+    currentMemorySize = 0;
     
     for (Statment *statment in statments)
     {
@@ -50,9 +51,11 @@
     
     if ([statment.label length] > 0)
     {
-        [self.labelDef setObject:[NSNumber numberWithInt:[self.program count]] forKey:[statment.label substringFromIndex:1]];
+        currentMemorySize = [program count];
+        [self.labelDef setObject:[NSNumber numberWithInt:currentMemorySize] forKey:[statment.label substringFromIndex:1]];
     }
-    else if (statment.opcode == 0)
+    
+    if (statment.opcode == 0)
     {
         if (statment.secondOperand.operandType != O_NULL)
         {
@@ -65,8 +68,9 @@
             {
                 opCode = 0;
                 opCode |= OP_JSR << OPCODE_WIDTH;
+                opCode |= [self assembleOperand:statment.firstOperand forOpCode:0 withIndex:1];
                 [self addOpCode:opCode];
-                [self assembleOperand:statment.firstOperand forOpCode:opCode withIndex:1];
+                [self assembleRemainingOperand:statment.firstOperand];
                 break;
             }
             default:
@@ -79,12 +83,12 @@
     {
         opCode = [self assembleOperand:statment.firstOperand forOpCode:opCode withIndex:0];
         opCode = [self assembleOperand:statment.secondOperand forOpCode:opCode withIndex:1];
+    
+        [self addOpCode:opCode];
+    
+        [self assembleRemainingOperand:statment.firstOperand];
+        [self assembleRemainingOperand:statment.secondOperand];
     }
-    
-    [self addOpCode:opCode];
-    
-    [self assembleRemainingOperand:statment.firstOperand];
-    [self assembleRemainingOperand:statment.secondOperand];
 }
 
 - (void)addOpCode:(int)opCode

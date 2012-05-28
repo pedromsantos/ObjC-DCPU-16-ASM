@@ -161,7 +161,7 @@
     [assembler assembleStatments:p.statments];
     
     NSLog(@"Program instructions = %d", [assembler.program count]);
-    STAssertTrue([assembler.program count] == 29, nil);
+    STAssertTrue([assembler.program count] == 28, nil);
     
     int expectedInstructions[28] = {
         0x7c01, 0x0030, 0x7de1, 0x1000, 0x0020, 0x7803, 0x1000, 0xc00d,
