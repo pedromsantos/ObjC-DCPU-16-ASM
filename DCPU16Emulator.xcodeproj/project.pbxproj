@@ -12,6 +12,7 @@
 		C35D848E15703C2500990B0A /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848715703C2500990B0A /* Lexer.m */; };
 		C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848B15703C2500990B0A /* RegexMatcher.m */; };
 		C35D849015703C2500990B0A /* TokenDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848D15703C2500990B0A /* TokenDefinition.m */; };
+		C37BC0B01573CA9000ECB88F /* Emulator.m in Sources */ = {isa = PBXBuildFile; fileRef = C37BC0AF1573CA9000ECB88F /* Emulator.m */; };
 		C38A01A415715D7300E38C42 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A315715D7300E38C42 /* Parser.m */; };
 		C38A01A715715D9B00E38C42 /* Operand.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A615715D9B00E38C42 /* Operand.m */; };
 		C38A01AA15715DAD00E38C42 /* Statment.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A915715DAD00E38C42 /* Statment.m */; };
@@ -55,6 +56,8 @@
 		C35D848B15703C2500990B0A /* RegexMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexMatcher.m; sourceTree = "<group>"; };
 		C35D848C15703C2500990B0A /* TokenDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDefinition.h; sourceTree = "<group>"; };
 		C35D848D15703C2500990B0A /* TokenDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDefinition.m; sourceTree = "<group>"; };
+		C37BC0AE1573CA9000ECB88F /* Emulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emulator.h; sourceTree = "<group>"; };
+		C37BC0AF1573CA9000ECB88F /* Emulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emulator.m; sourceTree = "<group>"; };
 		C38A01A215715D7300E38C42 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		C38A01A315715D7300E38C42 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		C38A01A515715D9B00E38C42 /* Operand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operand.h; sourceTree = "<group>"; };
@@ -127,6 +130,15 @@
 			path = Lexer;
 			sourceTree = "<group>";
 		};
+		C37BC0AC1573CA8100ECB88F /* Emulator */ = {
+			isa = PBXGroup;
+			children = (
+				C37BC0AE1573CA9000ECB88F /* Emulator.h */,
+				C37BC0AF1573CA9000ECB88F /* Emulator.m */,
+			);
+			path = Emulator;
+			sourceTree = "<group>";
+		};
 		C38A01A115715D7300E38C42 /* parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +194,7 @@
 		C3B6BA38153DE4FE0013163A /* DCPU16Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				C37BC0AC1573CA8100ECB88F /* Emulator */,
 				C3B1806915727CE50057F9D5 /* Assembler */,
 				C38A01A115715D7300E38C42 /* parser */,
 				C3B6BA41153DE4FE0013163A /* AppDelegate.h */,
@@ -350,6 +363,7 @@
 				C38A01A715715D9B00E38C42 /* Operand.m in Sources */,
 				C38A01AA15715DAD00E38C42 /* Statment.m in Sources */,
 				C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */,
+				C37BC0B01573CA9000ECB88F /* Emulator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
