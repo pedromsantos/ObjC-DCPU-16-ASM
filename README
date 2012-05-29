@@ -1,7 +1,9 @@
 Just another DCPU implementation.
 
+Getting started:
 No UI yet. If you want to check out this project take a look at unit tests. Start with higher level ones such as EmulatorTests.m or AssemblerTests.m
 
+Platform: IOS
 Language: Objective-C
 Inspiration: https://github.com/swetland/dcpu16
            : https://github.com/pda/dcpu16-asm-c
