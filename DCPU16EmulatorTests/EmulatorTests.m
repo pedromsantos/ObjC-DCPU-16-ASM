@@ -62,4 +62,40 @@
     STAssertTrue([emulator getValueForRegister:6] == 10, nil);
 }
 
+- (void)testStepCalledWithSetRegisterWithHexLiteralExecutesProgram
+{
+    NSString *code = @"SET A, 0x30";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    
+    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator getValueForRegister:0] == 0x30, nil);
+}
+
+- (void)testStepCalledWithSetAddressWithHexLiteralExecutesProgram
+{
+    NSString *code = @"SET [0x1000], 0x20";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    
+    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator getValueForMemory:0x1000] == 0x20, nil);
+}
+
 @end

@@ -37,14 +37,19 @@
         [self.ram setLiteral:i atIndex:i];
     }
     
-    for (int i = 0; i < [program count]; i++) 
-    {
-        [self.ram setMemoryValue:[[program objectAtIndex:i] intValue] atIndex:i];
-    }
-    
     for (int i = 0; i < NUM_REGISTERS; i++) 
     {
         [self.ram setMemoryValue:0 atIndex:i inMemoryArea:REG];
+    }
+    
+    for (int i = 0; i < MEMORY_SIZE; i++) 
+    {
+        [self.ram setMemoryValue:0 atIndex:i inMemoryArea:MEM];
+    }
+    
+    for (int i = 0; i < [program count]; i++) 
+    {
+        [self.ram setMemoryValue:[[program objectAtIndex:i] intValue] atIndex:i];
     }
     
     return self;
@@ -271,12 +276,12 @@
     else if (code == 0x1B)
     {
         rp = SP;
-        return 0;
+        return [ram decrementAndReadInstructionAtStackPointer];
     }
     else if (code == 0x1C)
     {
         rp = PC;
-        return 0;
+        return [ram readInstructionAtProgramCounter];
     }
     else if (code == 0x1D)
     {
@@ -286,16 +291,16 @@
     else if (code == 0x1E)
     {
         rp = MEM;
-        return [ram peekInstructionAtStackPointer];
+        return [ram readInstructionAtProgramCounter];
     }
     else if (code == 0x1F)
     {
         rp = PC;
-        [ram peekInstructionAtStackPointer];
-        return 0;
+        return [ram readInstructionAtProgramCounter];
     }
     
     rp = LIT;
+    //[ram setMemoryValue:code atIndex:(code - 0x20) % NUM_ITERALS inMemoryArea:LIT];
     return (code - 0x20) % NUM_ITERALS;
 }
 
@@ -303,5 +308,11 @@
 {
     return [self.ram getValueForRegister:reg];
 }
+
+- (int)getValueForMemory:(int)address
+{
+    return [self.ram getMemoryValueAtIndex:address];
+}
+
 
 @end

@@ -44,5 +44,6 @@
 - (BOOL)step;
 
 - (int)getValueForRegister:(int)reg;
+- (int)getValueForMemory:(int)address;
 
 @end

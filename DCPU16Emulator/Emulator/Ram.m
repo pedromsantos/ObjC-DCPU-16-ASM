@@ -55,8 +55,26 @@
                       toAddress:(int)address
                    inMemoryArea:(NSString*)area
 {
-    int a = [self getMemoryValueAtIndex:address1 inMemoryArea:area1];
-    int b = [self getMemoryValueAtIndex:address2 inMemoryArea:area2];
+    int a;
+    int b;
+    
+    if([area1 isEqualToString:REG] || [area1 isEqualToString:LIT] || [area1 isEqualToString:MEM])
+    {
+        a = [self getMemoryValueAtIndex:address1 inMemoryArea:area1];
+    }
+    else 
+    {
+        a = address1;
+    }
+    
+    if([area2 isEqualToString:REG] || [area2 isEqualToString:LIT] || [area2 isEqualToString:MEM])
+    {
+        b = [self getMemoryValueAtIndex:address2 inMemoryArea:area2];
+    }
+    else 
+    {
+        b = address2;
+    }
     
     [self setMemoryValue:block(a, b) atIndex:address inMemoryArea:area];
 }
