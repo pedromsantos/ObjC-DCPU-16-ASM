@@ -21,7 +21,7 @@
  */
 
 #import "Ram.h"
-#import "Emulator.h"
+#import "DCPU.h"
 
 @interface Ram()
 
