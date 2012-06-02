@@ -52,14 +52,19 @@
         [literals insertObject:[NSNumber numberWithInt:i] atIndex:i];
     }
     
+    NSMutableArray *registers = [ram objectForKey:REG];
+    NSNumber* initValue = [NSNumber numberWithInt:0];
+    
     for (int i = 0; i < NUM_REGISTERS; i++) 
     {
-        [self setMemoryValue:0 atIndex:i inMemoryArea:REG];
+        [registers insertObject:initValue atIndex:i];
     }
+    
+    NSMutableArray *memory = [ram objectForKey:MEM];
     
     for (int i = 0; i < MEMORY_SIZE; i++) 
     {
-        [self setMemoryValue:0 atIndex:i];
+        [memory insertObject:initValue atIndex:i];
     }
     
     return self;
@@ -108,23 +113,16 @@
 {
     NSMutableArray *memory = [ram objectForKey:area];
     
-    if ([memory count] > index) 
+    if(self.memoryWillChange != nil)
     {
-        [memory replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
+        
     }
-    else 
+    
+    [memory replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
+    
+    if(self.memoryDidChange != nil)
     {
-        if(self.memoryWillChange != nil)
-        {
-            
-        }
         
-        [memory insertObject:[NSNumber numberWithInt:value] atIndex:index];
-        
-        if(self.memoryDidChange != nil)
-        {
-            
-        }
     }
 }
 
