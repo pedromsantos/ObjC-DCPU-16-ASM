@@ -21,7 +21,6 @@
  */
 
 #import "Memory.h"
-#import "Register.h"
 
 // Masks to get clear results from an INT.
 #define OP_MASK         0xF
@@ -40,18 +39,6 @@
 }
 
 @property (nonatomic, strong) Memory *memory;
-
-@property (nonatomic, strong) Register *pc;
-@property (nonatomic, strong) Register *sp;
-@property (nonatomic, strong) Register *o;
-@property (nonatomic, strong) Register *regA;
-@property (nonatomic, strong) Register *regB;
-@property (nonatomic, strong) Register *regC;
-@property (nonatomic, strong) Register *regX;
-@property (nonatomic, strong) Register *regY;
-@property (nonatomic, strong) Register *regZ;
-@property (nonatomic, strong) Register *regI;
-@property (nonatomic, strong) Register *regJ;
 
 - (id)initWithProgram:(NSArray*)program;
 - (BOOL)step;
