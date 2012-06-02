@@ -76,7 +76,14 @@
         b = address2;
     }
     
-    [self setMemoryValue:block(a, b) atIndex:address inMemoryArea:area];
+    if([area1 isEqualToString:@"PC"])
+    {
+        [self setProgramCounter:a];
+    }
+    else
+    {
+        [self setMemoryValue:block(a, b) atIndex:address inMemoryArea:area];
+    }
 }
 
 - (int)getMemoryValueAtIndex:(int)index inMemoryArea:(NSString*)area
@@ -90,7 +97,14 @@
 {
     NSMutableArray *memory = [ram objectForKey:area];
     
-    [memory insertObject:[NSNumber numberWithInt:value] atIndex:index];
+    if ([memory count] > index) 
+    {
+        [memory replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
+    }
+    else 
+    {
+        [memory insertObject:[NSNumber numberWithInt:value] atIndex:index];
+    }
 }
 
 - (int)getMemoryValueAtIndex:(int)index
@@ -102,16 +116,21 @@
 
 - (void)setMemoryValue:(int)value atIndex:(int)index
 {
-    NSMutableArray *memory = [ram objectForKey:MEM];
-    
-    [memory insertObject:[NSNumber numberWithInt:value] atIndex:index];
+    [self setMemoryValue:value atIndex:index inMemoryArea:MEM];
 }
 
 - (void)setLiteral:(int)literal atIndex:(int)index
 {
     NSMutableArray *literals = [ram objectForKey:LIT];
     
-    [literals insertObject:[NSNumber numberWithInt:literal] atIndex:index];
+    if ([literals count] > index) 
+    {
+        [literals replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:literal]];
+    }
+    else 
+    {
+        [literals insertObject:[NSNumber numberWithInt:literal] atIndex:index];
+    }
 }
 
 - (void)setOverflowRegisterToValue:(int)value
@@ -123,7 +142,9 @@
 {
     NSMutableArray *registers = [ram objectForKey:REG];
     
-    return [[registers objectAtIndex:reg] intValue];
+    int value = [[registers objectAtIndex:reg] intValue];
+    
+    return value;
 }
 
 - (int)getLiteralAtIndex:(int)index
@@ -194,6 +215,13 @@
 {
     [self incrementStackPointer:-1];
     [self setMemoryValue:value atIndex:[self peekInstructionAtStackPointer]];
+}
+
+- (int)getProgramCounter
+{
+    int value = [[ram objectForKey:PC] intValue];
+    
+    return value;
 }
 
 @end

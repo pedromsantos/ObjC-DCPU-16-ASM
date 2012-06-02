@@ -44,7 +44,7 @@
     
     for (int i = 0; i < MEMORY_SIZE; i++) 
     {
-        [self.ram setMemoryValue:0 atIndex:i inMemoryArea:MEM];
+        [self.ram setMemoryValue:0 atIndex:i];
     }
     
     for (int i = 0; i < [program count]; i++) 
@@ -89,9 +89,9 @@
     else 
     {
         a = [self parseVar:a];
-        NSString* rpStateForOperand1 = rp;
+        NSString* rpStateForOperand1 = [rp copy];
         b = [self parseVar:b];
-        NSString* rpStateForOperand2 = rp;
+        NSString* rpStateForOperand2 = [rp copy];
         
         switch (op) 
         {
@@ -235,7 +235,7 @@
         
         if (op > 0x1 && op < 0x9 && op != 0x6)
         {
-            [self.ram setOverflowRegisterToValue:([ram getMemoryValueAtIndex:a] >> SHORT_SHIFT) & SHORT_MASK];
+            //[self.ram setOverflowRegisterToValue:([ram getMemoryValueAtIndex:a] >> SHORT_SHIFT) & SHORT_MASK];
         }
     }
     
@@ -244,6 +244,8 @@
 
 - (int)parseVar:(int)code 
 {
+    rp = nil;
+    
     if (code < 0x08) 
     {
         rp = REG;
@@ -251,12 +253,12 @@
     } 
     else if (code < 0x10) 
     {
-        rp = MEM;
         return [self.ram getValueForRegister:code % NUM_REGISTERS];
     } 
     else if (code < 0x18) 
     {
-        return ([ram readInstructionAtStackPointer] + [ram getValueForRegister:code % NUM_REGISTERS]) & SHORT_MASK;
+        rp = MEM;
+        return ([ram readInstructionAtProgramCounter] + [ram getValueForRegister:code % NUM_REGISTERS]) & SHORT_MASK;
     }
     else if (code == 0x18)
     {
@@ -314,5 +316,14 @@
     return [self.ram getMemoryValueAtIndex:address];
 }
 
+- (int)peekInstructionAtProgramCounter
+{
+    return [self.ram peekInstructionAtProgramCounter];
+}
+
+- (int)getProgramCounter
+{
+    return [self.ram getProgramCounter];
+}
 
 @end

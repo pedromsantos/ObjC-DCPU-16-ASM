@@ -45,5 +45,7 @@
 
 - (int)getValueForRegister:(int)reg;
 - (int)getValueForMemory:(int)address;
+- (int)peekInstructionAtProgramCounter;
+- (int)getProgramCounter;
 
 @end

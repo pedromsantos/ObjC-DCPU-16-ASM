@@ -48,6 +48,7 @@ typedef int(^memoryOperation)(int, int);
 - (int)getMemoryValueAtIndex:(int)index;
 - (int)getValueForRegister:(int)reg;
 
+- (int)getProgramCounter;
 - (int)peekInstructionAtProgramCounter;
 - (int)readInstructionAtProgramCounter;
 - (void)setProgramCounter:(int)value;
