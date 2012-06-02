@@ -34,12 +34,15 @@
 #define MEM             @"MEM" // memory
 
 typedef int(^memoryOperation)(int, int);
+typedef void(^memoryOperationNotification)(NSString*, int);
 
 @interface Memory : NSObject
 
+@property (nonatomic, copy) memoryOperationNotification memoryWillChange;
+@property (nonatomic, copy) memoryOperationNotification memoryDidChange;
+
 - (id)init;
 
-- (void)setLiteral:(int)literal atIndex:(int)index;
 - (void)setMemoryValue:(int)value atIndex:(int)index;
 - (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area;
 - (void)setOverflowRegisterToValue:(int)value;

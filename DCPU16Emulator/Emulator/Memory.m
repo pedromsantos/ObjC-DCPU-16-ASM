@@ -32,7 +32,8 @@
 @implementation Memory
 
 @synthesize ram;
-
+@synthesize memoryWillChange;
+@synthesize memoryDidChange;
 - (id)init
 {
     ram = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -43,6 +44,23 @@
            [[NSMutableArray alloc] initWithCapacity:NUM_ITERALS], LIT,
            [[NSMutableArray alloc] initWithCapacity:MEMORY_SIZE], MEM,
            nil];
+    
+    NSMutableArray *literals = [ram objectForKey:LIT];
+    
+    for (int i = 0; i < NUM_ITERALS; i++) 
+    {
+        [literals insertObject:[NSNumber numberWithInt:i] atIndex:i];
+    }
+    
+    for (int i = 0; i < NUM_REGISTERS; i++) 
+    {
+        [self setMemoryValue:0 atIndex:i inMemoryArea:REG];
+    }
+    
+    for (int i = 0; i < MEMORY_SIZE; i++) 
+    {
+        [self setMemoryValue:0 atIndex:i];
+    }
     
     return self;
 }
@@ -86,13 +104,6 @@
     }
 }
 
-- (int)getMemoryValueAtIndex:(int)index inMemoryArea:(NSString*)area
-{
-    NSMutableArray *memory = [ram objectForKey:area];
-    
-    return [[memory objectAtIndex:index] intValue];
-}
-
 - (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area
 {
     NSMutableArray *memory = [ram objectForKey:area];
@@ -103,15 +114,18 @@
     }
     else 
     {
+        if(self.memoryWillChange != nil)
+        {
+            
+        }
+        
         [memory insertObject:[NSNumber numberWithInt:value] atIndex:index];
+        
+        if(self.memoryDidChange != nil)
+        {
+            
+        }
     }
-}
-
-- (int)getMemoryValueAtIndex:(int)index
-{
-    NSMutableArray *memory = [ram objectForKey:MEM];
-    
-    return [[memory objectAtIndex:index] intValue];
 }
 
 - (void)setMemoryValue:(int)value atIndex:(int)index
@@ -119,23 +133,67 @@
     [self setMemoryValue:value atIndex:index inMemoryArea:MEM];
 }
 
-- (void)setLiteral:(int)literal atIndex:(int)index
-{
-    NSMutableArray *literals = [ram objectForKey:LIT];
-    
-    if ([literals count] > index) 
-    {
-        [literals replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:literal]];
-    }
-    else 
-    {
-        [literals insertObject:[NSNumber numberWithInt:literal] atIndex:index];
-    }
-}
-
 - (void)setOverflowRegisterToValue:(int)value
 {
     [self setValue:[NSNumber numberWithInt:value] forKey:OV];
+}
+
+- (int)readInstructionAtProgramCounter
+{
+    int value = [self peekInstructionAtProgramCounter];
+    [self incrementProgramCounter];
+    return value;
+}
+
+- (void)incrementProgramCounter
+{
+    int actualValue = [[ram objectForKey:PC] intValue];
+    [ram setValue:[NSNumber numberWithInt:++actualValue] forKey:PC];
+}
+
+- (void)setProgramCounter:(int)value
+{
+    [ram setValue:[NSNumber numberWithInt:value] forKey:PC];
+}
+
+- (int)readInstructionAtStackPointer
+{
+    int value = [self peekInstructionAtStackPointer];
+    [self incrementStackPointer:1];
+    return value;
+}
+
+- (int)decrementAndReadInstructionAtStackPointer
+{
+    [self incrementStackPointer:-1];
+    int value = [self peekInstructionAtStackPointer];
+    return value;
+}
+
+- (void)incrementStackPointer:(int)value
+{
+    int actualValue = [[ram objectForKey:SP] intValue];
+    [ram setValue:[NSNumber numberWithInt:(actualValue+value)] forKey:SP];
+}
+
+- (void)stackPush:(int)value
+{
+    [self incrementStackPointer:-1];
+    [self setMemoryValue:value atIndex:[self peekInstructionAtStackPointer]];
+}
+
+- (int)getMemoryValueAtIndex:(int)index inMemoryArea:(NSString*)area
+{
+    NSMutableArray *memory = [ram objectForKey:area];
+    
+    return [[memory objectAtIndex:index] intValue];
+}
+
+- (int)getMemoryValueAtIndex:(int)index
+{
+    NSMutableArray *memory = [ram objectForKey:MEM];
+    
+    return [[memory objectAtIndex:index] intValue];
 }
 
 - (int)getValueForRegister:(int)reg
@@ -166,55 +224,11 @@
     return [[memory objectAtIndex:[[ram objectForKey:PC] intValue]] intValue];
 }
 
-- (int)readInstructionAtProgramCounter
-{
-    int value = [self peekInstructionAtProgramCounter];
-    [self incrementProgramCounter];
-    return value;
-}
-
-- (void)incrementProgramCounter
-{
-    int actualValue = [[ram objectForKey:PC] intValue];
-    [ram setValue:[NSNumber numberWithInt:++actualValue] forKey:PC];
-}
-
-- (void)setProgramCounter:(int)value
-{
-    [ram setValue:[NSNumber numberWithInt:value] forKey:PC];
-}
-
 - (int)peekInstructionAtStackPointer
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
     
     return [[memory objectAtIndex:[[ram objectForKey:SP] intValue]] intValue];
-}
-
-- (int)readInstructionAtStackPointer
-{
-    int value = [self peekInstructionAtStackPointer];
-    [self incrementStackPointer:1];
-    return value;
-}
-
-- (int)decrementAndReadInstructionAtStackPointer
-{
-    [self incrementStackPointer:-1];
-    int value = [self peekInstructionAtStackPointer];
-    return value;
-}
-
-- (void)incrementStackPointer:(int)value
-{
-    int actualValue = [[ram objectForKey:SP] intValue];
-    [ram setValue:[NSNumber numberWithInt:(actualValue+value)] forKey:SP];
-}
-
-- (void)stackPush:(int)value
-{
-    [self incrementStackPointer:-1];
-    [self setMemoryValue:value atIndex:[self peekInstructionAtStackPointer]];
 }
 
 - (int)getProgramCounter

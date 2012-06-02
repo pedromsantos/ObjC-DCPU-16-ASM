@@ -32,21 +32,6 @@
     
     self.memory = [[Memory alloc] init];
     
-    for (int i = 0; i < NUM_ITERALS; i++) 
-    {
-        [self.memory setLiteral:i atIndex:i];
-    }
-    
-    for (int i = 0; i < NUM_REGISTERS; i++) 
-    {
-        [self.memory setMemoryValue:0 atIndex:i inMemoryArea:REG];
-    }
-    
-    for (int i = 0; i < MEMORY_SIZE; i++) 
-    {
-        [self.memory setMemoryValue:0 atIndex:i];
-    }
-    
     for (int i = 0; i < [program count]; i++) 
     {
         [self.memory setMemoryValue:[[program objectAtIndex:i] intValue] atIndex:i];
