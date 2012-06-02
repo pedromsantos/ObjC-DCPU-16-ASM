@@ -20,9 +20,9 @@
  * SOFTWARE.
  */
 
-#import "Emulator.h"
+#import "DCPU.h"
 
-@implementation Emulator
+@implementation DCPU
 
 @synthesize ram;
 

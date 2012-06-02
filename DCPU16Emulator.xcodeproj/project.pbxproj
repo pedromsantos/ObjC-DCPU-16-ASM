@@ -12,7 +12,7 @@
 		C35D848E15703C2500990B0A /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848715703C2500990B0A /* Lexer.m */; };
 		C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848B15703C2500990B0A /* RegexMatcher.m */; };
 		C35D849015703C2500990B0A /* TokenDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848D15703C2500990B0A /* TokenDefinition.m */; };
-		C37BC0B01573CA9000ECB88F /* Emulator.m in Sources */ = {isa = PBXBuildFile; fileRef = C37BC0AF1573CA9000ECB88F /* Emulator.m */; };
+		C37BC0B01573CA9000ECB88F /* DCPU.m in Sources */ = {isa = PBXBuildFile; fileRef = C37BC0AF1573CA9000ECB88F /* DCPU.m */; };
 		C37BC0B61573D8A100ECB88F /* Ram.m in Sources */ = {isa = PBXBuildFile; fileRef = C37BC0B51573D8A100ECB88F /* Ram.m */; };
 		C38A01A415715D7300E38C42 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A315715D7300E38C42 /* Parser.m */; };
 		C38A01A715715D9B00E38C42 /* Operand.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A615715D9B00E38C42 /* Operand.m */; };
@@ -58,8 +58,8 @@
 		C35D848B15703C2500990B0A /* RegexMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexMatcher.m; sourceTree = "<group>"; };
 		C35D848C15703C2500990B0A /* TokenDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDefinition.h; sourceTree = "<group>"; };
 		C35D848D15703C2500990B0A /* TokenDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDefinition.m; sourceTree = "<group>"; };
-		C37BC0AE1573CA9000ECB88F /* Emulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emulator.h; sourceTree = "<group>"; };
-		C37BC0AF1573CA9000ECB88F /* Emulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emulator.m; sourceTree = "<group>"; };
+		C37BC0AE1573CA9000ECB88F /* DCPU.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DCPU.h; sourceTree = "<group>"; };
+		C37BC0AF1573CA9000ECB88F /* DCPU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPU.m; sourceTree = "<group>"; };
 		C37BC0B41573D8A100ECB88F /* Ram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ram.h; sourceTree = "<group>"; };
 		C37BC0B51573D8A100ECB88F /* Ram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ram.m; sourceTree = "<group>"; };
 		C38A01A215715D7300E38C42 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		C3B6BA5B153DE4FE0013163A /* DCPU16EmulatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DCPU16EmulatorTests-Info.plist"; sourceTree = "<group>"; };
 		C3B6BA5D153DE4FE0013163A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C3B6BA5F153DE4FE0013163A /* RegExMatcherTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegExMatcherTests.h; sourceTree = "<group>"; };
-		C3C3F557157427920072378F /* EmulatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EmulatorTests.h; sourceTree = "<group>"; };
+		C3C3F557157427920072378F /* EmulatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmulatorTests.h; sourceTree = "<group>"; };
 		C3C3F558157427920072378F /* EmulatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmulatorTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,8 +139,8 @@
 		C37BC0AC1573CA8100ECB88F /* Emulator */ = {
 			isa = PBXGroup;
 			children = (
-				C37BC0AE1573CA9000ECB88F /* Emulator.h */,
-				C37BC0AF1573CA9000ECB88F /* Emulator.m */,
+				C37BC0AE1573CA9000ECB88F /* DCPU.h */,
+				C37BC0AF1573CA9000ECB88F /* DCPU.m */,
 				C37BC0B41573D8A100ECB88F /* Ram.h */,
 				C37BC0B51573D8A100ECB88F /* Ram.m */,
 			);
@@ -373,7 +373,7 @@
 				C38A01A715715D9B00E38C42 /* Operand.m in Sources */,
 				C38A01AA15715DAD00E38C42 /* Statment.m in Sources */,
 				C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */,
-				C37BC0B01573CA9000ECB88F /* Emulator.m in Sources */,
+				C37BC0B01573CA9000ECB88F /* DCPU.m in Sources */,
 				C37BC0B61573D8A100ECB88F /* Ram.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

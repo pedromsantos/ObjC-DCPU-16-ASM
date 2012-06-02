@@ -33,7 +33,7 @@
 #define B_SHIFT         10
 #define SHORT_SHIFT     16
 
-@interface Emulator : NSObject
+@interface DCPU : NSObject
 {
     NSString* rp;
 }

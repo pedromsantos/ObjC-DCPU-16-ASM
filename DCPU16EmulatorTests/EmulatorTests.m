@@ -21,7 +21,7 @@
  */
 
 #import "EmulatorTests.h"
-#import "Emulator.h"
+#import "DCPU.h"
 #import "Assembler.h"
 #import "Parser.h"
 
@@ -39,7 +39,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertFalse([emulator step], nil);
 }
@@ -56,7 +56,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertTrue([emulator step], nil);
     STAssertTrue([emulator getValueForRegister:6] == 10, nil);
@@ -74,7 +74,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertTrue([emulator step], nil);
     STAssertTrue([emulator getValueForRegister:0] == 0x30, nil);
@@ -92,7 +92,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertTrue([emulator step], nil);
     STAssertTrue([emulator getValueForMemory:0x1000] == 0x20, nil);
@@ -110,7 +110,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertTrue([emulator step], nil);
     STAssertTrue([emulator getValueForMemory:0x2000] == 0, nil);
@@ -130,7 +130,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertTrue([emulator step], nil);
     STAssertTrue([emulator getValueForRegister:0] == 0x30, nil);
@@ -161,7 +161,7 @@
     
     [assembler assembleStatments:p.statments];
     
-    Emulator *emulator = [[Emulator alloc] initWithProgram:(assembler.program)];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
     STAssertTrue([emulator step], nil);
     STAssertTrue([emulator getValueForRegister:6] == 10, nil);
