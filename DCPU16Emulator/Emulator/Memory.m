@@ -71,6 +71,28 @@
     return self;
 }
 
+- (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area
+{
+    NSMutableArray *memoryArea = [ram objectForKey:area];
+    
+    if(self.memoryWillChange != nil)
+    {
+        
+    }
+    
+    [memoryArea replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
+    
+    if(self.memoryDidChange != nil)
+    {
+        
+    }
+}
+
+- (void)setRegister:(NSString*)registerKey value:(int)newValue
+{
+    [ram setValue:[NSNumber numberWithInt:newValue] forKey:registerKey];
+}
+
 - (void)assignResultOfOperation:(memoryOperation)block 
          usingOperand1AtAddress:(int)address1 
                    inMemoryArea:(NSString*)area1
@@ -108,28 +130,6 @@
     {
         [self setMemoryValue:block(a, b) atIndex:address inMemoryArea:area];
     }
-}
-
-- (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area
-{
-    NSMutableArray *memory = [ram objectForKey:area];
-    
-    if(self.memoryWillChange != nil)
-    {
-        
-    }
-    
-    [memory replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
-    
-    if(self.memoryDidChange != nil)
-    {
-        
-    }
-}
-
-- (void)setRegister:(NSString*)registerKey value:(int)newValue
-{
-    [self setValue:[NSNumber numberWithInt:newValue] forKey:registerKey];
 }
 
 - (void)setMemoryValue:(int)value atIndex:(int)index
