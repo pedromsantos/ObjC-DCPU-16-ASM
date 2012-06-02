@@ -34,6 +34,7 @@
 @synthesize ram;
 @synthesize memoryWillChange;
 @synthesize memoryDidChange;
+
 - (id)init
 {
     ram = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -126,6 +127,11 @@
     }
 }
 
+- (void)setRegister:(NSString*)registerKey value:(int)newValue
+{
+    [self setValue:[NSNumber numberWithInt:newValue] forKey:registerKey];
+}
+
 - (void)setMemoryValue:(int)value atIndex:(int)index
 {
     [self setMemoryValue:value atIndex:index inMemoryArea:MEM];
@@ -133,32 +139,12 @@
 
 - (void)setOverflowRegisterToValue:(int)value
 {
-    [self setValue:[NSNumber numberWithInt:value] forKey:OV];
-}
-
-- (int)readInstructionAtProgramCounter
-{
-    int value = [self peekInstructionAtProgramCounter];
-    [self incrementProgramCounter];
-    return value;
-}
-
-- (void)incrementProgramCounter
-{
-    int actualValue = [[ram objectForKey:PC] intValue];
-    [ram setValue:[NSNumber numberWithInt:++actualValue] forKey:PC];
+    [self setRegister:OV value:value];
 }
 
 - (void)setProgramCounter:(int)value
 {
-    [ram setValue:[NSNumber numberWithInt:value] forKey:PC];
-}
-
-- (int)readInstructionAtStackPointer
-{
-    int value = [self peekInstructionAtStackPointer];
-    [self incrementStackPointer:1];
-    return value;
+    [self setRegister:PC value:value];
 }
 
 - (int)decrementAndReadInstructionAtStackPointer
@@ -168,10 +154,30 @@
     return value;
 }
 
+- (void)incrementProgramCounter
+{
+    int actualValue = [[ram objectForKey:PC] intValue];
+    [self setRegister:PC value:++actualValue];
+}
+
 - (void)incrementStackPointer:(int)value
 {
     int actualValue = [[ram objectForKey:SP] intValue];
-    [ram setValue:[NSNumber numberWithInt:(actualValue+value)] forKey:SP];
+    [self setRegister:SP value:actualValue+value];
+}
+
+- (int)readInstructionAtProgramCounter
+{
+    int value = [self peekInstructionAtProgramCounter];
+    [self incrementProgramCounter];
+    return value;
+}
+
+- (int)readInstructionAtStackPointer
+{
+    int value = [self peekInstructionAtStackPointer];
+    [self incrementStackPointer:1];
+    return value;
 }
 
 - (void)stackPush:(int)value
