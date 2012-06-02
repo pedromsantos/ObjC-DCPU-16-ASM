@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Pedro Santos
+ * Copyright (C) 2012 Pedro Santos @pedromsantos
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,16 @@
  * SOFTWARE.
  */
 
-#import "Ram.h"
+#import "Memory.h"
 #import "DCPU.h"
 
-@interface Ram()
+@interface Memory()
 
 @property (nonatomic, strong) NSMutableDictionary *ram;
 
 @end
 
-@implementation Ram
+@implementation Memory
 
 @synthesize ram;
 

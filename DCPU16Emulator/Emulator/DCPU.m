@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Pedro Santos
+ * Copyright (C) 2012 Pedro Santos @pedromsantos
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy 
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,32 +24,32 @@
 
 @implementation DCPU
 
-@synthesize ram;
+@synthesize memory;
 
 - (id)initWithProgram:(NSArray*)program
 {
     self = [super init];
     
-    self.ram = [[Ram alloc] init];
+    self.memory = [[Memory alloc] init];
     
     for (int i = 0; i < NUM_ITERALS; i++) 
     {
-        [self.ram setLiteral:i atIndex:i];
+        [self.memory setLiteral:i atIndex:i];
     }
     
     for (int i = 0; i < NUM_REGISTERS; i++) 
     {
-        [self.ram setMemoryValue:0 atIndex:i inMemoryArea:REG];
+        [self.memory setMemoryValue:0 atIndex:i inMemoryArea:REG];
     }
     
     for (int i = 0; i < MEMORY_SIZE; i++) 
     {
-        [self.ram setMemoryValue:0 atIndex:i];
+        [self.memory setMemoryValue:0 atIndex:i];
     }
     
     for (int i = 0; i < [program count]; i++) 
     {
-        [self.ram setMemoryValue:[[program objectAtIndex:i] intValue] atIndex:i];
+        [self.memory setMemoryValue:[[program objectAtIndex:i] intValue] atIndex:i];
     }
     
     return self;
@@ -57,12 +57,12 @@
 
 - (BOOL)step
 {
-    if ([self.ram peekInstructionAtProgramCounter] == 0x0) 
+    if ([self.memory peekInstructionAtProgramCounter] == 0x0) 
     {
         return false; 
     }
     
-    int code = [self.ram readInstructionAtProgramCounter];
+    int code = [self.memory readInstructionAtProgramCounter];
     int op =  code &  OP_MASK;
     int a  = (code >> A_SHIFT) & A_MASK;
     int b  = (code >> B_SHIFT) & B_MASK;
@@ -75,8 +75,8 @@
             {
 
                 a = [self parseVar:b];
-                [self.ram stackPush:[self.ram peekInstructionAtProgramCounter]];
-                [self.ram setProgramCounter:a];
+                [self.memory stackPush:[self.memory peekInstructionAtProgramCounter]];
+                [self.memory setProgramCounter:a];
                 break;
             }
             default:
@@ -97,7 +97,7 @@
         {
             case 0x1: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -108,7 +108,7 @@
             }
             case 0x2: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 += op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 += op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -119,7 +119,7 @@
             }
             case 0x3: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 -= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 -= op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -130,7 +130,7 @@
             }
             case 0x4: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 *= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 *= op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -141,7 +141,7 @@
             }
             case 0x7: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 <<= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 <<= op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -152,7 +152,7 @@
             }
             case 0x8: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ int temp = op1 >>= op2; return temp &= SHORT_MASK; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ int temp = op1 >>= op2; return temp &= SHORT_MASK; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -163,7 +163,7 @@
             }
             case 0x9: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 &= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 &= op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -174,7 +174,7 @@
             }
             case 0xA: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 |= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 |= op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -185,7 +185,7 @@
             }
             case 0xB: 
             {
-                [self.ram assignResultOfOperation:^(int op1, int op2){ return op1 ^= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 ^= op2; }
                            usingOperand1AtAddress:a 
                                      inMemoryArea:rpStateForOperand1
                              andOperand2AtAddress:b 
@@ -196,33 +196,33 @@
             }
             case 0xC: 
             {
-                if([ram getMemoryValueAtIndex:a] != [ram getMemoryValueAtIndex:b])
+                if([memory getMemoryValueAtIndex:a] != [memory getMemoryValueAtIndex:b])
                 {
-                    [ram incrementProgramCounter];
+                    [memory incrementProgramCounter];
                 }
                 break;
             }
             case 0xD: 
             {
-                if([ram getMemoryValueAtIndex:a] == [ram getMemoryValueAtIndex:b])
+                if([memory getMemoryValueAtIndex:a] == [memory getMemoryValueAtIndex:b])
                 {
-                    [ram incrementProgramCounter];
+                    [memory incrementProgramCounter];
                 }
                 break;
             }
             case 0xE: 
             {
-                if([ram getMemoryValueAtIndex:a] > [ram getMemoryValueAtIndex:b])
+                if([memory getMemoryValueAtIndex:a] > [memory getMemoryValueAtIndex:b])
                 {
-                    [ram incrementProgramCounter];
+                    [memory incrementProgramCounter];
                 }
                 break;
             }
             case 0xF:
             {
-                if(([ram getMemoryValueAtIndex:a] & [ram getMemoryValueAtIndex:b]) == 0)
+                if(([memory getMemoryValueAtIndex:a] & [memory getMemoryValueAtIndex:b]) == 0)
                 {
-                    [ram incrementProgramCounter];
+                    [memory incrementProgramCounter];
                 }
                 break;
             }
@@ -253,37 +253,37 @@
     } 
     else if (code < 0x10) 
     {
-        return [self.ram getValueForRegister:code % NUM_REGISTERS];
+        return [self.memory getValueForRegister:code % NUM_REGISTERS];
     } 
     else if (code < 0x18) 
     {
         rp = MEM;
-        return ([ram readInstructionAtProgramCounter] + [ram getValueForRegister:code % NUM_REGISTERS]) & SHORT_MASK;
+        return ([memory readInstructionAtProgramCounter] + [memory getValueForRegister:code % NUM_REGISTERS]) & SHORT_MASK;
     }
     else if (code == 0x18)
     {
         rp = MEM;
-        return [ram readInstructionAtStackPointer];
+        return [memory readInstructionAtStackPointer];
     }
     else if (code == 0x19)
     {
         rp = MEM;
-        return [ram peekInstructionAtStackPointer];
+        return [memory peekInstructionAtStackPointer];
     }
     else if (code == 0x1A)
     {
         rp = MEM;
-        return [ram decrementAndReadInstructionAtStackPointer];
+        return [memory decrementAndReadInstructionAtStackPointer];
     }
     else if (code == 0x1B)
     {
         rp = SP;
-        return [ram decrementAndReadInstructionAtStackPointer];
+        return [memory decrementAndReadInstructionAtStackPointer];
     }
     else if (code == 0x1C)
     {
         rp = PC;
-        return [ram readInstructionAtProgramCounter];
+        return [memory readInstructionAtProgramCounter];
     }
     else if (code == 0x1D)
     {
@@ -293,12 +293,12 @@
     else if (code == 0x1E)
     {
         rp = MEM;
-        return [ram readInstructionAtProgramCounter];
+        return [memory readInstructionAtProgramCounter];
     }
     else if (code == 0x1F)
     {
         rp = PC;
-        return [ram readInstructionAtProgramCounter];
+        return [memory readInstructionAtProgramCounter];
     }
     
     rp = LIT;
@@ -308,22 +308,22 @@
 
 - (int)getValueForRegister:(int)reg
 {
-    return [self.ram getValueForRegister:reg];
+    return [self.memory getValueForRegister:reg];
 }
 
 - (int)getValueForMemory:(int)address
 {
-    return [self.ram getMemoryValueAtIndex:address];
+    return [self.memory getMemoryValueAtIndex:address];
 }
 
 - (int)peekInstructionAtProgramCounter
 {
-    return [self.ram peekInstructionAtProgramCounter];
+    return [self.memory peekInstructionAtProgramCounter];
 }
 
 - (int)getProgramCounter
 {
-    return [self.ram getProgramCounter];
+    return [self.memory getProgramCounter];
 }
 
 @end
