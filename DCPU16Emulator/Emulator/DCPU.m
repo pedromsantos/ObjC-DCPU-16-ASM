@@ -34,15 +34,12 @@
     
     self.memory = [[Memory alloc] init];
     
-    for (int i = 0; i < [program count]; i++) 
-    {
-        [self.memory setMemoryValue:[[program objectAtIndex:i] intValue] atIndex:i];
-    }
+    [self.memory load:program];
     
     return self;
 }
 
-- (BOOL)step
+- (BOOL)executeInstruction
 {
     if ([self.memory peekInstructionAtProgramCounter] == 0x0) 
     {

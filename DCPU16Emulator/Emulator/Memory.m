@@ -78,6 +78,14 @@
     return self;
 }
 
+- (void)load:(NSArray*)values
+{
+    for (int i = 0; i < [values count]; i++) 
+    {
+        [self setMemoryValue:[[values objectAtIndex:i] intValue] atIndex:i];
+    }
+}
+
 - (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area
 {
     NSMutableArray *memoryArea = [ram objectForKey:area];

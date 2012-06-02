@@ -41,7 +41,7 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertFalse([emulator step], nil);
+    STAssertFalse([emulator executeInstruction], nil);
 }
 
 - (void)testStepCalledWithSetRegisterWithDecimalLiteralExecutesProgram
@@ -58,7 +58,7 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForRegister:6] == 10, nil);
 }
 
@@ -76,7 +76,7 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForRegister:0] == 0x30, nil);
 }
 
@@ -94,7 +94,7 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForMemory:0x1000] == 0x20, nil);
 }
 
@@ -112,7 +112,7 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForMemory:0x2000] == 0, nil);
 }
 
@@ -132,13 +132,13 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForRegister:0] == 0x30, nil);
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForMemory:0x1000] == 0x20, nil);
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForRegister:0] == 0x10, nil);
 }
 
@@ -163,25 +163,25 @@
     
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForRegister:6] == 10, nil);
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForRegister:0] == 0x2000, nil);
     
-    STAssertTrue([emulator step], nil);
+    STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator getValueForMemory:0x2000+10] == 0x2000, nil);
     
     for (int i = 9; i > 0; i--) 
     {
-        STAssertTrue([emulator step], nil);
+        STAssertTrue([emulator executeInstruction], nil);
         STAssertTrue([emulator getValueForRegister:6] == i, nil);
         
-        STAssertTrue([emulator step], nil);
-        STAssertTrue([emulator step], nil);
+        STAssertTrue([emulator executeInstruction], nil);
+        STAssertTrue([emulator executeInstruction], nil);
         STAssertTrue([emulator getProgramCounter] == 3, nil);
         
-        STAssertTrue([emulator step], nil);
+        STAssertTrue([emulator executeInstruction], nil);
         STAssertTrue([emulator getValueForMemory:0x2000+i] == 0x2000, nil);
     }
 }

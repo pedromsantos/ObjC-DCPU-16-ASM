@@ -47,11 +47,10 @@ typedef void(^memoryOperationNotification)(NSString*, int, int);
 
 - (id)init;
 
-- (void)setMemoryValue:(int)value atIndex:(int)index;
-- (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area;
+- (void)load:(NSArray*)values;
+
 - (void)setOverflowRegisterToValue:(int)value;
 
-- (int)getLiteralAtIndex:(int)index;
 - (int)getMemoryValueAtIndex:(int)index;
 - (int)getValueForRegister:(int)reg;
 

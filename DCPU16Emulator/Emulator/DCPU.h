@@ -41,7 +41,7 @@
 @property (nonatomic, strong) Memory *memory;
 
 - (id)initWithProgram:(NSArray*)program;
-- (BOOL)step;
+- (BOOL)executeInstruction;
 
 - (int)getValueForRegister:(int)reg;
 - (int)getValueForMemory:(int)address;
