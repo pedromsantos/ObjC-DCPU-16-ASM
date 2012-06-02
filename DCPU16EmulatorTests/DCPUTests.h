@@ -22,6 +22,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface EmulatorTests : SenTestCase
+@interface DCPUTests : SenTestCase
 
 @end

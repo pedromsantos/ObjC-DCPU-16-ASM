@@ -20,12 +20,12 @@
  * SOFTWARE.
  */
 
-#import "EmulatorTests.h"
+#import "DCPUTests.h"
 #import "DCPU.h"
 #import "Assembler.h"
 #import "Parser.h"
 
-@implementation EmulatorTests
+@implementation DCPUTests
 
 - (void)testStepCalledWithEmptyProgramReturns
 {
