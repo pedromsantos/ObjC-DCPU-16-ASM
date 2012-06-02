@@ -22,6 +22,7 @@
 
 #import "DCPU.h"
 #import "Parser.h"
+#import "Operand.h"
 
 @implementation DCPU
 
@@ -57,10 +58,10 @@
     {
         switch (firstOperandValue) 
         {
-            case 0x01:
+            case OP_JSR:
             {
 
-                firstOperandValue = [self processOperand:secondOperandValue];
+                firstOperandValue = [self processOperandType:secondOperandValue];
                 [self.memory stackPush:[self.memory peekInstructionAtProgramCounter]];
                 [self.memory setProgramCounter:firstOperandValue];
                 break;
@@ -74,9 +75,9 @@
     }
     else 
     {
-        firstOperandValue = [self processOperand:firstOperandValue];
+        firstOperandValue = [self processOperandType:firstOperandValue];
         NSString* fisrtOperandState = [operandState copy];
-        secondOperandValue = [self processOperand:secondOperandValue];
+        secondOperandValue = [self processOperandType:secondOperandValue];
         NSString* secondOperandState = [operandState copy];
         
         switch (opcode) 
@@ -250,60 +251,60 @@
     return YES;
 }
 
-- (int)processOperand:(int)code 
+- (int)processOperandType:(int)code 
 {
     operandState = nil;
     
-    if (code < 0x08) 
+    if (code < O_INDIRECT_REG) 
     {
         operandState = REG;
         return code;
     } 
-    else if (code < 0x10) 
+    else if (code < O_INDIRECT_NW_OFFSET) 
     {
         return [self.memory getValueForRegister:code % NUM_REGISTERS];
     } 
-    else if (code < 0x18) 
+    else if (code < O_POP) 
     {
         operandState = MEM;
         return ([memory readInstructionAtProgramCounter] + [memory getValueForRegister:code % NUM_REGISTERS]) & SHORT_MASK;
     }
-    else if (code == 0x18)
+    else if (code == O_POP)
     {
         operandState = MEM;
         return [memory readInstructionAtStackPointer];
     }
-    else if (code == 0x19)
+    else if (code == O_PEEK)
     {
         operandState = MEM;
         return [memory peekInstructionAtStackPointer];
     }
-    else if (code == 0x1A)
+    else if (code == O_PUSH)
     {
         operandState = MEM;
         return [memory decrementAndReadInstructionAtStackPointer];
     }
-    else if (code == 0x1B)
+    else if (code == O_SP)
     {
         operandState = SP;
         return [memory decrementAndReadInstructionAtStackPointer];
     }
-    else if (code == 0x1C)
+    else if (code == O_PC)
     {
         operandState = PC;
         return [memory readInstructionAtProgramCounter];
     }
-    else if (code == 0x1D)
+    else if (code == O_O)
     {
         operandState = OV;
         return 0;
     }
-    else if (code == 0x1E)
+    else if (code == O_INDIRECT_NW)
     {
         operandState = MEM;
         return [memory readInstructionAtProgramCounter];
     }
-    else if (code == 0x1F)
+    else if (code == O_NW)
     {
         operandState = PC;
         return [memory readInstructionAtProgramCounter];
@@ -311,7 +312,7 @@
     
     operandState = LIT;
     //[ram setMemoryValue:code atIndex:(code - 0x20) % NUM_ITERALS inMemoryArea:LIT];
-    return (code - 0x20) % NUM_ITERALS;
+    return (code - O_LITERAL) % NUM_ITERALS;
 }
 
 - (int)getValueForRegister:(int)reg
