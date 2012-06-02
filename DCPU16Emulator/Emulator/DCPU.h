@@ -35,7 +35,7 @@
 
 @interface DCPU : NSObject
 {
-    NSString* rp;
+    NSString* operandState;
 }
 
 @property (nonatomic, strong) Memory *memory;

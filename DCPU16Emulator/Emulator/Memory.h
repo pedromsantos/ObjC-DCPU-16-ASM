@@ -34,12 +34,16 @@
 #define MEM             @"MEM" // memory
 
 typedef int(^memoryOperation)(int, int);
-typedef void(^memoryOperationNotification)(NSString*, int);
+typedef void(^registerOperationNotification)(NSString*, int);
+typedef void(^memoryOperationNotification)(NSString*, int, int);
 
 @interface Memory : NSObject
 
 @property (nonatomic, copy) memoryOperationNotification memoryWillChange;
 @property (nonatomic, copy) memoryOperationNotification memoryDidChange;
+
+@property (nonatomic, copy) registerOperationNotification registerWillChange;
+@property (nonatomic, copy) registerOperationNotification registerDidChange;
 
 - (id)init;
 

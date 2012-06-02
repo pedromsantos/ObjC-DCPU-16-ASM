@@ -24,6 +24,9 @@
 #import "DCPU.h"
 
 @interface Memory()
+{
+    dispatch_queue_t q_default;
+}
 
 @property (nonatomic, strong) NSMutableDictionary *ram;
 
@@ -34,6 +37,8 @@
 @synthesize ram;
 @synthesize memoryWillChange;
 @synthesize memoryDidChange;
+@synthesize registerDidChange;
+@synthesize registerWillChange;
 
 - (id)init
 {
@@ -68,6 +73,8 @@
         [memory insertObject:initValue atIndex:i];
     }
     
+    q_default = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
     return self;
 }
 
@@ -77,20 +84,35 @@
     
     if(self.memoryWillChange != nil)
     {
+        int oldValue = [self getMemoryValueAtIndex:index inMemoryArea:area];
         
+        dispatch_async(q_default, ^{ self.memoryWillChange(area, index, oldValue); });
     }
-    
+
     [memoryArea replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
     
     if(self.memoryDidChange != nil)
     {
-        
+        dispatch_async(q_default, ^{ self.memoryWillChange(area, index, value); });
     }
 }
 
 - (void)setRegister:(NSString*)registerKey value:(int)newValue
 {
+    if(self.memoryWillChange != nil)
+    {
+        int oldValue = [[ram valueForKey:registerKey] intValue];
+        
+        dispatch_async(q_default, ^{ self.registerWillChange(registerKey, oldValue); });
+
+    }
+    
     [ram setValue:[NSNumber numberWithInt:newValue] forKey:registerKey];
+    
+    if(self.memoryDidChange != nil)
+    {
+        dispatch_async(q_default, ^{ self.registerDidChange(registerKey, newValue); });
+    }
 }
 
 - (void)assignResultOfOperation:(memoryOperation)block 
