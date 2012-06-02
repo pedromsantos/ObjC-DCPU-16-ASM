@@ -34,7 +34,7 @@ enum basic_opcode
     OP_SHR = 0x8,
     OP_AND = 0x9,
     OP_BOR = 0xA,
-    OP_XOR = 0x8,
+    OP_XOR = 0xB,
     OP_IFE = 0xC,
     OP_IFN = 0xD,
     OP_IFG = 0xE,

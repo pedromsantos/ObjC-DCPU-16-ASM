@@ -21,6 +21,7 @@
  */
 
 #import "DCPU.h"
+#import "Parser.h"
 
 @implementation DCPU
 
@@ -80,7 +81,7 @@
         
         switch (opcode) 
         {
-            case 0x1: 
+            case OP_SET: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -91,7 +92,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0x2: 
+            case OP_ADD: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 += op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -102,7 +103,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0x3: 
+            case OP_SUB: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 -= op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -113,7 +114,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0x4: 
+            case OP_MUL: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 *= op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -124,7 +125,29 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0x7: 
+            case OP_DIV: 
+            {
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 /= op2; }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
+                break;
+            }
+            case OP_MOD: 
+            {
+                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 %= op2; }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
+                break;
+            }
+            case OP_SHL: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 <<= op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -135,7 +158,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0x8: 
+            case OP_SHR: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ int temp = op1 >>= op2; return temp &= SHORT_MASK; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -146,7 +169,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0x9: 
+            case OP_AND: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 &= op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -157,7 +180,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0xA: 
+            case OP_BOR: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 |= op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -168,7 +191,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0xB: 
+            case OP_XOR: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 ^= op2; }
                            usingOperand1AtAddress:firstOperandValue 
@@ -179,7 +202,7 @@
                                      inMemoryArea:fisrtOperandState];
                 break;
             }
-            case 0xC: 
+            case OP_IFE: 
             {
                 if([memory getMemoryValueAtIndex:firstOperandValue] != [memory getMemoryValueAtIndex:secondOperandValue])
                 {
@@ -187,7 +210,7 @@
                 }
                 break;
             }
-            case 0xD: 
+            case OP_IFN: 
             {
                 if([memory getMemoryValueAtIndex:firstOperandValue] == [memory getMemoryValueAtIndex:secondOperandValue])
                 {
@@ -195,7 +218,7 @@
                 }
                 break;
             }
-            case 0xE: 
+            case OP_IFG: 
             {
                 if([memory getMemoryValueAtIndex:firstOperandValue] > [memory getMemoryValueAtIndex:secondOperandValue])
                 {
@@ -203,7 +226,7 @@
                 }
                 break;
             }
-            case 0xF:
+            case OP_IFB:
             {
                 if(([memory getMemoryValueAtIndex:firstOperandValue] & [memory getMemoryValueAtIndex:secondOperandValue]) == 0)
                 {
