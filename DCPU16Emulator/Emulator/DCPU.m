@@ -311,7 +311,6 @@
     }
     
     operandState = LIT;
-    //[ram setMemoryValue:code atIndex:(code - 0x20) % NUM_ITERALS inMemoryArea:LIT];
     return (code - O_LITERAL) % NUM_ITERALS;
 }
 
