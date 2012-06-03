@@ -20,25 +20,16 @@
  * SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
-#import "Instruction.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
+#import "DigitalFontLabel.h"
 
-@property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
-@property (strong, nonatomic) NSMutableArray* instructionSet;
+@implementation DigitalFontLabel
 
-@property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
-@property (weak, nonatomic) IBOutlet UIButton *enterButton;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@synthesize fontSize;
 
-- (IBAction)instructionButtonPressed:(UIButton *)sender;
-- (IBAction)clsButtonPressed;
-- (IBAction)enterButtonPressed;
+- (void)awakeFromNib
+{
+    [self setFont:[UIFont fontWithName:@"DS-Digital" size:fontSize]];
+}
 
 @end

@@ -19,14 +19,25 @@
 		C38A01AA15715DAD00E38C42 /* Statment.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A915715DAD00E38C42 /* Statment.m */; };
 		C38A01AD15717CCD00E38C42 /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01AC15717CCD00E38C42 /* ParserTests.m */; };
 		C3901328157AC82F00A387D0 /* CPU.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901327157AC82F00A387D0 /* CPU.png */; };
-		C390132B157AD53100A387D0 /* key_large.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901329157AD53100A387D0 /* key_large.png */; };
-		C390132C157AD53100A387D0 /* key_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C390132A157AD53100A387D0 /* key_small.png */; };
-		C390132E157ADB8C00A387D0 /* monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = C390132D157ADB8C00A387D0 /* monitor.png */; };
 		C3901332157AE18600A387D0 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901331157AE18600A387D0 /* frame.png */; };
 		C3901334157AE27000A387D0 /* frame_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901333157AE27000A387D0 /* frame_small.png */; };
 		C3901336157AEDE300A387D0 /* frame_medium.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901335157AEDE300A387D0 /* frame_medium.png */; };
+		C393732B157B727B00865E4B /* Instruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C393732A157B727B00865E4B /* Instruction.m */; };
+		C393732E157B83DC00865E4B /* instructionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C393732D157B83DC00865E4B /* instructionCell.xib */; };
+		C3937331157B87A800865E4B /* InstructionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3937330157B87A800865E4B /* InstructionCell.m */; };
+		C3937333157BB04000865E4B /* frame_enter.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937332157BB04000865E4B /* frame_enter.png */; };
+		C3937335157BB0AD00865E4B /* frame_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937334157BB0AD00865E4B /* frame_clear.png */; };
+		C3937338157BB21600865E4B /* frame_clear_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937336157BB21600865E4B /* frame_clear_selected.png */; };
+		C3937339157BB21600865E4B /* frame_enter_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937337157BB21600865E4B /* frame_enter_selected.png */; };
+		C396672A157B5E9700F99113 /* frame_420x360.png in Resources */ = {isa = PBXBuildFile; fileRef = C3966729157B5E9700F99113 /* frame_420x360.png */; };
+		C396672E157B5F7600F99113 /* frame_280x360.png in Resources */ = {isa = PBXBuildFile; fileRef = C396672D157B5F7600F99113 /* frame_280x360.png */; };
+		C3966730157B623E00F99113 /* frame_285x35.png in Resources */ = {isa = PBXBuildFile; fileRef = C396672F157B623E00F99113 /* frame_285x35.png */; };
+		C3966732157B64C700F99113 /* DS-Digital.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3966731157B64C700F99113 /* DS-Digital.ttf */; };
+		C3966735157B653100F99113 /* DigitalFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3966734157B653100F99113 /* DigitalFontLabel.m */; };
 		C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1806B15727CFA0057F9D5 /* Assembler.m */; };
 		C3B1806F15727D930057F9D5 /* AssemblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1806E15727D930057F9D5 /* AssemblerTests.m */; };
+		C3B40870157B68DF000434E2 /* DigitalFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B4086F157B68DF000434E2 /* DigitalFontButton.m */; };
+		C3B40873157B6E7E000434E2 /* frame_small_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B40872157B6E7E000434E2 /* frame_small_selected.png */; };
 		C3B6BA33153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA35153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
 		C3B6BA37153DE4FE0013163A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA36153DE4FE0013163A /* CoreGraphics.framework */; };
@@ -78,16 +89,31 @@
 		C38A01AB15717CCD00E38C42 /* ParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserTests.h; sourceTree = "<group>"; };
 		C38A01AC15717CCD00E38C42 /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
 		C3901327157AC82F00A387D0 /* CPU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CPU.png; sourceTree = "<group>"; };
-		C3901329157AD53100A387D0 /* key_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_large.png; sourceTree = "<group>"; };
-		C390132A157AD53100A387D0 /* key_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_small.png; sourceTree = "<group>"; };
-		C390132D157ADB8C00A387D0 /* monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitor.png; sourceTree = "<group>"; };
 		C3901331157AE18600A387D0 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
 		C3901333157AE27000A387D0 /* frame_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_small.png; sourceTree = "<group>"; };
 		C3901335157AEDE300A387D0 /* frame_medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_medium.png; sourceTree = "<group>"; };
+		C3937329157B727B00865E4B /* Instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruction.h; sourceTree = "<group>"; };
+		C393732A157B727B00865E4B /* Instruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruction.m; sourceTree = "<group>"; };
+		C393732D157B83DC00865E4B /* instructionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = instructionCell.xib; sourceTree = "<group>"; };
+		C393732F157B87A800865E4B /* InstructionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionCell.h; sourceTree = "<group>"; };
+		C3937330157B87A800865E4B /* InstructionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionCell.m; sourceTree = "<group>"; };
+		C3937332157BB04000865E4B /* frame_enter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_enter.png; sourceTree = "<group>"; };
+		C3937334157BB0AD00865E4B /* frame_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_clear.png; sourceTree = "<group>"; };
+		C3937336157BB21600865E4B /* frame_clear_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_clear_selected.png; sourceTree = "<group>"; };
+		C3937337157BB21600865E4B /* frame_enter_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_enter_selected.png; sourceTree = "<group>"; };
+		C3966729157B5E9700F99113 /* frame_420x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_420x360.png; sourceTree = "<group>"; };
+		C396672D157B5F7600F99113 /* frame_280x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_280x360.png; sourceTree = "<group>"; };
+		C396672F157B623E00F99113 /* frame_285x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_285x35.png; sourceTree = "<group>"; };
+		C3966731157B64C700F99113 /* DS-Digital.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-Digital.ttf"; sourceTree = "<group>"; };
+		C3966733157B653100F99113 /* DigitalFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalFontLabel.h; sourceTree = "<group>"; };
+		C3966734157B653100F99113 /* DigitalFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalFontLabel.m; sourceTree = "<group>"; };
 		C3B1806A15727CFA0057F9D5 /* Assembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assembler.h; sourceTree = "<group>"; };
 		C3B1806B15727CFA0057F9D5 /* Assembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assembler.m; sourceTree = "<group>"; };
 		C3B1806D15727D920057F9D5 /* AssemblerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssemblerTests.h; sourceTree = "<group>"; };
 		C3B1806E15727D930057F9D5 /* AssemblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssemblerTests.m; sourceTree = "<group>"; };
+		C3B4086E157B68DF000434E2 /* DigitalFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalFontButton.h; sourceTree = "<group>"; };
+		C3B4086F157B68DF000434E2 /* DigitalFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalFontButton.m; sourceTree = "<group>"; };
+		C3B40872157B6E7E000434E2 /* frame_small_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_small_selected.png; sourceTree = "<group>"; };
 		C3B6BA2E153DE4FE0013163A /* DCPU16Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCPU16Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B6BA32153DE4FE0013163A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3B6BA34153DE4FE0013163A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -177,12 +203,17 @@
 		C3901326157AC82F00A387D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C3937336157BB21600865E4B /* frame_clear_selected.png */,
+				C3937337157BB21600865E4B /* frame_enter_selected.png */,
+				C3937334157BB0AD00865E4B /* frame_clear.png */,
+				C3937332157BB04000865E4B /* frame_enter.png */,
+				C3B40872157B6E7E000434E2 /* frame_small_selected.png */,
+				C396672F157B623E00F99113 /* frame_285x35.png */,
+				C396672D157B5F7600F99113 /* frame_280x360.png */,
+				C3966729157B5E9700F99113 /* frame_420x360.png */,
 				C3901335157AEDE300A387D0 /* frame_medium.png */,
 				C3901333157AE27000A387D0 /* frame_small.png */,
 				C3901331157AE18600A387D0 /* frame.png */,
-				C390132D157ADB8C00A387D0 /* monitor.png */,
-				C3901329157AD53100A387D0 /* key_large.png */,
-				C390132A157AD53100A387D0 /* key_small.png */,
 				C3901327157AC82F00A387D0 /* CPU.png */,
 			);
 			path = images;
@@ -230,15 +261,25 @@
 		C3B6BA38153DE4FE0013163A /* DCPU16Emulator */ = {
 			isa = PBXGroup;
 			children = (
-				C3901326157AC82F00A387D0 /* images */,
-				C37BC0AC1573CA8100ECB88F /* Emulator */,
-				C3B1806915727CE50057F9D5 /* Assembler */,
-				C38A01A115715D7300E38C42 /* parser */,
 				C3B6BA41153DE4FE0013163A /* AppDelegate.h */,
 				C3B6BA42153DE4FE0013163A /* AppDelegate.m */,
+				C3B1806915727CE50057F9D5 /* Assembler */,
+				C3B4086E157B68DF000434E2 /* DigitalFontButton.h */,
+				C3B4086F157B68DF000434E2 /* DigitalFontButton.m */,
+				C3966733157B653100F99113 /* DigitalFontLabel.h */,
+				C3966734157B653100F99113 /* DigitalFontLabel.m */,
+				C3966731157B64C700F99113 /* DS-Digital.ttf */,
+				C37BC0AC1573CA8100ECB88F /* Emulator */,
+				C3901326157AC82F00A387D0 /* images */,
+				C3937329157B727B00865E4B /* Instruction.h */,
+				C393732A157B727B00865E4B /* Instruction.m */,
+				C393732F157B87A800865E4B /* InstructionCell.h */,
+				C3937330157B87A800865E4B /* InstructionCell.m */,
+				C393732D157B83DC00865E4B /* instructionCell.xib */,
 				C35D848515703C2500990B0A /* Lexer */,
 				C3B6BA47153DE4FE0013163A /* MainStoryboard_iPad.storyboard */,
 				C3B6BA44153DE4FE0013163A /* MainStoryboard_iPhone.storyboard */,
+				C38A01A115715D7300E38C42 /* parser */,
 				C3B6BA39153DE4FE0013163A /* Supporting Files */,
 				C3B6BA4A153DE4FE0013163A /* ViewController.h */,
 				C3B6BA4B153DE4FE0013163A /* ViewController.m */,
@@ -359,12 +400,19 @@
 				C3B6BA46153DE4FE0013163A /* MainStoryboard_iPhone.storyboard in Resources */,
 				C3B6BA49153DE4FE0013163A /* MainStoryboard_iPad.storyboard in Resources */,
 				C3901328157AC82F00A387D0 /* CPU.png in Resources */,
-				C390132B157AD53100A387D0 /* key_large.png in Resources */,
-				C390132C157AD53100A387D0 /* key_small.png in Resources */,
-				C390132E157ADB8C00A387D0 /* monitor.png in Resources */,
 				C3901332157AE18600A387D0 /* frame.png in Resources */,
 				C3901334157AE27000A387D0 /* frame_small.png in Resources */,
 				C3901336157AEDE300A387D0 /* frame_medium.png in Resources */,
+				C396672A157B5E9700F99113 /* frame_420x360.png in Resources */,
+				C396672E157B5F7600F99113 /* frame_280x360.png in Resources */,
+				C3966730157B623E00F99113 /* frame_285x35.png in Resources */,
+				C3966732157B64C700F99113 /* DS-Digital.ttf in Resources */,
+				C3B40873157B6E7E000434E2 /* frame_small_selected.png in Resources */,
+				C393732E157B83DC00865E4B /* instructionCell.xib in Resources */,
+				C3937333157BB04000865E4B /* frame_enter.png in Resources */,
+				C3937335157BB0AD00865E4B /* frame_clear.png in Resources */,
+				C3937338157BB21600865E4B /* frame_clear_selected.png in Resources */,
+				C3937339157BB21600865E4B /* frame_enter_selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +459,10 @@
 				C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */,
 				C37BC0B01573CA9000ECB88F /* DCPU.m in Sources */,
 				C37BC0B61573D8A100ECB88F /* Memory.m in Sources */,
+				C3966735157B653100F99113 /* DigitalFontLabel.m in Sources */,
+				C3B40870157B68DF000434E2 /* DigitalFontButton.m in Sources */,
+				C393732B157B727B00865E4B /* Instruction.m in Sources */,
+				C3937331157B87A800865E4B /* InstructionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

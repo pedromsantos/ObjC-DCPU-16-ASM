@@ -20,25 +20,28 @@
  * SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
-#import "Instruction.h"
+#import "InstructionCell.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
+@implementation InstructionCell
 
-@property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
-@property (strong, nonatomic) NSMutableArray* instructionSet;
+@synthesize label;
+@synthesize opcode;
+@synthesize operand1;
+@synthesize operand2;
 
-@property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
-@property (weak, nonatomic) IBOutlet UIButton *enterButton;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+- (UITableViewCell*)drawCellForInstruction:(Instruction*)instruction
+{
+    self.label.text = instruction.label;
+    self.opcode.text = instruction.opcode;
+    self.operand1.text = instruction.operand1;
+    self.operand2.text = instruction.operand2;
+    
+    return self;
+}
 
-- (IBAction)instructionButtonPressed:(UIButton *)sender;
-- (IBAction)clsButtonPressed;
-- (IBAction)enterButtonPressed;
+- (IBAction)delButtonPressed 
+{
+    
+}
 
 @end

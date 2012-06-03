@@ -21,24 +21,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "Instruction.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
+@interface DigitalFontButton : UIButton
 
-@property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
-@property (strong, nonatomic) NSMutableArray* instructionSet;
-
-@property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
-@property (weak, nonatomic) IBOutlet UIButton *enterButton;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
-
-- (IBAction)instructionButtonPressed:(UIButton *)sender;
-- (IBAction)clsButtonPressed;
-- (IBAction)enterButtonPressed;
+@property (nonatomic, assign) int fontSize;
 
 @end

@@ -21,24 +21,29 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "Instruction.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
+enum InstructionInputState
+{
+    WaitForOpcodeOrLabel,
+    WaitForOperand1,
+    WaitForOperand2,
+    Complete
+};
 
-@property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
-@property (strong, nonatomic) NSMutableArray* instructionSet;
+@interface Instruction : NSObject
+{
+    enum InstructionInputState instructionState;
+}
 
-@property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
-@property (weak, nonatomic) IBOutlet UIButton *enterButton;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (nonatomic, readonly) enum InstructionInputState state;
+@property (nonatomic, strong) NSString* label;
+@property (nonatomic, strong) NSString* opcode;
+@property (nonatomic, strong) NSString* operand1;
+@property (nonatomic, strong) NSString* operand2;
 
-- (IBAction)instructionButtonPressed:(UIButton *)sender;
-- (IBAction)clsButtonPressed;
-- (IBAction)enterButtonPressed;
+- (void)reset;
+- (void)assignValue:(NSString*)value;
+
+- (NSArray*)possibleNextInput;
 
 @end

@@ -15,723 +15,1219 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame.png" id="TM4-PG-pVd">
-                                <rect key="frame" x="20" y="399" width="420" height="360"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame_420x360.png" id="TM4-PG-pVd">
+                                <rect key="frame" x="20" y="13" width="506" height="365"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame_medium.png" id="zjk-Ty-Wd0">
-                                <rect key="frame" x="38" y="412" width="384" height="34"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame_285x35.png" id="zjk-Ty-Wd0">
+                                <rect key="frame" x="39" y="28" width="472" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame.png" id="hHT-HK-n3r">
-                                <rect key="frame" x="20" y="20" width="420" height="360"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame_420x360.png" id="hHT-HK-n3r">
+                                <rect key="frame" x="534" y="13" width="470" height="365"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame.png" id="Jc8-jT-vV0">
-                                <rect key="frame" x="448" y="20" width="280" height="360"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame.png" id="fne-Ii-R1K">
-                                <rect key="frame" x="736" y="20" width="280" height="360"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame_280x360.png" id="fne-Ii-R1K">
+                                <rect key="frame" x="20" y="397" width="285" height="365"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="CPU.png" id="6pg-Ua-PRI">
-                                <rect key="frame" x="582" y="399" width="416" height="360"/>
+                                <rect key="frame" x="304" y="397" width="416" height="360"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Instruction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7Md-Kx-BhP">
-                                <rect key="frame" x="755" y="472" width="180" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Opcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Uji-eS-hMe">
-                                <rect key="frame" x="755" y="530" width="180" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="dLC-OU-EZg">
-                                <rect key="frame" x="651" y="453" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Instruction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7Md-Kx-BhP" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="470" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rsd-op-QQM">
-                                <rect key="frame" x="651" y="477" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Opcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Uji-eS-hMe" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="528" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="O" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ra5-aM-Y8H">
-                                <rect key="frame" x="651" y="501" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="dLC-OU-EZg" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="451" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eMR-BI-LAh">
-                                <rect key="frame" x="651" y="525" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rsd-op-QQM" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="475" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="MzW-qM-yoZ">
-                                <rect key="frame" x="651" y="549" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="O" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ra5-aM-Y8H" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="499" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3ur-kJ-uH4">
-                                <rect key="frame" x="651" y="573" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eMR-BI-LAh" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="523" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bFr-vS-WAl">
-                                <rect key="frame" x="651" y="597" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="MzW-qM-yoZ" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="547" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fL1-7w-u2I">
-                                <rect key="frame" x="651" y="621" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3ur-kJ-uH4" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="571" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Z" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PIq-dn-paV">
-                                <rect key="frame" x="651" y="645" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bFr-vS-WAl" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="595" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fAG-Ha-JKh">
-                                <rect key="frame" x="651" y="669" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fL1-7w-u2I" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="619" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="J" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DBs-dl-Nzx">
-                                <rect key="frame" x="651" y="693" width="30" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Z" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PIq-dn-paV" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="643" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2rd-Mz-ppR">
-                                <rect key="frame" x="689" y="453" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fAG-Ha-JKh" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="667" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fFE-AD-Yzc">
-                                <rect key="frame" x="689" y="477" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="J" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DBs-dl-Nzx" customClass="DigitalFontLabel">
+                                <rect key="frame" x="373" y="691" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000000000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="at2-KX-VFh">
-                                <rect key="frame" x="755" y="501" width="180" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2rd-Mz-ppR" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="451" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2G9-H1-vLZ">
-                                <rect key="frame" x="755" y="559" width="180" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wLv-kK-j3R" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="475" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Hap-kt-qYx">
-                                <rect key="frame" x="755" y="588" width="180" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wM4-yY-XhF">
-                                <rect key="frame" x="755" y="617" width="180" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CIU-LA-EJe" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="499" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LT1-bL-Wv5">
-                                <rect key="frame" x="755" y="646" width="180" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xK1-iG-XAf">
-                                <rect key="frame" x="755" y="675" width="180" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="oBB-sO-QDb" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="523" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9qc-Op-H5z">
-                                <rect key="frame" x="689" y="501" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xFg-A9-qpZ" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="547" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KlQ-Ao-P46">
-                                <rect key="frame" x="689" y="525" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2eW-8W-GzZ" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="571" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="6aG-eR-Rbb">
-                                <rect key="frame" x="689" y="549" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3NE-LL-eTb" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="595" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9cj-JR-fal">
-                                <rect key="frame" x="689" y="573" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="rAV-ET-yi6" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="619" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="7SC-89-byR">
-                                <rect key="frame" x="689" y="597" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="x67-nc-NiM" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="643" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Hhz-GW-vLS">
-                                <rect key="frame" x="689" y="621" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fnc-Ud-tlj" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="667" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gZU-8I-R6u">
-                                <rect key="frame" x="689" y="645" width="70" height="22"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bYn-Lb-fki" customClass="DigitalFontLabel">
+                                <rect key="frame" x="401" y="691" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="BG3-48-4aW">
-                                <rect key="frame" x="689" y="669" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000000000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="at2-KX-VFh" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="499" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="12G-4E-Ldb">
-                                <rect key="frame" x="689" y="693" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2G9-H1-vLZ" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="557" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="edh-k9-Gcc">
-                                <rect key="frame" x="456" y="53" width="264" height="320"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Crz-Rx-xa4">
-                                <rect key="frame" x="30" y="27" width="400" height="346"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="duO-OW-vYu">
-                                <rect key="frame" x="744" y="53" width="264" height="320"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yLX-vU-8Rs">
-                                <rect key="frame" x="473" y="27" width="200" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Hap-kt-qYx" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="586" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Y8H-QO-IRS">
-                                <rect key="frame" x="776" y="27" width="200" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wM4-yY-XhF" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="615" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qc2-Ph-H1h">
-                                <rect key="frame" x="505" y="695" width="64" height="64"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LT1-bL-Wv5" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="644" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Exec" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EKh-un-Tkv">
-                                <rect key="frame" x="505" y="623" width="64" height="64"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xK1-iG-XAf" customClass="DigitalFontLabel">
+                                <rect key="frame" x="472" y="673" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Program" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3t5-ya-Dpb" customClass="DigitalFontLabel">
+                                <rect key="frame" x="670" y="25" width="200" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="33B-Ja-0DH" customClass="DigitalFontLabel">
+                                <rect key="frame" x="62" y="408" width="200" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="frame_280x360.png" id="svg-TA-Eag">
+                                <rect key="frame" x="719" y="397" width="285" height="365"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4Ru-XB-4ga" customClass="DigitalFontLabel">
+                                <rect key="frame" x="761" y="410" width="200" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AQh-a2-0ru" customClass="DigitalFontButton">
+                                <rect key="frame" x="737" y="699" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Step" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pp8-da-9f3">
-                                <rect key="frame" x="38" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ycz-Nl-I17" customClass="DigitalFontButton">
+                                <rect key="frame" x="938" y="699" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Exec" backgroundImage="frame_small.png">
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pp8-da-9f3" customClass="DigitalFontButton">
+                                <rect key="frame" x="42" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="JSR" backgroundImage="frame_small.png">
                                     <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="6Av-Nb-NVq"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yyI-xE-bg1">
-                                <rect key="frame" x="94" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yyI-xE-bg1" customClass="DigitalFontButton">
+                                <rect key="frame" x="98" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SET" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="BSZ-eG-OnK"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2dI-cF-AGe">
-                                <rect key="frame" x="38" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2dI-cF-AGe" customClass="DigitalFontButton">
+                                <rect key="frame" x="42" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="AND" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="UfI-3E-CYJ"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nC2-hn-ewx">
-                                <rect key="frame" x="38" y="569" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nC2-hn-ewx" customClass="DigitalFontButton">
+                                <rect key="frame" x="42" y="198" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="ADD" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="cIL-A8-1kR"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A0M-Gi-nbp">
-                                <rect key="frame" x="38" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A0M-Gi-nbp" customClass="DigitalFontButton">
+                                <rect key="frame" x="42" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="IFE" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="OmK-E1-b3x"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hcB-Gg-vFh">
-                                <rect key="frame" x="94" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hcB-Gg-vFh" customClass="DigitalFontButton">
+                                <rect key="frame" x="98" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="IFN" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="Ahf-LT-69t"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Lf-kn-tez">
-                                <rect key="frame" x="150" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Lf-kn-tez" customClass="DigitalFontButton">
+                                <rect key="frame" x="154" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="IFG" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="qwh-Mi-hKh"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KKJ-hB-FL1">
-                                <rect key="frame" x="206" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KKJ-hB-FL1" customClass="DigitalFontButton">
+                                <rect key="frame" x="210" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="IFB" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="adh-eS-jWs"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MLN-5e-IKB">
-                                <rect key="frame" x="94" y="569" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MLN-5e-IKB" customClass="DigitalFontButton">
+                                <rect key="frame" x="98" y="198" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SUB" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="hNn-xx-XdB"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="73H-MM-aJs">
-                                <rect key="frame" x="150" y="569" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="73H-MM-aJs" customClass="DigitalFontButton">
+                                <rect key="frame" x="154" y="198" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="MUL" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="keM-qC-Esq"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pho-ru-Wue">
-                                <rect key="frame" x="206" y="570" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pho-ru-Wue" customClass="DigitalFontButton">
+                                <rect key="frame" x="210" y="199" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="DIV" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="POU-dX-hKg"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h9Z-Ss-0h8">
-                                <rect key="frame" x="206" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h9Z-Ss-0h8" customClass="DigitalFontButton">
+                                <rect key="frame" x="210" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="MOD" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="xAn-2G-gdl"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ybu-9x-trF">
-                                <rect key="frame" x="94" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ybu-9x-trF" customClass="DigitalFontButton">
+                                <rect key="frame" x="98" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="BOR" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="Hq5-nM-vYI"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BkL-VJ-6O8">
-                                <rect key="frame" x="150" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BkL-VJ-6O8" customClass="DigitalFontButton">
+                                <rect key="frame" x="154" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="XOR" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="nN0-s4-dWt"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ud8-S4-Ufv">
-                                <rect key="frame" x="206" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ud8-S4-Ufv" customClass="DigitalFontButton">
+                                <rect key="frame" x="210" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SHR" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="1v6-56-p2k"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ssi-wa-Lye">
-                                <rect key="frame" x="150" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ssi-wa-Lye" customClass="DigitalFontButton">
+                                <rect key="frame" x="154" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SHL" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="DRN-7L-7IP"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Lc-1s-34f">
-                                <rect key="frame" x="318" y="681" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Lc-1s-34f" customClass="DigitalFontButton">
+                                <rect key="frame" x="431" y="313" width="80" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="CLS" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="DEL" backgroundImage="frame_clear.png">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_clear_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clsButtonPressed" destination="2" eventType="touchUpInside" id="AmJ-ed-DDN"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0ls-v6-HS7">
-                                <rect key="frame" x="374" y="681" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0ls-v6-HS7" customClass="DigitalFontButton">
+                                <rect key="frame" x="431" y="83" width="80" height="222"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Enter" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Enter" backgroundImage="frame_enter.png">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_enter_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="enterButtonPressed" destination="2" eventType="touchUpInside" id="6Ie-YV-1SQ"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pC5-jS-gvr">
-                                <rect key="frame" x="206" y="681" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Load" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8CO-bE-gCL">
-                                <rect key="frame" x="262" y="681" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r29-zl-tph">
-                                <rect key="frame" x="262" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r29-zl-tph" customClass="DigitalFontButton">
+                                <rect key="frame" x="266" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="PC" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="b5V-bs-sU9"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4je-hQ-Tb6">
-                                <rect key="frame" x="262" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4je-hQ-Tb6" customClass="DigitalFontButton">
+                                <rect key="frame" x="266" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="A" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="F0P-iZ-QOa"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p91-fb-PMo">
-                                <rect key="frame" x="317" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p91-fb-PMo" customClass="DigitalFontButton">
+                                <rect key="frame" x="321" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="B" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="XM3-hd-qtS"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oNT-Ay-Cmi">
-                                <rect key="frame" x="374" y="513" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oNT-Ay-Cmi" customClass="DigitalFontButton">
+                                <rect key="frame" x="378" y="142" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="C" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="To3-Ax-qCv"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jKH-8A-V9v">
-                                <rect key="frame" x="262" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jKH-8A-V9v" customClass="DigitalFontButton">
+                                <rect key="frame" x="266" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="I" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="fpu-fx-su9"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aKG-5e-N2s">
-                                <rect key="frame" x="318" y="569" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aKG-5e-N2s" customClass="DigitalFontButton">
+                                <rect key="frame" x="322" y="198" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Y" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="69f-5Y-6yp"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uos-jI-6Pk">
-                                <rect key="frame" x="374" y="569" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uos-jI-6Pk" customClass="DigitalFontButton">
+                                <rect key="frame" x="378" y="198" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Z" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="61K-0T-WFV"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="y1z-rj-ZMb">
-                                <rect key="frame" x="374" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="y1z-rj-ZMb" customClass="DigitalFontButton">
+                                <rect key="frame" x="378" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="+" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="bEu-oB-kU2"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gE8-rt-CbW">
-                                <rect key="frame" x="318" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gE8-rt-CbW" customClass="DigitalFontButton">
+                                <rect key="frame" x="322" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SP" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="gbW-5k-3Ct"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oLc-dr-Ajk">
-                                <rect key="frame" x="374" y="457" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oLc-dr-Ajk" customClass="DigitalFontButton">
+                                <rect key="frame" x="378" y="86" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="O" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="sj2-2i-XZi"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hGU-1d-96z">
-                                <rect key="frame" x="318" y="625" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hGU-1d-96z" customClass="DigitalFontButton">
+                                <rect key="frame" x="322" y="254" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="J" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="V40-tA-E6Y"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="slR-qi-TLW">
-                                <rect key="frame" x="262" y="569" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="slR-qi-TLW" customClass="DigitalFontButton">
+                                <rect key="frame" x="266" y="198" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="X" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="ejc-f2-iOZ"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8gS-Wr-jgd">
-                                <rect key="frame" x="38" y="681" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8gS-Wr-jgd" customClass="DigitalFontButton">
+                                <rect key="frame" x="316" y="34" width="60" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Lit" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Literal">
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="u6N-39-gu1"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hb8-eU-nfd">
-                                <rect key="frame" x="150" y="681" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hb8-eU-nfd" customClass="DigitalFontButton">
+                                <rect key="frame" x="434" y="34" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Ref" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Ref">
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="gEB-1N-tDS"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WK8-GD-GYE">
-                                <rect key="frame" x="94" y="681" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WK8-GD-GYE" customClass="DigitalFontButton">
+                                <rect key="frame" x="378" y="34" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Label" backgroundImage="frame_small.png">
-                                    <color key="titleColor" red="0.13668248059999999" green="0.4746231139" blue="0.95499849319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Label">
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="instructionButtonPressed:" destination="2" eventType="touchUpInside" id="Kc9-cr-IPB"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0x0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="MRH-zk-1X1">
-                                <rect key="frame" x="47" y="418" width="366" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" clearButtonMode="whileEditing" id="GDJ-W2-UhU">
+                                <rect key="frame" x="57" y="42" width="257" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.17254901959999999" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qau-gv-m1I">
+                                <rect key="frame" x="554" y="76" width="432" height="291"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="uZo-pN-bm6"/>
+                                    <outlet property="delegate" destination="2" id="Yyh-2r-z6b"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JC1-wD-f5c" customClass="DigitalFontLabel">
+                                <rect key="frame" x="182" y="326" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="AWL-zW-9ut" customClass="DigitalFontLabel">
+                                <rect key="frame" x="307" y="326" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Gog-du-DnL" customClass="DigitalFontLabel">
+                                <rect key="frame" x="37" y="326" width="100" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="uTK-ZT-dus" customClass="DigitalFontLabel">
+                                <rect key="frame" x="144" y="326" width="34" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pC5-jS-gvr" customClass="DigitalFontButton">
+                                <rect key="frame" x="554" y="25" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Load" backgroundImage="frame_small.png">
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8CO-bE-gCL" customClass="DigitalFontButton">
+                                <rect key="frame" x="938" y="24" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save" backgroundImage="frame_small.png">
+                                    <color key="titleColor" red="0.089631728829999993" green="0.44464293119999998" blue="0.97933119540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="frame_small_selected.png">
+                                    <color key="titleColor" red="0.17254901960784313" green="0.45882352941176469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -741,24 +1237,96 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="clearButton" destination="6Lc-1s-34f" id="P0Y-wn-wf0"/>
+                        <outlet property="currentIbstructionOpCode" destination="uTK-ZT-dus" id="S6O-py-r6j"/>
+                        <outlet property="currentIbstructionOperand2" destination="AWL-zW-9ut" id="QGB-uL-3Qo"/>
+                        <outlet property="currentIbstructionOperend1" destination="JC1-wD-f5c" id="qPn-18-nWu"/>
+                        <outlet property="currentInstruction" destination="7oX-Ti-lHG" id="dRL-bA-sFI"/>
+                        <outlet property="currentInstructionLabel" destination="Gog-du-DnL" id="qDM-9T-Qck"/>
+                        <outlet property="enterButton" destination="0ls-v6-HS7" id="mwo-r2-Lg4"/>
+                        <outlet property="instructionTableView" destination="qau-gv-m1I" id="frp-SG-d8w"/>
+                        <outletCollection property="instructionButtonCollection" destination="pp8-da-9f3" id="5JN-wH-IT0"/>
+                        <outletCollection property="instructionButtonCollection" destination="yyI-xE-bg1" id="84Y-1f-yQn"/>
+                        <outletCollection property="instructionButtonCollection" destination="slR-qi-TLW" id="O0O-x6-TRi"/>
+                        <outletCollection property="instructionButtonCollection" destination="oLc-dr-Ajk" id="iqb-zi-fvN"/>
+                        <outletCollection property="instructionButtonCollection" destination="ssi-wa-Lye" id="ZnK-yc-flK"/>
+                        <outletCollection property="instructionButtonCollection" destination="h9Z-Ss-0h8" id="alu-w8-TBO"/>
+                        <outletCollection property="instructionButtonCollection" destination="r29-zl-tph" id="AqG-8i-Ofo"/>
+                        <outletCollection property="instructionButtonCollection" destination="gE8-rt-CbW" id="JfV-qT-hWe"/>
+                        <outletCollection property="instructionButtonCollection" destination="oNT-Ay-Cmi" id="8q4-Ym-ujf"/>
+                        <outletCollection property="instructionButtonCollection" destination="p91-fb-PMo" id="jsn-W8-tL3"/>
+                        <outletCollection property="instructionButtonCollection" destination="4je-hQ-Tb6" id="ir3-jk-08o"/>
+                        <outletCollection property="instructionButtonCollection" destination="Ud8-S4-Ufv" id="alj-bz-jgg"/>
+                        <outletCollection property="instructionButtonCollection" destination="BkL-VJ-6O8" id="QOF-IZ-L6R"/>
+                        <outletCollection property="instructionButtonCollection" destination="ybu-9x-trF" id="jaa-Ac-nwt"/>
+                        <outletCollection property="instructionButtonCollection" destination="2dI-cF-AGe" id="G7r-1l-7kA"/>
+                        <outletCollection property="instructionButtonCollection" destination="nC2-hn-ewx" id="Q57-TQ-XLl"/>
+                        <outletCollection property="instructionButtonCollection" destination="MLN-5e-IKB" id="xTQ-7J-twU"/>
+                        <outletCollection property="instructionButtonCollection" destination="73H-MM-aJs" id="q3I-xv-FlG"/>
+                        <outletCollection property="instructionButtonCollection" destination="Pho-ru-Wue" id="TrF-d9-wu2"/>
+                        <outletCollection property="instructionButtonCollection" destination="slR-qi-TLW" id="c0i-4I-Xtv"/>
+                        <outletCollection property="instructionButtonCollection" destination="aKG-5e-N2s" id="tQV-r7-vQu"/>
+                        <outletCollection property="instructionButtonCollection" destination="uos-jI-6Pk" id="lFF-kP-oZ8"/>
+                        <outletCollection property="instructionButtonCollection" destination="A0M-Gi-nbp" id="SRD-ac-Zb1"/>
+                        <outletCollection property="instructionButtonCollection" destination="hcB-Gg-vFh" id="4yn-P9-Sio"/>
+                        <outletCollection property="instructionButtonCollection" destination="2Lf-kn-tez" id="m8Z-c8-ALD"/>
+                        <outletCollection property="instructionButtonCollection" destination="KKJ-hB-FL1" id="JKI-Tk-yqw"/>
+                        <outletCollection property="instructionButtonCollection" destination="jKH-8A-V9v" id="sJD-Uz-f3u"/>
+                        <outletCollection property="instructionButtonCollection" destination="hGU-1d-96z" id="b38-Rd-9ou"/>
+                        <outletCollection property="instructionButtonCollection" destination="8gS-Wr-jgd" id="G9p-kP-Y0q"/>
+                        <outletCollection property="instructionButtonCollection" destination="WK8-GD-GYE" id="C2c-ZJ-c6Y"/>
+                        <outletCollection property="instructionButtonCollection" destination="Hb8-eU-nfd" id="TB4-vb-TKT"/>
+                        <outletCollection property="instructionButtonCollection" destination="y1z-rj-ZMb" id="a9a-5M-8Fs"/>
+                    </connections>
                 </viewController>
+                <customObject id="7oX-Ti-lHG" customClass="Instruction"/>
             </objects>
         </scene>
     </scenes>
     <resources>
         <image name="CPU.png" width="434" height="433"/>
-        <image name="frame.png" width="353" height="353"/>
-        <image name="frame_medium.png" width="384" height="30"/>
-        <image name="frame_small.png" width="64" height="64"/>
+        <image name="frame_280x360.png" width="285" height="365"/>
+        <image name="frame_285x35.png" width="390" height="40"/>
+        <image name="frame_420x360.png" width="425" height="365"/>
+        <image name="frame_clear.png" width="80" height="48"/>
+        <image name="frame_clear_selected.png" width="80" height="48"/>
+        <image name="frame_enter.png" width="80" height="217"/>
+        <image name="frame_enter_selected.png" width="80" height="217"/>
+        <image name="frame_small.png" width="70" height="70"/>
+        <image name="frame_small_selected.png" width="70" height="70"/>
     </resources>
     <classes>
+        <class className="DigitalFontButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DigitalFontButton.h"/>
+        </class>
+        <class className="DigitalFontLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DigitalFontLabel.h"/>
+        </class>
+        <class className="Instruction" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Instruction.h"/>
+        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clsButtonPressed"/>
+                <relationship kind="action" name="enterButtonPressed"/>
+                <relationship kind="action" name="instructionButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="currentIbstructionOpCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="currentIbstructionOperand2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="currentIbstructionOperend1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="currentInstruction" candidateClass="Instruction"/>
+                <relationship kind="outlet" name="currentInstructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="enterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="instructionTableView" candidateClass="UITableView"/>
+                <relationship kind="outletCollection" name="instructionButtonCollection" candidateClass="UIButton"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
-        <simulatedOrientationMetrics key="orientation"/>
+        <nil key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
