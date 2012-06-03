@@ -22,8 +22,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Instruction.h"
+#import "DCPU.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
 @property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
@@ -31,8 +33,12 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
 @property (strong, nonatomic) NSMutableArray* instructionSet;
+@property (strong, nonatomic) NSMutableArray* assembledInstructionSet;
 
+@property (strong, nonatomic) NSDictionary *mapRegisterNameToControl;
+@property (strong, nonatomic) DCPU *emulator;
 @property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
+
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
 
 @property (weak, nonatomic) IBOutlet UIButton *enterButton;
@@ -41,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *labelButton;
 @property (weak, nonatomic) IBOutlet UIButton *referenceButton;
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
+@property (weak, nonatomic) IBOutlet UILabel *assembledCodeLabel;
 
 - (IBAction)instructionButtonPressed:(UIButton *)sender;
 - (IBAction)clsButtonPressed;
@@ -48,5 +55,7 @@
 - (IBAction)literalButtonPressed;
 - (IBAction)labelButtonPresssed;
 - (IBAction)referenceButtonPressed;
+- (IBAction)assembleButtonPressed;
+- (IBAction)nextButtonPressed;
 
 @end

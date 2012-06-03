@@ -35,6 +35,7 @@
 
 typedef int(^memoryOperation)(int, int);
 typedef void(^registerOperationNotification)(NSString*, int);
+typedef void(^generalRegisterOperationNotification)(int, int);
 typedef void(^memoryOperationNotification)(NSString*, int, int);
 
 @interface Memory : NSObject
@@ -46,6 +47,8 @@ typedef void(^memoryOperationNotification)(NSString*, int, int);
 
 @property (nonatomic, copy) registerOperationNotification registerWillChange;
 @property (nonatomic, copy) registerOperationNotification registerDidChange;
+@property (nonatomic, copy) generalRegisterOperationNotification generalRegisterWillChange;
+@property (nonatomic, copy) generalRegisterOperationNotification generalRegisterDidChange;
 
 - (id)init;
 

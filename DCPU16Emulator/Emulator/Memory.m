@@ -40,6 +40,8 @@
 @synthesize memoryDidChange;
 @synthesize registerDidChange;
 @synthesize registerWillChange;
+@synthesize generalRegisterWillChange;
+@synthesize generalRegisterDidChange;
 
 - (id)init
 {
@@ -97,36 +99,53 @@
 {
     NSMutableArray *memoryArea = [ram objectForKey:area];
     
-    if(self.memoryWillChange != nil)
+    if(self.memoryWillChange != nil && [area isEqualToString:@"MEM"])
     {
         int oldValue = [self getMemoryValueAtIndex:index inMemoryArea:area];
         
-        dispatch_async(q_default, ^{ self.memoryWillChange(area, index, oldValue); });
+        self.memoryWillChange(area, index, oldValue);
+        //dispatch_async(q_default, ^{ self.memoryWillChange(area, index, oldValue); });
+    }
+    
+    if(self.generalRegisterWillChange != nil && [area isEqualToString:@"REG"])
+    {
+        int oldValue = [self getMemoryValueAtIndex:index inMemoryArea:area];
+        
+        self.generalRegisterWillChange(index, oldValue);
+        //dispatch_async(q_default, ^{ self.generalRegisterWillChange(index, oldValue); });
     }
 
     [memoryArea replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
     
-    if(self.memoryDidChange != nil)
+    if(self.memoryDidChange != nil && [area isEqualToString:@"MEM"])
     {
-        dispatch_async(q_default, ^{ self.memoryWillChange(area, index, value); });
+        self.memoryWillChange(area, index, value);
+        //dispatch_async(q_default, ^{ self.memoryWillChange(area, index, value); });
+    }
+    
+    if(self.generalRegisterDidChange != nil && [area isEqualToString:@"REG"])
+    {
+        self.generalRegisterDidChange(index, value);
+        //dispatch_async(q_default, ^{ self.generalRegisterDidChange(index, value); });
     }
 }
 
 - (void)setRegister:(NSString*)registerKey value:(int)newValue
 {
-    if(self.memoryWillChange != nil)
+    if(self.registerWillChange != nil)
     {
         int oldValue = [[ram valueForKey:registerKey] intValue];
         
-        dispatch_async(q_default, ^{ self.registerWillChange(registerKey, oldValue); });
-
+        self.registerWillChange(registerKey, oldValue);
+        //dispatch_async(q_default, ^{ self.registerWillChange(registerKey, oldValue); });
     }
     
     [ram setValue:[NSNumber numberWithInt:newValue] forKey:registerKey];
     
-    if(self.memoryDidChange != nil)
+    if(self.registerDidChange != nil)
     {
-        dispatch_async(q_default, ^{ self.registerDidChange(registerKey, newValue); });
+        self.registerDidChange(registerKey, newValue);
+        //dispatch_async(q_default, ^{ self.registerDidChange(registerKey, newValue); });
     }
 }
 

@@ -22,15 +22,21 @@
 
 #import "ViewController.h"
 #import "InstructionCell.h"
+#import "DCPU.h"
+#import "Assembler.h"
+#import "Parser.h"
 
 @implementation ViewController
 
+@synthesize emulator;
+@synthesize mapRegisterNameToControl;
 @synthesize currentInstructionLabel;
 @synthesize currentIbstructionOpCode;
 @synthesize currentIbstructionOperend1;
 @synthesize currentIbstructionOperand2;
 @synthesize instructionTableView;
 @synthesize instructionSet;
+@synthesize assembledInstructionSet;
 
 @synthesize instructionButtonCollection;
 @synthesize enterButton;
@@ -39,6 +45,7 @@
 @synthesize labelButton;
 @synthesize referenceButton;
 @synthesize inputField;
+@synthesize assembledCodeLabel;
 @synthesize currentInstruction;
 
 - (IBAction)instructionButtonPressed:(UIButton *)sender 
@@ -124,6 +131,75 @@
     [self setProgramingKeyboardState];
     
     [self bindCurrentInstruction];
+}
+
+- (IBAction)assembleButtonPressed 
+{
+    NSMutableString *source = [NSMutableString string];
+    
+    for (Instruction* instruction in self.instructionSet)
+    {
+        [source appendString:[NSString stringWithFormat:@"%@ %@ %@, %@\n", 
+                              instruction.label != nil ? instruction.label : @"", 
+                              instruction.opcode != nil ? instruction.opcode : @"", 
+                              instruction.operand1 != nil ? instruction.operand1 : @"", 
+                              instruction.operand2 != nil ? instruction.operand2 : @""]];
+    }
+    
+    NSString *code = source;
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    int programInstructionSize = [assembler.program count];
+    
+    NSMutableString *assembledCode = [NSMutableString string];
+    self.assembledInstructionSet = nil;
+    
+    self.assembledInstructionSet = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < programInstructionSize; i++) 
+    {
+        int assembledInstruction = [[assembler.program objectAtIndex:i] intValue];
+        
+        [self.assembledInstructionSet addObject:[assembler.program objectAtIndex:i]];
+        [assembledCode appendString:[NSString stringWithFormat:@"0x%X ", assembledInstruction]];
+    }
+    
+    assembledCodeLabel.text = assembledCode;
+    assembledCodeLabel.numberOfLines = 0;
+    [assembledCodeLabel sizeToFit];
+    
+    self.emulator = [[DCPU alloc] initWithProgram:(self.assembledInstructionSet)];
+    
+    self.emulator.memory.registerDidChange = ^(NSString* registerName, int value)
+    {
+        int regIndex = [[self.mapRegisterNameToControl objectForKey:registerName] intValue];
+        
+        UILabel* registerControlToUpdate = ((UILabel*)[self.view viewWithTag:regIndex + 1000]);
+        
+        registerControlToUpdate.text = [NSString stringWithFormat:@"0x%X", value];
+    };
+    
+    self.emulator.memory.generalRegisterDidChange = ^(int regIndex, int value)
+    {
+        UILabel* registerControlToUpdate = ((UILabel*)[self.view viewWithTag:regIndex + 1003]);
+        
+        registerControlToUpdate.text = [NSString stringWithFormat:@"0x%X", value];
+    };
+}
+
+- (IBAction)nextButtonPressed 
+{
+    if(self.assembledInstructionSet != nil && [self.assembledInstructionSet count] > 0 && self.emulator != nil)
+    {
+        [self.emulator executeInstruction];
+    }
 }
 
 - (void)bindCurrentInstruction
@@ -221,6 +297,20 @@
     
     self.instructionSet = [[NSMutableArray alloc] init];
     
+    self.mapRegisterNameToControl = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"PC", [NSNumber numberWithInt:1000],
+                                     @"SP", [NSNumber numberWithInt:1001],
+                                     @"O", [NSNumber numberWithInt:1002],
+                                     @"A", [NSNumber numberWithInt:1003],
+                                     @"B", [NSNumber numberWithInt:1004],
+                                     @"C", [NSNumber numberWithInt:1005],
+                                     @"X", [NSNumber numberWithInt:1006],
+                                     @"Y", [NSNumber numberWithInt:1007],
+                                     @"Z", [NSNumber numberWithInt:1008],
+                                     @"I", [NSNumber numberWithInt:1009],
+                                     @"J", [NSNumber numberWithInt:1010],
+                                     nil];
+    
     [self setProgramingKeyboardState];
 }
 
@@ -238,6 +328,7 @@
     [self setLabelButton:nil];
     [self setReferenceButton:nil];
     [self setInputField:nil];
+    [self setAssembledCodeLabel:nil];
     [super viewDidUnload];
 }
 
