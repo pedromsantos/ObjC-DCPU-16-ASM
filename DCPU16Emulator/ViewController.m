@@ -35,6 +35,10 @@
 @synthesize instructionButtonCollection;
 @synthesize enterButton;
 @synthesize clearButton;
+@synthesize literalButton;
+@synthesize labelButton;
+@synthesize referenceButton;
+@synthesize inputField;
 @synthesize currentInstruction;
 
 - (IBAction)instructionButtonPressed:(UIButton *)sender 
@@ -65,6 +69,61 @@
     
     [self clearCurrentInstructionBind];
     [self setProgramingKeyboardState];
+}
+
+- (IBAction)literalButtonPressed 
+{
+    NSString* data = self.inputField.text;
+    
+    [self.currentInstruction assignValue:data];
+    
+    [self setProgramingKeyboardState];
+    
+    [self bindCurrentInstruction];
+}
+
+- (IBAction)labelButtonPresssed 
+{
+    NSString* data = self.inputField.text;
+    
+    if([data hasPrefix:@":"])
+    {
+        [self.currentInstruction assignLabel:data];
+    }
+    else 
+    {
+        [self.currentInstruction assignLabel:[NSString stringWithFormat:@":%@", data]];
+    }
+    
+    [self setProgramingKeyboardState];
+    
+    [self bindCurrentInstruction];
+}
+
+- (IBAction)referenceButtonPressed 
+{
+    NSString* data = self.inputField.text;
+    
+    if([data hasPrefix:@"["] && [data hasSuffix:@"]"])
+    {
+        [self.currentInstruction assignValue:data];
+    }
+    else if(![data hasPrefix:@"["] && ![data hasSuffix:@"]"])
+    {
+        [self.currentInstruction assignValue:[NSString stringWithFormat:@"[%@]", data]];
+    }
+    else if([data hasPrefix:@"["] && ![data hasSuffix:@"]"])
+    {
+        [self.currentInstruction assignValue:[NSString stringWithFormat:@"%@]", data]];
+    }
+    else if(![data hasPrefix:@"["] && [data hasSuffix:@"]"])
+    {
+        [self.currentInstruction assignValue:[NSString stringWithFormat:@"[%@", data]];
+    }
+    
+    [self setProgramingKeyboardState];
+    
+    [self bindCurrentInstruction];
 }
 
 - (void)bindCurrentInstruction
@@ -107,6 +166,10 @@
     }
     
     [self.enterButton setEnabled:self.currentInstruction.state == Complete];
+    [self.labelButton setEnabled:self.currentInstruction.state == WaitForOpcodeOrLabel];
+    [self.literalButton setEnabled:self.currentInstruction.state == WaitForOperand1 || self.currentInstruction.state == WaitForOperand2];
+    [self.referenceButton setEnabled:self.currentInstruction.state == WaitForOperand1 || self.currentInstruction.state == WaitForOperand2];
+    [self.inputField setEnabled:self.currentInstruction.state == WaitForOpcodeOrLabel || self.currentInstruction.state == WaitForOperand1 || self.currentInstruction.state == WaitForOperand2];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -171,6 +234,10 @@
     [self setCurrentIbstructionOperand2:nil];
     [self setEnterButton:nil];
     [self setClearButton:nil];
+    [self setLiteralButton:nil];
+    [self setLabelButton:nil];
+    [self setReferenceButton:nil];
+    [self setInputField:nil];
     [super viewDidUnload];
 }
 

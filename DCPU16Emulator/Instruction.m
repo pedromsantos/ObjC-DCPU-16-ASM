@@ -34,11 +34,18 @@
     return instructionState;
 }
 
+- (void)assignLabel:(NSString*)value
+{
+    self.label = value;
+    instructionState = WaitForOpcode;
+}
+
 - (void)assignValue:(NSString*)value
 {
     switch (instructionState)
     {
         case WaitForOpcodeOrLabel:
+        case WaitForOpcode:
             opcode = value;
             instructionState = WaitForOperand1;
             break;
@@ -82,7 +89,7 @@
         [possibleInputList addObject:@"Label"];
     }
     
-    if(instructionState == WaitForOpcodeOrLabel)
+    if(instructionState == WaitForOpcodeOrLabel || instructionState == WaitForOpcode)
     {
         [possibleInputList addObject:@"JSR"];
         [possibleInputList addObject:@"SET"];

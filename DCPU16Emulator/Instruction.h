@@ -25,6 +25,7 @@
 enum InstructionInputState
 {
     WaitForOpcodeOrLabel,
+    WaitForOpcode,
     WaitForOperand1,
     WaitForOperand2,
     Complete
@@ -43,6 +44,7 @@ enum InstructionInputState
 
 - (void)reset;
 - (void)assignValue:(NSString*)value;
+- (void)assignLabel:(NSString*)value;
 
 - (NSArray*)possibleNextInput;
 

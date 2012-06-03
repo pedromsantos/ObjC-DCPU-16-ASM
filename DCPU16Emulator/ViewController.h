@@ -34,11 +34,19 @@
 
 @property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
+
 @property (weak, nonatomic) IBOutlet UIButton *enterButton;
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet UIButton *literalButton;
+@property (weak, nonatomic) IBOutlet UIButton *labelButton;
+@property (weak, nonatomic) IBOutlet UIButton *referenceButton;
+@property (weak, nonatomic) IBOutlet UITextField *inputField;
 
 - (IBAction)instructionButtonPressed:(UIButton *)sender;
 - (IBAction)clsButtonPressed;
 - (IBAction)enterButtonPressed;
+- (IBAction)literalButtonPressed;
+- (IBAction)labelButtonPresssed;
+- (IBAction)referenceButtonPressed;
 
 @end
