@@ -1,7 +1,8 @@
 Just another DCPU implementation.
 
 Getting started:
-No UI yet. If you want to check out this project take a look at unit tests. Start with higher level ones such as EmulatorTests.m or AssemblerTests.m
+The project now has a minimal UI.
+There are a few unit tests that can be used as an starting point into the code.
 
 Platform: IOS
 Language: Objective-C
