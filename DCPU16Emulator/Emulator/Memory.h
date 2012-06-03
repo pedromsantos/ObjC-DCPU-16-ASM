@@ -39,6 +39,8 @@ typedef void(^memoryOperationNotification)(NSString*, int, int);
 
 @interface Memory : NSObject
 
+@property (nonatomic, assign) int startAddressOfData;
+
 @property (nonatomic, copy) memoryOperationNotification memoryWillChange;
 @property (nonatomic, copy) memoryOperationNotification memoryDidChange;
 

@@ -35,6 +35,7 @@
 @implementation Memory
 
 @synthesize ram;
+@synthesize startAddressOfData;
 @synthesize memoryWillChange;
 @synthesize memoryDidChange;
 @synthesize registerDidChange;
@@ -50,6 +51,8 @@
            [[NSMutableArray alloc] initWithCapacity:NUM_ITERALS], LIT,
            [[NSMutableArray alloc] initWithCapacity:MEMORY_SIZE], MEM,
            nil];
+    
+    startAddressOfData = 0;
     
     NSMutableArray *literals = [ram objectForKey:LIT];
     
@@ -80,10 +83,14 @@
 
 - (void)load:(NSArray*)values
 {
-    for (int i = 0; i < [values count]; i++) 
+    int programSize = [values count];
+    
+    for (int i = 0; i < programSize; i++) 
     {
         [self setMemoryValue:[[values objectAtIndex:i] intValue] atIndex:i];
     }
+    
+    startAddressOfData = programSize + 1;
 }
 
 - (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area
