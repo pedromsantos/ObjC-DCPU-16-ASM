@@ -177,6 +177,13 @@
     
     self.emulator = [[DCPU alloc] initWithProgram:(self.assembledInstructionSet)];
     
+    for(int i = 1000; i <= 1010; i++)
+    {
+        UILabel* registerControlToUpdate = ((UILabel*)[self.view viewWithTag:i]);
+        
+        registerControlToUpdate.text = @"0x0";
+    }
+    
     self.emulator.memory.registerDidChange = ^(NSString* registerName, int value)
     {
         int regIndex = [[self.mapRegisterNameToControl objectForKey:registerName] intValue];
