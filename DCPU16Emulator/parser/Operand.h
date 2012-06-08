@@ -37,7 +37,6 @@ enum operand_type {
     O_NULL = 0xDEAD,
 };
 
-// General purpose registers.
 enum operand_register_value {
     REG_A,
     REG_B,
@@ -49,7 +48,6 @@ enum operand_register_value {
     REG_J,
 };
 
-// Special registers.
 enum operand_special_register {
     SREG_PC,
     SREG_SP,

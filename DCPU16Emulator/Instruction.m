@@ -124,7 +124,9 @@
         [possibleInputList addObject:@"J"];
         [possibleInputList addObject:@"Lit"];
         [possibleInputList addObject:@"Ref"];
-        [possibleInputList addObject:@"+"];
+        [possibleInputList addObject:@"PUSH"];
+        [possibleInputList addObject:@"POP"];
+        [possibleInputList addObject:@"PEEK"];
     }
     
     return possibleInputList;
