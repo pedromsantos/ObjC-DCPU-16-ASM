@@ -27,12 +27,40 @@
 #define OPERAND_LITERAL_MAX 0x1F
 #define OPERAND_LITERAL_OFFSET 0x20
 
+enum basic_opcode
+{
+    OP_SET = 0x1,
+    OP_ADD = 0x2,
+    OP_SUB = 0x3,
+    OP_MUL = 0x4,
+    OP_DIV = 0x5,
+    OP_MOD = 0x6,
+    OP_SHL = 0x7,
+    OP_SHR = 0x8,
+    OP_AND = 0x9,
+    OP_BOR = 0xA,
+    OP_XOR = 0xB,
+    OP_IFE = 0xC,
+    OP_IFN = 0xD,
+    OP_IFG = 0xE,
+    OP_IFB = 0xF,
+};
+
+typedef enum basic_opcode basicOpcode;
+
+enum non_basic_opcode 
+{
+    OP_JSR = 0x01,
+};
+
+typedef enum non_basic_opcode nonBasicOpcode;
+
 @interface Statment : NSObject
 
 @property (nonatomic, strong) NSString* label;
 @property (nonatomic, strong) NSString* menemonic;
-@property (nonatomic, assign) uint8_t opcode;
-@property (nonatomic, assign) uint8_t opcodeNonBasic;
+@property (nonatomic, assign) basicOpcode opcode;
+@property (nonatomic, assign) nonBasicOpcode opcodeNonBasic;
 @property (nonatomic, strong) Operand* firstOperand;
 @property (nonatomic, strong) Operand* secondOperand;
 

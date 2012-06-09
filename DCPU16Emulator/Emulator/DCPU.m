@@ -21,7 +21,7 @@
  */
 
 #import "DCPU.h"
-#import "Parser.h"
+#import "Statment.h"
 #import "Operand.h"
 
 @implementation DCPU
