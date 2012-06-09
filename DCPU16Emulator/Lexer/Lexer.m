@@ -39,6 +39,8 @@
 @synthesize tokenMatchers;
 @synthesize scanner;
 @synthesize token;
+@synthesize lineNumber;
+@synthesize columnNumber;
 @synthesize tokenContents;
 @synthesize ignoreWhiteSpace;
 

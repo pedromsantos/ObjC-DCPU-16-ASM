@@ -32,6 +32,8 @@
 @property (nonatomic, assign) enum LexerTokenType token;
 @property (nonatomic, strong) NSString *tokenContents;
 @property (nonatomic, assign) BOOL ignoreWhiteSpace;
+@property (nonatomic, readonly) int lineNumber;
+@property (nonatomic, readonly) int columnNumber;
 
 - (id)initWithTokenMatchers:(NSArray*)matchers scanner:(NSScanner*)textScanner;
 - (id)initWithScanner:(NSScanner *)textScanner;

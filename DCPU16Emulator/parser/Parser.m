@@ -60,7 +60,6 @@
     }
     
     [self parseMenemonicForStatment:statment];
-    
     [self parseOperandsForStatment:statment];
     
     [self.lexer peekNextToken];
@@ -98,7 +97,6 @@
 - (void)parseLabelForStatment:(Statment*)statment
 {
     [self.lexer consumeNextToken];
-    
     statment.label = self.lexer.tokenContents;
 }
 
@@ -108,7 +106,7 @@
     
     if(self.lexer.token != INSTRUCTION)
     {
-        @throw @"espected INSTRUCTION";
+        @throw [NSString stringWithFormat:@"Expected INSTRUCTION at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
     }
     
     statment.menemonic = self.lexer.tokenContents;
@@ -179,7 +177,7 @@
         }
         default:
         {
-            @throw @"invalid operand";
+            @throw [NSString stringWithFormat:@"Invalid operand at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
             break;
         }
     }
@@ -197,7 +195,7 @@
             
             if (self.lexer.token != CLOSEBRACKET)
             {
-                @throw @"Expected CLOSEBRACKET";
+                @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
             }
             
             operand.operandType = O_INDIRECT_REG;
@@ -232,14 +230,14 @@
                     [self.lexer consumeNextToken];
                     if (self.lexer.token != CLOSEBRACKET)
                     {
-                        @throw @"expected CLOSEBRACKET";
+                        @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
                     }
                     
                     break;
                 }   
                 default:
                 {
-                    @throw @"expected CLOSEBRACKET or PLUS";
+                    @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
                     break;
                 }
             }
@@ -248,7 +246,7 @@
         } 
         default:
         {
-            @throw @"expected CLOSEBRACKET or PLUS";
+            @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
             break;
         }
     }
