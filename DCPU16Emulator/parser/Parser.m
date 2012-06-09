@@ -117,8 +117,6 @@
     }
     
     statment.menemonic = self.lexer.tokenContents;
-    
-    [statment setOpcodeForMenemonic];
 }
 
 - (void)parseOperandsForStatment:(Statment*)statment

@@ -22,10 +22,18 @@
 
 #import "Statment.h"
 
+@interface Statment()
+
+@property (nonatomic, strong) NSString* internalMenemonic;
+
+- (void)setOpcodeForMenemonic;
+
+@end
+
 @implementation Statment
 
 @synthesize label;
-@synthesize menemonic;
+@synthesize internalMenemonic;
 @synthesize opcode;
 @synthesize opcodeNonBasic;
 @synthesize firstOperand;
@@ -42,6 +50,17 @@
     secondOperand = op2;
     
     return self;
+}
+
+- (NSString*)menemonic
+{
+    return internalMenemonic;
+}
+
+- (void)setMenemonic:(NSString *)menemonic
+{
+    self.internalMenemonic = menemonic;
+    [self setOpcodeForMenemonic];
 }
 
 - (void)setOpcodeForMenemonic
