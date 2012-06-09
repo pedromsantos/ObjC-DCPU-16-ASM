@@ -68,7 +68,7 @@
                 opCode |= OP_JSR << OPCODE_WIDTH;
                 opCode |= [self assembleOperand:statment.firstOperand forOpCode:0 withIndex:1];
                 [self addOpCode:opCode];
-                [self assembleRemainingOperand:statment.firstOperand];
+                [self assembleOperandNextWord:statment.firstOperand];
                 break;
             }
             default:
@@ -84,8 +84,8 @@
     
         [self addOpCode:opCode];
     
-        [self assembleRemainingOperand:statment.firstOperand];
-        [self assembleRemainingOperand:statment.secondOperand];
+        [self assembleOperandNextWord:statment.firstOperand];
+        [self assembleOperandNextWord:statment.secondOperand];
     }
 }
 
@@ -142,7 +142,7 @@
     return opCode;
 }
 
-- (void)assembleRemainingOperand:(Operand*)operand
+- (void)assembleOperandNextWord:(Operand*)operand
 {
     if(operand.operandType == O_INDIRECT_NW_OFFSET)
     {
