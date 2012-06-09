@@ -25,19 +25,20 @@
 @interface Lexer()
 
 @property (nonatomic, strong) NSString *lineRemaining;
+@property (nonatomic, strong) NSArray *tokenDefinitions;
+@property (nonatomic, strong) NSScanner *scanner;
+
+- (void)readNextLine;
+- (void)consumeTokenCharacters:(int)matchedStartIndex;
 
 @end
 
 @implementation Lexer
 
-
 @synthesize tokenDefinitions;
 @synthesize scanner;
-@synthesize position;
-@synthesize lineNumber;
 @synthesize token;
 @synthesize tokenContents;
-@synthesize ahead;
 @synthesize ignoreWhiteSpace;
 
 @synthesize lineRemaining;
@@ -76,75 +77,85 @@
     self.scanner = textScanner;
     self.ignoreWhiteSpace = NO;
     
-    [self nextLine];
+    [self readNextLine];
     
     return self;
 }
 
-- (void)nextLine
+- (void)readNextLine
 {
-    NSString *matchedNewlines = nil;
-    
-    do {
-        [self.scanner
-         scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet]
-         intoString:&matchedNewlines];
-        ++self.lineNumber;
-        self.position = 0;
+    if ([self.lineRemaining length] == 0)
+    {
+        NSString *matchedNewlines = nil;
         
-        self.lineRemaining = matchedNewlines;
-        
-    } while (self.lineRemaining != nil && [self.lineRemaining length] == 0);
+        do {
+            [self.scanner
+             scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet]
+             intoString:&matchedNewlines];
+            ++lineNumber;
+            columnNumber = 0;
+            
+            self.lineRemaining = matchedNewlines;
+            
+        } while (self.lineRemaining != nil && [self.lineRemaining length] == 0);
+    }
 }
 
-- (BOOL)peek
+- (BOOL)peekNextToken
 {
-    self.ahead = YES;
+    peekMode = YES;
     
-    BOOL result = [self next];
+    BOOL result = [self consumeNextToken];
     
-    self.ahead = NO;
+    peekMode = NO;
     
     return result;
 }
 
-- (BOOL)next
+- (BOOL)consumeNextToken
 {
     if (lineRemaining == nil)
     {
         return NO;
     }
     
-    for (TokenDefinition *def in self.tokenDefinitions)
+    for (TokenDefinition *tokenDefinition in self.tokenDefinitions)
     {
-        int matched = [def.matcher match:self.lineRemaining];
+        int matchedStartIndex = [tokenDefinition.matcher match:self.lineRemaining];
         
-        if (matched > 0)
+        if (matchedStartIndex > 0)
         {
-            self.position += matched;
-            self.token = def.token;
+            columnNumber += matchedStartIndex;
+            self.token = tokenDefinition.token;
             
-            if(!self.ahead || (def.token == WHITESPACE && ignoreWhiteSpace))
-            {
-                self.tokenContents = [self.lineRemaining  substringWithRange:NSMakeRange(0, matched)];
-                self.lineRemaining = [self.lineRemaining substringFromIndex:matched];
-                
-                if ([self.lineRemaining length] == 0)
-                {
-                    [self nextLine];
-                }
-            }
+            [self consumeTokenCharacters:matchedStartIndex];
             
-            if(ignoreWhiteSpace && def.token == WHITESPACE)
+            if([self isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:tokenDefinition])
             {
                 continue;
             }
+            
+            [self readNextLine];
             
             return true;
         }
     }
     
     return NO;
+}
+
+- (void)consumeTokenCharacters:(int)matchedStartIndex
+{
+    if(!peekMode)
+    {
+        self.tokenContents = [self.lineRemaining  substringWithRange:NSMakeRange(0, matchedStartIndex)];
+        self.lineRemaining = [self.lineRemaining substringFromIndex:matchedStartIndex];
+    }
+}
+
+- (BOOL)isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:(TokenDefinition*)tokenDefinition
+{
+    return ignoreWhiteSpace && tokenDefinition.token == WHITESPACE;
 }
 
 @end

@@ -52,7 +52,7 @@
     
     [self parseEmptyLines];
     
-    BOOL canKeepLexing = [self.lexer peek];
+    BOOL canKeepLexing = [self.lexer peekNextToken];
     
     if (!canKeepLexing)
     {
@@ -68,11 +68,11 @@
     
     [self parseOperandsForStatment:statment];
     
-    [self.lexer peek];
+    [self.lexer peekNextToken];
     
     if(self.lexer.token == COMMENT)
     {
-        [self.lexer next];
+        [self.lexer consumeNextToken];
     }
     
     [self.statments addObject:statment];
@@ -82,16 +82,16 @@
 
 - (void)parseEmptyLines
 {
-    [self.lexer peek];
+    [self.lexer peekNextToken];
     BOOL canKeepLexing = true;
     
     while ((self.lexer.token == COMMENT || self.lexer.token == WHITESPACE) && canKeepLexing) 
     {
-        [self.lexer peek];
+        [self.lexer peekNextToken];
         
         if(self.lexer.token == COMMENT || self.lexer.token == WHITESPACE)
         {
-            canKeepLexing = [self.lexer next];
+            canKeepLexing = [self.lexer consumeNextToken];
         }
         else 
         {
@@ -102,14 +102,14 @@
 
 - (void)parseLabelForStatment:(Statment*)statment
 {
-    [self.lexer next];
+    [self.lexer consumeNextToken];
     
     statment.label = self.lexer.tokenContents;
 }
 
 - (void)parseMenemonicForStatment:(Statment*)statment
 {
-    [self.lexer next];
+    [self.lexer consumeNextToken];
     
     if(self.lexer.token != INSTRUCTION)
     {
@@ -156,7 +156,7 @@
 {
     [self parseOperand:statment.firstOperand forStatment:statment];
     
-    [self.lexer next];
+    [self.lexer consumeNextToken];
     
     if (self.lexer.token == COMMA)
     {
@@ -170,7 +170,7 @@
 
 - (void)parseOperand:(Operand*)operand forStatment:(Statment*)stament
 {
-    [self.lexer next];
+    [self.lexer consumeNextToken];
     
     switch (self.lexer.token)
     {
@@ -225,13 +225,13 @@
 
 - (void)parseIndirectOperand:(Operand*)operand forStatment:(Statment*)stament
 {
-    [self.lexer next];
+    [self.lexer consumeNextToken];
     
     switch (self.lexer.token)
     {
         case REGISTER:
         {
-            [self.lexer next];
+            [self.lexer consumeNextToken];
             
             if (self.lexer.token != CLOSEBRACKET)
             {
@@ -253,7 +253,7 @@
             
             operand.nextWord = (uint16_t)outVal;
             
-            [self.lexer next];
+            [self.lexer consumeNextToken];
             
             switch (self.lexer.token)
             {
@@ -264,10 +264,10 @@
                 }
                 case PLUS:
                 {
-                    [self.lexer next];
+                    [self.lexer consumeNextToken];
                     operand.operandType = O_INDIRECT_NW_OFFSET;
                     [operand setRegisterValueForName:self.lexer.tokenContents];
-                    [self.lexer next];
+                    [self.lexer consumeNextToken];
                     if (self.lexer.token != CLOSEBRACKET)
                     {
                         @throw @"expected CLOSEBRACKET";
