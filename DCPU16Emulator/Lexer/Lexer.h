@@ -33,7 +33,7 @@
 @property (nonatomic, strong) NSString *tokenContents;
 @property (nonatomic, assign) BOOL ignoreWhiteSpace;
 
-- (id)initWithTokenDefinitions:(NSArray*)definitions scanner:(NSScanner*)textScanner;
+- (id)initWithTokenMatchers:(NSArray*)matchers scanner:(NSScanner*)textScanner;
 - (id)initWithScanner:(NSScanner *)textScanner;
 
 - (BOOL)consumeNextToken;

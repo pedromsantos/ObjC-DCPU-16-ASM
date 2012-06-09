@@ -43,6 +43,10 @@
 
 @synthesize lineRemaining;
 
+// This convinience tokenMatchers init is creating an undesired coupling with RegexTokenMatcher
+// will leave it for now, since it's very convinient. If in the future another matcher and/or token matcher
+// is implemented, that use other matching technique, then this code should be removed.
+// For now intentionally accepting this bit of technical debt for Lexer usage simplification.
 - (id)initWithScanner:(NSScanner *)textScanner
 {
     NSArray* matchers = [NSArray arrayWithObjects:
@@ -61,10 +65,10 @@
                          [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
                          nil];
     
-    return [self initWithTokenDefinitions:matchers scanner:textScanner];
+    return [self initWithTokenMatchers:matchers scanner:textScanner];
 }
 
-- (id)initWithTokenDefinitions:(NSArray*)definitions scanner:(NSScanner*)textScanner
+- (id)initWithTokenMatchers:(NSArray*)matchers scanner:(NSScanner*)textScanner
 {
     self = [super init];
     
@@ -73,7 +77,7 @@
         return nil;
     }
     
-    self.tokenMatchers = definitions;
+    self.tokenMatchers = matchers;
     self.scanner = textScanner;
     self.ignoreWhiteSpace = NO;
     
