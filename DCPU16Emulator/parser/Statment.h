@@ -64,4 +64,6 @@ typedef enum non_basic_opcode nonBasicOpcode;
 @property (nonatomic, strong) Operand* firstOperand;
 @property (nonatomic, strong) Operand* secondOperand;
 
+- (void)setOpcodeForMenemonic;
+
 @end

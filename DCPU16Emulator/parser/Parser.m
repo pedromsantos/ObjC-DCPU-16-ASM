@@ -118,38 +118,7 @@
     
     statment.menemonic = self.lexer.tokenContents;
     
-    [self parseOpcodeForMenemonic:statment];
-}
-
-- (void)parseOpcodeForMenemonic:(Statment*)statment
-{
-     // basic opcodes
-     if ([statment.menemonic isEqualToString:@"SET"]) statment.opcode = OP_SET;
-     else if ([statment.menemonic isEqualToString:@"ADD"]) statment.opcode = OP_ADD;
-     else if ([statment.menemonic isEqualToString:@"SUB"]) statment.opcode = OP_SUB;
-     else if ([statment.menemonic isEqualToString:@"MUL"]) statment.opcode = OP_MUL;
-     else if ([statment.menemonic isEqualToString:@"DIV"]) statment.opcode = OP_DIV;
-     else if ([statment.menemonic isEqualToString:@"MOD"]) statment.opcode = OP_MOD;
-     else if ([statment.menemonic isEqualToString:@"SHL"]) statment.opcode = OP_SHL;
-     else if ([statment.menemonic isEqualToString:@"SHR"]) statment.opcode = OP_SHR;
-     else if ([statment.menemonic isEqualToString:@"AND"]) statment.opcode = OP_AND;
-     else if ([statment.menemonic isEqualToString:@"BOR"]) statment.opcode = OP_BOR;
-     else if ([statment.menemonic isEqualToString:@"XOR"]) statment.opcode = OP_XOR;
-     else if ([statment.menemonic isEqualToString:@"IFE"]) statment.opcode = OP_IFE;
-     else if ([statment.menemonic isEqualToString:@"IFN"]) statment.opcode = OP_IFN;
-     else if ([statment.menemonic isEqualToString:@"IFG"]) statment.opcode = OP_IFG;
-     else if ([statment.menemonic isEqualToString:@"IFB"]) statment.opcode = OP_IFB;
-     
-     // non-basic opcodes
-     else if ([statment.menemonic isEqualToString:@"JSR"])
-     {
-         statment.opcode = 0x0;
-         statment.opcodeNonBasic = OP_JSR;
-     }
-     else
-     {
-         @throw [NSString stringWithFormat:@"No operand for instruction: %@", statment.menemonic];
-     }
+    [statment setOpcodeForMenemonic];
 }
 
 - (void)parseOperandsForStatment:(Statment*)statment

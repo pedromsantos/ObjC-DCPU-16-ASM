@@ -44,4 +44,35 @@
     return self;
 }
 
+- (void)setOpcodeForMenemonic
+{
+    // basic opcodes
+    if ([self.menemonic isEqualToString:@"SET"]) self.opcode = OP_SET;
+    else if ([self.menemonic isEqualToString:@"ADD"]) self.opcode = OP_ADD;
+    else if ([self.menemonic isEqualToString:@"SUB"]) self.opcode = OP_SUB;
+    else if ([self.menemonic isEqualToString:@"MUL"]) self.opcode = OP_MUL;
+    else if ([self.menemonic isEqualToString:@"DIV"]) self.opcode = OP_DIV;
+    else if ([self.menemonic isEqualToString:@"MOD"]) self.opcode = OP_MOD;
+    else if ([self.menemonic isEqualToString:@"SHL"]) self.opcode = OP_SHL;
+    else if ([self.menemonic isEqualToString:@"SHR"]) self.opcode = OP_SHR;
+    else if ([self.menemonic isEqualToString:@"AND"]) self.opcode = OP_AND;
+    else if ([self.menemonic isEqualToString:@"BOR"]) self.opcode = OP_BOR;
+    else if ([self.menemonic isEqualToString:@"XOR"]) self.opcode = OP_XOR;
+    else if ([self.menemonic isEqualToString:@"IFE"]) self.opcode = OP_IFE;
+    else if ([self.menemonic isEqualToString:@"IFN"]) self.opcode = OP_IFN;
+    else if ([self.menemonic isEqualToString:@"IFG"]) self.opcode = OP_IFG;
+    else if ([self.menemonic isEqualToString:@"IFB"]) self.opcode = OP_IFB;
+    
+    // non-basic opcodes
+    else if ([self.menemonic isEqualToString:@"JSR"])
+    {
+        self.opcode = 0x0;
+        self.opcodeNonBasic = OP_JSR;
+    }
+    else
+    {
+        @throw [NSString stringWithFormat:@"No operand for instruction: %@", self.menemonic];
+    }
+}
+
 @end
