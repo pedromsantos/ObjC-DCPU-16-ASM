@@ -23,7 +23,7 @@
 #import "Matcher.h"
 #import "LexerTokenType.h"
 
-@interface TokenDefinition : NSObject
+@interface RegexTokenMatcher : NSObject
 
 @property (nonatomic, strong) id<Matcher> matcher;
 @property (nonatomic, assign) enum LexerTokenType token;

@@ -20,10 +20,10 @@
  * SOFTWARE.
  */
 
-#import "TokenDefinition.h"
+#import "RegexTokenMatcher.h"
 #import "RegexMatcher.h"
 
-@implementation TokenDefinition
+@implementation RegexTokenMatcher
 
 @synthesize matcher;
 @synthesize token;

@@ -21,7 +21,7 @@
  */
 
 #import "LexerTests.h"
-#import "TokenDefinition.h"
+#import "RegexTokenMatcher.h"
 #import "LexerTokenType.h"
 #import "Lexer.h"
 
@@ -32,19 +32,19 @@
 - (void)setUp
 {
     self.tokenDefinitions = [NSArray arrayWithObjects:
-                             [[TokenDefinition alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
-                             [[TokenDefinition alloc] initWithToken:COMMENT pattern:@";.*$"],
-                             [[TokenDefinition alloc] initWithToken:LABEL pattern:@":\\w+"],
-                             [[TokenDefinition alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
-                             [[TokenDefinition alloc] initWithToken:INT pattern:@"[0-9]+"],
-                             [[TokenDefinition alloc] initWithToken:PLUS pattern:@"\\+"],
-                             [[TokenDefinition alloc] initWithToken:COMMA pattern:@","],
-                             [[TokenDefinition alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
-                             [[TokenDefinition alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
-                             [[TokenDefinition alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
-                             [[TokenDefinition alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
-                             [[TokenDefinition alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
-                             [[TokenDefinition alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
+                             [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
+                             [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
+                             [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
+                             [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
+                             [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
+                             [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
+                             [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
+                             [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
+                             [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
+                             [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
+                             [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
+                             [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
+                             [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
                              nil];
     
     [super setUp];

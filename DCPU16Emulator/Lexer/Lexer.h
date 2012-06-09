@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-#import "TokenDefinition.h"
+#import "RegexTokenMatcher.h"
 
 @interface Lexer : NSObject
 {
