@@ -119,18 +119,18 @@
         return NO;
     }
     
-    for (RegexTokenMatcher *tokenDefinition in self.tokenMatchers)
+    for (id<TokenMatcher> tokenMatcher in self.tokenMatchers)
     {
-        int matchedStartIndex = [tokenDefinition.matcher match:self.lineRemaining];
+        int matchedStartIndex = [tokenMatcher match:self.lineRemaining];
         
         if (matchedStartIndex > 0)
         {
             columnNumber += matchedStartIndex;
-            self.token = tokenDefinition.token;
+            self.token = tokenMatcher.token;
             
             [self consumeTokenCharacters:matchedStartIndex];
             
-            if([self isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:tokenDefinition])
+            if([self isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:tokenMatcher])
             {
                 continue;
             }
@@ -153,9 +153,9 @@
     }
 }
 
-- (BOOL)isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:(RegexTokenMatcher*)tokenDefinition
+- (BOOL)isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:(id<TokenMatcher>)tokenMatcher
 {
-    return ignoreWhiteSpace && tokenDefinition.token == WHITESPACE;
+    return ignoreWhiteSpace && tokenMatcher.token == WHITESPACE;
 }
 
 @end

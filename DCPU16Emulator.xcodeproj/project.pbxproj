@@ -74,7 +74,7 @@
 		C35D848915703C2500990B0A /* Matcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matcher.h; sourceTree = "<group>"; };
 		C35D848A15703C2500990B0A /* RegexMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexMatcher.h; sourceTree = "<group>"; };
 		C35D848B15703C2500990B0A /* RegexMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexMatcher.m; sourceTree = "<group>"; };
-		C35D848C15703C2500990B0A /* RegexTokenMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RegexTokenMatcher.h; sourceTree = "<group>"; };
+		C35D848C15703C2500990B0A /* RegexTokenMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexTokenMatcher.h; sourceTree = "<group>"; };
 		C35D848D15703C2500990B0A /* RegexTokenMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexTokenMatcher.m; sourceTree = "<group>"; };
 		C37BC0AE1573CA9000ECB88F /* DCPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPU.h; sourceTree = "<group>"; };
 		C37BC0AF1573CA9000ECB88F /* DCPU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPU.m; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 		C38A01A915715DAD00E38C42 /* Statment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statment.m; sourceTree = "<group>"; };
 		C38A01AB15717CCD00E38C42 /* ParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserTests.h; sourceTree = "<group>"; };
 		C38A01AC15717CCD00E38C42 /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
+		C38C1B201583A9A60034E0F3 /* TokenMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenMatcher.h; sourceTree = "<group>"; };
 		C3901327157AC82F00A387D0 /* CPU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CPU.png; sourceTree = "<group>"; };
 		C3901331157AE18600A387D0 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
 		C3901333157AE27000A387D0 /* frame_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_small.png; sourceTree = "<group>"; };
@@ -172,6 +173,7 @@
 				C35D848B15703C2500990B0A /* RegexMatcher.m */,
 				C35D848C15703C2500990B0A /* RegexTokenMatcher.h */,
 				C35D848D15703C2500990B0A /* RegexTokenMatcher.m */,
+				C38C1B201583A9A60034E0F3 /* TokenMatcher.h */,
 			);
 			path = Lexer;
 			sourceTree = "<group>";

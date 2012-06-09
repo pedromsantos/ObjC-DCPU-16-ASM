@@ -20,34 +20,14 @@
  * SOFTWARE.
  */
 
-#import "RegexTokenMatcher.h"
-#import "RegexMatcher.h"
+#import "Matcher.h"
+#import "LexerTokenType.h"
 
-@implementation RegexTokenMatcher
+@protocol TokenMatcher <NSObject>
 
-@synthesize matcher;
-@synthesize token;
+@property (nonatomic, strong) id<Matcher> matcher;
+@property (nonatomic, assign) enum LexerTokenType token;
 
-- (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString*)pattern
-{
-    self = [super init];
-    
-    if(self==nil)
-    {
-        return nil;
-    }
-    
-    RegexMatcher *regexMatcher = [[RegexMatcher alloc] initWithPattern:pattern];
-    self.matcher = regexMatcher;
-    
-    self.token = tokenType;
-    
-    return self;
-}
-
-- (int) match:(NSString*)text
-{
-    return [self.matcher match:text];
-}
+- (int) match:(NSString*)text;
 
 @end

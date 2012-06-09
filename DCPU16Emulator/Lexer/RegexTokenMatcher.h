@@ -21,12 +21,10 @@
  */
 
 #import "Matcher.h"
+#import "TokenMatcher.h"
 #import "LexerTokenType.h"
 
-@interface RegexTokenMatcher : NSObject
-
-@property (nonatomic, strong) id<Matcher> matcher;
-@property (nonatomic, assign) enum LexerTokenType token;
+@interface RegexTokenMatcher : NSObject <TokenMatcher>
 
 - (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString*)pattern;
 
