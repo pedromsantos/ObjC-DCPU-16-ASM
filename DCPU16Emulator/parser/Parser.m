@@ -54,22 +54,12 @@
         return NO;
     }
     
-    if(self.lexer.token == LABEL)
-    {
-        [self parseLabelForStatment:statment];
-    }
-    
+    [self parseLabelForStatment:statment];
     [self parseMenemonicForStatment:statment];
     [self parseOperandsForStatment:statment];
-    
-    [self.lexer peekNextToken];
-    
-    if(self.lexer.token == COMMENT)
-    {
-        [self.lexer consumeNextToken];
-    }
-    
     [self.statments addObject:statment];
+    
+    [self parseComments];
     
     return YES;
 }
@@ -94,10 +84,23 @@
     }
 }
 
+- (void)parseComments
+{
+    [self.lexer peekNextToken];
+    
+    if(self.lexer.token == COMMENT)
+    {
+        [self.lexer consumeNextToken];
+    }
+}
+
 - (void)parseLabelForStatment:(Statment*)statment
 {
-    [self.lexer consumeNextToken];
-    statment.label = self.lexer.tokenContents;
+    if(self.lexer.token == LABEL)
+    {
+        [self.lexer consumeNextToken];
+        statment.label = self.lexer.tokenContents;
+    }
 }
 
 - (void)parseMenemonicForStatment:(Statment*)statment
@@ -203,6 +206,7 @@
         }
         case LABELREF:
         {
+            // TODO could this be a labelref???
             break;
         }   
         case HEX:
@@ -225,9 +229,12 @@
                 case PLUS:
                 {
                     [self.lexer consumeNextToken];
+                    
                     operand.operandType = O_INDIRECT_NW_OFFSET;
                     [operand setRegisterValueForName:self.lexer.tokenContents];
+                    
                     [self.lexer consumeNextToken];
+                    
                     if (self.lexer.token != CLOSEBRACKET)
                     {
                         @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
@@ -246,7 +253,7 @@
         } 
         default:
         {
-            @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+            @throw [NSString stringWithFormat:@"Expected REGISTER, LITERAL or LABELREF at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
             break;
         }
     }
