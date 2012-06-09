@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+#import "RegexTokenMatcher.h"
 #import "Lexer.h"
 
 @interface Lexer()
