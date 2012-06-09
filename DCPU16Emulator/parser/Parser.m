@@ -24,15 +24,10 @@
 #import "Statment.h"
 #import "Operand.h"
 
-@interface Parser()
-
-@end
-
 @implementation Parser
 
 @synthesize lexer;
 @synthesize statments;
-
 
 - (void)parseSource:(NSString*)source
 {    
