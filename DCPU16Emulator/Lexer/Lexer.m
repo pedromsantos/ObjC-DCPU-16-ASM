@@ -25,7 +25,7 @@
 @interface Lexer()
 
 @property (nonatomic, strong) NSString *lineRemaining;
-@property (nonatomic, strong) NSArray *tokenDefinitions;
+@property (nonatomic, strong) NSArray *tokenMatchers;
 @property (nonatomic, strong) NSScanner *scanner;
 
 - (void)readNextLine;
@@ -35,7 +35,7 @@
 
 @implementation Lexer
 
-@synthesize tokenDefinitions;
+@synthesize tokenMatchers;
 @synthesize scanner;
 @synthesize token;
 @synthesize tokenContents;
@@ -45,23 +45,23 @@
 
 - (id)initWithScanner:(NSScanner *)textScanner
 {
-    NSArray* definitions = [NSArray arrayWithObjects:
-                            [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
-                            [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
-                            [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
-                            [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
-                            [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
-                            [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
-                            [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
-                            [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
-                            [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
-                            [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
-                            [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
-                            [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
-                            [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
-                            nil];
+    NSArray* tokenMatchers = [NSArray arrayWithObjects:
+                              [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
+                              [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
+                              [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
+                              [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
+                              [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
+                              [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
+                              [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
+                              [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
+                              [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
+                              [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
+                              [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
+                              [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
+                              [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
+                              nil];
     
-    return [self initWithTokenDefinitions:definitions scanner:textScanner];
+    return [self initWithTokenDefinitions:tokenMatchers scanner:textScanner];
 }
 
 - (id)initWithTokenDefinitions:(NSArray*)definitions scanner:(NSScanner*)textScanner
@@ -73,7 +73,7 @@
         return nil;
     }
     
-    self.tokenDefinitions = definitions;
+    self.tokenMatchers = definitions;
     self.scanner = textScanner;
     self.ignoreWhiteSpace = NO;
     
@@ -119,7 +119,7 @@
         return NO;
     }
     
-    for (RegexTokenMatcher *tokenDefinition in self.tokenDefinitions)
+    for (RegexTokenMatcher *tokenDefinition in self.tokenMatchers)
     {
         int matchedStartIndex = [tokenDefinition.matcher match:self.lineRemaining];
         
