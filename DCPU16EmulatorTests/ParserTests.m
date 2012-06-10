@@ -154,7 +154,12 @@
     
     Parser *p = [[Parser alloc] init];
     
-    STAssertThrows([p parseSource:code], nil);
+    p.didFinishParsingWithError = ^(NSString* message)
+    {
+        STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3"], nil);
+    };
+    
+    [p parseSource:code];
 }
 
 - (void)testParseCalledWithInvalidOperandThrows
@@ -163,7 +168,12 @@
     
     Parser *p = [[Parser alloc] init];
     
-    STAssertThrows([p parseSource:code], nil);
+    p.didFinishParsingWithError = ^(NSString* message)
+    {
+        STAssertTrue([message isEqualToString:@"Invalid operand at line 1:13"], nil);
+    };
+    
+    [p parseSource:code];
 }
 
 - (void)testParseCalledWithUnclosedBracketThrows
@@ -172,7 +182,12 @@
     
     Parser *p = [[Parser alloc] init];
     
-    STAssertThrows([p parseSource:code], nil);
+    p.didFinishParsingWithError = ^(NSString* message)
+    {
+        STAssertTrue([message isEqualToString:@"Expected CLOSEBRACKET or PLUS at line 1:12"], nil);
+    };
+    
+    [p parseSource:code];
 }
 
 - (void)testParseCalledWithNotchSampleGeneratesCorrectNumberOfStatments

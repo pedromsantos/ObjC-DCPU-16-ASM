@@ -29,6 +29,9 @@
 @synthesize lexer;
 @synthesize statments;
 
+@synthesize didFinishParsingSuccessfully;
+@synthesize didFinishParsingWithError;
+
 - (void)parseSource:(NSString*)source
 {    
     NSScanner *codeScanner = [NSScanner scannerWithString:source];
@@ -37,8 +40,23 @@
     
     self.statments = [[NSMutableArray alloc] init];
     
-    while ([self parseStatment])
-        ;
+    @try 
+    {
+        while ([self parseStatment])
+            ;
+        
+        if(self.didFinishParsingSuccessfully)
+        {
+            self.didFinishParsingSuccessfully();
+        }
+    }
+    @catch (NSString* message) 
+    {
+        if(self.didFinishParsingWithError)
+        {
+            self.didFinishParsingWithError(message);
+        }
+    }
 }
 
 - (BOOL)parseStatment

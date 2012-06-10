@@ -22,10 +22,16 @@
 
 #import "Lexer.h"
 
+typedef void(^parseCompletedSuccessfully)();
+typedef void(^parseFailedWithError)(NSString*);
+
 @interface Parser : NSObject
 
 @property (nonatomic, strong) Lexer* lexer;
 @property (nonatomic, strong) NSMutableArray* statments;
+
+@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
+@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
 
 - (void)parseSource:(NSString*)source;
 

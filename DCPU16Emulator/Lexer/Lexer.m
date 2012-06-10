@@ -83,6 +83,8 @@
     self.tokenMatchers = matchers;
     self.scanner = textScanner;
     self.ignoreWhiteSpace = NO;
+    lineNumber = 0;
+    columnNumber = 0;
     
     [self readNextLine];
     
@@ -93,18 +95,27 @@
 {
     if ([self.lineRemaining length] == 0)
     {
-        NSString *matchedNewlines = nil;
+        NSString *readLine = nil;
         
         do {
             [self.scanner
              scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet]
-             intoString:&matchedNewlines];
-            ++lineNumber;
-            columnNumber = 0;
+             intoString:&readLine];
             
-            self.lineRemaining = matchedNewlines;
+            [self setLineAndColumnNumberForNewLine:readLine];
+            
+            self.lineRemaining = readLine;
             
         } while (self.lineRemaining != nil && [self.lineRemaining length] == 0);
+    }
+}
+
+- (void)setLineAndColumnNumberForNewLine:(NSString *)newLine
+{
+    if(!peekMode && newLine != nil)
+    {
+        ++lineNumber;
+        columnNumber = 0;
     }
 }
 
@@ -132,7 +143,11 @@
         
         if (matchedStartIndex > 0)
         {
-            columnNumber += matchedStartIndex;
+            if(!peekMode)
+            {
+                columnNumber += matchedStartIndex;
+            }
+            
             self.token = tokenMatcher.token;
             
             [self consumeTokenCharacters:matchedStartIndex];
