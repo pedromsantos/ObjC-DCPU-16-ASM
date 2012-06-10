@@ -46,7 +46,7 @@
     return 0;
 }
 
-- (int)assembleOperandWithIndex:(int)index;
+- (int)assembleOperandWithIndex:(int)index
 {
     int shift = OPCODE_WIDTH + (index * OPERAND_WIDTH);
     
