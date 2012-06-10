@@ -203,13 +203,6 @@
     [self setRegister:PC value:value];
 }
 
-- (int)decrementAndReadInstructionAtStackPointer
-{
-    [self incrementStackPointer:-1];
-    int value = [self peekInstructionAtStackPointer];
-    return value;
-}
-
 - (void)incrementProgramCounter
 {
     int actualValue = [[ram objectForKey:PC] intValue];
@@ -229,17 +222,23 @@
     return value;
 }
 
-- (int)readInstructionAtStackPointer
+- (int)pop
 {
-    int value = [self peekInstructionAtStackPointer];
+    int value = [self peek];
     [self incrementStackPointer:1];
     return value;
 }
 
-- (void)stackPush:(int)value
+- (int)pushAddress
 {
     [self incrementStackPointer:-1];
-    [self setMemoryValue:value atIndex:[self peekInstructionAtStackPointer]];
+    return [self peek];
+}
+
+- (void)push:(int)value
+{
+    [self incrementStackPointer:-1];
+    [self setMemoryValue:value atIndex:[self peek]];
 }
 
 - (int)getMemoryValueAtIndex:(int)index inMemoryArea:(NSString*)area
@@ -284,7 +283,7 @@
     return [[memory objectAtIndex:[[ram objectForKey:PC] intValue]] intValue];
 }
 
-- (int)peekInstructionAtStackPointer
+- (int)peek
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
     

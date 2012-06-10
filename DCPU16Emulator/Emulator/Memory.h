@@ -65,10 +65,10 @@ typedef void(^memoryOperationNotification)(NSString*, int, int);
 - (void)setProgramCounter:(int)value;
 - (void)incrementProgramCounter;
 
-- (void)stackPush:(int)value;
-- (int)peekInstructionAtStackPointer;
-- (int)readInstructionAtStackPointer;
-- (int)decrementAndReadInstructionAtStackPointer;
+- (int)pushAddress;
+- (void)push:(int)value;
+- (int)peek;
+- (int)pop;
 
 - (void)assignResultOfOperation:(memoryOperation)block 
          usingOperand1AtAddress:(int)address1 

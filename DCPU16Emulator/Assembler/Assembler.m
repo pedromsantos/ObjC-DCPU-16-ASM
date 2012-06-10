@@ -23,6 +23,10 @@
 #import "Assembler.h"
 #import "Statment.h"
 #import "Parser.h"
+#import "NullOperand.h"
+#import "NextWordOperand.h"
+#import "IndirectNextWordOperand.h"
+#import "IndirectNextWordOffsetOperand.h"
 
 @implementation Assembler
 
@@ -55,7 +59,7 @@
     
     if (statment.opcode == 0)
     {
-        if (statment.secondOperand.operandType != O_NULL)
+        if (![statment.secondOperand isKindOfClass:[NullOperand class]])
         {
             @throw @"Non-basic opcode must have single operand.";
         }
@@ -96,60 +100,17 @@
 
 - (int)assembleOperand:(Operand*)operand forOpCode:(int)opCode withIndex:(int)index
 {
-    int shift = OPCODE_WIDTH + (index * OPERAND_WIDTH);
-    
-    switch (operand.operandType) {
-        case O_REG:
-        case O_INDIRECT_REG:
-        {
-            opCode |= (operand.operandType + operand.registerValue) << shift;
-            break;
-        }
-        case O_INDIRECT_NW_OFFSET:
-        {
-            opCode |= (0x10 + operand.registerValue) << shift;
-            break;
-        }
-        case O_NW:
-        case O_INDIRECT_NW:
-        {
-            if ((operand.nextWord <= OPERAND_LITERAL_MAX) && !([operand.label length] > 0))
-            {
-                opCode |= (operand.nextWord + OPERAND_LITERAL_OFFSET) << shift;
-            }
-            else
-            {
-                opCode |= operand.operandType << shift;
-            }
-            break;
-        }
-        case O_POP:
-        case O_PEEK:
-        case O_PUSH:
-        case O_SP:
-        case O_PC:
-        case O_O:
-        {
-            opCode |= operand.operandType << shift;
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }
-    
-    return opCode;
+    return opCode |= [operand assembleOperandWithIndex:index];
 }
 
 - (void)assembleOperandNextWord:(Operand*)operand
 {
-    if(operand.operandType == O_INDIRECT_NW_OFFSET)
+    if([operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
     {
         [self addOpCode:operand.nextWord];
     }
     
-    if (operand.operandType == O_NW || operand.operandType == O_INDIRECT_NW)
+    if ([operand isKindOfClass:[NextWordOperand class]] || [operand isKindOfClass:[IndirectNextWordOperand class]] )
     {
         if([operand.label length] > 0)
         {

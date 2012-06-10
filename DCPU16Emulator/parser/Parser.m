@@ -23,6 +23,8 @@
 #import "Lexer.h"
 #import "Statment.h"
 #import "Operand.h"
+#import "RegisterOperand.h"
+#import "NextWordOperand.h"
 
 @implementation Parser
 
@@ -139,41 +141,43 @@
 
 - (void)parseOperandsForStatment:(Statment*)statment
 {
-    [self parseOperand:statment.firstOperand forStatment:statment];
+    statment.firstOperand = [self parseOperandForStatment:statment];
     
     [self.lexer consumeNextToken];
     
     if (self.lexer.token == COMMA)
     {
-        [self parseOperand:statment.secondOperand forStatment:statment];
+        statment.secondOperand = [self parseOperandForStatment:statment];
     }
     else 
     {
-        statment.secondOperand.operandType = O_NULL;
+        statment.secondOperand = [Operand newOperand:O_NULL];
     }
 }
 
-- (void)parseOperand:(Operand*)operand forStatment:(Statment*)stament
+- (Operand*)parseOperandForStatment:(Statment*)stament
 {
     [self.lexer consumeNextToken];
+    
+    Operand* operand;
     
     switch (self.lexer.token)
     {
         case OPENBRACKET:
         {
-            [self parseIndirectOperand:operand forStatment:stament];
+            operand = [self parseIndirectOperandForStatment:stament];
             break;
         }   
         case REGISTER:
         case LABELREF:
         {
-            operand.operandType = [Operand operandTypeForName:self.lexer.tokenContents];
+            operand = [Operand newOperand:[Operand operandTypeForName:self.lexer.tokenContents]];
             
-            if(operand.operandType == O_REG)
+            if([operand isKindOfClass:[RegisterOperand class]])
             {
                 [operand setRegisterValueForName:self.lexer.tokenContents];
             }
-            else if (operand.operandType == O_NW)
+            else if([operand isKindOfClass:[NextWordOperand class]])
             {
                 operand.label = self.lexer.tokenContents;
                 operand.nextWord = 0;
@@ -182,13 +186,13 @@
         }   
         case HEX:
         {
-            operand.operandType = O_NW;
+            operand = [Operand newOperand:O_NEXT_WORD];
             operand.nextWord = [self parseHexLiteral];
             break;
         }   
         case INT:
         {
-            operand.operandType = O_NW;
+            operand = [Operand newOperand:O_NEXT_WORD];
             operand.nextWord = [self parseDecimalLiteral];
             break;
         }
@@ -198,6 +202,8 @@
             break;
         }
     }
+    
+    return operand;
 }
 
 - (uint16_t)parseHexLiteral
@@ -218,14 +224,18 @@
     return (uint16_t)outVal;
 }
 
-- (void)parseIndirectOperand:(Operand*)operand forStatment:(Statment*)stament
+- (Operand*)parseIndirectOperandForStatment:(Statment*)stament
 {
     [self.lexer consumeNextToken];
+    
+    Operand* operand;
     
     switch (self.lexer.token)
     {
         case REGISTER:
         {
+            operand = [Operand newOperand:O_INDIRECT_REG];
+            
             [self.lexer consumeNextToken];
             
             if (self.lexer.token != CLOSEBRACKET)
@@ -233,7 +243,6 @@
                 @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
             }
             
-            operand.operandType = O_INDIRECT_REG;
             break;
         }
         case LABELREF:
@@ -243,7 +252,7 @@
         }   
         case HEX:
         {
-            operand.nextWord = [self parseHexLiteral];
+            int literalValue = [self parseHexLiteral];
             
             [self.lexer consumeNextToken];
             
@@ -251,14 +260,14 @@
             {
                 case CLOSEBRACKET:
                 {
-                    operand.operandType = O_INDIRECT_NW;
+                    operand = [Operand newOperand:O_INDIRECT_NEXT_WORD];
                     break;
                 }
                 case PLUS:
                 {
                     [self.lexer consumeNextToken];
                     
-                    operand.operandType = O_INDIRECT_NW_OFFSET;
+                    operand = [Operand newOperand:O_INDIRECT_NEXT_WORD_OFFSET];
                     [operand setRegisterValueForName:self.lexer.tokenContents];
                     
                     [self.lexer consumeNextToken];
@@ -277,6 +286,8 @@
                 }
             }
             
+            operand.nextWord = literalValue;
+            
             break;
         } 
         default:
@@ -285,6 +296,8 @@
             break;
         }
     }
+    
+    return operand;
 }
 
 @end

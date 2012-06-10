@@ -23,6 +23,10 @@
 #import "ParserTests.h"
 #import "Parser.h"
 #import "Statment.h"
+#import "RegisterOperand.h"
+#import "NextWordOperand.h"
+#import "IndirectNextWordOperand.h"
+#import "ProgramCounterOperand.h"
 
 @implementation ParserTests
 
@@ -62,9 +66,9 @@
     
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
-    STAssertTrue(s.firstOperand.operandType == O_REG, nil);
+    STAssertTrue([s.firstOperand isKindOfClass:[RegisterOperand class]], nil);
     STAssertTrue(s.firstOperand.registerValue == REG_I, nil);
-    STAssertTrue(s.secondOperand.operandType == O_NW, nil);
+    STAssertTrue([s.secondOperand isKindOfClass:[NextWordOperand class]], nil);
     STAssertTrue(s.secondOperand.nextWord == 10, nil);
 }
 
@@ -82,9 +86,9 @@
     
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
-    STAssertTrue(s.firstOperand.operandType == O_REG, nil);
+    STAssertTrue([s.firstOperand isKindOfClass:[RegisterOperand class]], nil);
     STAssertTrue(s.firstOperand.registerValue == REG_A, nil);
-    STAssertTrue(s.secondOperand.operandType == O_NW, nil);
+    STAssertTrue([s.secondOperand isKindOfClass:[NextWordOperand class]], nil);
     STAssertTrue(s.secondOperand.nextWord == 48, nil);
 }
 
@@ -102,9 +106,9 @@
     
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
-    STAssertTrue(s.firstOperand.operandType == O_INDIRECT_NW, nil);
+    STAssertTrue([s.firstOperand isKindOfClass:[IndirectNextWordOperand class]], nil);
     STAssertTrue(s.firstOperand.nextWord == 4096, nil);
-    STAssertTrue(s.secondOperand.operandType == O_NW, nil);
+    STAssertTrue([s.secondOperand isKindOfClass:[NextWordOperand class]], nil);
     STAssertTrue(s.secondOperand.nextWord == 32, nil);
 }
 
@@ -122,8 +126,8 @@
     
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
-    STAssertTrue(s.firstOperand.operandType == O_PC, nil);
-    STAssertTrue(s.secondOperand.operandType == O_NW, nil);
+    STAssertTrue([s.firstOperand isKindOfClass:[ProgramCounterOperand class]], nil);
+    STAssertTrue([s.secondOperand isKindOfClass:[NextWordOperand class]], nil);
     STAssertTrue([s.secondOperand.label isEqualToString:@"crash"], nil);
     STAssertTrue(s.secondOperand.nextWord == 0, nil);
 }
@@ -143,7 +147,7 @@
     STAssertTrue(s.opcode == 0, nil);
     STAssertTrue(s.opcodeNonBasic == OP_JSR, nil);
     STAssertTrue([s.menemonic isEqualToString:@"JSR"], nil);
-    STAssertTrue(s.firstOperand.operandType == O_NW, nil);
+    STAssertTrue([s.firstOperand isKindOfClass:[NextWordOperand class]], nil);
     STAssertTrue([s.firstOperand.label isEqualToString:@"testsub"], nil);
     STAssertTrue(s.firstOperand.nextWord == 0, nil);
 }

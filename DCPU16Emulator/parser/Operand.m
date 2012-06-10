@@ -21,13 +21,37 @@
  */
 
 #import "Operand.h"
+#import "PopOperand.h"
+#import "PeekOperand.h"
+#import "PushOperand.h"
+#import "NullOperand.h"
+#import "LiteralOperand.h"
+#import "OverflowOperand.h"
+#import "RegisterOperand.h"
+#import "NextWordOperand.h"
+#import "StackPointerOperand.h"
+#import "ProgramCounterOperand.h"
+#import "IndirectRegisterOperand.h"
+#import "IndirectNextWordOperand.h"
+#import "IndirectNextWordOffsetOperand.h"
 
 @implementation Operand
 
-@synthesize operandType;
 @synthesize registerValue;
 @synthesize label;
 @synthesize nextWord;
+
+- (int)assembleWithShift:(int)shift
+{
+    return 0;
+}
+
+- (int)assembleOperandWithIndex:(int)index;
+{
+    int shift = OPCODE_WIDTH + (index * OPERAND_WIDTH);
+    
+    return [self assembleWithShift:shift];
+}
 
 - (void)setRegisterValueForName:(NSString*)name
 {
@@ -57,7 +81,54 @@
     if ([name isEqualToString: @"PEEK"]) return O_PEEK;
     if ([name isEqualToString: @"PUSH"]) return O_PUSH;
     
-    return O_NW;
+    return O_NEXT_WORD;
+}
+
++ (Operand*)newOperand:(enum operand_type)type
+{
+    switch (type) 
+    {
+        case O_REG:
+            return [[RegisterOperand alloc] init];
+            break;
+        case O_INDIRECT_REG:
+            return [[IndirectRegisterOperand alloc] init];
+            break;
+        case O_INDIRECT_NEXT_WORD_OFFSET:
+            return [[IndirectNextWordOffsetOperand alloc] init];
+            break;
+        case O_POP:
+            return [[PopOperand alloc] init];
+            break;
+        case O_PEEK:
+            return [[PeekOperand alloc] init];
+            break;
+        case O_PUSH:
+            return [[PushOperand alloc] init];
+            break;
+        case O_SP:
+            return [[StackPointerOperand alloc] init];
+            break;
+        case O_PC:
+            return [[ProgramCounterOperand alloc] init];
+            break;
+        case O_O:
+            break;
+        case O_INDIRECT_NEXT_WORD:
+            return [[IndirectNextWordOperand alloc] init];
+            break;
+        case O_NEXT_WORD:
+            return [[NextWordOperand alloc] init];
+            break;
+        case O_LITERAL:
+            return [[LiteralOperand alloc] init];
+            break;
+        case O_NULL:
+            return [[NullOperand alloc] init];
+            break;
+    }
+    
+    return nil;
 }
 
 @end

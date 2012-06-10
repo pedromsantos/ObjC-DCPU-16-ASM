@@ -20,18 +20,23 @@
  * SOFTWARE.
  */
 
+#define OPCODE_WIDTH 4
+#define OPERAND_WIDTH 6
+#define OPERAND_LITERAL_MAX 0x1F
+#define OPERAND_LITERAL_OFFSET 0x20
+
 enum operand_type {
     O_REG = 0x00,
     O_INDIRECT_REG = 0x08,
-    O_INDIRECT_NW_OFFSET = 0x10,
+    O_INDIRECT_NEXT_WORD_OFFSET = 0x10,
     O_POP = 0x18,
     O_PEEK = 0x19,
     O_PUSH = 0x1A,
     O_SP = 0x1B,
     O_PC = 0x1C,
     O_O = 0x1D,
-    O_INDIRECT_NW = 0x1E,
-    O_NW = 0x1F,
+    O_INDIRECT_NEXT_WORD = 0x1E,
+    O_NEXT_WORD = 0x1F,
     O_LITERAL = 0x20,
     
     O_NULL = 0xDEAD,
@@ -56,13 +61,16 @@ enum operand_special_register {
 
 @interface Operand : NSObject
 
-@property (nonatomic, assign) enum operand_type operandType;
 @property (nonatomic, assign) enum operand_register_value registerValue;
 @property (nonatomic, assign) uint16_t nextWord;
 @property (nonatomic, strong) NSString* label;
 
 + (enum operand_type)operandTypeForName:(NSString*)name;
++ (Operand*)newOperand:(enum operand_type)type;
 
 - (void) setRegisterValueForName:(NSString*)name;
+
+- (int)assembleWithShift:(int)shift;
+- (int)assembleOperandWithIndex:(int)index;
 
 @end

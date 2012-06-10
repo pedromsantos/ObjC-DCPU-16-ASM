@@ -50,16 +50,16 @@
     int opcode =  instruction &  OP_MASK;
     int firstOperandValue  = (instruction >> A_SHIFT) & A_MASK;
     int secondOperandValue  = (instruction >> B_SHIFT) & B_MASK;
-
+    
     if (opcode == 0) 
     {
         switch (firstOperandValue) 
         {
             case OP_JSR:
             {
-
+                
                 firstOperandValue = [self processOperandType:secondOperandValue];
-                [self.memory stackPush:[self.memory peekInstructionAtProgramCounter]];
+                [self.memory push:[self.memory peekInstructionAtProgramCounter]];
                 [self.memory setProgramCounter:firstOperandValue];
                 break;
             }
@@ -82,50 +82,76 @@
             case OP_SET: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_ADD: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 += op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                [self.memory assignResultOfOperation:^(int op1, int op2)
+                 {
+                     int temp = op1 + op2; 
+                     if (temp > 0xFFFF) [self.memory setOverflowRegisterToValue:0x0001];
+                     return temp; 
+                 }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_SUB: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 -= op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                [self.memory assignResultOfOperation:^(int op1, int op2)
+                 {
+                     int temp = op1 - op2;
+                     if (temp < 0x0) [self.memory setOverflowRegisterToValue:0xFFFF];
+                     return temp; 
+                 }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_MUL: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 *= op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                [self.memory assignResultOfOperation:^(int op1, int op2)
+                {
+                    int temp = op1 * op2; 
+                    [self.memory setOverflowRegisterToValue:(temp >> 16) & 0xFFFF];
+                    return temp; 
+                }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_DIV: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 /= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2)
+                {
+                    if (op2 == 0)
+                    {
+                        [self.memory setOverflowRegisterToValue:0x0];
+                        return 0;
+                    }
+                    
+                    [self.memory setOverflowRegisterToValue:((op1 << 16) / op2) & 0xFFFF];
+                    int temp = op1 / op2; 
+                    return temp; 
+                }
                               usingOperand1AtAddress:firstOperandValue 
                                         inMemoryArea:fisrtOperandState
                                 andOperand2AtAddress:secondOperandValue 
@@ -136,7 +162,14 @@
             }
             case OP_MOD: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 %= op2; }
+                [self.memory assignResultOfOperation:^(int op1, int op2){
+                    if (op2 == 0)
+                    {
+                        return 0;
+                    }
+                    
+                    return op1 %= op2;
+                }
                               usingOperand1AtAddress:firstOperandValue 
                                         inMemoryArea:fisrtOperandState
                                 andOperand2AtAddress:secondOperandValue 
@@ -147,57 +180,65 @@
             }
             case OP_SHL: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 <<= op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                [self.memory assignResultOfOperation:^(int op1, int op2)
+                {
+                    [self.memory setOverflowRegisterToValue:((op1 << op2) >> 16) & 0xFFFF];
+                    return op1 <<= op2; 
+                }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_SHR: 
             {
-                [self.memory assignResultOfOperation:^(int op1, int op2){ int temp = op1 >>= op2; return temp &= SHORT_MASK; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                [self.memory assignResultOfOperation:^(int op1, int op2)
+                 {
+                     [self.memory setOverflowRegisterToValue:((op1 << 16) >> op2) & 0xFFFF];
+                     return op1 >>= op2; 
+                 }
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_AND: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 &= op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_BOR: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 |= op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_XOR: 
             {
                 [self.memory assignResultOfOperation:^(int op1, int op2){ return op1 ^= op2; }
-                           usingOperand1AtAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState
-                             andOperand2AtAddress:secondOperandValue 
-                                     inMemoryArea:secondOperandState
-                                        toAddress:firstOperandValue 
-                                     inMemoryArea:fisrtOperandState];
+                              usingOperand1AtAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState
+                                andOperand2AtAddress:secondOperandValue 
+                                        inMemoryArea:secondOperandState
+                                           toAddress:firstOperandValue 
+                                        inMemoryArea:fisrtOperandState];
                 break;
             }
             case OP_IFE: 
@@ -238,11 +279,6 @@
                 return NO;
             }
         }
-        
-        if (opcode > 0x1 && opcode < 0x9 && opcode != 0x6)
-        {
-            //[self.ram setOverflowRegisterToValue:([ram getMemoryValueAtIndex:a] >> SHORT_SHIFT) & SHORT_MASK];
-        }
     }
     
     return YES;
@@ -257,7 +293,7 @@
         operandState = REG;
         return code;
     } 
-    else if (code < O_INDIRECT_NW_OFFSET) 
+    else if (code < O_INDIRECT_NEXT_WORD_OFFSET) 
     {
         return [self.memory getValueForRegister:code % NUM_REGISTERS];
     } 
@@ -269,22 +305,22 @@
     else if (code == O_POP)
     {
         operandState = MEM;
-        return [memory readInstructionAtStackPointer];
+        return [memory pop];
     }
     else if (code == O_PEEK)
     {
         operandState = MEM;
-        return [memory peekInstructionAtStackPointer];
+        return [memory peek];
     }
     else if (code == O_PUSH)
     {
         operandState = MEM;
-        return [memory decrementAndReadInstructionAtStackPointer];
+        return [memory pushAddress];
     }
     else if (code == O_SP)
     {
         operandState = SP;
-        return [memory decrementAndReadInstructionAtStackPointer];
+        return 0;
     }
     else if (code == O_PC)
     {
@@ -296,12 +332,12 @@
         operandState = OV;
         return 0;
     }
-    else if (code == O_INDIRECT_NW)
+    else if (code == O_INDIRECT_NEXT_WORD)
     {
         operandState = MEM;
         return [memory readInstructionAtProgramCounter];
     }
-    else if (code == O_NW)
+    else if (code == O_NEXT_WORD)
     {
         operandState = PC;
         return [memory readInstructionAtProgramCounter];
