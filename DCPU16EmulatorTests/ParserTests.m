@@ -170,7 +170,7 @@
     
     p.didFinishParsingWithError = ^(NSString* message)
     {
-        STAssertTrue([message isEqualToString:@"Invalid operand at line 1:13 found '\"testsub\"'"], nil);
+        STAssertTrue([message isEqualToString:@"Expected operand at line 1:13 found '\"testsub\"'"], nil);
     };
     
     [p parseSource:code];

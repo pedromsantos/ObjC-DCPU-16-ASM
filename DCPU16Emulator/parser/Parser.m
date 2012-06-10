@@ -202,7 +202,7 @@
         }
         default:
         {
-            @throw [NSString stringWithFormat:@"Invalid operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
+            @throw [NSString stringWithFormat:@"Expected operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
             break;
         }
     }
