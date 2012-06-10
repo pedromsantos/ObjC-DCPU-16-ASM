@@ -56,6 +56,10 @@
         {
             self.didFinishParsingWithError(message);
         }
+        else 
+        {
+            @throw;
+        }
     }
 }
 
