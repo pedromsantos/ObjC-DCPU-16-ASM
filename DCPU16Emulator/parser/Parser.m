@@ -56,7 +56,7 @@
         {
             self.didFinishParsingWithError(message);
         }
-        else 
+        else
         {
             @throw;
         }
@@ -183,21 +183,13 @@
         case HEX:
         {
             operand.operandType = O_NW;
-            uint outVal;
-            NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
-            [scanner scanHexInt:&outVal];
-            
-            operand.nextWord = (uint16_t)outVal;
+            operand.nextWord = [self parseHexLiteral];
             break;
         }   
         case INT:
         {
             operand.operandType = O_NW;
-            int outVal;
-            NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
-            [scanner scanInt:&outVal];
-                                  
-            operand.nextWord = (uint16_t)outVal;
+            operand.nextWord = [self parseDecimalLiteral];
             break;
         }
         default:
@@ -206,6 +198,24 @@
             break;
         }
     }
+}
+
+- (uint16_t)parseHexLiteral
+{
+    uint outVal;
+    NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
+    [scanner scanHexInt:&outVal];
+    
+    return (uint16_t)outVal;
+}
+
+- (uint16_t)parseDecimalLiteral
+{
+    int outVal;
+    NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
+    [scanner scanInt:&outVal];
+    
+    return (uint16_t)outVal;
 }
 
 - (void)parseIndirectOperand:(Operand*)operand forStatment:(Statment*)stament
@@ -233,11 +243,7 @@
         }   
         case HEX:
         {
-            uint outVal;
-            NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
-            [scanner scanHexInt:&outVal];
-            
-            operand.nextWord = (uint16_t)outVal;
+            operand.nextWord = [self parseHexLiteral];
             
             [self.lexer consumeNextToken];
             

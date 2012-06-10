@@ -114,7 +114,7 @@
 {
     if(!peekMode && newLine != nil)
     {
-        ++lineNumber;
+        lineNumber++;
         columnNumber = 0;
     }
 }
