@@ -156,7 +156,7 @@
     
     p.didFinishParsingWithError = ^(NSString* message)
     {
-        STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3"], nil);
+        STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3 found 'JSM'"], nil);
     };
     
     [p parseSource:code];
@@ -170,7 +170,7 @@
     
     p.didFinishParsingWithError = ^(NSString* message)
     {
-        STAssertTrue([message isEqualToString:@"Invalid operand at line 1:13"], nil);
+        STAssertTrue([message isEqualToString:@"Invalid operand at line 1:13 found '\"testsub\"'"], nil);
     };
     
     [p parseSource:code];
@@ -184,7 +184,7 @@
     
     p.didFinishParsingWithError = ^(NSString* message)
     {
-        STAssertTrue([message isEqualToString:@"Expected CLOSEBRACKET or PLUS at line 1:12"], nil);
+        STAssertTrue([message isEqualToString:@"Expected CLOSEBRACKET or PLUS at line 1:12 found ','"], nil);
     };
     
     [p parseSource:code];

@@ -131,7 +131,7 @@
     
     if(self.lexer.token != INSTRUCTION)
     {
-        @throw [NSString stringWithFormat:@"Expected INSTRUCTION at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+        @throw [NSString stringWithFormat:@"Expected INSTRUCTION at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
     }
     
     statment.menemonic = self.lexer.tokenContents;
@@ -202,7 +202,7 @@
         }
         default:
         {
-            @throw [NSString stringWithFormat:@"Invalid operand at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+            @throw [NSString stringWithFormat:@"Invalid operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
             break;
         }
     }
@@ -220,7 +220,7 @@
             
             if (self.lexer.token != CLOSEBRACKET)
             {
-                @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+                @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
             }
             
             operand.operandType = O_INDIRECT_REG;
@@ -259,14 +259,14 @@
                     
                     if (self.lexer.token != CLOSEBRACKET)
                     {
-                        @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+                        @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
                     }
                     
                     break;
                 }   
                 default:
                 {
-                    @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+                    @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
                     break;
                 }
             }
@@ -275,7 +275,7 @@
         } 
         default:
         {
-            @throw [NSString stringWithFormat:@"Expected REGISTER, LITERAL or LABELREF at line %d:%d", self.lexer.lineNumber, self.lexer.columnNumber];
+            @throw [NSString stringWithFormat:@"Expected REGISTER, LITERAL or LABELREF at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
             break;
         }
     }
