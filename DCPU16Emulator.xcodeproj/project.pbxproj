@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DEA1444158686E1004B641B /* Program.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA1443158686E0004B641B /* Program.m */; };
 		C35D8480157033EB00990B0A /* RegExMatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D847F157033EB00990B0A /* RegExMatcherTests.m */; };
 		C35D84841570383D00990B0A /* LexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D84831570383D00990B0A /* LexerTests.m */; };
 		C35D848E15703C2500990B0A /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848715703C2500990B0A /* Lexer.m */; };
@@ -78,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3DEA1442158686DF004B641B /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
+		3DEA1443158686E0004B641B /* Program.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Program.m; sourceTree = "<group>"; };
 		C35D847F157033EB00990B0A /* RegExMatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExMatcherTests.m; sourceTree = "<group>"; };
 		C35D84821570383D00990B0A /* LexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexerTests.h; sourceTree = "<group>"; };
 		C35D84831570383D00990B0A /* LexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexerTests.m; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				C3B6BA39153DE4FE0013163A /* Supporting Files */,
 				C3B6BA4A153DE4FE0013163A /* ViewController.h */,
 				C3B6BA4B153DE4FE0013163A /* ViewController.m */,
+				3DEA1442158686DF004B641B /* Program.h */,
+				3DEA1443158686E0004B641B /* Program.m */,
 			);
 			path = DCPU16Emulator;
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 				C3860AEE158551DD001F2A3D /* PushOperand.m in Sources */,
 				C3860AEF158551DD001F2A3D /* RegisterOperand.m in Sources */,
 				C3860AF0158551DD001F2A3D /* StackPointerOperand.m in Sources */,
+				3DEA1444158686E1004B641B /* Program.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

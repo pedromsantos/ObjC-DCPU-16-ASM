@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -1361,7 +1361,6 @@
                         <outlet property="currentIbstructionOpCode" destination="uTK-ZT-dus" id="S6O-py-r6j"/>
                         <outlet property="currentIbstructionOperand2" destination="AWL-zW-9ut" id="QGB-uL-3Qo"/>
                         <outlet property="currentIbstructionOperend1" destination="JC1-wD-f5c" id="qPn-18-nWu"/>
-                        <outlet property="currentInstruction" destination="7oX-Ti-lHG" id="dRL-bA-sFI"/>
                         <outlet property="currentInstructionLabel" destination="Gog-du-DnL" id="qDM-9T-Qck"/>
                         <outlet property="enterButton" destination="0ls-v6-HS7" id="mwo-r2-Lg4"/>
                         <outlet property="inputField" destination="GDJ-W2-UhU" id="g7K-Lf-TrG"/>
@@ -1405,7 +1404,6 @@
                         <outletCollection property="instructionButtonCollection" destination="qd8-s1-x1B" id="AA7-4w-Z0O"/>
                     </connections>
                 </viewController>
-                <customObject id="7oX-Ti-lHG" customClass="Instruction"/>
             </objects>
             <point key="canvasLocation" x="-429" y="-87"/>
         </scene>
@@ -1857,9 +1855,6 @@
         <class className="DigitalFontLabel" superclassName="UILabel">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DigitalFontLabel.h"/>
         </class>
-        <class className="Instruction" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Instruction.h"/>
-        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
@@ -1876,7 +1871,6 @@
                 <relationship kind="outlet" name="currentIbstructionOpCode" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="currentIbstructionOperand2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="currentIbstructionOperend1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="currentInstruction" candidateClass="Instruction"/>
                 <relationship kind="outlet" name="currentInstructionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="enterButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="inputField" candidateClass="UITextField"/>

@@ -23,6 +23,7 @@
 #import <UIKit/UIKit.h>
 #import "Instruction.h"
 #import "DCPU.h"
+#import "Program.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -32,12 +33,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
 
 @property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
-@property (strong, nonatomic) NSMutableArray* instructionSet;
-@property (strong, nonatomic) NSMutableArray* assembledInstructionSet;
-
-@property (strong, nonatomic) NSDictionary *mapRegisterNameToControl;
-@property (strong, nonatomic) DCPU *emulator;
-@property (strong, nonatomic) IBOutlet Instruction* currentInstruction;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
 
