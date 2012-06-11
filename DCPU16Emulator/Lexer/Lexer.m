@@ -142,17 +142,12 @@
         int matchedStartIndex = [tokenMatcher match:self.lineRemaining];
         
         if (matchedStartIndex > 0)
-        {
-            if(!peekMode)
-            {
-                columnNumber += matchedStartIndex;
-            }
-            
+        {            
             self.token = tokenMatcher.token;
             
             [self consumeTokenCharacters:matchedStartIndex];
             
-            if([self isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:tokenMatcher])
+            if([self isTokenInIgnoreList:tokenMatcher])
             {
                 continue;
             }
@@ -170,12 +165,13 @@
 {
     if(!peekMode)
     {
+        columnNumber += matchedStartIndex;
         self.tokenContents = [self.lineRemaining  substringWithRange:NSMakeRange(0, matchedStartIndex)];
         self.lineRemaining = [self.lineRemaining substringFromIndex:matchedStartIndex];
     }
 }
 
-- (BOOL)isIgnoreWhiteSpaceModeOnAndTokenDefinitionIsWhiteSpace:(id<TokenMatcher>)tokenMatcher
+- (BOOL)isTokenInIgnoreList:(id<TokenMatcher>)tokenMatcher
 {
     return ignoreWhiteSpace && tokenMatcher.token == WHITESPACE;
 }
