@@ -141,13 +141,13 @@
 
 - (void)parseOperandsForStatment:(Statment*)statment
 {
-    statment.firstOperand = [self parseOperandForStatment:statment];
+    statment.firstOperand = [self parseOperand];
     
     [self.lexer consumeNextToken];
     
     if (self.lexer.token == COMMA)
     {
-        statment.secondOperand = [self parseOperandForStatment:statment];
+        statment.secondOperand = [self parseOperand];
     }
     else 
     {
@@ -155,7 +155,7 @@
     }
 }
 
-- (Operand*)parseOperandForStatment:(Statment*)stament
+- (Operand*)parseOperand
 {
     [self.lexer consumeNextToken];
     
@@ -165,7 +165,7 @@
     {
         case OPENBRACKET:
         {
-            operand = [self parseIndirectOperandForStatment:stament];
+            operand = [self parseIndirectOperand];
             break;
         }   
         case REGISTER:
@@ -224,7 +224,7 @@
     return (uint16_t)outVal;
 }
 
-- (Operand*)parseIndirectOperandForStatment:(Statment*)stament
+- (Operand*)parseIndirectOperand
 {
     [self.lexer consumeNextToken];
     
