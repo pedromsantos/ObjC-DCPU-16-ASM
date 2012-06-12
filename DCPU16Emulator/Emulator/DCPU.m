@@ -72,6 +72,12 @@
     }
     else 
     {
+        // Next refator will start here
+        Statment* statment = [[Statment alloc] init];
+        statment.opcode = opcode;
+        statment.firstOperand = [Operand newExecutingOperand:firstOperandValue];
+        statment.secondOperand = [Operand newExecutingOperand:secondOperandValue];
+        
         firstOperandValue = [self processOperandType:firstOperandValue];
         NSString* fisrtOperandState = [operandState copy];
         secondOperandValue = [self processOperandType:secondOperandValue];

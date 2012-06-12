@@ -35,6 +35,8 @@
 #import "IndirectNextWordOperand.h"
 #import "IndirectNextWordOffsetOperand.h"
 
+#define NUM_LITERALS     32
+
 @implementation Operand
 
 @synthesize registerValue;
@@ -129,6 +131,66 @@
     }
     
     return nil;
+}
+
++ (Operand*)newExecutingOperand:(int)code 
+{
+    Operand* operand;
+    
+    if (code < O_INDIRECT_REG) 
+    {
+        operand = [[RegisterOperand alloc] init];
+        operand.registerValue = code;
+    } 
+    else if (code < O_INDIRECT_NEXT_WORD_OFFSET) 
+    {
+        operand = [[IndirectNextWordOffsetOperand alloc] init];
+        operand.nextWord = code;
+    } 
+    else if (code < O_POP) 
+    {
+        operand = [[PushOperand alloc] init];
+    }
+    else if (code == O_POP)
+    {
+        operand = [[PopOperand alloc] init];
+    }
+    else if (code == O_PEEK)
+    {
+        operand = [[PeekOperand alloc] init];
+    }
+    else if (code == O_PUSH)
+    {
+        operand = [[PushOperand alloc] init];
+    }
+    else if (code == O_SP)
+    {
+        operand = [[StackPointerOperand alloc] init];
+    }
+    else if (code == O_PC)
+    {
+        operand = [[ProgramCounterOperand alloc] init];
+    }
+    else if (code == O_O)
+    {
+        operand = [[OverflowOperand alloc] init];
+    }
+    else if (code == O_INDIRECT_NEXT_WORD)
+    {
+        operand = [[IndirectNextWordOperand alloc] init];
+        operand.nextWord = code;
+    }
+    else if (code == O_NEXT_WORD)
+    {
+        operand = [[ProgramCounterOperand alloc] init];
+    }
+    else
+    {
+        operand = [[LiteralOperand alloc] init];
+        operand.nextWord = (code - O_LITERAL) % NUM_LITERALS;;
+    }
+    
+    return operand;
 }
 
 @end

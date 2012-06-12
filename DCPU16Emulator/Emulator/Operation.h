@@ -21,11 +21,12 @@
  */
 
 #import "Memory.h"
+#import "Operand.h"
 
 @protocol Operation
 
 @property (nonatomic, strong) Memory *memory;
 
-- (void)executeOperationWithOperandA;
+- (void)executeOperationWithOperandA(Operand*)operandA operandB:(Operand*)operandB;
 
 @end
