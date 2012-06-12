@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DEA1444158686E1004B641B /* Program.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA1443158686E0004B641B /* Program.m */; };
 		C35D8480157033EB00990B0A /* RegExMatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D847F157033EB00990B0A /* RegExMatcherTests.m */; };
 		C35D84841570383D00990B0A /* LexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D84831570383D00990B0A /* LexerTests.m */; };
 		C35D848E15703C2500990B0A /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D848715703C2500990B0A /* Lexer.m */; };
@@ -28,6 +27,13 @@
 		C3860AEE158551DD001F2A3D /* PushOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860ADE158551DD001F2A3D /* PushOperand.m */; };
 		C3860AEF158551DD001F2A3D /* RegisterOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AE0158551DD001F2A3D /* RegisterOperand.m */; };
 		C3860AF0158551DD001F2A3D /* StackPointerOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AE2158551DD001F2A3D /* StackPointerOperand.m */; };
+		C3860B0715872C2E001F2A3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AF815872C2E001F2A3D /* ViewController.m */; };
+		C3860B0815872C2E001F2A3D /* Instruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AFB15872C2E001F2A3D /* Instruction.m */; };
+		C3860B0915872C2E001F2A3D /* Program.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AFD15872C2E001F2A3D /* Program.m */; };
+		C3860B0A15872C2E001F2A3D /* DigitalFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860B0015872C2E001F2A3D /* DigitalFontButton.m */; };
+		C3860B0B15872C2E001F2A3D /* DigitalFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860B0215872C2E001F2A3D /* DigitalFontLabel.m */; };
+		C3860B0C15872C2E001F2A3D /* InstructionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860B0515872C2E001F2A3D /* InstructionCell.m */; };
+		C3860B0D15872C2E001F2A3D /* instructionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3860B0615872C2E001F2A3D /* instructionCell.xib */; };
 		C38A01A415715D7300E38C42 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A315715D7300E38C42 /* Parser.m */; };
 		C38A01A715715D9B00E38C42 /* Operand.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A615715D9B00E38C42 /* Operand.m */; };
 		C38A01AA15715DAD00E38C42 /* Statment.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A01A915715DAD00E38C42 /* Statment.m */; };
@@ -36,9 +42,6 @@
 		C3901332157AE18600A387D0 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901331157AE18600A387D0 /* frame.png */; };
 		C3901334157AE27000A387D0 /* frame_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901333157AE27000A387D0 /* frame_small.png */; };
 		C3901336157AEDE300A387D0 /* frame_medium.png in Resources */ = {isa = PBXBuildFile; fileRef = C3901335157AEDE300A387D0 /* frame_medium.png */; };
-		C393732B157B727B00865E4B /* Instruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C393732A157B727B00865E4B /* Instruction.m */; };
-		C393732E157B83DC00865E4B /* instructionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C393732D157B83DC00865E4B /* instructionCell.xib */; };
-		C3937331157B87A800865E4B /* InstructionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3937330157B87A800865E4B /* InstructionCell.m */; };
 		C3937333157BB04000865E4B /* frame_enter.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937332157BB04000865E4B /* frame_enter.png */; };
 		C3937335157BB0AD00865E4B /* frame_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937334157BB0AD00865E4B /* frame_clear.png */; };
 		C3937338157BB21600865E4B /* frame_clear_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C3937336157BB21600865E4B /* frame_clear_selected.png */; };
@@ -47,10 +50,8 @@
 		C396672E157B5F7600F99113 /* frame_280x360.png in Resources */ = {isa = PBXBuildFile; fileRef = C396672D157B5F7600F99113 /* frame_280x360.png */; };
 		C3966730157B623E00F99113 /* frame_285x35.png in Resources */ = {isa = PBXBuildFile; fileRef = C396672F157B623E00F99113 /* frame_285x35.png */; };
 		C3966732157B64C700F99113 /* DS-Digital.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3966731157B64C700F99113 /* DS-Digital.ttf */; };
-		C3966735157B653100F99113 /* DigitalFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3966734157B653100F99113 /* DigitalFontLabel.m */; };
 		C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1806B15727CFA0057F9D5 /* Assembler.m */; };
 		C3B1806F15727D930057F9D5 /* AssemblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1806E15727D930057F9D5 /* AssemblerTests.m */; };
-		C3B40870157B68DF000434E2 /* DigitalFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B4086F157B68DF000434E2 /* DigitalFontButton.m */; };
 		C3B40873157B6E7E000434E2 /* frame_small_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B40872157B6E7E000434E2 /* frame_small_selected.png */; };
 		C3B6BA33153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA35153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
@@ -60,7 +61,6 @@
 		C3B6BA43153DE4FE0013163A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B6BA42153DE4FE0013163A /* AppDelegate.m */; };
 		C3B6BA46153DE4FE0013163A /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B6BA44153DE4FE0013163A /* MainStoryboard_iPhone.storyboard */; };
 		C3B6BA49153DE4FE0013163A /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B6BA47153DE4FE0013163A /* MainStoryboard_iPad.storyboard */; };
-		C3B6BA4C153DE4FE0013163A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B6BA4B153DE4FE0013163A /* ViewController.m */; };
 		C3B6BA54153DE4FE0013163A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA53153DE4FE0013163A /* SenTestingKit.framework */; };
 		C3B6BA55153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA56153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
@@ -79,8 +79,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3DEA1442158686DF004B641B /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
-		3DEA1443158686E0004B641B /* Program.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Program.m; sourceTree = "<group>"; };
 		C35D847F157033EB00990B0A /* RegExMatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExMatcherTests.m; sourceTree = "<group>"; };
 		C35D84821570383D00990B0A /* LexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexerTests.h; sourceTree = "<group>"; };
 		C35D84831570383D00990B0A /* LexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexerTests.m; sourceTree = "<group>"; };
@@ -123,6 +121,19 @@
 		C3860AE0158551DD001F2A3D /* RegisterOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterOperand.m; sourceTree = "<group>"; };
 		C3860AE1158551DD001F2A3D /* StackPointerOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackPointerOperand.h; sourceTree = "<group>"; };
 		C3860AE2158551DD001F2A3D /* StackPointerOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackPointerOperand.m; sourceTree = "<group>"; };
+		C3860AF715872C2E001F2A3D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C3860AF815872C2E001F2A3D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C3860AFA15872C2E001F2A3D /* Instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruction.h; sourceTree = "<group>"; };
+		C3860AFB15872C2E001F2A3D /* Instruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruction.m; sourceTree = "<group>"; };
+		C3860AFC15872C2E001F2A3D /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
+		C3860AFD15872C2E001F2A3D /* Program.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Program.m; sourceTree = "<group>"; };
+		C3860AFF15872C2E001F2A3D /* DigitalFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalFontButton.h; sourceTree = "<group>"; };
+		C3860B0015872C2E001F2A3D /* DigitalFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalFontButton.m; sourceTree = "<group>"; };
+		C3860B0115872C2E001F2A3D /* DigitalFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalFontLabel.h; sourceTree = "<group>"; };
+		C3860B0215872C2E001F2A3D /* DigitalFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalFontLabel.m; sourceTree = "<group>"; };
+		C3860B0415872C2E001F2A3D /* InstructionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionCell.h; sourceTree = "<group>"; };
+		C3860B0515872C2E001F2A3D /* InstructionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionCell.m; sourceTree = "<group>"; };
+		C3860B0615872C2E001F2A3D /* instructionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = instructionCell.xib; sourceTree = "<group>"; };
 		C38A01A215715D7300E38C42 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		C38A01A315715D7300E38C42 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		C38A01A515715D9B00E38C42 /* Operand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operand.h; sourceTree = "<group>"; };
@@ -136,11 +147,6 @@
 		C3901331157AE18600A387D0 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
 		C3901333157AE27000A387D0 /* frame_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_small.png; sourceTree = "<group>"; };
 		C3901335157AEDE300A387D0 /* frame_medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_medium.png; sourceTree = "<group>"; };
-		C3937329157B727B00865E4B /* Instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruction.h; sourceTree = "<group>"; };
-		C393732A157B727B00865E4B /* Instruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruction.m; sourceTree = "<group>"; };
-		C393732D157B83DC00865E4B /* instructionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = instructionCell.xib; sourceTree = "<group>"; };
-		C393732F157B87A800865E4B /* InstructionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionCell.h; sourceTree = "<group>"; };
-		C3937330157B87A800865E4B /* InstructionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionCell.m; sourceTree = "<group>"; };
 		C3937332157BB04000865E4B /* frame_enter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_enter.png; sourceTree = "<group>"; };
 		C3937334157BB0AD00865E4B /* frame_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_clear.png; sourceTree = "<group>"; };
 		C3937336157BB21600865E4B /* frame_clear_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_clear_selected.png; sourceTree = "<group>"; };
@@ -149,14 +155,10 @@
 		C396672D157B5F7600F99113 /* frame_280x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_280x360.png; sourceTree = "<group>"; };
 		C396672F157B623E00F99113 /* frame_285x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_285x35.png; sourceTree = "<group>"; };
 		C3966731157B64C700F99113 /* DS-Digital.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-Digital.ttf"; sourceTree = "<group>"; };
-		C3966733157B653100F99113 /* DigitalFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalFontLabel.h; sourceTree = "<group>"; };
-		C3966734157B653100F99113 /* DigitalFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalFontLabel.m; sourceTree = "<group>"; };
 		C3B1806A15727CFA0057F9D5 /* Assembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assembler.h; sourceTree = "<group>"; };
 		C3B1806B15727CFA0057F9D5 /* Assembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assembler.m; sourceTree = "<group>"; };
 		C3B1806D15727D920057F9D5 /* AssemblerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssemblerTests.h; sourceTree = "<group>"; };
 		C3B1806E15727D930057F9D5 /* AssemblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssemblerTests.m; sourceTree = "<group>"; };
-		C3B4086E157B68DF000434E2 /* DigitalFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalFontButton.h; sourceTree = "<group>"; };
-		C3B4086F157B68DF000434E2 /* DigitalFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalFontButton.m; sourceTree = "<group>"; };
 		C3B40872157B6E7E000434E2 /* frame_small_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_small_selected.png; sourceTree = "<group>"; };
 		C3B6BA2E153DE4FE0013163A /* DCPU16Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCPU16Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B6BA32153DE4FE0013163A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -170,8 +172,6 @@
 		C3B6BA42153DE4FE0013163A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C3B6BA45153DE4FE0013163A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C3B6BA48153DE4FE0013163A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		C3B6BA4A153DE4FE0013163A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C3B6BA4B153DE4FE0013163A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C3B6BA52153DE4FE0013163A /* DCPU16EmulatorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DCPU16EmulatorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B6BA53153DE4FE0013163A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C3B6BA5B153DE4FE0013163A /* DCPU16EmulatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DCPU16EmulatorTests-Info.plist"; sourceTree = "<group>"; };
@@ -266,6 +266,47 @@
 			path = Operands;
 			sourceTree = "<group>";
 		};
+		C3860AF615872C2E001F2A3D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3860AF715872C2E001F2A3D /* ViewController.h */,
+				C3860AF815872C2E001F2A3D /* ViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C3860AF915872C2E001F2A3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3860AFA15872C2E001F2A3D /* Instruction.h */,
+				C3860AFB15872C2E001F2A3D /* Instruction.m */,
+				C3860AFC15872C2E001F2A3D /* Program.h */,
+				C3860AFD15872C2E001F2A3D /* Program.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C3860AFE15872C2E001F2A3D /* UIControls */ = {
+			isa = PBXGroup;
+			children = (
+				C3860AFF15872C2E001F2A3D /* DigitalFontButton.h */,
+				C3860B0015872C2E001F2A3D /* DigitalFontButton.m */,
+				C3860B0115872C2E001F2A3D /* DigitalFontLabel.h */,
+				C3860B0215872C2E001F2A3D /* DigitalFontLabel.m */,
+			);
+			path = UIControls;
+			sourceTree = "<group>";
+		};
+		C3860B0315872C2E001F2A3D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3860B0415872C2E001F2A3D /* InstructionCell.h */,
+				C3860B0515872C2E001F2A3D /* InstructionCell.m */,
+				C3860B0615872C2E001F2A3D /* instructionCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C38A01A115715D7300E38C42 /* parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,30 +382,21 @@
 		C3B6BA38153DE4FE0013163A /* DCPU16Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				C3860AF615872C2E001F2A3D /* Controllers */,
+				C3860AF915872C2E001F2A3D /* Model */,
+				C3860AFE15872C2E001F2A3D /* UIControls */,
+				C3860B0315872C2E001F2A3D /* Views */,
 				C3B6BA41153DE4FE0013163A /* AppDelegate.h */,
 				C3B6BA42153DE4FE0013163A /* AppDelegate.m */,
 				C3B1806915727CE50057F9D5 /* Assembler */,
-				C3B4086E157B68DF000434E2 /* DigitalFontButton.h */,
-				C3B4086F157B68DF000434E2 /* DigitalFontButton.m */,
-				C3966733157B653100F99113 /* DigitalFontLabel.h */,
-				C3966734157B653100F99113 /* DigitalFontLabel.m */,
 				C3966731157B64C700F99113 /* DS-Digital.ttf */,
 				C37BC0AC1573CA8100ECB88F /* Emulator */,
 				C3901326157AC82F00A387D0 /* images */,
-				C3937329157B727B00865E4B /* Instruction.h */,
-				C393732A157B727B00865E4B /* Instruction.m */,
-				C393732F157B87A800865E4B /* InstructionCell.h */,
-				C3937330157B87A800865E4B /* InstructionCell.m */,
-				C393732D157B83DC00865E4B /* instructionCell.xib */,
 				C35D848515703C2500990B0A /* Lexer */,
 				C3B6BA47153DE4FE0013163A /* MainStoryboard_iPad.storyboard */,
 				C3B6BA44153DE4FE0013163A /* MainStoryboard_iPhone.storyboard */,
 				C38A01A115715D7300E38C42 /* parser */,
 				C3B6BA39153DE4FE0013163A /* Supporting Files */,
-				C3B6BA4A153DE4FE0013163A /* ViewController.h */,
-				C3B6BA4B153DE4FE0013163A /* ViewController.m */,
-				3DEA1442158686DF004B641B /* Program.h */,
-				3DEA1443158686E0004B641B /* Program.m */,
 			);
 			path = DCPU16Emulator;
 			sourceTree = "<group>";
@@ -490,11 +522,11 @@
 				C3966730157B623E00F99113 /* frame_285x35.png in Resources */,
 				C3966732157B64C700F99113 /* DS-Digital.ttf in Resources */,
 				C3B40873157B6E7E000434E2 /* frame_small_selected.png in Resources */,
-				C393732E157B83DC00865E4B /* instructionCell.xib in Resources */,
 				C3937333157BB04000865E4B /* frame_enter.png in Resources */,
 				C3937335157BB0AD00865E4B /* frame_clear.png in Resources */,
 				C3937338157BB21600865E4B /* frame_clear_selected.png in Resources */,
 				C3937339157BB21600865E4B /* frame_enter_selected.png in Resources */,
+				C3860B0D15872C2E001F2A3D /* instructionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +563,6 @@
 			files = (
 				C3B6BA3F153DE4FE0013163A /* main.m in Sources */,
 				C3B6BA43153DE4FE0013163A /* AppDelegate.m in Sources */,
-				C3B6BA4C153DE4FE0013163A /* ViewController.m in Sources */,
 				C35D848E15703C2500990B0A /* Lexer.m in Sources */,
 				C35D848F15703C2500990B0A /* RegexMatcher.m in Sources */,
 				C35D849015703C2500990B0A /* RegexTokenMatcher.m in Sources */,
@@ -541,10 +572,6 @@
 				C3B1806C15727CFA0057F9D5 /* Assembler.m in Sources */,
 				C37BC0B01573CA9000ECB88F /* DCPU.m in Sources */,
 				C37BC0B61573D8A100ECB88F /* Memory.m in Sources */,
-				C3966735157B653100F99113 /* DigitalFontLabel.m in Sources */,
-				C3B40870157B68DF000434E2 /* DigitalFontButton.m in Sources */,
-				C393732B157B727B00865E4B /* Instruction.m in Sources */,
-				C3937331157B87A800865E4B /* InstructionCell.m in Sources */,
 				C3860AE3158551DD001F2A3D /* IndirectNextWordOffsetOperand.m in Sources */,
 				C3860AE4158551DD001F2A3D /* IndirectNextWordOperand.m in Sources */,
 				C3860AE5158551DD001F2A3D /* IndirectRegisterOperand.m in Sources */,
@@ -558,7 +585,12 @@
 				C3860AEE158551DD001F2A3D /* PushOperand.m in Sources */,
 				C3860AEF158551DD001F2A3D /* RegisterOperand.m in Sources */,
 				C3860AF0158551DD001F2A3D /* StackPointerOperand.m in Sources */,
-				3DEA1444158686E1004B641B /* Program.m in Sources */,
+				C3860B0715872C2E001F2A3D /* ViewController.m in Sources */,
+				C3860B0815872C2E001F2A3D /* Instruction.m in Sources */,
+				C3860B0915872C2E001F2A3D /* Program.m in Sources */,
+				C3860B0A15872C2E001F2A3D /* DigitalFontButton.m in Sources */,
+				C3860B0B15872C2E001F2A3D /* DigitalFontLabel.m in Sources */,
+				C3860B0C15872C2E001F2A3D /* InstructionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
