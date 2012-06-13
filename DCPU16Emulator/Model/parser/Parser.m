@@ -46,8 +46,7 @@
 @synthesize didFinishParsingWithError;
 
 - (void)parseSource:(NSString*)source
-{    
-    
+{
     NSScanner *codeScanner = [NSScanner scannerWithString:source];
     self.lexer = [[Lexer alloc] initWithScanner:codeScanner];
     
@@ -262,7 +261,7 @@
         }
         case LABELREF:
         {
-            // TODO could this be a labelref???
+            // TODO could be a labelref here???
             break;
         }   
         case HEX:
