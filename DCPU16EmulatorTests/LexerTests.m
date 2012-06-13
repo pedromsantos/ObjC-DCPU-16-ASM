@@ -24,6 +24,9 @@
 #import "RegexTokenMatcher.h"
 #import "LexerTokenType.h"
 #import "Lexer.h"
+#import "PeekToken.h"
+#import "ConsumeToken.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
 
 @implementation LexerTests
 
@@ -56,6 +59,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     [lexer consumeNextToken];
     int token1 = lexer.token;
@@ -71,12 +75,15 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[PeekToken alloc] init];
     
-    [lexer peekNextToken];
-    int token1 = lexer.token;
-    [lexer peekNextToken];
-    int token2 = lexer.token;
+    id<ConsumeTokenStrategy> consumeTokenStrategy = [[ConsumeToken alloc] init];
+    
     [lexer consumeNextToken];
+    int token1 = lexer.token;
+    [lexer consumeNextToken];
+    int token2 = lexer.token;
+    [lexer consumeNextTokenUsingStrategy:consumeTokenStrategy];
     int token3 = lexer.token;
     
     STAssertTrue(token1 == token2 && token1 == token3, nil);
@@ -88,6 +95,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     [lexer consumeNextToken];
     
@@ -100,6 +108,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     [lexer consumeNextToken];
     
@@ -112,7 +121,8 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-    lexer.ignoreWhiteSpace = YES;
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+    lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
     
     int expectedTokens[4] = { INSTRUCTION, REGISTER, COMMA, HEX };
     
@@ -129,6 +139,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX };
     
@@ -145,6 +156,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     int expectedTokens[8] = { INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, COMMA, WHITESPACE, HEX };
     
@@ -161,6 +173,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT };
     
@@ -177,7 +190,8 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+    
     int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF };
         
     for (int i = 0; i < 6; i++) 
@@ -219,6 +233,7 @@
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
     
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
+    lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     
     int expectedTokens[155] = {
         COMMENT, 

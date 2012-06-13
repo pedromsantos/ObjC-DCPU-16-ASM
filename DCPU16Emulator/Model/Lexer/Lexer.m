@@ -21,6 +21,7 @@
  */
 
 #import "RegexTokenMatcher.h"
+#import "PeekToken.h"
 #import "Lexer.h"
 
 @interface Lexer()
@@ -30,7 +31,6 @@
 @property (nonatomic, strong) NSScanner *scanner;
 
 - (void)readNextLine;
-- (void)consumeTokenCharacters:(int)matchedStartIndex;
 
 @end
 
@@ -42,7 +42,8 @@
 @synthesize lineNumber;
 @synthesize columnNumber;
 @synthesize tokenContents;
-@synthesize ignoreWhiteSpace;
+@synthesize ignoreTokenStrategy;
+@synthesize consumeTokenStrategy;
 
 @synthesize lineRemaining;
 
@@ -80,9 +81,9 @@
         return nil;
     }
     
+    self.consumeTokenStrategy = [[PeekToken alloc] init];
     self.tokenMatchers = matchers;
     self.scanner = textScanner;
-    self.ignoreWhiteSpace = NO;
     lineNumber = 0;
     columnNumber = 0;
     
@@ -112,20 +113,22 @@
 
 - (void)setLineAndColumnNumberForNewLine:(NSString *)newLine
 {
-    if(!peekMode && newLine != nil)
+    if(newLine != nil)
     {
         lineNumber++;
         columnNumber = 0;
     }
 }
 
-- (BOOL)peekNextToken
+- (BOOL)consumeNextTokenUsingStrategy:(id<ConsumeTokenStrategy>)strategy
 {
-    peekMode = YES;
+    id<ConsumeTokenStrategy> oldStragegy = self.consumeTokenStrategy;
+    
+    self.consumeTokenStrategy = strategy;
     
     BOOL result = [self consumeNextToken];
     
-    peekMode = NO;
+    self.consumeTokenStrategy = oldStragegy;
     
     return result;
 }
@@ -145,9 +148,9 @@
         {            
             self.token = tokenMatcher.token;
             
-            [self consumeTokenCharacters:matchedStartIndex];
+            [self consumeToken: token characters:matchedStartIndex];
             
-            if([self isTokenInIgnoreList:tokenMatcher])
+            if([self.ignoreTokenStrategy isTokenToBeIgnored:token])
             {
                 continue;
             }
@@ -161,19 +164,14 @@
     return NO;
 }
 
-- (void)consumeTokenCharacters:(int)matchedStartIndex
+- (void)consumeToken:(enum LexerTokenType)tkn characters:(int)matchedStartIndex
 {
-    if(!peekMode)
+    if([self.consumeTokenStrategy isTokenToBeConsumed:tkn] || [self.ignoreTokenStrategy isTokenToBeIgnored:tkn])
     {
         columnNumber += matchedStartIndex;
         self.tokenContents = [self.lineRemaining  substringWithRange:NSMakeRange(0, matchedStartIndex)];
         self.lineRemaining = [self.lineRemaining substringFromIndex:matchedStartIndex];
     }
-}
-
-- (BOOL)isTokenInIgnoreList:(id<TokenMatcher>)tokenMatcher
-{
-    return ignoreWhiteSpace && tokenMatcher.token == WHITESPACE;
 }
 
 @end

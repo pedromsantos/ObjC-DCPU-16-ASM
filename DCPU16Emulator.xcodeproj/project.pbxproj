@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		C35D8480157033EB00990B0A /* RegExMatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D847F157033EB00990B0A /* RegExMatcherTests.m */; };
 		C35D84841570383D00990B0A /* LexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D84831570383D00990B0A /* LexerTests.m */; };
+		C36657F91589320900753B2D /* ConsumeToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C36657F81589320900753B2D /* ConsumeToken.m */; };
+		C36657FC158932A900753B2D /* IgnoreNoneTokenStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = C36657FB158932A900753B2D /* IgnoreNoneTokenStrategy.m */; };
+		C36657FF158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = C36657FE158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m */; };
+		C3665802158935C600753B2D /* PeekToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C3665801158935C500753B2D /* PeekToken.m */; };
 		C3860B0715872C2E001F2A3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AF815872C2E001F2A3D /* ViewController.m */; };
 		C3860B0815872C2E001F2A3D /* Instruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AFB15872C2E001F2A3D /* Instruction.m */; };
 		C3860B0915872C2E001F2A3D /* Program.m in Sources */ = {isa = PBXBuildFile; fileRef = C3860AFD15872C2E001F2A3D /* Program.m */; };
@@ -82,6 +86,16 @@
 		C35D847F157033EB00990B0A /* RegExMatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExMatcherTests.m; sourceTree = "<group>"; };
 		C35D84821570383D00990B0A /* LexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexerTests.h; sourceTree = "<group>"; };
 		C35D84831570383D00990B0A /* LexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexerTests.m; sourceTree = "<group>"; };
+		C36657F4158930EB00753B2D /* ConsumeTokenStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeTokenStrategy.h; sourceTree = "<group>"; };
+		C36657F61589315800753B2D /* IgnoreTokenStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreTokenStrategy.h; sourceTree = "<group>"; };
+		C36657F71589320900753B2D /* ConsumeToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumeToken.h; sourceTree = "<group>"; };
+		C36657F81589320900753B2D /* ConsumeToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumeToken.m; sourceTree = "<group>"; };
+		C36657FA158932A900753B2D /* IgnoreNoneTokenStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreNoneTokenStrategy.h; sourceTree = "<group>"; };
+		C36657FB158932A900753B2D /* IgnoreNoneTokenStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnoreNoneTokenStrategy.m; sourceTree = "<group>"; };
+		C36657FD158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnoreWhiteSpaceTokenStrategy.h; sourceTree = "<group>"; };
+		C36657FE158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnoreWhiteSpaceTokenStrategy.m; sourceTree = "<group>"; };
+		C3665800158935C500753B2D /* PeekToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeekToken.h; sourceTree = "<group>"; };
+		C3665801158935C500753B2D /* PeekToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeekToken.m; sourceTree = "<group>"; };
 		C3860AF715872C2E001F2A3D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C3860AF815872C2E001F2A3D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C3860AFA15872C2E001F2A3D /* Instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruction.h; sourceTree = "<group>"; };
@@ -283,6 +297,16 @@
 				C3860B1E15872D02001F2A3D /* RegexTokenMatcher.h */,
 				C3860B1F15872D02001F2A3D /* RegexTokenMatcher.m */,
 				C3860B2015872D02001F2A3D /* TokenMatcher.h */,
+				C36657F4158930EB00753B2D /* ConsumeTokenStrategy.h */,
+				C36657F61589315800753B2D /* IgnoreTokenStrategy.h */,
+				C36657F71589320900753B2D /* ConsumeToken.h */,
+				C36657F81589320900753B2D /* ConsumeToken.m */,
+				C36657FA158932A900753B2D /* IgnoreNoneTokenStrategy.h */,
+				C36657FB158932A900753B2D /* IgnoreNoneTokenStrategy.m */,
+				C36657FD158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.h */,
+				C36657FE158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m */,
+				C3665800158935C500753B2D /* PeekToken.h */,
+				C3665801158935C500753B2D /* PeekToken.m */,
 			);
 			path = Lexer;
 			sourceTree = "<group>";
@@ -591,6 +615,10 @@
 				C3860B5A15872D02001F2A3D /* StackPointerOperand.m in Sources */,
 				C3860B5B15872D02001F2A3D /* Parser.m in Sources */,
 				C3860B5C15872D02001F2A3D /* Statment.m in Sources */,
+				C36657F91589320900753B2D /* ConsumeToken.m in Sources */,
+				C36657FC158932A900753B2D /* IgnoreNoneTokenStrategy.m in Sources */,
+				C36657FF158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m in Sources */,
+				C3665802158935C600753B2D /* PeekToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,22 +23,37 @@
 #import "Lexer.h"
 #import "Statment.h"
 #import "Operand.h"
+#import "PeekToken.h"
+#import "ConsumeToken.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
 #import "RegisterOperand.h"
 #import "NextWordOperand.h"
+
+@interface Parser()
+
+@property (nonatomic, strong) id<ConsumeTokenStrategy> peekToken;
+
+@end
 
 @implementation Parser
 
 @synthesize lexer;
 @synthesize statments;
 
+@synthesize peekToken;
+
 @synthesize didFinishParsingSuccessfully;
 @synthesize didFinishParsingWithError;
 
 - (void)parseSource:(NSString*)source
 {    
+    
     NSScanner *codeScanner = [NSScanner scannerWithString:source];
     self.lexer = [[Lexer alloc] initWithScanner:codeScanner];
-    self.lexer.ignoreWhiteSpace = YES;
+    
+    self.lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
+    self.lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+    self.peekToken = [[PeekToken alloc] init];
     
     self.statments = [[NSMutableArray alloc] init];
     
@@ -71,7 +86,7 @@
     
     [self parseEmptyLines];
     
-    BOOL canKeepLexing = [self.lexer peekNextToken];
+    BOOL canKeepLexing = [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
     
     if (!canKeepLexing)
     {
@@ -90,12 +105,12 @@
 
 - (void)parseEmptyLines
 {
-    [self.lexer peekNextToken];
+    [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
     BOOL canKeepLexing = true;
     
     while ((self.lexer.token == COMMENT || self.lexer.token == WHITESPACE) && canKeepLexing) 
     {
-        [self.lexer peekNextToken];
+        [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
         
         if(self.lexer.token == COMMENT || self.lexer.token == WHITESPACE)
         {
@@ -110,7 +125,7 @@
 
 - (void)parseComments
 {
-    [self.lexer peekNextToken];
+    [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
     
     if(self.lexer.token == COMMENT)
     {

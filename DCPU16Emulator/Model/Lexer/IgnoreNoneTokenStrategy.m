@@ -20,27 +20,13 @@
  * SOFTWARE.
  */
 
-#import "TokenMatcher.h"
-#import "ConsumeTokenStrategy.h"
-#import "IgnoreTokenStrategy.h"
+#import "IgnoreNoneTokenStrategy.h"
 
-@interface Lexer : NSObject
+@implementation IgnoreNoneTokenStrategy
+
+- (bool) isTokenToBeIgnored:(enum LexerTokenType)token
 {
-    int lineNumber;
-    int columnNumber;
+    return NO;
 }
-
-@property (nonatomic, assign) enum LexerTokenType token;
-@property (nonatomic, strong) NSString *tokenContents;
-@property (nonatomic, strong) id<ConsumeTokenStrategy> consumeTokenStrategy;
-@property (nonatomic, strong) id<IgnoreTokenStrategy> ignoreTokenStrategy;
-@property (nonatomic, readonly) int lineNumber;
-@property (nonatomic, readonly) int columnNumber;
-
-- (id)initWithTokenMatchers:(NSArray*)matchers scanner:(NSScanner*)textScanner;
-- (id)initWithScanner:(NSScanner *)textScanner;
-
-- (BOOL)consumeNextToken;
-- (BOOL)consumeNextTokenUsingStrategy:(id<ConsumeTokenStrategy>)strategy;
 
 @end
