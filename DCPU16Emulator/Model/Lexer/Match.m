@@ -21,29 +21,20 @@
  */
 
 #import "Match.h"
-#import "TokenMatcher.h"
-#import "IgnoreTokenStrategy.h"
-#import "ConsumeTokenStrategy.h"
 
-@interface Lexer : NSObject
+@implementation Match
+
+@synthesize token;
+@synthesize content;
+
+- (id)initWithToken:(enum LexerTokenType)tokenType content:(NSString*)tokenContent
 {
-    int lineNumber;
-    int columnNumber;
+    self = [super init];
+    
+    self.token = tokenType;
+    self.content = tokenContent;
+    
+    return self;
 }
-
-@property (nonatomic, strong) Match *match;
-@property (nonatomic, readonly) enum LexerTokenType token;
-@property (nonatomic, readonly) NSString* tokenContents;
-
-@property (nonatomic, strong) id<ConsumeTokenStrategy> consumeTokenStrategy;
-@property (nonatomic, strong) id<IgnoreTokenStrategy> ignoreTokenStrategy;
-@property (nonatomic, readonly) int lineNumber;
-@property (nonatomic, readonly) int columnNumber;
-
-- (id)initWithTokenMatchers:(NSArray*)matchers scanner:(NSScanner*)textScanner;
-- (id)initWithScanner:(NSScanner *)textScanner;
-
-- (BOOL)consumeNextToken;
-- (BOOL)consumeNextTokenUsingStrategy:(id<ConsumeTokenStrategy>)strategy;
 
 @end

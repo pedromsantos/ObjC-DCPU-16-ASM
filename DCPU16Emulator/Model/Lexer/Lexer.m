@@ -36,12 +36,11 @@
 
 @implementation Lexer
 
-@synthesize tokenMatchers;
+@synthesize match;
 @synthesize scanner;
-@synthesize token;
 @synthesize lineNumber;
 @synthesize columnNumber;
-@synthesize tokenContents;
+@synthesize tokenMatchers;
 @synthesize ignoreTokenStrategy;
 @synthesize consumeTokenStrategy;
 
@@ -90,6 +89,16 @@
     [self readNextLine];
     
     return self;
+}
+
+- (enum LexerTokenType)token
+{
+    return self.match.token;
+}
+
+- (NSString*)tokenContents
+{
+    return self.match.content;
 }
 
 - (void)readNextLine
@@ -145,10 +154,13 @@
         int matchedStartIndex = [tokenMatcher match:self.lineRemaining];
         
         if (matchedStartIndex > 0)
-        {            
-            self.token = tokenMatcher.token;
+        {   
+            self.match = nil;
+            enum LexerTokenType token = tokenMatcher.token;
+            NSString* tokenContent = [self.lineRemaining substringWithRange:NSMakeRange(0, matchedStartIndex)];
+            self.match = [[Match alloc] initWithToken:token content:tokenContent];
             
-            [self consumeToken: token characters:matchedStartIndex];
+            [self consumeToken:token characters:matchedStartIndex];
             
             if([self.ignoreTokenStrategy isTokenToBeIgnored:token])
             {
@@ -169,7 +181,6 @@
     if([self.consumeTokenStrategy isTokenToBeConsumed:tkn] || [self.ignoreTokenStrategy isTokenToBeIgnored:tkn])
     {
         columnNumber += matchedStartIndex;
-        self.tokenContents = [self.lineRemaining  substringWithRange:NSMakeRange(0, matchedStartIndex)];
         self.lineRemaining = [self.lineRemaining substringFromIndex:matchedStartIndex];
     }
 }

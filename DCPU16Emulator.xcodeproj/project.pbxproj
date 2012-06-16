@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3084AE5158D02860045125E /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = C3084AE4158D02860045125E /* Match.m */; };
 		C35D8480157033EB00990B0A /* RegExMatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D847F157033EB00990B0A /* RegExMatcherTests.m */; };
 		C35D84841570383D00990B0A /* LexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D84831570383D00990B0A /* LexerTests.m */; };
 		C36657F91589320900753B2D /* ConsumeToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C36657F81589320900753B2D /* ConsumeToken.m */; };
@@ -83,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3084AE3158D02860045125E /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
+		C3084AE4158D02860045125E /* Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Match.m; sourceTree = "<group>"; };
 		C35D847F157033EB00990B0A /* RegExMatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExMatcherTests.m; sourceTree = "<group>"; };
 		C35D84821570383D00990B0A /* LexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexerTests.h; sourceTree = "<group>"; };
 		C35D84831570383D00990B0A /* LexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexerTests.m; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				C36657FE158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m */,
 				C3665800158935C500753B2D /* PeekToken.h */,
 				C3665801158935C500753B2D /* PeekToken.m */,
+				C3084AE3158D02860045125E /* Match.h */,
+				C3084AE4158D02860045125E /* Match.m */,
 			);
 			path = Lexer;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				C36657FC158932A900753B2D /* IgnoreNoneTokenStrategy.m in Sources */,
 				C36657FF158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m in Sources */,
 				C3665802158935C600753B2D /* PeekToken.m in Sources */,
+				C3084AE5158D02860045125E /* Match.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
