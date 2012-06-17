@@ -174,6 +174,20 @@
     STAssertTrue(s.firstOperand.nextWord == 0, nil);
 }
 
+- (void)testParseCalledWithInvalidInstructionThrows
+{
+    NSString *code = @"JSM testsub";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    p.didFinishParsingWithError = ^(NSString* message)
+    {
+        STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3 found 'JSM'"], nil);
+    };
+    
+    [p parseSource:code];
+}
+
 - (void)testParseCalledWithInvalidOperandThrows
 {
     NSString *code = @"JSR \"testsub\"";
