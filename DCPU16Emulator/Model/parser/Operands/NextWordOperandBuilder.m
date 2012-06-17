@@ -20,20 +20,44 @@
  * SOFTWARE.
  */
 
-#import "Lexer.h"
+#import "NextWordOperand.h"
+#import "NextWordOperandBuilder.h"
 
-typedef void(^parseCompletedSuccessfully)();
-typedef void(^parseFailedWithError)(NSString*);
+@implementation NextWordOperandBuilder
 
-@interface Parser : NSObject
+- (Operand*)CreateOperandFromMatch:(Match*)match
+{
+    return [[NextWordOperand alloc] init];
+}
 
-@property (nonatomic, strong) Lexer* lexer;
-@property (nonatomic, strong) NSMutableArray* statments;
+- (void)setNextWordValue:(Match*)match
+{
+    if(match.token == HEX)
+    {
+        self.operand.nextWord = [self parseHexLiteral:match.content];
+    }
+    else if (match.token == INT)
+    {
+        self.operand.nextWord = [self parseDecimalLiteral:match.content];
+    }
+}
 
-@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
+- (uint16_t)parseHexLiteral:(NSString*)textLiteral
+{
+    uint outVal;
+    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
+    [scanner scanHexInt:&outVal];
+    
+    return (uint16_t)outVal;
+}
 
-- (id)init;
-- (void)parseSource:(NSString*)source;
+- (uint16_t)parseDecimalLiteral:(NSString*)textLiteral
+{
+    int outVal;
+    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
+    [scanner scanInt:&outVal];
+    
+    return (uint16_t)outVal;
+}
 
 @end

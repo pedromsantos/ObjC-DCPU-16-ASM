@@ -20,20 +20,14 @@
  * SOFTWARE.
  */
 
-#import "Lexer.h"
+#import "IndirectRegisterOperand.h"
+#import "IndirectRegisterOperandBuilder.h"
 
-typedef void(^parseCompletedSuccessfully)();
-typedef void(^parseFailedWithError)(NSString*);
+@implementation IndirectRegisterOperandBuilder
 
-@interface Parser : NSObject
-
-@property (nonatomic, strong) Lexer* lexer;
-@property (nonatomic, strong) NSMutableArray* statments;
-
-@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
-
-- (id)init;
-- (void)parseSource:(NSString*)source;
+- (Operand*)CreateOperandFromMatch:(Match*)match
+{
+    return [[IndirectRegisterOperand alloc] init];
+}
 
 @end

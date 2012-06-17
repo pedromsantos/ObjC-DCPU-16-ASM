@@ -29,7 +29,20 @@
 #import "RegisterOperand.h"
 #import "NextWordOperand.h"
 
+#import "NextWordOperandBuilder.h"
+#import "RegisterOperandBuilder.h"
+#import "LabelReferenceOperandBuilder.h"
+#import "IndirectRegisterOperandBuilder.h"
+#import "IndirectNextWordOperandBuilder.h"
+#import "IndirectNextWordOffsetOperandBuilder.h"
+
+typedef Operand*(^creationStrategy)(Match*);
+
 @interface Parser()
+{
+    NSDictionary* operandCreationStrategyMapper;
+    NSDictionary* indirectOperandCreationStrategyMapper;
+}
 
 @property (nonatomic, strong) id<ConsumeTokenStrategy> peekToken;
 
@@ -44,6 +57,35 @@
 
 @synthesize didFinishParsingSuccessfully;
 @synthesize didFinishParsingWithError;
+
+- (id)init
+{
+    self = [super init];
+    
+    operandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     (Operand*)^(Match* m){ return [[[RegisterOperandBuilder alloc] init] buildFromMatch:m]; },
+                                     [NSNumber numberWithInt:REGISTER],
+                                     (Operand*)^(Match* m){ return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m]; },
+                                     [NSNumber numberWithInt:LABELREF],
+                                     (Operand*)^(Match* m){ return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m]; },
+                                     [NSNumber numberWithInt:HEX],
+                                     (Operand*)^(Match* m){ return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m]; },
+                                     [NSNumber numberWithInt:INT],
+                                     (Operand*)^(Match* m){ return [self parseIndirectOperand]; },
+                                     [NSNumber numberWithInt:OPENBRACKET],
+                                     nil];
+    
+    indirectOperandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
+                                             (Operand*)^(Match* m){ return [[[IndirectRegisterOperandBuilder alloc] init] buildFromMatch:m]; },
+                                             [NSNumber numberWithInt:REGISTER],
+                                             (Operand*)^(Match* m){ return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m]; },
+                                             [NSNumber numberWithInt:LABELREF],
+                                             (Operand*)^(Match* m){ return [[[IndirectNextWordOperandBuilder alloc] init] buildFromMatch:m]; },
+                                             [NSNumber numberWithInt:HEX],
+                                             nil];
+    
+    return self;
+}
 
 - (void)parseSource:(NSString*)source
 {
@@ -173,145 +215,64 @@
 {
     [self.lexer consumeNextToken];
     
-    Operand* operand;
+    creationStrategy strategy = [operandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:self.lexer.token]];
     
-    switch (self.lexer.token)
+    if(strategy == nil)
     {
-        case OPENBRACKET:
-        {
-            operand = [self parseIndirectOperand];
-            break;
-        }   
-        case REGISTER:
-        case LABELREF:
-        {
-            operand = [Operand newOperand:[Operand operandTypeForName:self.lexer.tokenContents]];
-            
-            if([operand isKindOfClass:[RegisterOperand class]])
-            {
-                [operand setRegisterValueForName:self.lexer.tokenContents];
-            }
-            else if([operand isKindOfClass:[NextWordOperand class]])
-            {
-                operand.label = self.lexer.tokenContents;
-                operand.nextWord = 0;
-            }
-            break;
-        }   
-        case HEX:
-        {
-            operand = [Operand newOperand:O_NEXT_WORD];
-            operand.nextWord = [self parseHexLiteral];
-            break;
-        }   
-        case INT:
-        {
-            operand = [Operand newOperand:O_NEXT_WORD];
-            operand.nextWord = [self parseDecimalLiteral];
-            break;
-        }
-        default:
-        {
-            @throw [NSString stringWithFormat:@"Expected operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-            break;
-        }
+        @throw [NSString stringWithFormat:@"Expected operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
     }
     
-    return operand;
-}
+    return strategy(self.lexer.match);
 
-- (uint16_t)parseHexLiteral
-{
-    uint outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
-    [scanner scanHexInt:&outVal];
-    
-    return (uint16_t)outVal;
-}
-
-- (uint16_t)parseDecimalLiteral
-{
-    int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:self.lexer.tokenContents];
-    [scanner scanInt:&outVal];
-    
-    return (uint16_t)outVal;
 }
 
 - (Operand*)parseIndirectOperand
 {
     [self.lexer consumeNextToken];
     
+    Match* leftToken = [[Match alloc] init];
+    leftToken.token = self.lexer.token;
+    leftToken.content = [self.lexer.tokenContents copy]; 
+    
     Operand* operand;
     
-    switch (self.lexer.token)
+    [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+    
+    if(self.lexer.token == PLUS)
     {
-        case REGISTER:
-        {
-            operand = [Operand newOperand:O_INDIRECT_REG];
-            
-            [self.lexer consumeNextToken];
-            
-            if (self.lexer.token != CLOSEBRACKET)
-            {
-                @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-            }
-            
-            break;
-        }
-        case LABELREF:
-        {
-            // TODO could be a labelref here???
-            break;
-        }   
-        case HEX:
-        {
-            int literalValue = [self parseHexLiteral];
-            
-            [self.lexer consumeNextToken];
-            
-            switch (self.lexer.token)
-            {
-                case CLOSEBRACKET:
-                {
-                    operand = [Operand newOperand:O_INDIRECT_NEXT_WORD];
-                    break;
-                }
-                case PLUS:
-                {
-                    [self.lexer consumeNextToken];
-                    
-                    operand = [Operand newOperand:O_INDIRECT_NEXT_WORD_OFFSET];
-                    [operand setRegisterValueForName:self.lexer.tokenContents];
-                    
-                    [self.lexer consumeNextToken];
-                    
-                    if (self.lexer.token != CLOSEBRACKET)
-                    {
-                        @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-                    }
-                    
-                    break;
-                }   
-                default:
-                {
-                    @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-                    break;
-                }
-            }
-            
-            operand.nextWord = literalValue;
-            
-            break;
-        } 
-        default:
-        {
-            @throw [NSString stringWithFormat:@"Expected REGISTER, LITERAL or LABELREF at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-            break;
-        }
+        [self.lexer consumeNextToken];
+        operand = [self parseIndirectOffsetOperand:leftToken];
+    }
+    else 
+    {
+        creationStrategy strategy = [indirectOperandCreationStrategyMapper 
+                                     objectForKey:[NSNumber numberWithInt:leftToken.token]];
+        
+        operand = strategy(leftToken);
     }
     
+    [self assertIndirectOperandIsTerminatedWithACloseBracketToken];
+    
     return operand;
+
+}
+
+- (Operand*)parseIndirectOffsetOperand:(Match*)previousMatch
+{
+    [self.lexer consumeNextToken];
+    
+    return [[[IndirectNextWordOffsetOperandBuilder alloc] initWithLeftToken:previousMatch] 
+            buildFromMatch:self.lexer.match];
+}
+
+- (void)assertIndirectOperandIsTerminatedWithACloseBracketToken
+{
+    [self.lexer consumeNextToken];
+    
+    if (self.lexer.token != CLOSEBRACKET)
+    {
+        @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
+    }
 }
 
 @end

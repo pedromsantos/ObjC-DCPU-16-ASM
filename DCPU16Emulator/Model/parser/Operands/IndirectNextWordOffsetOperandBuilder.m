@@ -20,20 +20,45 @@
  * SOFTWARE.
  */
 
-#import "Lexer.h"
+#import "IndirectNextWordOffsetOperand.h"
+#import "IndirectNextWordOffsetOperandBuilder.h"
 
-typedef void(^parseCompletedSuccessfully)();
-typedef void(^parseFailedWithError)(NSString*);
+@interface IndirectNextWordOffsetOperandBuilder ()
 
-@interface Parser : NSObject
+@property (nonatomic, strong) Match* leftToken;
 
-@property (nonatomic, strong) Lexer* lexer;
-@property (nonatomic, strong) NSMutableArray* statments;
+@end
 
-@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
+@implementation IndirectNextWordOffsetOperandBuilder
 
-- (id)init;
-- (void)parseSource:(NSString*)source;
+@synthesize leftToken;
+
+- (id)initWithLeftToken:(Match*)token
+{
+    self = [super init];
+    
+    self.leftToken = token;
+    
+    return self;
+}
+
+- (Operand*)CreateOperandFromMatch:(Match*)match
+{
+    return [[IndirectNextWordOffsetOperand alloc] init];
+}
+
+- (void)setNextWordValue:(Match*)match
+{
+    self.operand.nextWord = [self parseHexLiteral:leftToken.content];
+}
+
+- (uint16_t)parseHexLiteral:(NSString*)textLiteral
+{
+    uint outVal;
+    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
+    [scanner scanHexInt:&outVal];
+    
+    return (uint16_t)outVal;
+}
 
 @end

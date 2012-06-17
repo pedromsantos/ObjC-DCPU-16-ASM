@@ -19,21 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
  * SOFTWARE.
  */
+#import "OperandBuilder.h"
 
-#import "Lexer.h"
-
-typedef void(^parseCompletedSuccessfully)();
-typedef void(^parseFailedWithError)(NSString*);
-
-@interface Parser : NSObject
-
-@property (nonatomic, strong) Lexer* lexer;
-@property (nonatomic, strong) NSMutableArray* statments;
-
-@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
-
-- (id)init;
-- (void)parseSource:(NSString*)source;
+@interface NextWordOperandBuilder : OperandBuilder
 
 @end

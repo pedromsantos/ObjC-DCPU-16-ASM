@@ -20,20 +20,23 @@
  * SOFTWARE.
  */
 
-#import "Lexer.h"
+#import "NextWordOperand.h"
+#import "LabelReferenceOperandBuilder.h"
 
-typedef void(^parseCompletedSuccessfully)();
-typedef void(^parseFailedWithError)(NSString*);
+@implementation LabelReferenceOperandBuilder
 
-@interface Parser : NSObject
+- (Operand*)CreateOperandFromMatch:(Match*)match
+{
+    return [[NextWordOperand alloc] init];
+}
 
-@property (nonatomic, strong) Lexer* lexer;
-@property (nonatomic, strong) NSMutableArray* statments;
+- (void)setNextWordValue:(Match*)match
+{
+    self.operand.nextWord = 0;
+}
 
-@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
-
-- (id)init;
-- (void)parseSource:(NSString*)source;
-
+- (void)setLabelValue:(Match*)match
+{
+    self.operand.label = match.content;
+}
 @end

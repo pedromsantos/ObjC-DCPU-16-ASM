@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C30437EF158E435E00C42DD5 /* RegisterOperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C30437EE158E435E00C42DD5 /* RegisterOperandBuilder.m */; };
+		C30437F3158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C30437F2158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.m */; };
+		C30437F6158E477600C42DD5 /* IndirectNextWordOperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C30437F5158E477600C42DD5 /* IndirectNextWordOperandBuilder.m */; };
+		C30437F9158E484000C42DD5 /* IndirectRegisterOperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C30437F8158E484000C42DD5 /* IndirectRegisterOperandBuilder.m */; };
+		C30437FC158E489900C42DD5 /* NextWordOperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C30437FB158E489800C42DD5 /* NextWordOperandBuilder.m */; };
+		C30437FF158E556000C42DD5 /* LabelReferenceOperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C30437FE158E556000C42DD5 /* LabelReferenceOperandBuilder.m */; };
 		C3084AE5158D02860045125E /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = C3084AE4158D02860045125E /* Match.m */; };
+		C3084AE9158D2A4F0045125E /* OperandBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3084AE8158D2A4F0045125E /* OperandBuilder.m */; };
 		C35D8480157033EB00990B0A /* RegExMatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D847F157033EB00990B0A /* RegExMatcherTests.m */; };
 		C35D84841570383D00990B0A /* LexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D84831570383D00990B0A /* LexerTests.m */; };
 		C36657F91589320900753B2D /* ConsumeToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C36657F81589320900753B2D /* ConsumeToken.m */; };
@@ -84,8 +91,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C30437EB158E41CB00C42DD5 /* OperandBuilderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OperandBuilderProtocol.h; path = ../OperandBuilderProtocol.h; sourceTree = "<group>"; };
+		C30437ED158E435E00C42DD5 /* RegisterOperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterOperandBuilder.h; sourceTree = "<group>"; };
+		C30437EE158E435E00C42DD5 /* RegisterOperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterOperandBuilder.m; sourceTree = "<group>"; };
+		C30437F1158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndirectNextWordOffsetOperandBuilder.h; sourceTree = "<group>"; };
+		C30437F2158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndirectNextWordOffsetOperandBuilder.m; sourceTree = "<group>"; };
+		C30437F4158E477600C42DD5 /* IndirectNextWordOperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndirectNextWordOperandBuilder.h; sourceTree = "<group>"; };
+		C30437F5158E477600C42DD5 /* IndirectNextWordOperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndirectNextWordOperandBuilder.m; sourceTree = "<group>"; };
+		C30437F7158E484000C42DD5 /* IndirectRegisterOperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndirectRegisterOperandBuilder.h; sourceTree = "<group>"; };
+		C30437F8158E484000C42DD5 /* IndirectRegisterOperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndirectRegisterOperandBuilder.m; sourceTree = "<group>"; };
+		C30437FA158E489800C42DD5 /* NextWordOperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextWordOperandBuilder.h; sourceTree = "<group>"; };
+		C30437FB158E489800C42DD5 /* NextWordOperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextWordOperandBuilder.m; sourceTree = "<group>"; };
+		C30437FD158E555F00C42DD5 /* LabelReferenceOperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelReferenceOperandBuilder.h; sourceTree = "<group>"; };
+		C30437FE158E556000C42DD5 /* LabelReferenceOperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelReferenceOperandBuilder.m; sourceTree = "<group>"; };
 		C3084AE3158D02860045125E /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
 		C3084AE4158D02860045125E /* Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Match.m; sourceTree = "<group>"; };
+		C3084AE7158D2A4F0045125E /* OperandBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperandBuilder.h; path = ../OperandBuilder.h; sourceTree = "<group>"; };
+		C3084AE8158D2A4F0045125E /* OperandBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperandBuilder.m; path = ../OperandBuilder.m; sourceTree = "<group>"; };
 		C35D847F157033EB00990B0A /* RegExMatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExMatcherTests.m; sourceTree = "<group>"; };
 		C35D84821570383D00990B0A /* LexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexerTests.h; sourceTree = "<group>"; };
 		C35D84831570383D00990B0A /* LexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexerTests.m; sourceTree = "<group>"; };
@@ -128,8 +150,8 @@
 		C3860B1E15872D02001F2A3D /* RegexTokenMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexTokenMatcher.h; sourceTree = "<group>"; };
 		C3860B1F15872D02001F2A3D /* RegexTokenMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexTokenMatcher.m; sourceTree = "<group>"; };
 		C3860B2015872D02001F2A3D /* TokenMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenMatcher.h; sourceTree = "<group>"; };
-		C3860B2515872D02001F2A3D /* Operand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operand.h; sourceTree = "<group>"; };
-		C3860B2615872D02001F2A3D /* Operand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operand.m; sourceTree = "<group>"; };
+		C3860B2515872D02001F2A3D /* Operand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Operand.h; path = ../Operand.h; sourceTree = "<group>"; };
+		C3860B2615872D02001F2A3D /* Operand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Operand.m; path = ../Operand.m; sourceTree = "<group>"; };
 		C3860B2815872D02001F2A3D /* IndirectNextWordOffsetOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndirectNextWordOffsetOperand.h; sourceTree = "<group>"; };
 		C3860B2915872D02001F2A3D /* IndirectNextWordOffsetOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndirectNextWordOffsetOperand.m; sourceTree = "<group>"; };
 		C3860B2A15872D02001F2A3D /* IndirectNextWordOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndirectNextWordOperand.h; sourceTree = "<group>"; };
@@ -222,6 +244,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C30437F0158E45D100C42DD5 /* OperandBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				C3084AE7158D2A4F0045125E /* OperandBuilder.h */,
+				C3084AE8158D2A4F0045125E /* OperandBuilder.m */,
+				C30437EB158E41CB00C42DD5 /* OperandBuilderProtocol.h */,
+				C30437ED158E435E00C42DD5 /* RegisterOperandBuilder.h */,
+				C30437EE158E435E00C42DD5 /* RegisterOperandBuilder.m */,
+				C30437F1158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.h */,
+				C30437F2158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.m */,
+				C30437F4158E477600C42DD5 /* IndirectNextWordOperandBuilder.h */,
+				C30437F5158E477600C42DD5 /* IndirectNextWordOperandBuilder.m */,
+				C30437F7158E484000C42DD5 /* IndirectRegisterOperandBuilder.h */,
+				C30437F8158E484000C42DD5 /* IndirectRegisterOperandBuilder.m */,
+				C30437FA158E489800C42DD5 /* NextWordOperandBuilder.h */,
+				C30437FB158E489800C42DD5 /* NextWordOperandBuilder.m */,
+				C30437FD158E555F00C42DD5 /* LabelReferenceOperandBuilder.h */,
+				C30437FE158E556000C42DD5 /* LabelReferenceOperandBuilder.m */,
+			);
+			name = OperandBuilders;
+			sourceTree = "<group>";
+		};
 		C3860AF615872C2E001F2A3D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,8 +363,6 @@
 		C3860B2115872D02001F2A3D /* parser */ = {
 			isa = PBXGroup;
 			children = (
-				C3860B2515872D02001F2A3D /* Operand.h */,
-				C3860B2615872D02001F2A3D /* Operand.m */,
 				C3860B2715872D02001F2A3D /* Operands */,
 				C3860B4215872D02001F2A3D /* Parser.h */,
 				C3860B4315872D02001F2A3D /* Parser.m */,
@@ -333,6 +375,9 @@
 		C3860B2715872D02001F2A3D /* Operands */ = {
 			isa = PBXGroup;
 			children = (
+				C30437F0158E45D100C42DD5 /* OperandBuilders */,
+				C3860B2515872D02001F2A3D /* Operand.h */,
+				C3860B2615872D02001F2A3D /* Operand.m */,
 				C3860B2815872D02001F2A3D /* IndirectNextWordOffsetOperand.h */,
 				C3860B2915872D02001F2A3D /* IndirectNextWordOffsetOperand.m */,
 				C3860B2A15872D02001F2A3D /* IndirectNextWordOperand.h */,
@@ -625,6 +670,13 @@
 				C36657FF158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m in Sources */,
 				C3665802158935C600753B2D /* PeekToken.m in Sources */,
 				C3084AE5158D02860045125E /* Match.m in Sources */,
+				C3084AE9158D2A4F0045125E /* OperandBuilder.m in Sources */,
+				C30437EF158E435E00C42DD5 /* RegisterOperandBuilder.m in Sources */,
+				C30437F3158E460400C42DD5 /* IndirectNextWordOffsetOperandBuilder.m in Sources */,
+				C30437F6158E477600C42DD5 /* IndirectNextWordOperandBuilder.m in Sources */,
+				C30437F9158E484000C42DD5 /* IndirectRegisterOperandBuilder.m in Sources */,
+				C30437FC158E489900C42DD5 /* NextWordOperandBuilder.m in Sources */,
+				C30437FF158E556000C42DD5 /* LabelReferenceOperandBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

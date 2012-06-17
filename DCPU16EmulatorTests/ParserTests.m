@@ -27,6 +27,8 @@
 #import "NextWordOperand.h"
 #import "IndirectNextWordOperand.h"
 #import "ProgramCounterOperand.h"
+#import "IndirectRegisterOperand.h"
+#import "IndirectNextWordOffsetOperand.h"
 
 @implementation ParserTests
 
@@ -112,6 +114,26 @@
     STAssertTrue(s.secondOperand.nextWord == 32, nil);
 }
 
+- (void)testParseCalledWithSetOffsetMemoryAddressWithIndirecRegisterGenertesCorrectStatments
+{
+    NSString *code = @"SET [0x2000+I], [A]";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    STAssertTrue([p.statments count] == 1, nil);
+    
+    Statment* s = [p.statments lastObject];
+    
+    STAssertTrue(s.opcode == OP_SET, nil);
+    STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
+    STAssertTrue([s.firstOperand isKindOfClass:[IndirectNextWordOffsetOperand class]], nil);
+    STAssertTrue(s.firstOperand.nextWord == 0x2000, nil);
+    STAssertTrue([s.secondOperand isKindOfClass:[IndirectRegisterOperand class]], nil);
+    STAssertTrue(s.secondOperand.nextWord == 0, nil);
+}
+
 - (void)testParseCalledWithSetSPRegisterWithLabelRefGenertesCorrectStatments
 {
     NSString *code = @"SET PC, crash";
@@ -150,20 +172,6 @@
     STAssertTrue([s.firstOperand isKindOfClass:[NextWordOperand class]], nil);
     STAssertTrue([s.firstOperand.label isEqualToString:@"testsub"], nil);
     STAssertTrue(s.firstOperand.nextWord == 0, nil);
-}
-
-- (void)testParseCalledWithInvalidInstructionThrows
-{
-    NSString *code = @"JSM testsub";
-    
-    Parser *p = [[Parser alloc] init];
-    
-    p.didFinishParsingWithError = ^(NSString* message)
-    {
-        STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3 found 'JSM'"], nil);
-    };
-    
-    [p parseSource:code];
 }
 
 - (void)testParseCalledWithInvalidOperandThrows

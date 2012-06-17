@@ -20,20 +20,14 @@
  * SOFTWARE.
  */
 
-#import "Lexer.h"
+#import "Match.h"
+#import "Operand.h"
+#import "OperandBuilderProtocol.h"
 
-typedef void(^parseCompletedSuccessfully)();
-typedef void(^parseFailedWithError)(NSString*);
+@interface OperandBuilder : NSObject <OperandBuilderProtocol>
 
-@interface Parser : NSObject
+@property (nonatomic, strong) Operand* operand;
 
-@property (nonatomic, strong) Lexer* lexer;
-@property (nonatomic, strong) NSMutableArray* statments;
-
-@property (nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property (nonatomic, copy) parseFailedWithError didFinishParsingWithError;
-
-- (id)init;
-- (void)parseSource:(NSString*)source;
+- (Operand*)buildFromMatch:(Match*)match;
 
 @end
