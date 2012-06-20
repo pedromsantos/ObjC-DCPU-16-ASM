@@ -27,6 +27,6 @@
 
 @property (nonatomic, strong) Memory *memory;
 
-- (void)executeOperationWithOperandA(Operand*)operandA operandB:(Operand*)operandB;
+- (void)executeOperationWithOperandA:(Operand*)operandA operandB:(Operand*)operandB;
 
 @end

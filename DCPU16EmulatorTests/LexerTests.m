@@ -22,7 +22,6 @@
 
 #import "LexerTests.h"
 #import "RegexTokenMatcher.h"
-#import "LexerTokenType.h"
 #import "Lexer.h"
 #import "PeekToken.h"
 #import "ConsumeToken.h"

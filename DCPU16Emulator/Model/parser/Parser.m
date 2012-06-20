@@ -20,14 +20,10 @@
  */
 
 #import "Parser.h"
-#import "Lexer.h"
 #import "Statment.h"
-#import "Operand.h"
 #import "PeekToken.h"
 #import "ConsumeToken.h"
 #import "IgnoreWhiteSpaceTokenStrategy.h"
-#import "RegisterOperand.h"
-#import "NextWordOperand.h"
 
 #import "NextWordOperandBuilder.h"
 #import "RegisterOperandBuilder.h"

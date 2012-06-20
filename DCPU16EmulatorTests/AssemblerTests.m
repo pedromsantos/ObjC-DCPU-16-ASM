@@ -21,7 +21,6 @@
  */
 
 #import "AssemblerTests.h"
-#import "Statment.h"
 #import "Assembler.h"
 #import "Parser.h"
 
@@ -173,7 +172,7 @@
         0x806d, 0x7dc1, 0x000d, 0x9031, 0x7c10, 0x0018, 0x7dc1, 0x001a,
         0x9037, 0x61c1, 0x7dc1, 0x001a};
     
-    for (int i = 0; i < 28; i++) 
+    for (NSUInteger i = 0; i < 28; i++)
     {
         NSLog(@"Expected:0x%x Instruction:0x%x", expectedInstructions[i], [[assembler.program objectAtIndex:i] intValue]);
         STAssertTrue([[assembler.program objectAtIndex:i] intValue] == expectedInstructions[i], nil);

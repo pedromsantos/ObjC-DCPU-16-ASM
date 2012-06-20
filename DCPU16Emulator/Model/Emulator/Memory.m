@@ -21,7 +21,6 @@
  */
 
 #import "Memory.h"
-#import "DCPU.h"
 
 @interface Memory()
 {
@@ -58,7 +57,7 @@
     
     NSMutableArray *literals = [ram objectForKey:LIT];
     
-    for (int i = 0; i < NUM_ITERALS; i++) 
+    for (NSUInteger i = 0; i < NUM_ITERALS; i++)
     {
         [literals insertObject:[NSNumber numberWithInt:i] atIndex:i];
     }
@@ -66,14 +65,14 @@
     NSMutableArray *registers = [ram objectForKey:REG];
     NSNumber* initValue = [NSNumber numberWithInt:0];
     
-    for (int i = 0; i < NUM_REGISTERS; i++) 
+    for (NSUInteger i = 0; i < NUM_REGISTERS; i++)
     {
         [registers insertObject:initValue atIndex:i];
     }
     
     NSMutableArray *memory = [ram objectForKey:MEM];
     
-    for (int i = 0; i < MEMORY_SIZE; i++) 
+    for (NSUInteger i = 0; i < MEMORY_SIZE; i++)
     {
         [memory insertObject:initValue atIndex:i];
     }
@@ -87,7 +86,7 @@
 {
     int programSize = [values count];
     
-    for (int i = 0; i < programSize; i++) 
+    for (NSInteger i = 0; i < programSize; i++)
     {
         [self setMemoryValue:[[values objectAtIndex:i] intValue] atIndex:i];
     }

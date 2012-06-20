@@ -23,7 +23,6 @@
 #import "Program.h"
 #import "Parser.h"
 #import "Assembler.h"
-#import "Instruction.h"
 
 @implementation Program
 
@@ -130,7 +129,7 @@
     NSMutableString *assembledCode = [NSMutableString string];
     [self.assembledInstructionSet removeAllObjects];
     
-    for (int i = 0; i < programInstructionSize; i++) 
+    for (NSUInteger i = 0; i < programInstructionSize; i++)
     {
         int assembledInstruction = [[assembler.program objectAtIndex:i] intValue];
         

@@ -27,7 +27,6 @@
 #import "NullOperand.h"
 #import "LiteralOperand.h"
 #import "OverflowOperand.h"
-#import "RegisterOperand.h"
 #import "NextWordOperand.h"
 #import "StackPointerOperand.h"
 #import "ProgramCounterOperand.h"

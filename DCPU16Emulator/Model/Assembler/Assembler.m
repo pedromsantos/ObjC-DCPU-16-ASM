@@ -22,8 +22,6 @@
 
 #import "Assembler.h"
 #import "Statment.h"
-#import "Parser.h"
-#import "Operand.h"
 #import "NullOperand.h"
 #import "NextWordOperand.h"
 #import "IndirectNextWordOperand.h"
@@ -135,7 +133,7 @@
         
         if(containsKey)
         {
-            int index = [instruction intValue];
+            NSUInteger index = [instruction intValue];
             NSNumber *key = [labelDef objectForKey:label];
             [self.program replaceObjectAtIndex:index withObject:key];
         }

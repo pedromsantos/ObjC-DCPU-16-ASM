@@ -21,7 +21,6 @@
  */
 
 #import "RegexMatcher.h"
-#import "RegexTokenMatcher.h"
 
 @implementation RegexMatcher
 

@@ -22,9 +22,6 @@
 
 #import "ViewController.h"
 #import "InstructionCell.h"
-#import "DCPU.h"
-#import "Assembler.h"
-#import "Parser.h"
 
 @interface ViewController ()
 

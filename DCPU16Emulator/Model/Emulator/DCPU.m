@@ -22,7 +22,6 @@
 
 #import "DCPU.h"
 #import "Statment.h"
-#import "Operand.h"
 
 @implementation DCPU
 
