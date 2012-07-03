@@ -51,11 +51,10 @@
 {
     int opCode = statment.opcode;
     
-    if ([statment.label length] > 0)
-    {
-        [self.labelDef setObject:[NSNumber numberWithInt:[program count]] forKey:[statment.label substringFromIndex:1]];
-    }
-    
+    [self processLabelInStatment:statment];
+
+    [self processDatInStament:statment];
+
     if (statment.opcode == 0)
     {
         if (![statment.secondOperand isKindOfClass:[NullOperand class]])
@@ -89,6 +88,25 @@
     
         [self assembleOperandNextWord:statment.firstOperand];
         [self assembleOperandNextWord:statment.secondOperand];
+    }
+}
+
+- (void)processLabelInStatment:(Statment *)statment
+{
+    if ([statment.label length] > 0)
+    {
+        [self.labelDef setObject:[NSNumber numberWithInt:[program count]] forKey:[statment.label substringFromIndex:1]];
+    }
+}
+
+- (void)processDatInStament:(Statment *)statment
+{
+    if ([statment.dat count] != 0)
+    {
+        for(NSNumber *value in statment.dat)
+        {
+            [self addOpCode:[value intValue]];
+        }
     }
 }
 

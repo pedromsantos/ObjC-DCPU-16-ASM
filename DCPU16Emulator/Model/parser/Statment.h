@@ -58,6 +58,7 @@ typedef enum non_basic_opcode nonBasicOpcode;
 @property (nonatomic, assign) nonBasicOpcode opcodeNonBasic;
 @property (nonatomic, strong) Operand* firstOperand;
 @property (nonatomic, strong) Operand* secondOperand;
+@property (nonatomic, readonly) NSArray* dat;
 
 - (void) addDat:(UInt16)value;
 

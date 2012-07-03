@@ -41,6 +41,11 @@
 @synthesize firstOperand;
 @synthesize secondOperand;
 
+- (NSArray*)dat
+{
+    return internalDat;
+}
+
 - (void) addDat:(UInt16)value
 {
     if(self.internalDat == nil)
