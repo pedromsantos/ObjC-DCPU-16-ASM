@@ -25,6 +25,7 @@
 @interface Statment()
 
 @property (nonatomic, strong) NSString* internalMenemonic;
+@property (nonatomic, strong) NSMutableArray* internalDat;
 
 - (void)setOpcodeForMenemonic;
 
@@ -33,11 +34,22 @@
 @implementation Statment
 
 @synthesize label;
+@synthesize internalDat;
 @synthesize internalMenemonic;
 @synthesize opcode;
 @synthesize opcodeNonBasic;
 @synthesize firstOperand;
 @synthesize secondOperand;
+
+- (void) addDat:(UInt16)value
+{
+    if(self.internalDat == nil)
+    {
+        self.internalDat = [[NSMutableArray alloc] init];
+    }
+    
+    [self.internalDat addObject:[NSNumber numberWithInt:value]]; 
+}
 
 - (NSString*)menemonic
 {

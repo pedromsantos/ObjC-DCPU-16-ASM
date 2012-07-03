@@ -23,6 +23,7 @@
 #import "Statment.h"
 #import "PeekToken.h"
 #import "ConsumeToken.h"
+#import "NSString+ParseHex_ParseInt.h"
 #import "IgnoreWhiteSpaceTokenStrategy.h"
 
 #import "NextWordOperandBuilder.h"
@@ -132,7 +133,16 @@ typedef Operand*(^creationStrategy)(Match*);
     
     [self parseLabelForStatment:statment];
     [self parseMenemonicForStatment:statment];
-    [self parseOperandsForStatment:statment];
+    
+    if([statment.menemonic isEqualToString:@"DAT"])
+    {
+        [self parseData:statment];
+    }
+    else 
+    {
+        [self parseOperandsForStatment:statment];
+    }
+    
     [self.statments addObject:statment];
     
     [self parseComments];
@@ -269,6 +279,47 @@ typedef Operand*(^creationStrategy)(Match*);
     {
         @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
     }
+}
+
+- (void)parseData:(Statment*)statment
+{
+    do 
+    {
+        if(self.lexer.token == COMMA)
+        {
+            [self.lexer consumeNextToken];
+        }
+        
+        [self.lexer consumeNextToken];
+        
+        if(self.lexer.token == HEX)
+        {
+            [statment addDat:[self.lexer.tokenContents parseHexLiteral]];
+        }
+        else if(self.lexer.token == INT)
+        {
+            [statment addDat:[self.lexer.tokenContents parseDecimalLiteral]];
+        }
+        else if(self.lexer.token == STRING)
+        {
+            int len = [self.lexer.tokenContents length];
+            unichar buffer[len];
+            [self.lexer.tokenContents getCharacters:buffer range:NSMakeRange(0, len)];
+            
+            for(int i = 0; i < len; ++i) 
+            {
+                char current = buffer[i];
+                
+                if(current == ' ')
+                {
+                    continue;
+                }
+                
+                [statment addDat:current];
+            }
+        }
+        
+    } while (self.lexer.token == COMMA);
 }
 
 @end

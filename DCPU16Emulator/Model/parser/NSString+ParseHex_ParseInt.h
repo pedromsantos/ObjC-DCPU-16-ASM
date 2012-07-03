@@ -20,37 +20,9 @@
  * SOFTWARE.
  */
 
-#import "IndirectNextWordOffsetOperand.h"
-#import "IndirectNextWordOffsetOperandBuilder.h"
-#import "NSString+ParseHex_ParseInt.h"
+@interface NSString (NSString_ParseHex_ParseInt)
 
-@interface IndirectNextWordOffsetOperandBuilder ()
-
-@property (nonatomic, strong) Match* leftToken;
-
-@end
-
-@implementation IndirectNextWordOffsetOperandBuilder
-
-@synthesize leftToken;
-
-- (id)initWithLeftToken:(Match*)token
-{
-    self = [super init];
-    
-    self.leftToken = token;
-    
-    return self;
-}
-
-- (Operand*)CreateOperandFromMatch:(Match*)match
-{
-    return [[IndirectNextWordOffsetOperand alloc] init];
-}
-
-- (void)setNextWordValue:(Match*)match
-{
-    self.operand.nextWord = [leftToken.content parseHexLiteral];
-}
+- (uint16_t)parseHexLiteral;
+- (uint16_t)parseDecimalLiteral;
 
 @end

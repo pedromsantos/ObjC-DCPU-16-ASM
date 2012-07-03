@@ -22,6 +22,7 @@
 
 #import "IndirectNextWordOperand.h"
 #import "IndirectNextWordOperandBuilder.h"
+#import "NSString+ParseHex_ParseInt.h"
 
 @implementation IndirectNextWordOperandBuilder
 
@@ -34,30 +35,13 @@
 {
     if(match.token == HEX)
     {
-        self.operand.nextWord = [self parseHexLiteral:match.content];
+        self.operand.nextWord = [match.content parseHexLiteral];
     }
     else if (match.token == INT)
     {
-        self.operand.nextWord = [self parseDecimalLiteral:match.content];
+        self.operand.nextWord = [match.content parseDecimalLiteral];
     }
 }
 
-- (uint16_t)parseHexLiteral:(NSString*)textLiteral
-{
-    uint outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
-    [scanner scanHexInt:&outVal];
-    
-    return (uint16_t)outVal;
-}
-
-- (uint16_t)parseDecimalLiteral:(NSString*)textLiteral
-{
-    int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
-    [scanner scanInt:&outVal];
-    
-    return (uint16_t)outVal;
-}
 
 @end

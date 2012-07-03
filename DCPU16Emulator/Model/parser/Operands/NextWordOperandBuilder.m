@@ -22,6 +22,7 @@
 
 #import "NextWordOperand.h"
 #import "NextWordOperandBuilder.h"
+#import "NSString+ParseHex_ParseInt.h";
 
 @implementation NextWordOperandBuilder
 
@@ -34,11 +35,11 @@
 {
     if(match.token == HEX)
     {
-        self.operand.nextWord = [self parseHexLiteral:match.content];
+        self.operand.nextWord = [match.content parseHexLiteral];
     }
     else if (match.token == INT)
     {
-        self.operand.nextWord = [self parseDecimalLiteral:match.content];
+        self.operand.nextWord = [match.content parseDecimalLiteral];
     }
 }
 
