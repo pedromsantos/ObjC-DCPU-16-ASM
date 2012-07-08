@@ -63,6 +63,7 @@ enum operand_special_register {
 
 @property (nonatomic, assign) enum operand_register_value registerValue;
 @property (nonatomic, assign) uint16_t nextWord;
+@property (nonatomic, assign) uint16_t value;
 @property (nonatomic, strong) NSString* label;
 
 + (enum operand_type)operandTypeForName:(NSString*)name;

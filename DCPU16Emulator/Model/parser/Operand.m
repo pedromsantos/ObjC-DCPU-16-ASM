@@ -41,6 +41,7 @@
 @synthesize registerValue;
 @synthesize label;
 @synthesize nextWord;
+@synthesize value;
 
 - (int)assembleWithShift:(int)shift
 {
