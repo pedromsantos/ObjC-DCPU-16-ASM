@@ -32,16 +32,13 @@
 #import "IndirectRegisterOperandBuilder.h"
 #import "IndirectNextWordOperandBuilder.h"
 #import "IndirectNextWordOffsetOperandBuilder.h"
-
-typedef Operand*(^creationStrategy)(Match*);
+#import "OperandFactoryProtocol.h"
+#import "OperandFactory.h"
 
 @interface Parser()
-{
-    NSDictionary* operandCreationStrategyMapper;
-    NSDictionary* indirectOperandCreationStrategyMapper;
-}
 
 @property (nonatomic, strong) id<ConsumeTokenStrategy> peekToken;
+@property (nonatomic, strong) id<OperandFactoryProtocol> operandFactory;
 
 @end
 
@@ -51,6 +48,7 @@ typedef Operand*(^creationStrategy)(Match*);
 @synthesize statments;
 
 @synthesize peekToken;
+@synthesize operandFactory;
 
 @synthesize didFinishParsingSuccessfully;
 @synthesize didFinishParsingWithError;
@@ -59,27 +57,16 @@ typedef Operand*(^creationStrategy)(Match*);
 {
     self = [super init];
     
-    operandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                                     (Operand*)^(Match* m){ return [[[RegisterOperandBuilder alloc] init] buildFromMatch:m]; },
-                                     [NSNumber numberWithInt:REGISTER],
-                                     (Operand*)^(Match* m){ return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m]; },
-                                     [NSNumber numberWithInt:LABELREF],
-                                     (Operand*)^(Match* m){ return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m]; },
-                                     [NSNumber numberWithInt:HEX],
-                                     (Operand*)^(Match* m){ return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m]; },
-                                     [NSNumber numberWithInt:INT],
-                                     (Operand*)^(Match* m){ return [self parseIndirectOperand]; },
-                                     [NSNumber numberWithInt:OPENBRACKET],
-                                     nil];
+    self.operandFactory = [[OperandFactory alloc] init];
     
-    indirectOperandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             (Operand*)^(Match* m){ return [[[IndirectRegisterOperandBuilder alloc] init] buildFromMatch:m]; },
-                                             [NSNumber numberWithInt:REGISTER],
-                                             (Operand*)^(Match* m){ return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m]; },
-                                             [NSNumber numberWithInt:LABELREF],
-                                             (Operand*)^(Match* m){ return [[[IndirectNextWordOperandBuilder alloc] init] buildFromMatch:m]; },
-                                             [NSNumber numberWithInt:HEX],
-                                             nil];
+    return self;
+}
+
+- (id)initWithOperandFcatory:(id<OperandFactoryProtocol>)factory
+{
+    self = [super init];
+    
+    self.operandFactory = factory;
     
     return self;
 }
@@ -221,14 +208,19 @@ typedef Operand*(^creationStrategy)(Match*);
 {
     [self.lexer consumeNextToken];
     
-    creationStrategy strategy = [operandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:self.lexer.token]];
+    if (self.lexer.token == OPENBRACKET)
+    {
+        return [self parseIndirectOperand];
+    }
     
-    if(strategy == nil)
+    Operand* operand = [self.operandFactory createDirectOperandForMatch:self.lexer.match];
+    
+    if(operand == nil)
     {
         @throw [NSString stringWithFormat:@"Expected operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
     }
     
-    return strategy(self.lexer.match);
+    return operand;
 
 }
 
@@ -251,10 +243,7 @@ typedef Operand*(^creationStrategy)(Match*);
     }
     else 
     {
-        creationStrategy strategy = [indirectOperandCreationStrategyMapper 
-                                     objectForKey:[NSNumber numberWithInt:leftToken.token]];
-        
-        operand = strategy(leftToken);
+        operand = [self.operandFactory createIndirectOperandForMatch:leftToken];
     }
     
     [self assertIndirectOperandIsTerminatedWithACloseBracketToken];

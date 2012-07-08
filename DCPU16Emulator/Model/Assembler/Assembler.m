@@ -53,7 +53,10 @@
     
     [self processLabelInStatment:statment];
 
-    [self processDatInStament:statment];
+    if([self processDatInStament:statment])
+    {
+        return;
+    }
 
     if (statment.opcode == 0)
     {
@@ -99,15 +102,19 @@
     }
 }
 
-- (void)processDatInStament:(Statment *)statment
+- (BOOL)processDatInStament:(Statment *)statment
 {
     if ([statment.dat count] != 0)
     {
         for(NSNumber *value in statment.dat)
         {
             [self addOpCode:[value intValue]];
-        }
+        }        
+        
+        return YES;
     }
+    
+    return NO;
 }
 
 - (void)addOpCode:(int)opCode
@@ -122,12 +129,8 @@
 
 - (void)assembleOperandNextWord:(Operand*)operand
 {
-    if([operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
-    {
-        [self addOpCode:operand.nextWord];
-    }
-    
-    if ([operand isKindOfClass:[NextWordOperand class]] || [operand isKindOfClass:[IndirectNextWordOperand class]] )
+    if ([operand isKindOfClass:[NextWordOperand class]] || [operand isKindOfClass:[IndirectNextWordOperand class]] ||
+        [operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
     {
         if([operand.label length] > 0)
         {
