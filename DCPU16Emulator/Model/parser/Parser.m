@@ -26,11 +26,6 @@
 #import "NSString+ParseHex_ParseInt.h"
 #import "IgnoreWhiteSpaceTokenStrategy.h"
 
-#import "NextWordOperandBuilder.h"
-#import "RegisterOperandBuilder.h"
-#import "LabelReferenceOperandBuilder.h"
-#import "IndirectRegisterOperandBuilder.h"
-#import "IndirectNextWordOperandBuilder.h"
 #import "IndirectNextWordOffsetOperandBuilder.h"
 #import "OperandFactoryProtocol.h"
 #import "OperandFactory.h"
