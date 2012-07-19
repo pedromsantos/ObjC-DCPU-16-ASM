@@ -20,10 +20,14 @@
  * SOFTWARE.
  */
 
-#import "InstructionOperandFactoryProtocol.h"
 
-@interface InstructionOperandFactory : NSObject <InstructionOperandFactoryProtocol>
+#import <SenTestingKit/SenTestingKit.h>
 
-- (Operand*)createFromInstructionOperandValue:(ushort)operandValue;
+@interface InstructionOperandFactoryTests : SenTestCase
+
+@property (nonatomic, assign) Class expectedOperand;
+@property (nonatomic, assign) short inputValue;
+
+- (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(short)value expectedOperand:(Class)expectedOprnd;
 
 @end

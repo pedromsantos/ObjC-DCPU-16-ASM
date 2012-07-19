@@ -20,10 +20,8 @@
  * SOFTWARE.
  */
 
-#import "InstructionOperandFactoryProtocol.h"
+#import "InstructionBuilder.h"
 
-@interface InstructionOperandFactory : NSObject <InstructionOperandFactoryProtocol>
-
-- (Operand*)createFromInstructionOperandValue:(ushort)operandValue;
+@implementation InstructionBuilder
 
 @end
