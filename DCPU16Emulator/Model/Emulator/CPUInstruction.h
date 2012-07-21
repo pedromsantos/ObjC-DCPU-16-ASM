@@ -20,13 +20,21 @@
  * SOFTWARE.
  */
 
-#define OpMask = 0xF;
-#define OperandAMask = 0x3F;
-#define OperandAShift = 4;
-#define OperandBMask = 0x3F;
-#define OperandBShift = 10;
+#include "CPUOperation.h"
 
-@interface InstructionBuilder : NSObject
+@interface CPUInstruction : NSObject
 
+@property (nonatomic, strong) CPUOperation* operationA;
+@property (nonatomic, strong) CPUOperation* operationB;
+
+-(id) initWithOperationA:(CPUOperation*)operA andOperationB:(CPUOperation*)operB;
+
+-(NSString*)token;
+
+-(int) execute;
+
+-(void) noOp;
+
+-(int) process;
 
 @end

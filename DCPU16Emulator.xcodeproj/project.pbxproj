@@ -67,6 +67,7 @@
 		C396672E157B5F7600F99113 /* frame_280x360.png in Resources */ = {isa = PBXBuildFile; fileRef = C396672D157B5F7600F99113 /* frame_280x360.png */; };
 		C3966730157B623E00F99113 /* frame_285x35.png in Resources */ = {isa = PBXBuildFile; fileRef = C396672F157B623E00F99113 /* frame_285x35.png */; };
 		C3966732157B64C700F99113 /* DS-Digital.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3966731157B64C700F99113 /* DS-Digital.ttf */; };
+		C39FFA0815BAB23E006BB9A3 /* CPUInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C39FFA0715BAB23E006BB9A3 /* CPUInstruction.m */; };
 		C3B1806F15727D930057F9D5 /* AssemblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B1806E15727D930057F9D5 /* AssemblerTests.m */; };
 		C3B40873157B6E7E000434E2 /* frame_small_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B40872157B6E7E000434E2 /* frame_small_selected.png */; };
 		C3B6BA33153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
@@ -81,6 +82,7 @@
 		C3B6BA55153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA56153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
 		C3B6BA5E153DE4FE0013163A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3B6BA5C153DE4FE0013163A /* InfoPlist.strings */; };
+		C3BC7B3215B9F79F00D40104 /* CPUOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC7B3115B9F79F00D40104 /* CPUOperation.m */; };
 		C3C3F559157427920072378F /* DCPUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3F558157427920072378F /* DCPUTests.m */; };
 		C3E090A815A9DF6900096885 /* OperandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E090A715A9DF6800096885 /* OperandFactory.m */; };
 /* End PBXBuildFile section */
@@ -210,6 +212,9 @@
 		C396672D157B5F7600F99113 /* frame_280x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_280x360.png; sourceTree = "<group>"; };
 		C396672F157B623E00F99113 /* frame_285x35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_285x35.png; sourceTree = "<group>"; };
 		C3966731157B64C700F99113 /* DS-Digital.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-Digital.ttf"; sourceTree = "<group>"; };
+		C39FB52B15BAB6E000C581CD /* DCPUProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPUProtocol.h; sourceTree = "<group>"; };
+		C39FFA0615BAB23E006BB9A3 /* CPUInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUInstruction.h; sourceTree = "<group>"; };
+		C39FFA0715BAB23E006BB9A3 /* CPUInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUInstruction.m; sourceTree = "<group>"; };
 		C3B1806D15727D920057F9D5 /* AssemblerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssemblerTests.h; sourceTree = "<group>"; };
 		C3B1806E15727D930057F9D5 /* AssemblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssemblerTests.m; sourceTree = "<group>"; };
 		C3B40872157B6E7E000434E2 /* frame_small_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_small_selected.png; sourceTree = "<group>"; };
@@ -230,6 +235,8 @@
 		C3B6BA5B153DE4FE0013163A /* DCPU16EmulatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DCPU16EmulatorTests-Info.plist"; sourceTree = "<group>"; };
 		C3B6BA5D153DE4FE0013163A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C3B6BA5F153DE4FE0013163A /* RegExMatcherTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegExMatcherTests.h; sourceTree = "<group>"; };
+		C3BC7B3015B9F79F00D40104 /* CPUOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUOperation.h; sourceTree = "<group>"; };
+		C3BC7B3115B9F79F00D40104 /* CPUOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUOperation.m; sourceTree = "<group>"; };
 		C3C3F557157427920072378F /* DCPUTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPUTests.h; sourceTree = "<group>"; };
 		C3C3F558157427920072378F /* DCPUTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPUTests.m; sourceTree = "<group>"; };
 		C3E090A415A9DEBE00096885 /* OperandFactoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperandFactoryProtocol.h; sourceTree = "<group>"; };
@@ -340,16 +347,21 @@
 		C3860B1115872D02001F2A3D /* Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				C39FFA0615BAB23E006BB9A3 /* CPUInstruction.h */,
+				C39FFA0715BAB23E006BB9A3 /* CPUInstruction.m */,
+				C3BC7B3015B9F79F00D40104 /* CPUOperation.h */,
+				C3BC7B3115B9F79F00D40104 /* CPUOperation.m */,
 				C3860B1215872D02001F2A3D /* DCPU.h */,
 				C3860B1315872D02001F2A3D /* DCPU.m */,
+				C39FB52B15BAB6E000C581CD /* DCPUProtocol.h */,
+				C335690C15B865BE00F77320 /* InstructionBuilder.h */,
+				C335690D15B865BE00F77320 /* InstructionBuilder.m */,
+				C33137CD15A36EE80099BB61 /* InstructionOperandFactory.h */,
+				C33137CE15A36EE80099BB61 /* InstructionOperandFactory.m */,
+				C33137CB15A36E7F0099BB61 /* InstructionOperandFactoryProtocol.h */,
 				C3860B1415872D02001F2A3D /* Memory.h */,
 				C3860B1515872D02001F2A3D /* Memory.m */,
 				C3860B1615872D02001F2A3D /* Operation.h */,
-				C33137CB15A36E7F0099BB61 /* InstructionOperandFactoryProtocol.h */,
-				C33137CD15A36EE80099BB61 /* InstructionOperandFactory.h */,
-				C33137CE15A36EE80099BB61 /* InstructionOperandFactory.m */,
-				C335690C15B865BE00F77320 /* InstructionBuilder.h */,
-				C335690D15B865BE00F77320 /* InstructionBuilder.m */,
 			);
 			path = Emulator;
 			sourceTree = "<group>";
@@ -710,6 +722,8 @@
 				C33137CF15A36EE80099BB61 /* InstructionOperandFactory.m in Sources */,
 				C3E090A815A9DF6900096885 /* OperandFactory.m in Sources */,
 				C335690E15B865BE00F77320 /* InstructionBuilder.m in Sources */,
+				C3BC7B3215B9F79F00D40104 /* CPUOperation.m in Sources */,
+				C39FFA0815BAB23E006BB9A3 /* CPUInstruction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

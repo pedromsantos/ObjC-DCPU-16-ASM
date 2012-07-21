@@ -21,6 +21,7 @@
  */
 
 #import "Memory.h"
+#import "DCPUProtocol.h"
 
 // Masks to get clear results from an INT.
 #define OP_MASK         0xF
@@ -33,7 +34,7 @@
 #define B_SHIFT         10
 #define SHORT_SHIFT     16
 
-@interface DCPU : NSObject
+@interface DCPU : NSObject <DCPUProtocol>
 {
     NSString* operandState;
 }
@@ -42,10 +43,5 @@
 
 - (id)initWithProgram:(NSArray*)program;
 - (BOOL)executeInstruction;
-
-- (int)getValueForRegister:(int)reg;
-- (int)getValueForMemory:(int)address;
-- (int)peekInstructionAtProgramCounter;
-- (int)getProgramCounter;
 
 @end

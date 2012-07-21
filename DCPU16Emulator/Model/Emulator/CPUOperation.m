@@ -20,13 +20,18 @@
  * SOFTWARE.
  */
 
-#define OpMask = 0xF;
-#define OperandAMask = 0x3F;
-#define OperandAShift = 4;
-#define OperandBMask = 0x3F;
-#define OperandBShift = 10;
+#import "CPUOperation.h"
 
-@interface InstructionBuilder : NSObject
+@implementation CPUOperation
 
+@synthesize operand;
+
+-(void) process
+{
+}
+
+-(void) noOp
+{
+}
 
 @end

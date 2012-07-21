@@ -70,8 +70,13 @@ enum operand_special_register {
 + (Operand*)newOperand:(enum operand_type)type;
 + (Operand*)newExecutingOperand:(int)code ;
 
+-(NSString*) token;
+
+
 - (void) setRegisterValueForName:(NSString*)name;
-- (int)assembleWithShift:(int)shift;
-- (int)assembleOperandWithIndex:(int)index;
+- (int) assembleWithShift:(int)shift;
+- (int) assembleOperandWithIndex:(int)index;
+
+
 
 @end

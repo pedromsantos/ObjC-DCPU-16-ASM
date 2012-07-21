@@ -202,6 +202,16 @@
     [self setRegister:PC value:value];
 }
 
+- (void)setStackPointer:(int)value
+{
+    [self setRegister:SP value:value];
+}
+
+- (void)setOverflow:(int)value
+{
+    [self setRegister:OV value:value];
+}
+
 - (void)incrementProgramCounter
 {
     int actualValue = [[ram objectForKey:PC] intValue];
@@ -292,7 +302,18 @@
 - (int)getProgramCounter
 {
     int value = [[ram objectForKey:PC] intValue];
-    
+    return value;
+}
+
+- (int)getStacPointer
+{
+    int value = [[ram objectForKey:SP] intValue];
+    return value;
+}
+
+- (int)getOverflow
+{
+    int value = [[ram objectForKey:OV] intValue];
     return value;
 }
 

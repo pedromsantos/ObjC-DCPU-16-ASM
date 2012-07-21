@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
-
 enum InstructionInputState
 {
     WaitForOpcodeOrLabel,

@@ -26,6 +26,7 @@
 @implementation DCPU
 
 @synthesize memory;
+@synthesize ignoreNextInstruction;
 
 - (id)initWithProgram:(NSArray*)program
 {
@@ -352,24 +353,65 @@
     return (code - O_LITERAL) % NUM_ITERALS;
 }
 
-- (int)getValueForRegister:(int)reg
+
+- (int)programCounter
+{
+    return [self.memory getProgramCounter];
+}
+
+- (void)setProgramCounter:(int)value
+{
+    [self.memory setProgramCounter:value];
+}
+
+- (int)stackPointer
+{
+    return [self.memory getStacPointer];
+}
+
+- (void)setStackPointer:(int)value
+{
+    [self.memory setStackPointer:value];
+}
+
+- (int)overflow
+{
+    return [self.memory getOverflow];
+}
+
+- (void)setOverflow:(int)value
+{
+    [self.memory setOverflow:value];
+}
+
+- (int) readGeneralPursoseRegisterValue:(int)reg;
 {
     return [self.memory getValueForRegister:reg];
 }
 
-- (int)getValueForMemory:(int)address
+-(void) writeGeneralPursoseRegister:(int)reg withValue:(ushort)value
+{
+    [self.memory setRegister:@"" value:value];
+}
+
+- (int) readMemoryValueAtAddress:(int)address
 {
     return [self.memory getMemoryValueAtIndex:address];
 }
 
-- (int)peekInstructionAtProgramCounter
+-(void) writeMemoryAtAddress:(int)address withValue:(ushort)value
 {
-    return [self.memory peekInstructionAtProgramCounter];
+    [self.memory setMemoryValue:value atIndex:address];
 }
 
-- (int)getProgramCounter
+-(void) incrementProgramCounter
 {
-    return [self.memory getProgramCounter];
+    [self.memory incrementProgramCounter];
+}
+
+-(void) incrementStackPointer
+{
+    [self.memory incrementStackPointer:1];
 }
 
 @end

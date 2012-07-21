@@ -43,6 +43,11 @@
 @synthesize nextWord;
 @synthesize value;
 
+-(NSString*) token;
+{
+    return @"";
+}
+
 - (int)assembleWithShift:(int)shift
 {
     return 0;

@@ -22,7 +22,7 @@
 
 #import "NextWordOperand.h"
 #import "NextWordOperandBuilder.h"
-#import "NSString+ParseHex_ParseInt.h";
+#import "NSString+ParseHex_ParseInt.h"
 
 @implementation NextWordOperandBuilder
 

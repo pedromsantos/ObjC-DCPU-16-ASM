@@ -57,13 +57,20 @@ typedef void(^memoryOperationNotification)(NSString*, int, int);
 - (void)setOverflowRegisterToValue:(int)value;
 
 - (int)getMemoryValueAtIndex:(int)index;
+- (void)setMemoryValue:(int)value atIndex:(int)index;
 - (int)getValueForRegister:(int)reg;
+- (void)setRegister:(NSString*)registerKey value:(int)newValue;
 
 - (int)getProgramCounter;
+- (int)getStacPointer;
+- (int)getOverflow;
 - (int)peekInstructionAtProgramCounter;
 - (int)readInstructionAtProgramCounter;
 - (void)setProgramCounter:(int)value;
+- (void)setStackPointer:(int)value;
+- (void)setOverflow:(int)value;
 - (void)incrementProgramCounter;
+- (void)incrementStackPointer:(int)value;
 
 - (int)pushAddress;
 - (void)push:(int)value;
