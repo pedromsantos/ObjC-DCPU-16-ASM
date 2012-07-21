@@ -29,8 +29,6 @@
 
 -(id) initWithOperationA:(CPUOperation*)operA andOperationB:(CPUOperation*)operB;
 
--(NSString*)token;
-
 -(int) execute;
 
 -(void) noOp;

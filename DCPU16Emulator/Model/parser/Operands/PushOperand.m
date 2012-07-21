@@ -24,6 +24,11 @@
 
 @implementation PushOperand
 
+- (void)writeValue:(ushort)value
+{
+    [self.cpuOperations decrementStackPointer];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     return O_PUSH << shift;

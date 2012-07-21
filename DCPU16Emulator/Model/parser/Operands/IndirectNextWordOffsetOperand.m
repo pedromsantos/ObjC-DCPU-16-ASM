@@ -24,6 +24,26 @@
 
 @implementation IndirectNextWordOffsetOperand
 
+- (ushort)read
+{
+    ushort value = [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
+    
+    return [self.cpuOperations readMemoryValueAtAddress:self.nextWord + value] & SHORT_MASK;
+}
+
+- (void)writeValue:(ushort)value
+{
+    [self.cpuOperations writeMemoryAtAddress:(self.nextWord + self.registerValue) & SHORT_MASK withValue:value];
+}
+
+- (void)process
+{
+    [self.cpuOperations incrementProgramCounter];
+    int programCounter = [self.cpuOperations programCounter];
+    self.nextWord = [self.cpuOperations readMemoryValueAtAddress:programCounter];
+    self.registerValue = [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     return (O_INDIRECT_NEXT_WORD_OFFSET + self.registerValue) << shift;

@@ -414,4 +414,9 @@
     [self.memory incrementStackPointer:1];
 }
 
+-(void) decrementStackPointer
+{
+    [self.memory incrementStackPointer:-1];
+}
+
 @end

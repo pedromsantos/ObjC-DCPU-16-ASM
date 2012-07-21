@@ -24,6 +24,16 @@
 
 @implementation StackPointerOperand
 
+- (ushort)read
+{
+    return [self.cpuOperations stackPointer];
+}
+
+- (void)writeValue:(ushort)value
+{
+    [self.cpuOperations setStackPointer:value];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     return O_SP << shift;

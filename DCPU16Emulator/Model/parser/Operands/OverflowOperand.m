@@ -24,6 +24,16 @@
 
 @implementation OverflowOperand
 
+- (ushort)read
+{
+    return [self.cpuOperations overflow];
+}
+
+- (void)writeValue:(ushort)value
+{
+    [self.cpuOperations setOverflow:value];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     return O_O << shift;

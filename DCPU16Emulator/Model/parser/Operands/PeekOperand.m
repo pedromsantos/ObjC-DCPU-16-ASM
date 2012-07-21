@@ -24,6 +24,11 @@
 
 @implementation PeekOperand
 
+- (ushort)read
+{
+    return [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations stackPointer]];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     return O_PEEK << shift;

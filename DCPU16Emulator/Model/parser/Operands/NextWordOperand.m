@@ -24,6 +24,17 @@
 
 @implementation NextWordOperand
 
+- (ushort)read
+{
+    [self.cpuOperations incrementProgramCounter];
+    return [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations programCounter]];
+}
+
+- (void)noOp
+{
+    [self.cpuOperations incrementProgramCounter];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     if ((self.nextWord <= OPERAND_LITERAL_MAX) && !([self.label length] > 0))

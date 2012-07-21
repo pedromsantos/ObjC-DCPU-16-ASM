@@ -34,5 +34,6 @@
 
 -(void) incrementProgramCounter;
 -(void) incrementStackPointer;
+-(void) decrementStackPointer;
 
 @end

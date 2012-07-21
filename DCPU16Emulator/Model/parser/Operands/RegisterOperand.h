@@ -24,4 +24,7 @@
 
 @interface RegisterOperand : Operand
 
++ (enum operand_type)operandTypeForName:(NSString*)name;
+- (void)setRegisterValueForName:(NSString*)name;
+
 @end

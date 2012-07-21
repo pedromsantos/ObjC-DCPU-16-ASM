@@ -10,4 +10,9 @@
 
 @implementation LiteralOperand
 
+- (ushort)read
+{
+    return self.value - 0x20 % NUMBER_OF_LITERALS;
+}
+
 @end

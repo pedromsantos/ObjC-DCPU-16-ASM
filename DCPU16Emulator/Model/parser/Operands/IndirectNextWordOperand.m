@@ -24,6 +24,23 @@
 
 @implementation IndirectNextWordOperand
 
+- (ushort)read
+{
+    return [self.cpuOperations readMemoryValueAtAddress:self.nextWord];
+}
+
+- (void)writeValue:(ushort)value
+{
+    [self.cpuOperations writeMemoryAtAddress:self.nextWord withValue:value];
+}
+
+- (void)process
+{
+    [self.cpuOperations incrementProgramCounter];
+    int programCounter = [self.cpuOperations programCounter];
+    self.nextWord = [self.cpuOperations readMemoryValueAtAddress:programCounter];
+}
+
 - (int)assembleWithShift:(int)shift
 {
     if ((self.nextWord <= OPERAND_LITERAL_MAX) && !([self.label length] > 0))

@@ -21,17 +21,72 @@
  */
 
 #import "CPUOperation.h"
+#import <inttypes.h>
 
 @implementation CPUOperation
 
 @synthesize operand;
+@synthesize cpuOperations;
 
--(void) process
+- (ushort)read
 {
+    return [self.operand read];
 }
 
--(void) noOp
+- (ushort)write
 {
+    @throw @"Invalid operation.";
+}
+
+- (void)setWrite:(ushort)value
+{
+    if (value > USHRT_MAX)
+    {
+        [self.cpuOperations setOverflow:0x0001];
+    }
+    else if (value < 0)
+    {
+        [self.cpuOperations setOverflow:USHRT_MAX];
+    }
+    
+    [self.operand writeValue:value];
+}
+
+-(BOOL)ignoreInstruction
+{
+    return [self.cpuOperations ignoreNextInstruction];
+}
+
+-(void)setIgnoreInstruction:(BOOL)value
+{
+    [self.cpuOperations setIgnoreNextInstruction:value];
+}
+
+-(ushort)overflowRegister
+{
+    return [self.cpuOperations overflow];
+}
+
+-(void)setOverflowRegister:(ushort)value
+{
+    [self.cpuOperations setOverflow:value];
+}
+
+- (void)process
+{
+    [self.operand process];
+}
+
+- (void)noOp
+{
+    [self.operand noOp];
+}
+
+- (void)jumpSubRoutine:(ushort)subRoutineAdress
+{
+    [self.cpuOperations decrementStackPointer];
+    [self.cpuOperations writeMemoryAtAddress:[self.cpuOperations stackPointer] withValue:[self.cpuOperations programCounter]];
+    [self.cpuOperations setProgramCounter:subRoutineAdress];
 }
 
 @end

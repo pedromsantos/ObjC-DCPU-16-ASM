@@ -37,11 +37,6 @@
     return self;
 }
 
--(NSString*)token
-{
-    return @"";
-}
-
 -(int) execute
 {
     [self.operationA process];

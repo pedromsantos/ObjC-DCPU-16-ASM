@@ -21,10 +21,16 @@
  */
 
 #import "Operand.h"
+#import "DCPUProtocol.h"
 
 @interface CPUOperation : NSObject
 
 @property (nonatomic, retain) Operand *operand;
+@property (nonatomic, readonly) ushort read;
+@property (nonatomic, assign) ushort write;
+@property (nonatomic, assign) BOOL ignoreInstruction;
+@property (nonatomic, assign) ushort overflowRegister;
+@property (nonatomic, strong) id<DCPUProtocol> cpuOperations;
 
 -(void) process; 
 -(void) noOp;

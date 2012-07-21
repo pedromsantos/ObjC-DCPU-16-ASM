@@ -20,10 +20,17 @@
  * SOFTWARE.
  */
 
+#import "DCPUProtocol.h"
+
 #define OPCODE_WIDTH 4
 #define OPERAND_WIDTH 6
 #define OPERAND_LITERAL_MAX 0x1F
 #define OPERAND_LITERAL_OFFSET 0x20
+
+#define  SHORT_MASK 0xFFFF
+#define  NUMBER_OF_REGISTERS 8
+#define  NUMBER_OF_LITERALS 32
+#define  SHORT_SHIFT 16
 
 enum operand_type {
     O_REG = 0x00,
@@ -65,18 +72,18 @@ enum operand_special_register {
 @property (nonatomic, assign) uint16_t nextWord;
 @property (nonatomic, assign) uint16_t value;
 @property (nonatomic, strong) NSString* label;
+@property (nonatomic, strong) id<DCPUProtocol> cpuOperations;
 
-+ (enum operand_type)operandTypeForName:(NSString*)name;
 + (Operand*)newOperand:(enum operand_type)type;
 + (Operand*)newExecutingOperand:(int)code ;
 
--(NSString*) token;
+- (NSString*) token;
+- (ushort)read;
+- (void)writeValue:(ushort)value;
+- (void)process;
+- (void)noOp;
 
-
-- (void) setRegisterValueForName:(NSString*)name;
 - (int) assembleWithShift:(int)shift;
 - (int) assembleOperandWithIndex:(int)index;
-
-
 
 @end
