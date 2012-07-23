@@ -27,7 +27,7 @@
 - (ushort)read
 {
     [self.cpuOperations incrementProgramCounter];
-    return [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations programCounter]];
+    return (ushort) [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations programCounter]];
 }
 
 - (void)noOp

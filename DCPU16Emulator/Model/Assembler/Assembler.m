@@ -154,7 +154,7 @@
         
         if(containsKey)
         {
-            NSUInteger index = [instruction intValue];
+            NSUInteger index = (NSUInteger) [instruction intValue];
             NSNumber *key = [labelDef objectForKey:label];
             [self.program replaceObjectAtIndex:index withObject:key];
         }

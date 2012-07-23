@@ -288,18 +288,18 @@
         {
             int len = [self.lexer.tokenContents length];
             unichar buffer[len];
-            [self.lexer.tokenContents getCharacters:buffer range:NSMakeRange(0, len)];
+            [self.lexer.tokenContents getCharacters:buffer range:NSMakeRange(0, (NSUInteger) len)];
             
             for(int i = 0; i < len; ++i) 
             {
-                char current = buffer[i];
+                char current = (char) buffer[i];
                 
                 if(current == ' ')
                 {
                     continue;
                 }
                 
-                [statment addDat:current];
+                [statment addDat:(UInt16) current];
             }
         }
         

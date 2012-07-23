@@ -44,7 +44,7 @@
 
 - (void)setRegisterValue:(Match*)match
 {
-    self.operand.registerValue = [self registerValueForName:match.content];
+    self.operand.registerValue = (enum operand_register_value) [self registerValueForName:match.content];
 }
 
 - (int)registerValueForName:(NSString*)name

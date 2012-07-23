@@ -26,7 +26,7 @@
 
 - (ushort)read
 {
-    return [self.cpuOperations readGeneralPursoseRegisterValue:self.registerValue];
+    return (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.registerValue];
 }
 
 - (void)writeValue:(ushort)value

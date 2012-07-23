@@ -26,7 +26,7 @@
 
 - (ushort)read
 {
-    return [self.cpuOperations overflow];
+    return (ushort) [self.cpuOperations overflow];
 }
 
 - (void)writeValue:(ushort)value

@@ -157,7 +157,7 @@
         {   
             self.match = nil;
             enum LexerTokenType token = tokenMatcher.token;
-            NSString* tokenContent = [self.lineRemaining substringWithRange:NSMakeRange(0, matchedStartIndex)];
+            NSString* tokenContent = [self.lineRemaining substringWithRange:NSMakeRange(0, (NSUInteger) matchedStartIndex)];
             self.match = [[Match alloc] initWithToken:token content:tokenContent];
             
             [self consumeToken:token characters:matchedStartIndex];
@@ -181,7 +181,7 @@
     if([self.consumeTokenStrategy isTokenToBeConsumed:tkn] || [self.ignoreTokenStrategy isTokenToBeIgnored:tkn])
     {
         columnNumber += matchedStartIndex;
-        self.lineRemaining = [self.lineRemaining substringFromIndex:matchedStartIndex];
+        self.lineRemaining = [self.lineRemaining substringFromIndex:(NSUInteger) matchedStartIndex];
     }
 }
 

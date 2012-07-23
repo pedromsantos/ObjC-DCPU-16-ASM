@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 
-#import "Operand.h"
 #import "RegisterOperand.h"
 #import "PopOperand.h"
 #import "PeekOperand.h"
@@ -31,7 +30,6 @@
 #import "IndirectNextWordOperand.h"
 #import "NextWordOperand.h"
 #import "LiteralOperand.h"
-#import "NullOperand.h"
 #import "IndirectRegisterOperand.h"
 #import "InstructionOperandFactory.h"
 #import "InstructionOperandFactoryTests.h"
@@ -58,7 +56,7 @@
 {
     InstructionOperandFactory *factory = [[InstructionOperandFactory alloc] init];
     
-    Operand *operand = [factory createFromInstructionOperandValue:self.inputValue];
+    Operand *operand = [factory createFromInstructionOperandValue:(ushort) self.inputValue];
     
     STAssertEquals(self.expectedOperand, [operand class] ,nil);
 }

@@ -74,7 +74,7 @@
     {
         // Next refator will start here
         Statment* statment = [[Statment alloc] init];
-        statment.opcode = opcode;
+        statment.opcode = (basicOpcode) opcode;
         statment.firstOperand = [Operand newExecutingOperand:firstOperandValue];
         statment.secondOperand = [Operand newExecutingOperand:secondOperandValue];
         

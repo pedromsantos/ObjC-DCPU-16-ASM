@@ -21,7 +21,6 @@
  */
 
 #import "CPUOperation.h"
-#import <inttypes.h>
 
 @implementation CPUOperation
 
@@ -64,7 +63,7 @@
 
 -(ushort)overflowRegister
 {
-    return [self.cpuOperations overflow];
+    return (ushort) [self.cpuOperations overflow];
 }
 
 -(void)setOverflowRegister:(ushort)value
@@ -85,7 +84,7 @@
 - (void)jumpSubRoutine:(ushort)subRoutineAdress
 {
     [self.cpuOperations decrementStackPointer];
-    [self.cpuOperations writeMemoryAtAddress:[self.cpuOperations stackPointer] withValue:[self.cpuOperations programCounter]];
+    [self.cpuOperations writeMemoryAtAddress:[self.cpuOperations stackPointer] withValue:(ushort) [self.cpuOperations programCounter]];
     [self.cpuOperations setProgramCounter:subRoutineAdress];
 }
 

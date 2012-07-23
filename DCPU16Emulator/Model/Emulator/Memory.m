@@ -88,7 +88,7 @@
     
     for (NSInteger i = 0; i < programSize; i++)
     {
-        [self setMemoryValue:[[values objectAtIndex:i] intValue] atIndex:i];
+        [self setMemoryValue:[[values objectAtIndex:(NSUInteger) i] intValue] atIndex:i];
     }
     
     startAddressOfData = programSize + 1;
@@ -114,7 +114,7 @@
         //dispatch_async(q_default, ^{ self.generalRegisterWillChange(index, oldValue); });
     }
 
-    [memoryArea replaceObjectAtIndex:index withObject:[NSNumber numberWithInt:value]];
+    [memoryArea replaceObjectAtIndex:(NSUInteger) index withObject:[NSNumber numberWithInt:value]];
     
     if(self.memoryDidChange != nil && [area isEqualToString:@"MEM"])
     {
@@ -254,21 +254,21 @@
 {
     NSMutableArray *memory = [ram objectForKey:area];
     
-    return [[memory objectAtIndex:index] intValue];
+    return [[memory objectAtIndex:(NSUInteger) index] intValue];
 }
 
 - (int)getMemoryValueAtIndex:(int)index
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
     
-    return [[memory objectAtIndex:index] intValue];
+    return [[memory objectAtIndex:(NSUInteger) index] intValue];
 }
 
 - (int)getValueForRegister:(int)reg
 {
     NSMutableArray *registers = [ram objectForKey:REG];
     
-    int value = [[registers objectAtIndex:reg] intValue];
+    int value = [[registers objectAtIndex:(NSUInteger) reg] intValue];
     
     return value;
 }
@@ -277,7 +277,7 @@
 {
     NSMutableArray *literals = [ram objectForKey:LIT];
     
-    return [[literals objectAtIndex:index] intValue];
+    return [[literals objectAtIndex:(NSUInteger) index] intValue];
 }
 
 - (int)peekInstructionAtProgramCounter
@@ -289,14 +289,14 @@
         return 0;
     }
     
-    return [[memory objectAtIndex:[[ram objectForKey:PC] intValue]] intValue];
+    return [[memory objectAtIndex:(NSUInteger) [[ram objectForKey:PC] intValue]] intValue];
 }
 
 - (int)peek
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
     
-    return [[memory objectAtIndex:[[ram objectForKey:SP] intValue]] intValue];
+    return [[memory objectAtIndex:(NSUInteger) [[ram objectForKey:SP] intValue]] intValue];
 }
 
 - (int)getProgramCounter

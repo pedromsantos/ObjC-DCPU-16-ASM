@@ -26,7 +26,7 @@
 
 - (ushort)read
 {
-    return [self.cpuOperations programCounter];
+    return (ushort) [self.cpuOperations programCounter];
 }
 
 - (void)writeValue:(ushort)value

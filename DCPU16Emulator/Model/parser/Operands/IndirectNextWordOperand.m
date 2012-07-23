@@ -26,7 +26,7 @@
 
 - (ushort)read
 {
-    return [self.cpuOperations readMemoryValueAtAddress:self.nextWord];
+    return (ushort) [self.cpuOperations readMemoryValueAtAddress:self.nextWord];
 }
 
 - (void)writeValue:(ushort)value
@@ -38,7 +38,7 @@
 {
     [self.cpuOperations incrementProgramCounter];
     int programCounter = [self.cpuOperations programCounter];
-    self.nextWord = [self.cpuOperations readMemoryValueAtAddress:programCounter];
+    self.nextWord = (uint16_t) [self.cpuOperations readMemoryValueAtAddress:programCounter];
 }
 
 - (int)assembleWithShift:(int)shift

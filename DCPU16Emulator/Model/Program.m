@@ -137,7 +137,7 @@
         [assembledCode appendString:[NSString stringWithFormat:@"0x%X ", assembledInstruction]];
     }
 
-    return (NSString*)assembledCode;
+    return assembledCode;
 }
 
 - (NSMutableString *)generateSourceFromInstructions

@@ -34,7 +34,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
+@property (weak, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
 
 @property (weak, nonatomic) IBOutlet UIButton *enterButton;
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;

@@ -89,7 +89,7 @@
     // non-basic opcodes
     else if ([self.menemonic isEqualToString:@"JSR"])
     {
-        self.opcode = 0x0;
+        self.opcode = (basicOpcode) 0x0;
         self.opcodeNonBasic = OP_JSR;
     }
     else

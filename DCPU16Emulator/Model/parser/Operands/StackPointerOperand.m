@@ -26,7 +26,7 @@
 
 - (ushort)read
 {
-    return [self.cpuOperations stackPointer];
+    return (ushort) [self.cpuOperations stackPointer];
 }
 
 - (void)writeValue:(ushort)value
