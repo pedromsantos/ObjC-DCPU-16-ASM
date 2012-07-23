@@ -26,7 +26,7 @@
 
 @interface IndirectNextWordOffsetOperandBuilder ()
 
-@property (nonatomic, strong) Match* leftToken;
+@property(nonatomic, strong) Match *leftToken;
 
 @end
 
@@ -34,21 +34,21 @@
 
 @synthesize leftToken;
 
-- (id)initWithLeftToken:(Match*)token
+- (id)initWithLeftToken:(Match *)token
 {
     self = [super init];
-    
+
     self.leftToken = token;
-    
+
     return self;
 }
 
-- (Operand*)CreateOperandFromMatch:(Match*)match
+- (Operand *)CreateOperandFromMatch:(Match *)match
 {
     return [[IndirectNextWordOffsetOperand alloc] init];
 }
 
-- (void)setNextWordValue:(Match*)match
+- (void)setNextWordValue:(Match *)match
 {
     self.operand.nextWord = [leftToken.content parseHexLiteral];
 }

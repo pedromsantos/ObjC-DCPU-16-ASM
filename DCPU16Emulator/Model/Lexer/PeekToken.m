@@ -24,7 +24,7 @@
 
 @implementation PeekToken
 
-- (BOOL) isTokenToBeConsumed:(enum LexerTokenType)token
+- (BOOL)isTokenToBeConsumed:(enum LexerTokenType)token
 {
     return NO;
 }

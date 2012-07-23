@@ -44,7 +44,7 @@
 @synthesize value;
 @synthesize cpuOperations;
 
--(NSString*) token;
+- (NSString *)token;
 {
     return @"";
 }
@@ -61,12 +61,12 @@
 
 - (void)process
 {
-    
+
 }
 
 - (void)noOp
 {
-    
+
 }
 
 - (int)assembleWithShift:(int)shift
@@ -77,13 +77,13 @@
 - (int)assembleOperandWithIndex:(int)index
 {
     int shift = OPCODE_WIDTH + (index * OPERAND_WIDTH);
-    
+
     return [self assembleWithShift:shift];
 }
 
-+ (Operand*)newOperand:(enum operand_type)type
++ (Operand *)newOperand:(enum operand_type)type
 {
-    switch (type) 
+    switch (type)
     {
         case O_REG:
             return [[RegisterOperand alloc] init];
@@ -112,25 +112,25 @@
         case O_NULL:
             return [[NullOperand alloc] init];
     }
-    
+
     return nil;
 }
 
-+ (Operand*)newExecutingOperand:(int)code 
++ (Operand *)newExecutingOperand:(int)code
 {
-    Operand* operand;
-    
-    if (code < O_INDIRECT_REG) 
+    Operand *operand;
+
+    if (code < O_INDIRECT_REG)
     {
         operand = [[RegisterOperand alloc] init];
         operand.registerValue = (enum operand_register_value) code;
-    } 
-    else if (code < O_INDIRECT_NEXT_WORD_OFFSET) 
+    }
+    else if (code < O_INDIRECT_NEXT_WORD_OFFSET)
     {
         operand = [[IndirectNextWordOffsetOperand alloc] init];
         operand.nextWord = (uint16_t) code;
-    } 
-    else if (code < O_POP) 
+    }
+    else if (code < O_POP)
     {
         operand = [[PushOperand alloc] init];
     }
@@ -172,7 +172,7 @@
         operand = [[LiteralOperand alloc] init];
         operand.nextWord = (code - O_LITERAL) % NUM_LITERALS;;
     }
-    
+
     return operand;
 }
 

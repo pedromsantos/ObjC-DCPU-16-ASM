@@ -24,6 +24,6 @@
 
 @protocol IgnoreTokenStrategy
 
-- (bool) isTokenToBeIgnored:(enum LexerTokenType)token;
+- (bool)isTokenToBeIgnored:(enum LexerTokenType)token;
 
 @end

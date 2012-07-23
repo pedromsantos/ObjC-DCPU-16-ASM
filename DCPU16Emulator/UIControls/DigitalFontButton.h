@@ -24,6 +24,6 @@
 
 @interface DigitalFontButton : UIButton
 
-@property (nonatomic, assign) int fontSize;
+@property(nonatomic, assign) int fontSize;
 
 @end

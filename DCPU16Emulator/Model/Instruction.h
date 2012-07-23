@@ -34,16 +34,18 @@ enum InstructionInputState
     enum InstructionInputState instructionState;
 }
 
-@property (nonatomic, readonly) enum InstructionInputState state;
-@property (nonatomic, strong) NSString* label;
-@property (nonatomic, strong) NSString* opcode;
-@property (nonatomic, strong) NSString* operand1;
-@property (nonatomic, strong) NSString* operand2;
+@property(nonatomic, readonly) enum InstructionInputState state;
+@property(nonatomic, strong) NSString *label;
+@property(nonatomic, strong) NSString *opcode;
+@property(nonatomic, strong) NSString *operand1;
+@property(nonatomic, strong) NSString *operand2;
 
 - (void)reset;
-- (void)assignValue:(NSString*)value;
-- (void)assignLabel:(NSString*)value;
 
-- (NSArray*)possibleNextInput;
+- (void)assignValue:(NSString *)value;
+
+- (void)assignLabel:(NSString *)value;
+
+- (NSArray *)possibleNextInput;
 
 @end

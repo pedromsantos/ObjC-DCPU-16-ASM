@@ -32,7 +32,8 @@
 #define  NUMBER_OF_LITERALS 32
 #define  SHORT_SHIFT 16
 
-enum operand_type {
+enum operand_type
+{
     O_REG = 0x00,
     O_INDIRECT_REG = 0x08,
     O_INDIRECT_NEXT_WORD_OFFSET = 0x10,
@@ -45,11 +46,12 @@ enum operand_type {
     O_INDIRECT_NEXT_WORD = 0x1E,
     O_NEXT_WORD = 0x1F,
     O_LITERAL = 0x20,
-    
+
     O_NULL = 0xDEAD,
 };
 
-enum operand_register_value {
+enum operand_register_value
+{
     REG_A,
     REG_B,
     REG_C,
@@ -60,7 +62,8 @@ enum operand_register_value {
     REG_J,
 };
 
-enum operand_special_register {
+enum operand_special_register
+{
     SREG_PC,
     SREG_SP,
     SREG_O,
@@ -68,22 +71,28 @@ enum operand_special_register {
 
 @interface Operand : NSObject
 
-@property (nonatomic, assign) enum operand_register_value registerValue;
-@property (nonatomic, assign) uint16_t nextWord;
-@property (nonatomic, assign) uint16_t value;
-@property (nonatomic, strong) NSString* label;
-@property (nonatomic, strong) id<DCPUProtocol> cpuOperations;
+@property(nonatomic, assign) enum operand_register_value registerValue;
+@property(nonatomic, assign) uint16_t nextWord;
+@property(nonatomic, assign) uint16_t value;
+@property(nonatomic, strong) NSString *label;
+@property(nonatomic, strong) id <DCPUProtocol> cpuOperations;
 
-+ (Operand*)newOperand:(enum operand_type)type;
-+ (Operand*)newExecutingOperand:(int)code ;
++ (Operand *)newOperand:(enum operand_type)type;
 
-- (NSString*) token;
++ (Operand *)newExecutingOperand:(int)code;
+
+- (NSString *)token;
+
 - (ushort)read;
+
 - (void)writeValue:(ushort)value;
+
 - (void)process;
+
 - (void)noOp;
 
-- (int) assembleWithShift:(int)shift;
-- (int) assembleOperandWithIndex:(int)index;
+- (int)assembleWithShift:(int)shift;
+
+- (int)assembleOperandWithIndex:(int)index;
 
 @end

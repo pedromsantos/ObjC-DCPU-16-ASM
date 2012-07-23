@@ -27,30 +27,37 @@
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
-@property (weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
+@property(weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
+@property(weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
+@property(weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
+@property(weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
 
-@property (strong, nonatomic) IBOutlet UITableView *instructionTableView;
+@property(strong, nonatomic) IBOutlet UITableView *instructionTableView;
 
-@property (weak, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
+@property(weak, nonatomic) IBOutletCollection(UIButton) NSArray *instructionButtonCollection;
 
-@property (weak, nonatomic) IBOutlet UIButton *enterButton;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
-@property (weak, nonatomic) IBOutlet UIButton *literalButton;
-@property (weak, nonatomic) IBOutlet UIButton *labelButton;
-@property (weak, nonatomic) IBOutlet UIButton *referenceButton;
-@property (weak, nonatomic) IBOutlet UITextField *inputField;
-@property (weak, nonatomic) IBOutlet UILabel *assembledCodeLabel;
+@property(weak, nonatomic) IBOutlet UIButton *enterButton;
+@property(weak, nonatomic) IBOutlet UIButton *clearButton;
+@property(weak, nonatomic) IBOutlet UIButton *literalButton;
+@property(weak, nonatomic) IBOutlet UIButton *labelButton;
+@property(weak, nonatomic) IBOutlet UIButton *referenceButton;
+@property(weak, nonatomic) IBOutlet UITextField *inputField;
+@property(weak, nonatomic) IBOutlet UILabel *assembledCodeLabel;
 
 - (IBAction)instructionButtonPressed:(UIButton *)sender;
+
 - (IBAction)clsButtonPressed;
+
 - (IBAction)enterButtonPressed;
+
 - (IBAction)literalButtonPressed;
-- (IBAction)labelButtonPresssed;
+
+- (IBAction)labelButtonPressed;
+
 - (IBAction)referenceButtonPressed;
+
 - (IBAction)assembleButtonPressed;
+
 - (IBAction)nextButtonPressed;
 
 @end

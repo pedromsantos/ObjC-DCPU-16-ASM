@@ -24,7 +24,7 @@
 
 @implementation IgnoreNoneTokenStrategy
 
-- (bool) isTokenToBeIgnored:(enum LexerTokenType)token
+- (bool)isTokenToBeIgnored:(enum LexerTokenType)token
 {
     return NO;
 }

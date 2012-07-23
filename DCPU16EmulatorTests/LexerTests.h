@@ -24,6 +24,6 @@
 
 @interface LexerTests : SenTestCase
 
-@property (nonatomic, strong) NSArray* tokenDefinitions;
+@property(nonatomic, strong) NSArray *tokenDefinitions;
 
 @end

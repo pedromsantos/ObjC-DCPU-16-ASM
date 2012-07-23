@@ -22,18 +22,23 @@
 
 @protocol DCPUProtocol <NSObject>
 
-@property (nonatomic, assign) int programCounter;
-@property (nonatomic, assign) int stackPointer;
-@property (nonatomic, assign) int overflow;
-@property (nonatomic, assign) bool ignoreNextInstruction;
+@property(nonatomic, assign) int programCounter;
+@property(nonatomic, assign) int stackPointer;
+@property(nonatomic, assign) int overflow;
+@property(nonatomic, assign) bool ignoreNextInstruction;
 
-- (int) readGeneralPursoseRegisterValue:(int)reg;
--(void) writeGeneralPursoseRegister:(int)reg withValue:(ushort)value;
-- (int) readMemoryValueAtAddress:(int)address;
--(void) writeMemoryAtAddress:(int)address withValue:(ushort)value;
+- (int)readGeneralPursoseRegisterValue:(int)reg;
 
--(void) incrementProgramCounter;
--(void) incrementStackPointer;
--(void) decrementStackPointer;
+- (void)writeGeneralPursoseRegister:(int)reg withValue:(ushort)value;
+
+- (int)readMemoryValueAtAddress:(int)address;
+
+- (void)writeMemoryAtAddress:(int)address withValue:(ushort)value;
+
+- (void)incrementProgramCounter;
+
+- (void)incrementStackPointer;
+
+- (void)decrementStackPointer;
 
 @end

@@ -25,11 +25,13 @@
 
 @protocol OperandBuilderProtocol <NSObject>
 
-- (void)setLabelValue:(Match*)match;
-- (void)setNextWordValue:(Match*)match;
-- (void)setRegisterValue:(Match*)match;
+- (void)setLabelValue:(Match *)match;
+
+- (void)setNextWordValue:(Match *)match;
+
+- (void)setRegisterValue:(Match *)match;
 
 @required
-- (Operand*)CreateOperandFromMatch:(Match*)match;
+- (Operand *)CreateOperandFromMatch:(Match *)match;
 
 @end

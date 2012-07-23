@@ -27,13 +27,13 @@
 @synthesize token;
 @synthesize content;
 
-- (id)initWithToken:(enum LexerTokenType)tokenType content:(NSString*)tokenContent
+- (id)initWithToken:(enum LexerTokenType)tokenType content:(NSString *)tokenContent
 {
     self = [super init];
-    
+
     self.token = tokenType;
     self.content = tokenContent;
-    
+
     return self;
 }
 

@@ -29,18 +29,18 @@
 @synthesize operand1;
 @synthesize operand2;
 
--(enum InstructionInputState)state
+- (enum InstructionInputState)state
 {
     return instructionState;
 }
 
-- (void)assignLabel:(NSString*)value
+- (void)assignLabel:(NSString *)value
 {
     self.label = value;
     instructionState = WaitForOpcode;
 }
 
-- (void)assignValue:(NSString*)value
+- (void)assignValue:(NSString *)value
 {
     switch (instructionState)
     {
@@ -51,7 +51,7 @@
             break;
         case WaitForOperand1:
             operand1 = value;
-            if([opcode isEqualToString:@"JSR"])
+            if ([opcode isEqualToString:@"JSR"])
             {
                 instructionState = Complete;
             }
@@ -80,16 +80,16 @@
     self.label = @"";
 }
 
-- (NSArray*)possibleNextInput
+- (NSArray *)possibleNextInput
 {
-    NSMutableArray* possibleInputList = [[NSMutableArray alloc] init];
-    
-    if(instructionState == WaitForOpcodeOrLabel)
+    NSMutableArray *possibleInputList = [[NSMutableArray alloc] init];
+
+    if (instructionState == WaitForOpcodeOrLabel)
     {
         [possibleInputList addObject:@"Label"];
     }
-    
-    if(instructionState == WaitForOpcodeOrLabel || instructionState == WaitForOpcode)
+
+    if (instructionState == WaitForOpcodeOrLabel || instructionState == WaitForOpcode)
     {
         [possibleInputList addObject:@"JSR"];
         [possibleInputList addObject:@"SET"];
@@ -109,7 +109,7 @@
         [possibleInputList addObject:@"IFG"];
         [possibleInputList addObject:@"IFB"];
     }
-    else if(instructionState == WaitForOperand1 || instructionState == WaitForOperand2)
+    else if (instructionState == WaitForOperand1 || instructionState == WaitForOperand2)
     {
         [possibleInputList addObject:@"PC"];
         [possibleInputList addObject:@"SP"];
@@ -128,7 +128,7 @@
         [possibleInputList addObject:@"POP"];
         [possibleInputList addObject:@"PEEK"];
     }
-    
+
     return possibleInputList;
 }
 

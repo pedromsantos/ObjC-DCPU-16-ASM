@@ -28,24 +28,24 @@
 @synthesize matcher;
 @synthesize token;
 
-- (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString*)pattern
+- (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString *)pattern
 {
     self = [super init];
-    
-    if(self==nil)
+
+    if (self == nil)
     {
         return nil;
     }
-    
+
     RegexMatcher *regexMatcher = [[RegexMatcher alloc] initWithPattern:pattern];
     self.matcher = regexMatcher;
-    
+
     self.token = tokenType;
-    
+
     return self;
 }
 
-- (int) match:(NSString*)text
+- (int)match:(NSString *)text
 {
     return [self.matcher match:text];
 }

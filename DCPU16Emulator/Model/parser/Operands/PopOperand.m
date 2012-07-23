@@ -28,7 +28,7 @@
 {
     ushort value = (ushort) [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations stackPointer]];
     [self.cpuOperations incrementStackPointer];
-    
+
     return value;
 }
 

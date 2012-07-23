@@ -29,19 +29,19 @@
 @synthesize operand1;
 @synthesize operand2;
 
-- (UITableViewCell*)drawCellForInstruction:(Instruction*)instruction
+- (UITableViewCell *)drawCellForInstruction:(Instruction *)instruction
 {
     self.label.text = instruction.label;
     self.opcode.text = instruction.opcode;
     self.operand1.text = instruction.operand1;
     self.operand2.text = instruction.operand2;
-    
+
     return self;
 }
 
-- (IBAction)delButtonPressed 
+- (IBAction)delButtonPressed
 {
-    
+
 }
 
 @end

@@ -33,27 +33,27 @@
 @synthesize labelRef;
 @synthesize program;
 
-- (void)assembleStatments:(NSArray*)statments
+- (void)assembleStatments:(NSArray *)statments
 {
     self.labelDef = [[NSMutableDictionary alloc] init];
     self.labelRef = [[NSMutableDictionary alloc] init];
     self.program = [[NSMutableArray alloc] init];
-    
+
     for (Statment *statment in statments)
     {
         [self assembleStatment:statment];
     }
-    
+
     [self resolveLabelReferences];
 }
 
-- (void)assembleStatment:(Statment*)statment
+- (void)assembleStatment:(Statment *)statment
 {
     int opCode = statment.opcode;
-    
+
     [self processLabelInStatment:statment];
 
-    if([self processDatInStament:statment])
+    if ([self processDatInStament:statment])
     {
         return;
     }
@@ -64,7 +64,7 @@
         {
             @throw @"Non-basic opcode must have single operand.";
         }
-        
+
         switch (statment.opcodeNonBasic)
         {
             case OP_JSR:
@@ -82,13 +82,13 @@
             }
         }
     }
-    else 
+    else
     {
         opCode = [self assembleOperand:statment.firstOperand forOpCode:opCode withIndex:0];
         opCode = [self assembleOperand:statment.secondOperand forOpCode:opCode withIndex:1];
-    
+
         [self addOpCode:opCode];
-    
+
         [self assembleOperandNextWord:statment.firstOperand];
         [self assembleOperandNextWord:statment.secondOperand];
     }
@@ -106,14 +106,14 @@
 {
     if ([statment.dat count] != 0)
     {
-        for(NSNumber *value in statment.dat)
+        for (NSNumber *value in statment.dat)
         {
             [self addOpCode:[value intValue]];
-        }        
-        
+        }
+
         return YES;
     }
-    
+
     return NO;
 }
 
@@ -122,22 +122,22 @@
     [program addObject:[NSNumber numberWithInt:opCode]];
 }
 
-- (int)assembleOperand:(Operand*)operand forOpCode:(int)opCode withIndex:(int)index
+- (int)assembleOperand:(Operand *)operand forOpCode:(int)opCode withIndex:(int)index
 {
     return opCode |= [operand assembleOperandWithIndex:index];
 }
 
-- (void)assembleOperandNextWord:(Operand*)operand
+- (void)assembleOperandNextWord:(Operand *)operand
 {
     if ([operand isKindOfClass:[NextWordOperand class]] || [operand isKindOfClass:[IndirectNextWordOperand class]] ||
-        [operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
+            [operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
     {
-        if([operand.label length] > 0)
+        if ([operand.label length] > 0)
         {
             [self.labelRef setObject:operand.label forKey:[NSNumber numberWithInt:[self.program count]]];
             [self addOpCode:0];
         }
-        else if(operand.nextWord > OPERAND_LITERAL_MAX)
+        else if (operand.nextWord > OPERAND_LITERAL_MAX)
         {
             [self addOpCode:operand.nextWord];
         }
@@ -148,11 +148,11 @@
 {
     for (NSNumber *instruction in labelRef.keyEnumerator)
     {
-        NSString* label = [labelRef objectForKey:instruction];
-        
+        NSString *label = [labelRef objectForKey:instruction];
+
         BOOL containsKey = ([labelDef objectForKey:label] != nil);
-        
-        if(containsKey)
+
+        if (containsKey)
         {
             NSUInteger index = (NSUInteger) [instruction intValue];
             NSNumber *key = [labelDef objectForKey:label];

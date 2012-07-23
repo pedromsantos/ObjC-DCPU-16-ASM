@@ -27,31 +27,31 @@
 @synthesize operationA;
 @synthesize operationB;
 
--(id) initWithOperationA:(CPUOperation*)operA andOperationB:(CPUOperation*)operB
+- (id)initWithOperationA:(CPUOperation *)operA andOperationB:(CPUOperation *)operB
 {
     self = [super init];
-    
+
     self.operationA = operA;
     self.operationB = operB;
-    
+
     return self;
 }
 
--(int) execute
+- (int)execute
 {
     [self.operationA process];
     [self.operationB process];
-    
+
     return [self process];
 }
 
--(void) noOp
+- (void)noOp
 {
     [self.operationA noOp];
     [self.operationB noOp];
 }
 
--(int) process
+- (int)process
 {
     return 0;
 }

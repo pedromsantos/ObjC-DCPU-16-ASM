@@ -24,7 +24,7 @@
 
 @interface OperandFactory : NSObject <OperandFactoryProtocol>
 
-@property (nonatomic,strong) NSDictionary* directOperandCreationStrategyMapper;
-@property (nonatomic,strong) NSDictionary* indirectOperandCreationStrategyMapper;
+@property(nonatomic, strong) NSDictionary *directOperandCreationStrategyMapper;
+@property(nonatomic, strong) NSDictionary *indirectOperandCreationStrategyMapper;
 
 @end

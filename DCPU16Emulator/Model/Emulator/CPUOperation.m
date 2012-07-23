@@ -47,26 +47,26 @@
     {
         [self.cpuOperations setOverflow:USHRT_MAX];
     }
-    
+
     [self.operand writeValue:value];
 }
 
--(BOOL)ignoreInstruction
+- (BOOL)ignoreInstruction
 {
     return [self.cpuOperations ignoreNextInstruction];
 }
 
--(void)setIgnoreInstruction:(BOOL)value
+- (void)setIgnoreInstruction:(BOOL)value
 {
     [self.cpuOperations setIgnoreNextInstruction:value];
 }
 
--(ushort)overflowRegister
+- (ushort)overflowRegister
 {
     return (ushort) [self.cpuOperations overflow];
 }
 
--(void)setOverflowRegister:(ushort)value
+- (void)setOverflowRegister:(ushort)value
 {
     [self.cpuOperations setOverflow:value];
 }

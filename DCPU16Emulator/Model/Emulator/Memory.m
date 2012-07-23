@@ -22,12 +22,12 @@
 
 #import "Memory.h"
 
-@interface Memory()
+@interface Memory ()
 {
     dispatch_queue_t q_default;
 }
 
-@property (nonatomic, strong) NSMutableDictionary *ram;
+@property(nonatomic, strong) NSMutableDictionary *ram;
 
 @end
 
@@ -45,139 +45,139 @@
 - (id)init
 {
     ram = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-           [NSNumber numberWithInt:0], PC,
-           [NSNumber numberWithInt:0], SP,
-           [NSNumber numberWithInt:0], OV,
-           [[NSMutableArray alloc] initWithCapacity:NUM_REGISTERS], REG,
-           [[NSMutableArray alloc] initWithCapacity:NUM_ITERALS], LIT,
-           [[NSMutableArray alloc] initWithCapacity:MEMORY_SIZE], MEM,
-           nil];
-    
+            [NSNumber numberWithInt:0], PC,
+            [NSNumber numberWithInt:0], SP,
+            [NSNumber numberWithInt:0], OV,
+            [[NSMutableArray alloc] initWithCapacity:NUM_REGISTERS], REG,
+            [[NSMutableArray alloc] initWithCapacity:NUM_ITERALS], LIT,
+            [[NSMutableArray alloc] initWithCapacity:MEMORY_SIZE], MEM,
+            nil];
+
     startAddressOfData = 0;
-    
+
     NSMutableArray *literals = [ram objectForKey:LIT];
-    
+
     for (NSUInteger i = 0; i < NUM_ITERALS; i++)
     {
         [literals insertObject:[NSNumber numberWithInt:i] atIndex:i];
     }
-    
+
     NSMutableArray *registers = [ram objectForKey:REG];
-    NSNumber* initValue = [NSNumber numberWithInt:0];
-    
+    NSNumber *initValue = [NSNumber numberWithInt:0];
+
     for (NSUInteger i = 0; i < NUM_REGISTERS; i++)
     {
         [registers insertObject:initValue atIndex:i];
     }
-    
+
     NSMutableArray *memory = [ram objectForKey:MEM];
-    
+
     for (NSUInteger i = 0; i < MEMORY_SIZE; i++)
     {
         [memory insertObject:initValue atIndex:i];
     }
-    
+
     q_default = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
+
     return self;
 }
 
-- (void)load:(NSArray*)values
+- (void)load:(NSArray *)values
 {
     int programSize = [values count];
-    
+
     for (NSInteger i = 0; i < programSize; i++)
     {
         [self setMemoryValue:[[values objectAtIndex:(NSUInteger) i] intValue] atIndex:i];
     }
-    
+
     startAddressOfData = programSize + 1;
 }
 
-- (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString*)area
+- (void)setMemoryValue:(int)value atIndex:(int)index inMemoryArea:(NSString *)area
 {
     NSMutableArray *memoryArea = [ram objectForKey:area];
-    
-    if(self.memoryWillChange != nil && [area isEqualToString:@"MEM"])
+
+    if (self.memoryWillChange != nil && [area isEqualToString:@"MEM"])
     {
         int oldValue = [self getMemoryValueAtIndex:index inMemoryArea:area];
-        
+
         self.memoryWillChange(area, index, oldValue);
         //dispatch_async(q_default, ^{ self.memoryWillChange(area, index, oldValue); });
     }
-    
-    if(self.generalRegisterWillChange != nil && [area isEqualToString:@"REG"])
+
+    if (self.generalRegisterWillChange != nil && [area isEqualToString:@"REG"])
     {
         int oldValue = [self getMemoryValueAtIndex:index inMemoryArea:area];
-        
+
         self.generalRegisterWillChange(index, oldValue);
         //dispatch_async(q_default, ^{ self.generalRegisterWillChange(index, oldValue); });
     }
 
     [memoryArea replaceObjectAtIndex:(NSUInteger) index withObject:[NSNumber numberWithInt:value]];
-    
-    if(self.memoryDidChange != nil && [area isEqualToString:@"MEM"])
+
+    if (self.memoryDidChange != nil && [area isEqualToString:@"MEM"])
     {
         self.memoryWillChange(area, index, value);
         //dispatch_async(q_default, ^{ self.memoryWillChange(area, index, value); });
     }
-    
-    if(self.generalRegisterDidChange != nil && [area isEqualToString:@"REG"])
+
+    if (self.generalRegisterDidChange != nil && [area isEqualToString:@"REG"])
     {
         self.generalRegisterDidChange(index, value);
         //dispatch_async(q_default, ^{ self.generalRegisterDidChange(index, value); });
     }
 }
 
-- (void)setRegister:(NSString*)registerKey value:(int)newValue
+- (void)setRegister:(NSString *)registerKey value:(int)newValue
 {
-    if(self.registerWillChange != nil)
+    if (self.registerWillChange != nil)
     {
         int oldValue = [[ram valueForKey:registerKey] intValue];
-        
+
         self.registerWillChange(registerKey, oldValue);
         //dispatch_async(q_default, ^{ self.registerWillChange(registerKey, oldValue); });
     }
-    
+
     [ram setValue:[NSNumber numberWithInt:newValue] forKey:registerKey];
-    
-    if(self.registerDidChange != nil)
+
+    if (self.registerDidChange != nil)
     {
         self.registerDidChange(registerKey, newValue);
         //dispatch_async(q_default, ^{ self.registerDidChange(registerKey, newValue); });
     }
 }
 
-- (void)assignResultOfOperation:(memoryOperation)block 
-         usingOperand1AtAddress:(int)address1 
-                   inMemoryArea:(NSString*)area1
+- (void)assignResultOfOperation:(memoryOperation)block
+         usingOperand1AtAddress:(int)address1
+                   inMemoryArea:(NSString *)area1
            andOperand2AtAddress:(int)address2
-                   inMemoryArea:(NSString*)area2
+                   inMemoryArea:(NSString *)area2
                       toAddress:(int)address
-                   inMemoryArea:(NSString*)area
+                   inMemoryArea:(NSString *)area
 {
     int a;
     int b;
-    
-    if([area1 isEqualToString:REG] || [area1 isEqualToString:LIT] || [area1 isEqualToString:MEM])
+
+    if ([area1 isEqualToString:REG] || [area1 isEqualToString:LIT] || [area1 isEqualToString:MEM])
     {
         a = [self getMemoryValueAtIndex:address1 inMemoryArea:area1];
     }
-    else 
+    else
     {
         a = address1;
     }
-    
-    if([area2 isEqualToString:REG] || [area2 isEqualToString:LIT] || [area2 isEqualToString:MEM])
+
+    if ([area2 isEqualToString:REG] || [area2 isEqualToString:LIT] || [area2 isEqualToString:MEM])
     {
         b = [self getMemoryValueAtIndex:address2 inMemoryArea:area2];
     }
-    else 
+    else
     {
         b = address2;
     }
-    
-    if([area1 isEqualToString:@"PC"])
+
+    if ([area1 isEqualToString:@"PC"])
     {
         [self setProgramCounter:a];
     }
@@ -221,7 +221,7 @@
 - (void)incrementStackPointer:(int)value
 {
     int actualValue = [[ram objectForKey:SP] intValue];
-    [self setRegister:SP value:actualValue+value];
+    [self setRegister:SP value:actualValue + value];
 }
 
 - (int)readInstructionAtProgramCounter
@@ -250,52 +250,52 @@
     [self setMemoryValue:value atIndex:[self peek]];
 }
 
-- (int)getMemoryValueAtIndex:(int)index inMemoryArea:(NSString*)area
+- (int)getMemoryValueAtIndex:(int)index inMemoryArea:(NSString *)area
 {
     NSMutableArray *memory = [ram objectForKey:area];
-    
+
     return [[memory objectAtIndex:(NSUInteger) index] intValue];
 }
 
 - (int)getMemoryValueAtIndex:(int)index
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
-    
+
     return [[memory objectAtIndex:(NSUInteger) index] intValue];
 }
 
 - (int)getValueForRegister:(int)reg
 {
     NSMutableArray *registers = [ram objectForKey:REG];
-    
+
     int value = [[registers objectAtIndex:(NSUInteger) reg] intValue];
-    
+
     return value;
 }
 
 - (int)getLiteralAtIndex:(int)index
 {
     NSMutableArray *literals = [ram objectForKey:LIT];
-    
+
     return [[literals objectAtIndex:(NSUInteger) index] intValue];
 }
 
 - (int)peekInstructionAtProgramCounter
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
-    
-    if([memory count] == 0)
+
+    if ([memory count] == 0)
     {
         return 0;
     }
-    
+
     return [[memory objectAtIndex:(NSUInteger) [[ram objectForKey:PC] intValue]] intValue];
 }
 
 - (int)peek
 {
     NSMutableArray *memory = [ram objectForKey:MEM];
-    
+
     return [[memory objectAtIndex:(NSUInteger) [[ram objectForKey:SP] intValue]] intValue];
 }
 

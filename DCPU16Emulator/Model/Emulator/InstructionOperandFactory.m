@@ -35,74 +35,134 @@
 #import "LiteralOperand.h"
 #import "NullOperand.h"
 
-typedef Operand*(^creationStrategy)();
+typedef Operand *(^creationStrategy)();
 
 @interface InstructionOperandFactory ()
 {
-    NSDictionary* operandCreationStrategyMapper;
+    NSDictionary *operandCreationStrategyMapper;
 }
 
 @end
 
 @implementation InstructionOperandFactory
 
--(id)init
+- (id)init
 {
     self = [super init];
-    
+
     operandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_A],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_B],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_C],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_X],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_Y],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_Z],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_I],
-                                     (Operand*)^(){ return [[RegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:REG_J],
-                                     (Operand*)^(){ return [[IndirectRegisterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_INDIRECT_REG],
-                                     (Operand*)^(){ return [[IndirectNextWordOffsetOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_INDIRECT_NEXT_WORD_OFFSET],
-                                     (Operand*)^(){ return [[PopOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_POP],
-                                     (Operand*)^(){ return [[PeekOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_PEEK],
-                                     (Operand*)^(){ return [[PushOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_PUSH],
-                                     (Operand*)^(){ return [[StackPointerOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_SP],
-                                     (Operand*)^(){ return [[ProgramCounterOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_PC],
-                                     (Operand*)^(){ return [[OverflowOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_O],
-                                     (Operand*)^(){ return [[IndirectNextWordOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_INDIRECT_NEXT_WORD],
-                                     (Operand*)^(){ return [[NextWordOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_NEXT_WORD],
-                                     (Operand*)^(){ return [[LiteralOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_LITERAL],
-                                     (Operand*)^(){ return [[NullOperand alloc] init]; },
-                                     [NSNumber numberWithInt:O_NULL],
-                                     nil];
-    
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_A],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_B],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_C],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_X],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_Y],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_Z],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_I],
+            (Operand *) ^()
+            {
+                return [[RegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:REG_J],
+            (Operand *) ^()
+            {
+                return [[IndirectRegisterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_INDIRECT_REG],
+            (Operand *) ^()
+            {
+                return [[IndirectNextWordOffsetOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_INDIRECT_NEXT_WORD_OFFSET],
+            (Operand *) ^()
+            {
+                return [[PopOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_POP],
+            (Operand *) ^()
+            {
+                return [[PeekOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_PEEK],
+            (Operand *) ^()
+            {
+                return [[PushOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_PUSH],
+            (Operand *) ^()
+            {
+                return [[StackPointerOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_SP],
+            (Operand *) ^()
+            {
+                return [[ProgramCounterOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_PC],
+            (Operand *) ^()
+            {
+                return [[OverflowOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_O],
+            (Operand *) ^()
+            {
+                return [[IndirectNextWordOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_INDIRECT_NEXT_WORD],
+            (Operand *) ^()
+            {
+                return [[NextWordOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_NEXT_WORD],
+            (Operand *) ^()
+            {
+                return [[LiteralOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_LITERAL],
+            (Operand *) ^()
+            {
+                return [[NullOperand alloc] init];
+            },
+            [NSNumber numberWithInt:O_NULL],
+            nil];
+
     return self;
 }
 
-- (Operand*)createFromInstructionOperandValue:(ushort)operandValue
+- (Operand *)createFromInstructionOperandValue:(ushort)operandValue
 {
     creationStrategy creator = [operandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:operandValue]];
-    
+
     Operand *operand = creator();
     operand.value = operandValue;
-    
+
     return operand;
 }
 

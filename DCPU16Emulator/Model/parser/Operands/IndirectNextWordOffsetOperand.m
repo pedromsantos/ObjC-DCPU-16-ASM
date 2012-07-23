@@ -27,7 +27,7 @@
 - (ushort)read
 {
     ushort value = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
-    
+
     return (ushort) ([self.cpuOperations readMemoryValueAtAddress:self.nextWord + value] & SHORT_MASK);
 }
 

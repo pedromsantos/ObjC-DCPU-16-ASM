@@ -27,19 +27,19 @@
 - (uint16_t)parseHexLiteral
 {
     uint outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:self];
+    NSScanner *scanner = [NSScanner scannerWithString:self];
     [scanner scanHexInt:&outVal];
-    
-    return (uint16_t)outVal;
+
+    return (uint16_t) outVal;
 }
 
 - (uint16_t)parseDecimalLiteral
 {
     int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:self];
+    NSScanner *scanner = [NSScanner scannerWithString:self];
     [scanner scanInt:&outVal];
-    
-    return (uint16_t)outVal;
+
+    return (uint16_t) outVal;
 }
 
 @end

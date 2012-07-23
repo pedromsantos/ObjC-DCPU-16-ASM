@@ -25,8 +25,8 @@
 
 @interface InstructionOperandFactoryTests : SenTestCase
 
-@property (nonatomic, assign) Class expectedOperand;
-@property (nonatomic, assign) short inputValue;
+@property(nonatomic, assign) Class expectedOperand;
+@property(nonatomic, assign) short inputValue;
 
 - (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(short)value expectedOperand:(Class)expectedOprnd;
 

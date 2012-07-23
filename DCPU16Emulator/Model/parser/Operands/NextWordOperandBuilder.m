@@ -26,14 +26,14 @@
 
 @implementation NextWordOperandBuilder
 
-- (Operand*)CreateOperandFromMatch:(Match*)match
+- (Operand *)CreateOperandFromMatch:(Match *)match
 {
     return [[NextWordOperand alloc] init];
 }
 
-- (void)setNextWordValue:(Match*)match
+- (void)setNextWordValue:(Match *)match
 {
-    if(match.token == HEX)
+    if (match.token == HEX)
     {
         self.operand.nextWord = [match.content parseHexLiteral];
     }
@@ -43,22 +43,22 @@
     }
 }
 
-- (uint16_t)parseHexLiteral:(NSString*)textLiteral
+- (uint16_t)parseHexLiteral:(NSString *)textLiteral
 {
     uint outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
+    NSScanner *scanner = [NSScanner scannerWithString:textLiteral];
     [scanner scanHexInt:&outVal];
-    
-    return (uint16_t)outVal;
+
+    return (uint16_t) outVal;
 }
 
-- (uint16_t)parseDecimalLiteral:(NSString*)textLiteral
+- (uint16_t)parseDecimalLiteral:(NSString *)textLiteral
 {
     int outVal;
-    NSScanner* scanner = [NSScanner scannerWithString:textLiteral];
+    NSScanner *scanner = [NSScanner scannerWithString:textLiteral];
     [scanner scanInt:&outVal];
-    
-    return (uint16_t)outVal;
+
+    return (uint16_t) outVal;
 }
 
 @end

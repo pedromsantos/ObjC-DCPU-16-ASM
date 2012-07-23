@@ -36,12 +36,13 @@
 
 @interface DCPU : NSObject <DCPUProtocol>
 {
-    NSString* operandState;
+    NSString *operandState;
 }
 
-@property (nonatomic, strong) Memory *memory;
+@property(nonatomic, strong) Memory *memory;
 
-- (id)initWithProgram:(NSArray*)program;
+- (id)initWithProgram:(NSArray *)program;
+
 - (BOOL)executeInstruction;
 
 @end

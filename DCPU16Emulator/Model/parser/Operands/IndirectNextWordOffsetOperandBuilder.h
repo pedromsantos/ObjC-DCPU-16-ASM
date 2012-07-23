@@ -24,6 +24,6 @@
 
 @interface IndirectNextWordOffsetOperandBuilder : RegisterOperandBuilder
 
-- (id)initWithLeftToken:(Match*)leftToken;
+- (id)initWithLeftToken:(Match *)leftToken;
 
 @end

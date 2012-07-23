@@ -23,6 +23,7 @@
 @interface NSString (NSString_ParseHex_ParseInt)
 
 - (uint16_t)parseHexLiteral;
+
 - (uint16_t)parseDecimalLiteral;
 
 @end

@@ -25,6 +25,6 @@
 
 @interface DigitalFontLabel : UILabel
 
-@property (nonatomic, assign) int fontSize;
+@property(nonatomic, assign) int fontSize;
 
 @end

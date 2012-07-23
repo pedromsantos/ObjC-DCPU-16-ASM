@@ -24,8 +24,8 @@
 
 @interface RegexMatcher : NSObject <Matcher>
 
-@property (nonatomic, strong) NSRegularExpression* regex;
+@property(nonatomic, strong) NSRegularExpression *regex;
 
-- (id)initWithPattern:(NSString*)pattern;
+- (id)initWithPattern:(NSString *)pattern;
 
 @end

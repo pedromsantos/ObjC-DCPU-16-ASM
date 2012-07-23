@@ -25,12 +25,13 @@
 
 @interface InstructionCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UILabel *opcode;
-@property (weak, nonatomic) IBOutlet UILabel *operand1;
-@property (weak, nonatomic) IBOutlet UILabel *operand2;
+@property(weak, nonatomic) IBOutlet UILabel *label;
+@property(weak, nonatomic) IBOutlet UILabel *opcode;
+@property(weak, nonatomic) IBOutlet UILabel *operand1;
+@property(weak, nonatomic) IBOutlet UILabel *operand2;
 
-- (UITableViewCell*)drawCellForInstruction:(Instruction*)instruction;
+- (UITableViewCell *)drawCellForInstruction:(Instruction *)instruction;
+
 - (IBAction)delButtonPressed;
 
 @end

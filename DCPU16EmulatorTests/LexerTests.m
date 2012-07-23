@@ -34,21 +34,21 @@
 - (void)setUp
 {
     self.tokenDefinitions = [NSArray arrayWithObjects:
-                             [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
-                             [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
-                             [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
-                             [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
-                             [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
-                             [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
-                             [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
-                             [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
-                             [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
-                             [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
-                             [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
-                             [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
-                             [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
-                             nil];
-    
+            [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
+            [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
+            [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
+            [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
+            [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
+            [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
+            [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
+            [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
+            [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
+            [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
+            [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
+            [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
+            [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
+            nil];
+
     [super setUp];
 }
 
@@ -56,15 +56,15 @@
 {
     NSString *code = @"SET A, 0x30";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
+
     [lexer consumeNextToken];
     int token1 = lexer.token;
     [lexer consumeNextToken];
     int token2 = lexer.token;
-    
+
     STAssertTrue(token1 != token2, nil);
 }
 
@@ -72,19 +72,19 @@
 {
     NSString *code = @"SET A, 0x30";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[PeekToken alloc] init];
-    
-    id<ConsumeTokenStrategy> consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
+
+    id <ConsumeTokenStrategy> consumeTokenStrategy = [[ConsumeToken alloc] init];
+
     [lexer consumeNextToken];
     int token1 = lexer.token;
     [lexer consumeNextToken];
     int token2 = lexer.token;
     [lexer consumeNextTokenUsingStrategy:consumeTokenStrategy];
     int token3 = lexer.token;
-    
+
     STAssertTrue(token1 == token2 && token1 == token3, nil);
 }
 
@@ -92,12 +92,12 @@
 {
     NSString *code = @"";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
+
     [lexer consumeNextToken];
-    
+
     STAssertNil(lexer.tokenContents, nil);
 }
 
@@ -105,12 +105,12 @@
 {
     NSString *code = @"; Try some basic stuff";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
+
     [lexer consumeNextToken];
-    
+
     STAssertTrue(lexer.token == COMMENT, nil);
 }
 
@@ -118,14 +118,14 @@
 {
     NSString *code = @"SET A, 0x30";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
     lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
-    
-    int expectedTokens[4] = { INSTRUCTION, REGISTER, COMMA, HEX };
-    
-    for (int i = 0; i < 4; i++) 
+
+    int expectedTokens[4] = {INSTRUCTION, REGISTER, COMMA, HEX};
+
+    for (int i = 0; i < 4; i++)
     {
         [lexer consumeNextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
@@ -136,13 +136,13 @@
 {
     NSString *code = @"SET A, 0x30";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
-    int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX };
-    
-    for (int i = 0; i < 6; i++) 
+
+    int expectedTokens[6] = {INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX};
+
+    for (int i = 0; i < 6; i++)
     {
         [lexer consumeNextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
@@ -153,13 +153,13 @@
 {
     NSString *code = @"SET [0x1000], 0x20";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
-    int expectedTokens[8] = { INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, COMMA, WHITESPACE, HEX };
-    
-    for (int i = 0; i < 8; i++) 
+
+    int expectedTokens[8] = {INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, COMMA, WHITESPACE, HEX};
+
+    for (int i = 0; i < 8; i++)
     {
         [lexer consumeNextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
@@ -170,13 +170,13 @@
 {
     NSString *code = @"SET I, 10";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
-    int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT };
-    
-    for (int i = 0; i < 6; i++) 
+
+    int expectedTokens[6] = {INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT};
+
+    for (int i = 0; i < 6; i++)
     {
         [lexer consumeNextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
@@ -187,13 +187,13 @@
 {
     NSString *code = @"SET PC, crash";
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
-    int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF };
-        
-    for (int i = 0; i < 6; i++) 
+
+    int expectedTokens[6] = {INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF};
+
+    for (int i = 0; i < 6; i++)
     {
         [lexer consumeNextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
@@ -228,42 +228,42 @@
 \n\
 ; Hang forever. X should now be 0x40 if everything went right.\n\
 :crash      SET PC, crash            ; 7dc1 001a [*]";
-    
+
     NSScanner *codeScanner = [NSScanner scannerWithString:code];
-    
+
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    
+
     int expectedTokens[155] = {
-        COMMENT, 
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
-        
-        COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
-        LABEL, WHITESPACE, INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, PLUS, REGISTER, CLOSEBRACKET, COMMA, WHITESPACE, OPENBRACKET, REGISTER, CLOSEBRACKET, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
-        
-        COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
-        LABEL, WHITESPACE, INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
-        INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, REGISTER, WHITESPACE, COMMENT,
-        
-        COMMENT,
-        LABEL, WHITESPACE, INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
-        COMMENT,
-        COMMENT
+            COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
+
+            COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
+            LABEL, WHITESPACE, INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, PLUS, REGISTER, CLOSEBRACKET, COMMA, WHITESPACE, OPENBRACKET, REGISTER, CLOSEBRACKET, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
+
+            COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
+            LABEL, WHITESPACE, INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT, WHITESPACE, COMMENT,
+            INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, REGISTER, WHITESPACE, COMMENT,
+
+            COMMENT,
+            LABEL, WHITESPACE, INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF, WHITESPACE, COMMENT,
+            COMMENT,
+            COMMENT
     };
-    
-    for (int i = 0; i < 155; i++) 
+
+    for (int i = 0; i < 155; i++)
     {
         [lexer consumeNextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);

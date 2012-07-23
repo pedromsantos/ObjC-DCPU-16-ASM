@@ -24,7 +24,7 @@
 
 @implementation ConsumeToken
 
-- (BOOL) isTokenToBeConsumed:(enum LexerTokenType)token
+- (BOOL)isTokenToBeConsumed:(enum LexerTokenType)token
 {
     return YES;
 }

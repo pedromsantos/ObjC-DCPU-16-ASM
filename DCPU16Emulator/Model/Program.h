@@ -24,14 +24,18 @@
 
 @interface Program : NSObject
 
-@property (strong, nonatomic) NSMutableArray* instructionSet;
-@property (strong, nonatomic) NSMutableArray* assembledInstructionSet;
-@property (strong, nonatomic) Instruction* currentInstruction;
+@property(strong, nonatomic) NSMutableArray *instructionSet;
+@property(strong, nonatomic) NSMutableArray *assembledInstructionSet;
+@property(strong, nonatomic) Instruction *currentInstruction;
 
-- (NSString*)assemble;
+- (NSString *)assemble;
+
 - (void)FinishedInstructionEdit;
+
 - (void)resetCurrentInstruction;
-- (void)assignLabelToCurrentInstruction:(NSString*)value;
-- (void)assignValueToCurrentInstruction:(NSString*)value;
+
+- (void)assignLabelToCurrentInstruction:(NSString *)value;
+
+- (void)assignValueToCurrentInstruction:(NSString *)value;
 
 @end

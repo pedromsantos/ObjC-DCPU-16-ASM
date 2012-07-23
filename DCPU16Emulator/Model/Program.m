@@ -33,20 +33,20 @@
 - (id)init
 {
     self = [super init];
-    
+
     self.currentInstruction = [[Instruction alloc] init];
     self.instructionSet = [[NSMutableArray alloc] init];
-    
+
     [self notifyEditStateChanged];
     [self notifyInstructionChanged];
     [self notifyinstructionSetChanged];
-    
+
     return self;
 }
 
 - (void)notifyEditStateChanged
 {
-    NSArray* availableStates = [self.currentInstruction possibleNextInput];
+    NSArray *availableStates = [self.currentInstruction possibleNextInput];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"EditStateChanged" object:availableStates];
 }
 
@@ -61,31 +61,31 @@
      self.currentInstruction.operand2 != nil ? self.currentInstruction.operand2 : @"", @"operand2",
      [NSNumber numberWithInt:self.currentInstruction.state], @"state",nil];
     */
-    
-    NSDictionary* instructionData = [[NSMutableDictionary alloc] init];
+
+    NSDictionary *instructionData = [[NSMutableDictionary alloc] init];
     [instructionData setValue:self.currentInstruction.label != nil ? self.currentInstruction.label : @"" forKey:@"label"];
     [instructionData setValue:self.currentInstruction.opcode != nil ? self.currentInstruction.opcode : @"" forKey:@"opcode"];
     [instructionData setValue:self.self.currentInstruction.operand1 != nil ? self.currentInstruction.operand1 : @"" forKey:@"operand1"];
     [instructionData setValue:self.self.currentInstruction.operand2 != nil ? self.currentInstruction.operand2 : @"" forKey:@"operand2"];
     [instructionData setValue:[NSNumber numberWithInt:self.currentInstruction.state] forKey:@"state"];
-    
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"InstructionChanged" object:instructionData];
 }
 
 - (void)notifyinstructionSetChanged
 {
-    NSArray* instructionSetData = self.instructionSet;
+    NSArray *instructionSetData = self.instructionSet;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"InstructionSetChanged" object:instructionSetData];
 }
 
-- (void)assignLabelToCurrentInstruction:(NSString*)value
+- (void)assignLabelToCurrentInstruction:(NSString *)value
 {
     [self.currentInstruction assignLabel:value];
     [self notifyEditStateChanged];
     [self notifyInstructionChanged];
 }
 
-- (void)assignValueToCurrentInstruction:(NSString*)value
+- (void)assignValueToCurrentInstruction:(NSString *)value
 {
     [self.currentInstruction assignValue:value];
     [self notifyEditStateChanged];
@@ -102,37 +102,37 @@
 - (void)FinishedInstructionEdit
 {
     [self.instructionSet addObject:self.currentInstruction];
-    
+
     self.currentInstruction = nil;
     self.currentInstruction = [[Instruction alloc] init];
-    
+
     [self notifyEditStateChanged];
     [self notifyInstructionChanged];
     [self notifyinstructionSetChanged];
 }
 
-- (NSString*)assemble
+- (NSString *)assemble
 {
     NSMutableString *source;
     source = [self generateSourceFromInstructions];
-    
+
     NSString *code = source;
-    
+
     Parser *p = [[Parser alloc] init];
     [p parseSource:code];
-    
+
     Assembler *assembler = [[Assembler alloc] init];
     [assembler assembleStatments:p.statments];
-    
+
     int programInstructionSize = [assembler.program count];
-    
+
     NSMutableString *assembledCode = [NSMutableString string];
     [self.assembledInstructionSet removeAllObjects];
-    
+
     for (NSUInteger i = 0; i < programInstructionSize; i++)
     {
         int assembledInstruction = [[assembler.program objectAtIndex:i] intValue];
-        
+
         [self.assembledInstructionSet addObject:[assembler.program objectAtIndex:i]];
         [assembledCode appendString:[NSString stringWithFormat:@"0x%X ", assembledInstruction]];
     }
@@ -143,14 +143,14 @@
 - (NSMutableString *)generateSourceFromInstructions
 {
     NSMutableString *source = [NSMutableString string];
-    
-    for (Instruction* instruction in self.instructionSet)
+
+    for (Instruction *instruction in self.instructionSet)
     {
-        [source appendString:[NSString stringWithFormat:@"%@ %@ %@, %@\n", 
-                              instruction.label != nil ? instruction.label : @"", 
-                              instruction.opcode != nil ? instruction.opcode : @"", 
-                              instruction.operand1 != nil ? instruction.operand1 : @"", 
-                              instruction.operand2 != nil ? instruction.operand2 : @""]];
+        [source appendString:[NSString stringWithFormat:@"%@ %@ %@, %@\n",
+                                                        instruction.label != nil ? instruction.label : @"",
+                                                        instruction.opcode != nil ? instruction.opcode : @"",
+                                                        instruction.operand1 != nil ? instruction.operand1 : @"",
+                                                        instruction.operand2 != nil ? instruction.operand2 : @""]];
     }
     return source;
 }

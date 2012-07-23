@@ -24,15 +24,15 @@
 
 @interface CPUInstruction : NSObject
 
-@property (nonatomic, strong) CPUOperation* operationA;
-@property (nonatomic, strong) CPUOperation* operationB;
+@property(nonatomic, strong) CPUOperation *operationA;
+@property(nonatomic, strong) CPUOperation *operationB;
 
--(id) initWithOperationA:(CPUOperation*)operA andOperationB:(CPUOperation*)operB;
+- (id)initWithOperationA:(CPUOperation *)operA andOperationB:(CPUOperation *)operB;
 
--(int) execute;
+- (int)execute;
 
--(void) noOp;
+- (void)noOp;
 
--(int) process;
+- (int)process;
 
 @end

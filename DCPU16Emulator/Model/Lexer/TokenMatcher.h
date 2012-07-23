@@ -25,9 +25,9 @@
 
 @protocol TokenMatcher <NSObject>
 
-@property (nonatomic, strong) id<Matcher> matcher;
-@property (nonatomic, assign) enum LexerTokenType token;
+@property(nonatomic, strong) id <Matcher> matcher;
+@property(nonatomic, assign) enum LexerTokenType token;
 
-- (int) match:(NSString*)text;
+- (int)match:(NSString *)text;
 
 @end

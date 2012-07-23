@@ -24,6 +24,6 @@
 
 @protocol InstructionOperandFactoryProtocol <NSObject>
 
-- (Operand*)createFromInstructionOperandValue:(ushort)operandValue;
+- (Operand *)createFromInstructionOperandValue:(ushort)operandValue;
 
 @end

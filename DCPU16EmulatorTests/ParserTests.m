@@ -35,37 +35,37 @@
 - (void)testParseCalledWithEmptySourceDoesNotGenerateStatments
 {
     NSString *code = @"";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 0, nil);
 }
 
 - (void)testParseCalledWithOnlyCommentsDoesNotGenerateStatments
 {
     NSString *code = @"; Try some basic stuff";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 0, nil);
 }
 
 - (void)testParseCalledWithSetRegisterWithDecimalLiteralGenertesCorrectStatments
 {
     NSString *code = @"SET I, 10";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 1, nil);
-    
-    Statment* s = [p.statments lastObject];
-    
+
+    Statment *s = [p.statments lastObject];
+
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
     STAssertTrue([s.firstOperand isKindOfClass:[RegisterOperand class]], nil);
@@ -79,13 +79,13 @@
     NSString *code = @"SET A, 0x30";
 
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 1, nil);
-    
-    Statment* s = [p.statments lastObject];
-    
+
+    Statment *s = [p.statments lastObject];
+
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
     STAssertTrue([s.firstOperand isKindOfClass:[RegisterOperand class]], nil);
@@ -97,15 +97,15 @@
 - (void)testParseCalledWithSetMemoryAddressWithLiteralGenertesCorrectStatments
 {
     NSString *code = @"SET [0x1000], 0x20";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 1, nil);
-    
-    Statment* s = [p.statments lastObject];
-    
+
+    Statment *s = [p.statments lastObject];
+
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
     STAssertTrue([s.firstOperand isKindOfClass:[IndirectNextWordOperand class]], nil);
@@ -117,15 +117,15 @@
 - (void)testParseCalledWithSetOffsetMemoryAddressWithIndirecRegisterGenertesCorrectStatments
 {
     NSString *code = @"SET [0x2000+I], [A]";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 1, nil);
-    
-    Statment* s = [p.statments lastObject];
-    
+
+    Statment *s = [p.statments lastObject];
+
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
     STAssertTrue([s.firstOperand isKindOfClass:[IndirectNextWordOffsetOperand class]], nil);
@@ -137,15 +137,15 @@
 - (void)testParseCalledWithSetSPRegisterWithLabelRefGenertesCorrectStatments
 {
     NSString *code = @"SET PC, crash";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 1, nil);
-    
-    Statment* s = [p.statments lastObject];
-    
+
+    Statment *s = [p.statments lastObject];
+
     STAssertTrue(s.opcode == OP_SET, nil);
     STAssertTrue([s.menemonic isEqualToString:@"SET"], nil);
     STAssertTrue([s.firstOperand isKindOfClass:[ProgramCounterOperand class]], nil);
@@ -157,15 +157,15 @@
 - (void)testParseCalledWithJSRandLabelRefGenertesCorrectStatments
 {
     NSString *code = @"JSR testsub";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 1, nil);
-    
-    Statment* s = [p.statments lastObject];
-    
+
+    Statment *s = [p.statments lastObject];
+
     STAssertTrue(s.opcode == 0, nil);
     STAssertTrue(s.opcodeNonBasic == OP_JSR, nil);
     STAssertTrue([s.menemonic isEqualToString:@"JSR"], nil);
@@ -177,42 +177,42 @@
 - (void)testParseCalledWithInvalidInstructionThrows
 {
     NSString *code = @"JSM testsub";
-    
+
     Parser *p = [[Parser alloc] init];
-    
-    p.didFinishParsingWithError = ^(NSString* message)
+
+    p.didFinishParsingWithError = ^(NSString *message)
     {
         STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3 found 'JSM'"], nil);
     };
-    
+
     [p parseSource:code];
 }
 
 - (void)testParseCalledWithInvalidOperandThrows
 {
     NSString *code = @"JSR \"testsub\"";
-    
+
     Parser *p = [[Parser alloc] init];
-    
-    p.didFinishParsingWithError = ^(NSString* message)
+
+    p.didFinishParsingWithError = ^(NSString *message)
     {
         STAssertTrue([message isEqualToString:@"Expected operand at line 1:13 found '\"testsub\"'"], nil);
     };
-    
+
     [p parseSource:code];
 }
 
 - (void)testParseCalledWithUnclosedBracketThrows
 {
     NSString *code = @"SET [0x1000, 0x20";
-    
+
     Parser *p = [[Parser alloc] init];
-    
-    p.didFinishParsingWithError = ^(NSString* message)
+
+    p.didFinishParsingWithError = ^(NSString *message)
     {
         STAssertTrue([message isEqualToString:@"Expected CLOSEBRACKET or PLUS at line 1:12 found ','"], nil);
     };
-    
+
     [p parseSource:code];
 }
 
@@ -247,11 +247,11 @@
     \n\
     ; [*]: Note that these can be one word shorter and one cycle faster by using the short form (0x00-0x1f) of literals,\n\
     ;      but my assembler doesn't support short form labels yet.";
-    
+
     Parser *p = [[Parser alloc] init];
-    
+
     [p parseSource:code];
-    
+
     STAssertTrue([p.statments count] == 17, nil);
 }
 

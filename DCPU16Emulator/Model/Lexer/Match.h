@@ -24,9 +24,9 @@
 
 @interface Match : NSObject
 
-@property (nonatomic, assign) enum LexerTokenType token;
-@property (nonatomic, copy) NSString* content;
+@property(nonatomic, assign) enum LexerTokenType token;
+@property(nonatomic, copy) NSString *content;
 
-- (id)initWithToken:(enum LexerTokenType)tokenType content:(NSString*)tokenContent;
+- (id)initWithToken:(enum LexerTokenType)tokenType content:(NSString *)tokenContent;
 
 @end

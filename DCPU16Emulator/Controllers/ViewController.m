@@ -25,12 +25,12 @@
 
 @interface ViewController ()
 
-@property (strong, nonatomic) NSArray* possibleNextInput;
-@property (strong, nonatomic) NSDictionary* instructionData;
-@property (strong, nonatomic) NSDictionary *mapRegisterNameToControl;
-@property (strong, nonatomic) NSArray *instructionSet;
-@property (strong, nonatomic) Program *program;
-@property (strong, nonatomic) DCPU *emulator;
+@property(strong, nonatomic) NSArray *possibleNextInput;
+@property(strong, nonatomic) NSDictionary *instructionData;
+@property(strong, nonatomic) NSDictionary *mapRegisterNameToControl;
+@property(strong, nonatomic) NSArray *instructionSet;
+@property(strong, nonatomic) Program *program;
+@property(strong, nonatomic) DCPU *emulator;
 
 @end
 
@@ -58,65 +58,65 @@
 @synthesize inputField;
 @synthesize assembledCodeLabel;
 
-- (IBAction)instructionButtonPressed:(UIButton *)sender 
+- (IBAction)instructionButtonPressed:(UIButton *)sender
 {
     [self.program assignValueToCurrentInstruction:sender.titleLabel.text];
 }
 
-- (IBAction)clsButtonPressed 
+- (IBAction)clsButtonPressed
 {
     [self.program resetCurrentInstruction];
 }
 
-- (IBAction)enterButtonPressed 
+- (IBAction)enterButtonPressed
 {
     [self.program FinishedInstructionEdit];
     [self.instructionTableView reloadData];
 }
 
-- (IBAction)literalButtonPressed 
+- (IBAction)literalButtonPressed
 {
-    NSString* data = self.inputField.text;
+    NSString *data = self.inputField.text;
     [self.program assignValueToCurrentInstruction:data];
 }
 
-- (IBAction)labelButtonPresssed 
+- (IBAction)labelButtonPressed
 {
-    NSString* data = self.inputField.text;
-    
-    if([data hasPrefix:@":"])
+    NSString *data = self.inputField.text;
+
+    if ([data hasPrefix:@":"])
     {
         [self.program assignLabelToCurrentInstruction:data];
     }
-    else 
+    else
     {
         [self.program assignLabelToCurrentInstruction:[NSString stringWithFormat:@":%@", data]];
     }
 }
 
-- (IBAction)referenceButtonPressed 
+- (IBAction)referenceButtonPressed
 {
-    NSString* data = self.inputField.text;
-    
-    if([data hasPrefix:@"["] && [data hasSuffix:@"]"])
+    NSString *data = self.inputField.text;
+
+    if ([data hasPrefix:@"["] && [data hasSuffix:@"]"])
     {
         [self.program assignValueToCurrentInstruction:data];
     }
-    else if(![data hasPrefix:@"["] && ![data hasSuffix:@"]"])
+    else if (![data hasPrefix:@"["] && ![data hasSuffix:@"]"])
     {
         [self.program assignValueToCurrentInstruction:[NSString stringWithFormat:@"[%@]", data]];
     }
-    else if([data hasPrefix:@"["] && ![data hasSuffix:@"]"])
+    else if ([data hasPrefix:@"["] && ![data hasSuffix:@"]"])
     {
         [self.program assignValueToCurrentInstruction:[NSString stringWithFormat:@"%@]", data]];
     }
-    else if(![data hasPrefix:@"["] && [data hasSuffix:@"]"])
+    else if (![data hasPrefix:@"["] && [data hasSuffix:@"]"])
     {
         [self.program assignValueToCurrentInstruction:[NSString stringWithFormat:@"[%@", data]];
     }
 }
 
-- (IBAction)nextButtonPressed 
+- (IBAction)nextButtonPressed
 {
     [self.emulator executeInstruction];
 }
@@ -124,39 +124,39 @@
 - (void)resetEmulator
 {
     self.emulator = [[DCPU alloc] initWithProgram:(self.program.assembledInstructionSet)];
-    
-    self.emulator.memory.registerDidChange = ^(NSString* registerName, int value)
+
+    self.emulator.memory.registerDidChange = ^(NSString *registerName, int value)
     {
         int regIndex = [[self.mapRegisterNameToControl objectForKey:registerName] intValue];
-        
-        UILabel* registerControlToUpdate = ((UILabel*)[self.view viewWithTag:regIndex + 1000]);
-        
+
+        UILabel *registerControlToUpdate = ((UILabel *) [self.view viewWithTag:regIndex + 1000]);
+
         registerControlToUpdate.text = [NSString stringWithFormat:@"0x%X", value];
     };
-    
+
     self.emulator.memory.generalRegisterDidChange = ^(int regIndex, int value)
     {
-        UILabel* registerControlToUpdate = ((UILabel*)[self.view viewWithTag:regIndex + 1003]);
-        
+        UILabel *registerControlToUpdate = ((UILabel *) [self.view viewWithTag:regIndex + 1003]);
+
         registerControlToUpdate.text = [NSString stringWithFormat:@"0x%X", value];
     };
 }
 
-- (IBAction)assembleButtonPressed 
+- (IBAction)assembleButtonPressed
 {
     assembledCodeLabel.text = [self.program assemble];
     assembledCodeLabel.numberOfLines = 0;
     [assembledCodeLabel sizeToFit];
-    
+
     [self resetEmulator];
     [self resetCPULabels];
 }
 
 - (void)resetCPULabels
 {
-    for(int i = 1000; i <= 1010; i++)
+    for (int i = 1000; i <= 1010; i++)
     {
-        UILabel* registerControlToUpdate = ((UILabel*)[self.view viewWithTag:i]);
+        UILabel *registerControlToUpdate = ((UILabel *) [self.view viewWithTag:i]);
         registerControlToUpdate.text = @"0x0";
     }
 }
@@ -179,25 +179,25 @@
 
 - (void)setProgramingKeyboardState
 {
-    for (UIButton* button in self.instructionButtonCollection)
+    for (UIButton *button in self.instructionButtonCollection)
     {
         [button setEnabled:NO];
     }
-    
-    for (UIButton* button in self.instructionButtonCollection)
+
+    for (UIButton *button in self.instructionButtonCollection)
     {
-        for (NSString* title in self.possibleNextInput)
+        for (NSString *title in self.possibleNextInput)
         {
-            NSString* buttonLabelText = button.titleLabel.text;
-            
-            if ([buttonLabelText isEqualToString:title]) 
+            NSString *buttonLabelText = button.titleLabel.text;
+
+            if ([buttonLabelText isEqualToString:title])
             {
                 [button setEnabled:YES];
                 continue;
             }
         }
     }
-    
+
     [self.enterButton setEnabled:[self instructionState] == Complete];
     [self.labelButton setEnabled:[self instructionState] == WaitForOpcodeOrLabel];
     [self.literalButton setEnabled:[self instructionState] == WaitForOperand1 || [self instructionState] == WaitForOperand2];
@@ -210,26 +210,26 @@
     return [[self.instructionData objectForKey:@"state"] intValue];
 }
 
-- (void) editStateChanged:(NSNotification *) notification
+- (void)editStateChanged:(NSNotification *)notification
 {
     self.possibleNextInput = [notification object];
     [self setProgramingKeyboardState];
 }
 
-- (void) instructionChanged:(NSNotification *) notification
+- (void)instructionChanged:(NSNotification *)notification
 {
     self.instructionData = [notification object];
     [self setProgramingKeyboardState];
     [self bindCurrentInstruction];
 }
 
-- (void) instructionSetChanged:(NSNotification *) notification
+- (void)instructionSetChanged:(NSNotification *)notification
 {
     self.instructionSet = [notification object];
     [self.instructionTableView reloadData];
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
@@ -242,26 +242,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *MyCellIdentifier = @"instructionCell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyCellIdentifier];
-    
+
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:MyCellIdentifier];
     }
-    
+
     NSArray *instructionCellList = [self loadNibForCellInTable:tableView];
-    
+
     for (id obj in instructionCellList)
     {
         if ([obj isKindOfClass:[InstructionCell class]])
         {
-            Instruction *instruction = [self.instructionSet objectAtIndex:(NSUInteger)indexPath.row];
+            Instruction *instruction = [self.instructionSet objectAtIndex:(NSUInteger) indexPath.row];
             cell = [obj drawCellForInstruction:instruction];
         }
     }
-    
+
     return cell;
 }
 
@@ -273,31 +273,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    
+
     [center addObserver:self selector:@selector(editStateChanged:) name:@"EditStateChanged" object:nil];
     [center addObserver:self selector:@selector(instructionChanged:) name:@"InstructionChanged" object:nil];
     [center addObserver:self selector:@selector(instructionSetChanged:) name:@"InstructionSetChanged" object:nil];
-    
+
     self.program = [[Program alloc] init];
-    
+
     [self.instructionTableView reloadData];
-    
+
     self.mapRegisterNameToControl = [NSDictionary dictionaryWithObjectsAndKeys:
-                                     @"PC", [NSNumber numberWithInt:1000],
-                                     @"SP", [NSNumber numberWithInt:1001],
-                                     @"O", [NSNumber numberWithInt:1002],
-                                     @"A", [NSNumber numberWithInt:1003],
-                                     @"B", [NSNumber numberWithInt:1004],
-                                     @"C", [NSNumber numberWithInt:1005],
-                                     @"X", [NSNumber numberWithInt:1006],
-                                     @"Y", [NSNumber numberWithInt:1007],
-                                     @"Z", [NSNumber numberWithInt:1008],
-                                     @"I", [NSNumber numberWithInt:1009],
-                                     @"J", [NSNumber numberWithInt:1010],
-                                     nil];
-    
+            @"PC", [NSNumber numberWithInt:1000],
+            @"SP", [NSNumber numberWithInt:1001],
+            @"O", [NSNumber numberWithInt:1002],
+            @"A", [NSNumber numberWithInt:1003],
+            @"B", [NSNumber numberWithInt:1004],
+            @"C", [NSNumber numberWithInt:1005],
+            @"X", [NSNumber numberWithInt:1006],
+            @"Y", [NSNumber numberWithInt:1007],
+            @"Z", [NSNumber numberWithInt:1008],
+            @"I", [NSNumber numberWithInt:1009],
+            @"J", [NSNumber numberWithInt:1010],
+            nil];
+
     [self setProgramingKeyboardState];
 }
 
@@ -305,7 +305,7 @@
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
-    
+
     [self setInstructionButtonCollection:nil];
     [self setInstructionTableView:nil];
     [self setCurrentInstructionLabel:nil];
@@ -319,19 +319,19 @@
     [self setReferenceButton:nil];
     [self setInputField:nil];
     [self setAssembledCodeLabel:nil];
-    
+
     [self setProgram:nil];
-    
+
     [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) 
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } 
-    else 
+    }
+    else
     {
         return YES;
     }

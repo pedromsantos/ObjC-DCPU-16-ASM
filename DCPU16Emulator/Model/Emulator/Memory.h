@@ -34,55 +34,73 @@
 #define MEM             @"MEM" // memory
 
 typedef int(^memoryOperation)(int, int);
-typedef void(^registerOperationNotification)(NSString*, int);
+
+typedef void(^registerOperationNotification)(NSString *, int);
+
 typedef void(^generalRegisterOperationNotification)(int, int);
-typedef void(^memoryOperationNotification)(NSString*, int, int);
+
+typedef void(^memoryOperationNotification)(NSString *, int, int);
 
 @interface Memory : NSObject
 
-@property (nonatomic, assign) int startAddressOfData;
+@property(nonatomic, assign) int startAddressOfData;
 
-@property (nonatomic, copy) memoryOperationNotification memoryWillChange;
-@property (nonatomic, copy) memoryOperationNotification memoryDidChange;
+@property(nonatomic, copy) memoryOperationNotification memoryWillChange;
+@property(nonatomic, copy) memoryOperationNotification memoryDidChange;
 
-@property (nonatomic, copy) registerOperationNotification registerWillChange;
-@property (nonatomic, copy) registerOperationNotification registerDidChange;
-@property (nonatomic, copy) generalRegisterOperationNotification generalRegisterWillChange;
-@property (nonatomic, copy) generalRegisterOperationNotification generalRegisterDidChange;
+@property(nonatomic, copy) registerOperationNotification registerWillChange;
+@property(nonatomic, copy) registerOperationNotification registerDidChange;
+@property(nonatomic, copy) generalRegisterOperationNotification generalRegisterWillChange;
+@property(nonatomic, copy) generalRegisterOperationNotification generalRegisterDidChange;
 
 - (id)init;
 
-- (void)load:(NSArray*)values;
+- (void)load:(NSArray *)values;
 
 - (void)setOverflowRegisterToValue:(int)value;
 
 - (int)getMemoryValueAtIndex:(int)index;
+
 - (void)setMemoryValue:(int)value atIndex:(int)index;
+
 - (int)getValueForRegister:(int)reg;
-- (void)setRegister:(NSString*)registerKey value:(int)newValue;
+
+- (void)setRegister:(NSString *)registerKey value:(int)newValue;
 
 - (int)getProgramCounter;
+
 - (int)getStacPointer;
+
 - (int)getOverflow;
+
 - (int)peekInstructionAtProgramCounter;
+
 - (int)readInstructionAtProgramCounter;
+
 - (void)setProgramCounter:(int)value;
+
 - (void)setStackPointer:(int)value;
+
 - (void)setOverflow:(int)value;
+
 - (void)incrementProgramCounter;
+
 - (void)incrementStackPointer:(int)value;
 
 - (int)pushAddress;
+
 - (void)push:(int)value;
+
 - (int)peek;
+
 - (int)pop;
 
-- (void)assignResultOfOperation:(memoryOperation)block 
-         usingOperand1AtAddress:(int)address1 
-                   inMemoryArea:(NSString*)area1
+- (void)assignResultOfOperation:(memoryOperation)block
+         usingOperand1AtAddress:(int)address1
+                   inMemoryArea:(NSString *)area1
            andOperand2AtAddress:(int)address2
-                   inMemoryArea:(NSString*)area2
+                   inMemoryArea:(NSString *)area2
                       toAddress:(int)address
-                   inMemoryArea:(NSString*)area;
+                   inMemoryArea:(NSString *)area;
 
 @end

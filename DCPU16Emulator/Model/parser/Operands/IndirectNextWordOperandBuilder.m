@@ -26,14 +26,14 @@
 
 @implementation IndirectNextWordOperandBuilder
 
-- (Operand*)CreateOperandFromMatch:(Match*)match
+- (Operand *)CreateOperandFromMatch:(Match *)match
 {
     return [[IndirectNextWordOperand alloc] init];
 }
 
-- (void)setNextWordValue:(Match*)match
+- (void)setNextWordValue:(Match *)match
 {
-    if(match.token == HEX)
+    if (match.token == HEX)
     {
         self.operand.nextWord = [match.content parseHexLiteral];
     }

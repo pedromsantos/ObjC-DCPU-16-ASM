@@ -25,17 +25,17 @@
 
 @implementation LabelReferenceOperandBuilder
 
-- (Operand*)CreateOperandFromMatch:(Match*)match
+- (Operand *)CreateOperandFromMatch:(Match *)match
 {
     return [[NextWordOperand alloc] init];
 }
 
-- (void)setNextWordValue:(Match*)match
+- (void)setNextWordValue:(Match *)match
 {
     self.operand.nextWord = 0;
 }
 
-- (void)setLabelValue:(Match*)match
+- (void)setLabelValue:(Match *)match
 {
     self.operand.label = match.content;
 }

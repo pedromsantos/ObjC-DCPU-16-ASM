@@ -31,19 +31,21 @@
     int columnNumber;
 }
 
-@property (nonatomic, strong) Match *match;
-@property (nonatomic, readonly) enum LexerTokenType token;
-@property (nonatomic, readonly) NSString* tokenContents;
+@property(nonatomic, strong) Match *match;
+@property(nonatomic, readonly) enum LexerTokenType token;
+@property(nonatomic, readonly) NSString *tokenContents;
 
-@property (nonatomic, strong) id<ConsumeTokenStrategy> consumeTokenStrategy;
-@property (nonatomic, strong) id<IgnoreTokenStrategy> ignoreTokenStrategy;
-@property (nonatomic, readonly) int lineNumber;
-@property (nonatomic, readonly) int columnNumber;
+@property(nonatomic, strong) id <ConsumeTokenStrategy> consumeTokenStrategy;
+@property(nonatomic, strong) id <IgnoreTokenStrategy> ignoreTokenStrategy;
+@property(nonatomic, readonly) int lineNumber;
+@property(nonatomic, readonly) int columnNumber;
 
-- (id)initWithTokenMatchers:(NSArray*)matchers scanner:(NSScanner*)textScanner;
+- (id)initWithTokenMatchers:(NSArray *)matchers scanner:(NSScanner *)textScanner;
+
 - (id)initWithScanner:(NSScanner *)textScanner;
 
 - (BOOL)consumeNextToken;
-- (BOOL)consumeNextTokenUsingStrategy:(id<ConsumeTokenStrategy>)strategy;
+
+- (BOOL)consumeNextTokenUsingStrategy:(id <ConsumeTokenStrategy>)strategy;
 
 @end

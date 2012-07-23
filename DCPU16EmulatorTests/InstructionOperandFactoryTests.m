@@ -42,37 +42,37 @@
 - (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(short)value expectedOperand:(Class)expectedOprnd
 {
     self = [super initWithInvocation:anInvocation];
-    
-    if (self) 
+
+    if (self)
     {
         self.expectedOperand = expectedOprnd;
         self.inputValue = value;
     }
-    
+
     return self;
 }
 
 - (void)testCreateWhenCalledWithOperandValueCreatesExpectedOperandType
 {
     InstructionOperandFactory *factory = [[InstructionOperandFactory alloc] init];
-    
+
     Operand *operand = [factory createFromInstructionOperandValue:(ushort) self.inputValue];
-    
-    STAssertEquals(self.expectedOperand, [operand class] ,nil);
+
+    STAssertEquals(self.expectedOperand, [operand class], nil);
 }
 
-+ (void)addTestCreateWhenCalledWithOperandValueinput:(short)inputValue createsExpectedOperandType:(Class)expectedOperand 
-                     toTestSuite:(SenTestSuite *)testSuite
++ (void)addTestCreateWhenCalledWithOperandValueinput:(short)inputValue createsExpectedOperandType:(Class)expectedOperand
+                                         toTestSuite:(SenTestSuite *)testSuite
 {
     NSArray *testInvocations = [self testInvocations];
-    
-    for (NSInvocation *testInvocation in testInvocations) 
+
+    for (NSInvocation *testInvocation in testInvocations)
     {
-        SenTestCase *test = [[InstructionOperandFactoryTests alloc] 
-                             initWithInvocation:testInvocation 
-                             inputValue:inputValue 
-                             expectedOperand:expectedOperand];
-        
+        SenTestCase *test = [[InstructionOperandFactoryTests alloc]
+                initWithInvocation:testInvocation
+                        inputValue:inputValue
+                   expectedOperand:expectedOperand];
+
         [testSuite addTest:test];
     }
 }
@@ -80,7 +80,7 @@
 + (id)defaultTestSuite
 {
     SenTestSuite *testSuite = [[SenTestSuite alloc] initWithName:NSStringFromClass(self)];
-    
+
     [self addTestCreateWhenCalledWithOperandValueinput:REG_A createsExpectedOperandType:[RegisterOperand class] toTestSuite:testSuite];
     [self addTestCreateWhenCalledWithOperandValueinput:REG_B createsExpectedOperandType:[RegisterOperand class] toTestSuite:testSuite];
     [self addTestCreateWhenCalledWithOperandValueinput:REG_C createsExpectedOperandType:[RegisterOperand class] toTestSuite:testSuite];

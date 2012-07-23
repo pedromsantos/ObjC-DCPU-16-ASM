@@ -22,10 +22,10 @@
 
 #import "Statment.h"
 
-@interface Statment()
+@interface Statment ()
 
-@property (nonatomic, strong) NSString* internalMenemonic;
-@property (nonatomic, strong) NSMutableArray* internalDat;
+@property(nonatomic, strong) NSString *internalMenemonic;
+@property(nonatomic, strong) NSMutableArray *internalDat;
 
 - (void)setOpcodeForMenemonic;
 
@@ -41,22 +41,22 @@
 @synthesize firstOperand;
 @synthesize secondOperand;
 
-- (NSArray*)dat
+- (NSArray *)dat
 {
     return internalDat;
 }
 
-- (void) addDat:(UInt16)value
+- (void)addDat:(UInt16)value
 {
-    if(self.internalDat == nil)
+    if (self.internalDat == nil)
     {
         self.internalDat = [[NSMutableArray alloc] init];
     }
-    
-    [self.internalDat addObject:[NSNumber numberWithInt:value]]; 
+
+    [self.internalDat addObject:[NSNumber numberWithInt:value]];
 }
 
-- (NSString*)menemonic
+- (NSString *)menemonic
 {
     return internalMenemonic;
 }
@@ -70,24 +70,54 @@
 - (void)setOpcodeForMenemonic
 {
     // basic opcodes
-    if ([self.menemonic isEqualToString:@"SET"]) self.opcode = OP_SET;
-    else if ([self.menemonic isEqualToString:@"ADD"]) self.opcode = OP_ADD;
-    else if ([self.menemonic isEqualToString:@"SUB"]) self.opcode = OP_SUB;
-    else if ([self.menemonic isEqualToString:@"MUL"]) self.opcode = OP_MUL;
-    else if ([self.menemonic isEqualToString:@"DIV"]) self.opcode = OP_DIV;
-    else if ([self.menemonic isEqualToString:@"MOD"]) self.opcode = OP_MOD;
-    else if ([self.menemonic isEqualToString:@"SHL"]) self.opcode = OP_SHL;
-    else if ([self.menemonic isEqualToString:@"SHR"]) self.opcode = OP_SHR;
-    else if ([self.menemonic isEqualToString:@"AND"]) self.opcode = OP_AND;
-    else if ([self.menemonic isEqualToString:@"BOR"]) self.opcode = OP_BOR;
-    else if ([self.menemonic isEqualToString:@"XOR"]) self.opcode = OP_XOR;
-    else if ([self.menemonic isEqualToString:@"IFE"]) self.opcode = OP_IFE;
-    else if ([self.menemonic isEqualToString:@"IFN"]) self.opcode = OP_IFN;
-    else if ([self.menemonic isEqualToString:@"IFG"]) self.opcode = OP_IFG;
-    else if ([self.menemonic isEqualToString:@"IFB"]) self.opcode = OP_IFB;
-    
-    // non-basic opcodes
-    else if ([self.menemonic isEqualToString:@"JSR"])
+    if ([self.menemonic isEqualToString:@"SET"])
+    {
+        self.opcode = OP_SET;
+    } else if ([self.menemonic isEqualToString:@"ADD"])
+    {
+        self.opcode = OP_ADD;
+    } else if ([self.menemonic isEqualToString:@"SUB"])
+    {
+        self.opcode = OP_SUB;
+    } else if ([self.menemonic isEqualToString:@"MUL"])
+    {
+        self.opcode = OP_MUL;
+    } else if ([self.menemonic isEqualToString:@"DIV"])
+    {
+        self.opcode = OP_DIV;
+    } else if ([self.menemonic isEqualToString:@"MOD"])
+    {
+        self.opcode = OP_MOD;
+    } else if ([self.menemonic isEqualToString:@"SHL"])
+    {
+        self.opcode = OP_SHL;
+    } else if ([self.menemonic isEqualToString:@"SHR"])
+    {
+        self.opcode = OP_SHR;
+    } else if ([self.menemonic isEqualToString:@"AND"])
+    {
+        self.opcode = OP_AND;
+    } else if ([self.menemonic isEqualToString:@"BOR"])
+    {
+        self.opcode = OP_BOR;
+    } else if ([self.menemonic isEqualToString:@"XOR"])
+    {
+        self.opcode = OP_XOR;
+    } else if ([self.menemonic isEqualToString:@"IFE"])
+    {
+        self.opcode = OP_IFE;
+    } else if ([self.menemonic isEqualToString:@"IFN"])
+    {
+        self.opcode = OP_IFN;
+    } else if ([self.menemonic isEqualToString:@"IFG"])
+    {
+        self.opcode = OP_IFG;
+    } else if ([self.menemonic isEqualToString:@"IFB"])
+    {
+        self.opcode = OP_IFB;
+
+        // non-basic opcodes
+    } else if ([self.menemonic isEqualToString:@"JSR"])
     {
         self.opcode = (basicOpcode) 0x0;
         self.opcodeNonBasic = OP_JSR;

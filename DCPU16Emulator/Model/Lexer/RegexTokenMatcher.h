@@ -26,6 +26,6 @@
 
 @interface RegexTokenMatcher : NSObject <TokenMatcher>
 
-- (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString*)pattern;
+- (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString *)pattern;
 
 @end

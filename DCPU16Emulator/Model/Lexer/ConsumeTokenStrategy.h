@@ -24,6 +24,6 @@
 
 @protocol ConsumeTokenStrategy
 
-- (BOOL) isTokenToBeConsumed:(enum LexerTokenType)token;
+- (BOOL)isTokenToBeConsumed:(enum LexerTokenType)token;
 
 @end

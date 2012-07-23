@@ -25,7 +25,7 @@
 
 @implementation IndirectRegisterOperandBuilder
 
-- (Operand*)CreateOperandFromMatch:(Match*)match
+- (Operand *)CreateOperandFromMatch:(Match *)match
 {
     return [[IndirectRegisterOperand alloc] init];
 }

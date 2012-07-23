@@ -24,7 +24,7 @@
 
 @interface OperandBuilder ()
 
-- (Operand*)CreateOperandFromMatch:(Match*)match;
+- (Operand *)CreateOperandFromMatch:(Match *)match;
 
 @end
 
@@ -32,31 +32,31 @@
 
 @synthesize operand;
 
-- (Operand*)buildFromMatch:(Match*)match
+- (Operand *)buildFromMatch:(Match *)match
 {
     self.operand = [self CreateOperandFromMatch:match];
-    
+
     [self setRegisterValue:match];
     [self setNextWordValue:match];
     [self setLabelValue:match];
-    
+
     return operand;
 }
 
-- (Operand*)CreateOperandFromMatch:(Match*)match
+- (Operand *)CreateOperandFromMatch:(Match *)match
 {
     return nil;
 }
 
-- (void)setRegisterValue:(Match*)match
+- (void)setRegisterValue:(Match *)match
 {
 }
 
-- (void)setNextWordValue:(Match*)match
+- (void)setNextWordValue:(Match *)match
 {
 }
 
-- (void)setLabelValue:(Match*)match
+- (void)setLabelValue:(Match *)match
 {
 }
 

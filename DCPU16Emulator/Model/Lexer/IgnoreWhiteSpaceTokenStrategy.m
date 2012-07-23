@@ -10,7 +10,7 @@
 
 @implementation IgnoreWhiteSpaceTokenStrategy
 
-- (bool) isTokenToBeIgnored:(enum LexerTokenType)token
+- (bool)isTokenToBeIgnored:(enum LexerTokenType)token
 {
     return token == WHITESPACE;
 }

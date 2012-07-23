@@ -43,7 +43,7 @@ enum basic_opcode
 
 typedef enum basic_opcode basicOpcode;
 
-enum non_basic_opcode 
+enum non_basic_opcode
 {
     OP_JSR = 0x01,
 };
@@ -52,14 +52,14 @@ typedef enum non_basic_opcode nonBasicOpcode;
 
 @interface Statment : NSObject
 
-@property (nonatomic, strong) NSString* label;
-@property (nonatomic, strong) NSString* menemonic;
-@property (nonatomic, assign) basicOpcode opcode;
-@property (nonatomic, assign) nonBasicOpcode opcodeNonBasic;
-@property (nonatomic, strong) Operand* firstOperand;
-@property (nonatomic, strong) Operand* secondOperand;
-@property (nonatomic, readonly) NSArray* dat;
+@property(nonatomic, strong) NSString *label;
+@property(nonatomic, strong) NSString *menemonic;
+@property(nonatomic, assign) basicOpcode opcode;
+@property(nonatomic, assign) nonBasicOpcode opcodeNonBasic;
+@property(nonatomic, strong) Operand *firstOperand;
+@property(nonatomic, strong) Operand *secondOperand;
+@property(nonatomic, readonly) NSArray *dat;
 
-- (void) addDat:(UInt16)value;
+- (void)addDat:(UInt16)value;
 
 @end
