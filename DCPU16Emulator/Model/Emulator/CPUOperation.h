@@ -30,10 +30,10 @@
 @property(nonatomic, assign) ushort write;
 @property(nonatomic, assign) BOOL ignoreInstruction;
 @property(nonatomic, assign) ushort overflowRegister;
-@property(nonatomic, strong) id <DCPUProtocol> cpuOperations;
+@property(nonatomic, strong) id<DCPUProtocol> cpuOperations;
 
+-(id)initWithOperand:(Operand*)operand cpuStateOperations:(id<DCPUProtocol>)cpuStateOperations;
 - (void)process;
-
 - (void)noOp;
 
 @end

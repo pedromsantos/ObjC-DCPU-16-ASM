@@ -347,6 +347,7 @@
 		C3860B1115872D02001F2A3D /* Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				C3E41BD515C5971F00311EEA /* CPUInstructions */,
 				C39FFA0615BAB23E006BB9A3 /* CPUInstruction.h */,
 				C39FFA0715BAB23E006BB9A3 /* CPUInstruction.m */,
 				C3BC7B3015B9F79F00D40104 /* CPUOperation.h */,
@@ -552,6 +553,13 @@
 				C3B6BA5C153DE4FE0013163A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C3E41BD515C5971F00311EEA /* CPUInstructions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CPUInstructions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

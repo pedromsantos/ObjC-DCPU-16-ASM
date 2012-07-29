@@ -20,13 +20,19 @@
  * SOFTWARE.
  */
 
-#define OpMask = 0xF;
-#define OperandAMask = 0x3F;
-#define OperandAShift = 4;
-#define OperandBMask = 0x3F;
-#define OperandBShift = 10;
+#define OpMask 0xF
+#define OperandAMask 0x3F
+#define OperandAShift 4
+#define OperandBMask 0x3F
+#define OperandBShift 10
+
+#import "InstructionOperandFactoryProtocol.h"
 
 @interface InstructionBuilder : NSObject
 
+@property (nonatomic, strong) id<InstructionOperandFactoryProtocol> operandFactory;
+@property (nonatomic, strong) NSDictionary* instructionMapper;
+
+-(id)initWithInstructionOperandFactory:(id<InstructionOperandFactoryProtocol> )factory;
 
 @end

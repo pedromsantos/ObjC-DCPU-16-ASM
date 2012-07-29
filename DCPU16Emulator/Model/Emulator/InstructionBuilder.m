@@ -21,7 +21,138 @@
  */
 
 #import "InstructionBuilder.h"
+#import "CPUInstruction.h"
+#import "Statment.h"
+
+@interface InstructionBuilder()
+{
+    CPUOperation* operationA;
+    CPUOperation* operationB;
+    short opcode;
+}
+
+@end
 
 @implementation InstructionBuilder
+
+@synthesize operandFactory;
+@synthesize instructionMapper;
+
+-(id)initWithInstructionOperandFactory:(id<InstructionOperandFactoryProtocol>)factory
+{
+    self = [super init];
+    
+    self.operandFactory = factory;
+    
+    self.instructionMapper = [NSDictionary dictionaryWithObjectsAndKeys:
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_SET],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_ADD],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_SUB],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_MUL],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_DIV],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_MOD],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_SHL],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_SHR],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_AND],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_BOR],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_XOR],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_IFE],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_IFN],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_IFG],
+                              (CPUInstruction *) ^()
+                              {
+                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                              },
+                              [NSNumber numberWithInt:OP_IFB],
+                              nil];
+    
+    return self;
+}
+
+-(CPUInstruction*)buildFromMachineCode:(ushort)code usingCpuState:(id<DCPUProtocol>)cpuStateOperations
+{
+    opcode = code & OpMask;
+    
+    if(opcode == 0)
+    {
+        ushort op = (code >> OperandAShift) & OperandAMask;
+        
+        if(op == 0x01)
+        {
+            ushort operandValue = (code >> OperandBShift) & OperandBMask;
+            
+            operationA = [[CPUOperation alloc] initWithOperand:[self.operandFactory createFromInstructionOperandValue:operandValue] cpuStateOperations:cpuStateOperations];
+            operationB = nil;
+            
+            CPUInstruction* jsrInstruction = [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+            
+            return jsrInstruction;
+        }
+    }
+    
+    ushort operandAValue = (code >> OperandAShift) & OperandAMask;
+    ushort operandBValue = (code >> OperandBShift) & OperandBMask;
+    
+    operationA = [[CPUOperation alloc] initWithOperand:[self.operandFactory createFromInstructionOperandValue:operandAValue] cpuStateOperations:cpuStateOperations];
+    operationB = [[CPUOperation alloc] initWithOperand:[self.operandFactory createFromInstructionOperandValue:operandBValue] cpuStateOperations:cpuStateOperations];
+
+    return [instructionMapper objectForKey:[NSNumber numberWithInt:opcode]];
+}
 
 @end

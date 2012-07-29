@@ -27,6 +27,16 @@
 @synthesize operand;
 @synthesize cpuOperations;
 
+-(id)initWithOperand:(Operand*)oper cpuStateOperations:(id<DCPUProtocol>)cpuStateOperations
+{
+    self = [super init];
+    
+    self.operand = oper;
+    self.cpuOperations = cpuStateOperations;
+    
+    return self;
+}
+
 - (ushort)read
 {
     return [self.operand read];
