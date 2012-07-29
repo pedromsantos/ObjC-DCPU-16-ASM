@@ -42,7 +42,7 @@
     return [self.operand read];
 }
 
-- (ushort)write
+- (void)write:(ushort)value
 {
     @throw @"Invalid operation.";
 }

@@ -37,6 +37,11 @@
     return self;
 }
 
+- (int)process
+{
+    return 0;
+}
+
 - (int)execute
 {
     [self.operationA process];
@@ -50,11 +55,5 @@
     [self.operationA noOp];
     [self.operationB noOp];
 }
-
-- (int)process
-{
-    return 0;
-}
-
 
 @end

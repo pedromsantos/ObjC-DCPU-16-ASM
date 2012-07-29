@@ -35,5 +35,7 @@
 -(id)initWithOperand:(Operand*)operand cpuStateOperations:(id<DCPUProtocol>)cpuStateOperations;
 - (void)process;
 - (void)noOp;
+- (ushort)read;
+- (void)write:(ushort)value;
 
 @end

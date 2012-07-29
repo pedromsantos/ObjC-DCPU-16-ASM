@@ -85,6 +85,7 @@
 		C3BC7B3215B9F79F00D40104 /* CPUOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC7B3115B9F79F00D40104 /* CPUOperation.m */; };
 		C3C3F559157427920072378F /* DCPUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3F558157427920072378F /* DCPUTests.m */; };
 		C3E090A815A9DF6900096885 /* OperandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E090A715A9DF6800096885 /* OperandFactory.m */; };
+		C3E41BD915C5994B00311EEA /* Add.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BD815C5994B00311EEA /* Add.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +243,8 @@
 		C3E090A415A9DEBE00096885 /* OperandFactoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperandFactoryProtocol.h; sourceTree = "<group>"; };
 		C3E090A615A9DF6800096885 /* OperandFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperandFactory.h; sourceTree = "<group>"; };
 		C3E090A715A9DF6800096885 /* OperandFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperandFactory.m; sourceTree = "<group>"; };
+		C3E41BD715C5994B00311EEA /* Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Add.h; sourceTree = "<group>"; };
+		C3E41BD815C5994B00311EEA /* Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Add.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -558,6 +561,8 @@
 		C3E41BD515C5971F00311EEA /* CPUInstructions */ = {
 			isa = PBXGroup;
 			children = (
+				C3E41BD715C5994B00311EEA /* Add.h */,
+				C3E41BD815C5994B00311EEA /* Add.m */,
 			);
 			name = CPUInstructions;
 			sourceTree = "<group>";
@@ -732,6 +737,7 @@
 				C335690E15B865BE00F77320 /* InstructionBuilder.m in Sources */,
 				C3BC7B3215B9F79F00D40104 /* CPUOperation.m in Sources */,
 				C39FFA0815BAB23E006BB9A3 /* CPUInstruction.m in Sources */,
+				C3E41BD915C5994B00311EEA /* Add.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
