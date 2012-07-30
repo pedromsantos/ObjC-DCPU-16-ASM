@@ -101,6 +101,7 @@
 		C3E41C0015C6C0E500311EEA /* Shr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BFE15C6C0E400311EEA /* Shr.m */; };
 		C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0215C6C1D700311EEA /* Jsr.m */; };
 		C3E41C0615C6C2BB00311EEA /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0515C6C2B800311EEA /* Set.m */; };
+		C3E41C0915C6C6AE00311EEA /* InstructionIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0815C6C6AD00311EEA /* InstructionIntegrationTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -290,6 +291,8 @@
 		C3E41C0215C6C1D700311EEA /* Jsr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsr.m; sourceTree = "<group>"; };
 		C3E41C0415C6C2B600311EEA /* Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
 		C3E41C0515C6C2B800311EEA /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
+		C3E41C0715C6C6AD00311EEA /* InstructionIntegrationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionIntegrationTests.h; sourceTree = "<group>"; };
+		C3E41C0815C6C6AD00311EEA /* InstructionIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionIntegrationTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,6 +584,8 @@
 				C3B1806E15727D930057F9D5 /* AssemblerTests.m */,
 				C3C3F557157427920072378F /* DCPUTests.h */,
 				C3C3F558157427920072378F /* DCPUTests.m */,
+				C3E41C0715C6C6AD00311EEA /* InstructionIntegrationTests.h */,
+				C3E41C0815C6C6AD00311EEA /* InstructionIntegrationTests.m */,
 				C335691015B865E900F77320 /* InstructionOperandFactoryTests.h */,
 				C335691115B865E900F77320 /* InstructionOperandFactoryTests.m */,
 				C35D84821570383D00990B0A /* LexerTests.h */,
@@ -841,6 +846,7 @@
 				C3B1806F15727D930057F9D5 /* AssemblerTests.m in Sources */,
 				C3C3F559157427920072378F /* DCPUTests.m in Sources */,
 				C335691215B865E900F77320 /* InstructionOperandFactoryTests.m in Sources */,
+				C3E41C0915C6C6AE00311EEA /* InstructionIntegrationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

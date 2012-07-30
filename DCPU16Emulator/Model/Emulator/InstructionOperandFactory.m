@@ -160,9 +160,19 @@ typedef Operand *(^creationStrategy)();
 {
     creationStrategy creator = [operandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:operandValue]];
 
-    Operand *operand = creator();
+    Operand *operand = nil;
+    
+    if(creator != nil)
+    {
+        operand = creator();
+    }
+    else
+    {
+        operand = [[LiteralOperand alloc] init];
+    }
+    
     operand.value = operandValue;
-
+    
     return operand;
 }
 

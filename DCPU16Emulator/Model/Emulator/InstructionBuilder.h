@@ -27,12 +27,14 @@
 #define OperandBShift 10
 
 #import "InstructionOperandFactoryProtocol.h"
+#import "CPUInstruction.h"
 
 @interface InstructionBuilder : NSObject
 
 @property (nonatomic, strong) id<InstructionOperandFactoryProtocol> operandFactory;
 @property (nonatomic, strong) NSDictionary* instructionMapper;
 
--(id)initWithInstructionOperandFactory:(id<InstructionOperandFactoryProtocol> )factory;
+-(id) initWithInstructionOperandFactory:(id<InstructionOperandFactoryProtocol> )factory;
+-(CPUInstruction*) buildFromMachineCode:(ushort)code usingCpuState:(id<DCPUProtocol>)cpuStateOperations;
 
 @end
