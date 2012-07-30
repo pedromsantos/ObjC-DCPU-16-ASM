@@ -33,13 +33,13 @@
 @synthesize expectedInstructionType;
 @synthesize inputValue;
 
-- (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(short)value expectedInstructionType:(Class)expectedOprnd
+- (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(ushort)value expectedInstructionType:(Class)expectedType
 {
     self = [super initWithInvocation:anInvocation];
     
     if (self)
     {
-        self.expectedInstructionType = expectedOprnd;
+        self.expectedInstructionType = expectedType;
         self.inputValue = value;
     }
     

@@ -13,6 +13,6 @@
 @property(nonatomic, assign) Class expectedInstructionType;
 @property(nonatomic, assign) short inputValue;
 
-- (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(ushort)value expectedInstructionType:(Class)expectedOprnd;
+- (id)initWithInvocation:(NSInvocation *)anInvocation inputValue:(ushort)value expectedInstructionType:(Class)expectedType;
 
 @end
