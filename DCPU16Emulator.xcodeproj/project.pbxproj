@@ -97,6 +97,9 @@
 		C3E41BF815C5A92A00311EEA /* Ifb.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BF315C5A92400311EEA /* Ifb.m */; };
 		C3E41BF915C5A92A00311EEA /* Ifg.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BF515C5A92600311EEA /* Ifg.m */; };
 		C3E41BFA15C5A92A00311EEA /* Ifn.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BF715C5A92800311EEA /* Ifn.m */; };
+		C3E41BFF15C6C0E500311EEA /* Shl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BFC15C6C0E100311EEA /* Shl.m */; };
+		C3E41C0015C6C0E500311EEA /* Shr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BFE15C6C0E400311EEA /* Shr.m */; };
+		C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0215C6C1D700311EEA /* Jsr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +281,12 @@
 		C3E41BF515C5A92600311EEA /* Ifg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ifg.m; sourceTree = "<group>"; };
 		C3E41BF615C5A92700311EEA /* Ifn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ifn.h; sourceTree = "<group>"; };
 		C3E41BF715C5A92800311EEA /* Ifn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ifn.m; sourceTree = "<group>"; };
+		C3E41BFB15C6C0DF00311EEA /* Shl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shl.h; sourceTree = "<group>"; };
+		C3E41BFC15C6C0E100311EEA /* Shl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shl.m; sourceTree = "<group>"; };
+		C3E41BFD15C6C0E200311EEA /* Shr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shr.h; sourceTree = "<group>"; };
+		C3E41BFE15C6C0E400311EEA /* Shr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shr.m; sourceTree = "<group>"; };
+		C3E41C0115C6C1D600311EEA /* Jsr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jsr.h; sourceTree = "<group>"; };
+		C3E41C0215C6C1D700311EEA /* Jsr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsr.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -594,14 +603,6 @@
 		C3E41BD515C5971F00311EEA /* CPUInstructions */ = {
 			isa = PBXGroup;
 			children = (
-				C3E41BF215C5A92300311EEA /* Ifb.h */,
-				C3E41BF315C5A92400311EEA /* Ifb.m */,
-				C3E41BF415C5A92500311EEA /* Ifg.h */,
-				C3E41BF515C5A92600311EEA /* Ifg.m */,
-				C3E41BF615C5A92700311EEA /* Ifn.h */,
-				C3E41BF715C5A92800311EEA /* Ifn.m */,
-				C3E41BEF15C5A60500311EEA /* Ife.h */,
-				C3E41BF015C5A60600311EEA /* Ife.m */,
 				C3E41BD715C5994B00311EEA /* Add.h */,
 				C3E41BD815C5994B00311EEA /* Add.m */,
 				C3E41BDA15C5A13800311EEA /* And.h */,
@@ -610,10 +611,24 @@
 				C3E41BDE15C5A24700311EEA /* Bor.m */,
 				C3E41BE015C5A29E00311EEA /* Div.h */,
 				C3E41BE115C5A29E00311EEA /* Div.m */,
+				C3E41BF215C5A92300311EEA /* Ifb.h */,
+				C3E41BF315C5A92400311EEA /* Ifb.m */,
+				C3E41BEF15C5A60500311EEA /* Ife.h */,
+				C3E41BF015C5A60600311EEA /* Ife.m */,
+				C3E41BF415C5A92500311EEA /* Ifg.h */,
+				C3E41BF515C5A92600311EEA /* Ifg.m */,
+				C3E41BF615C5A92700311EEA /* Ifn.h */,
+				C3E41BF715C5A92800311EEA /* Ifn.m */,
+				C3E41C0115C6C1D600311EEA /* Jsr.h */,
+				C3E41C0215C6C1D700311EEA /* Jsr.m */,
 				C3E41BE315C5A3AD00311EEA /* Mod.h */,
 				C3E41BE415C5A3AD00311EEA /* Mod.m */,
 				C3E41BE515C5A3AD00311EEA /* Mul.h */,
 				C3E41BE615C5A3AE00311EEA /* Mul.m */,
+				C3E41BFB15C6C0DF00311EEA /* Shl.h */,
+				C3E41BFC15C6C0E100311EEA /* Shl.m */,
+				C3E41BFD15C6C0E200311EEA /* Shr.h */,
+				C3E41BFE15C6C0E400311EEA /* Shr.m */,
 				C3E41BE915C5A4C100311EEA /* Sub.h */,
 				C3E41BEA15C5A4C200311EEA /* Sub.m */,
 				C3E41BEB15C5A4C300311EEA /* Xor.h */,
@@ -804,6 +819,9 @@
 				C3E41BF815C5A92A00311EEA /* Ifb.m in Sources */,
 				C3E41BF915C5A92A00311EEA /* Ifg.m in Sources */,
 				C3E41BFA15C5A92A00311EEA /* Ifn.m in Sources */,
+				C3E41BFF15C6C0E500311EEA /* Shl.m in Sources */,
+				C3E41C0015C6C0E500311EEA /* Shr.m in Sources */,
+				C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

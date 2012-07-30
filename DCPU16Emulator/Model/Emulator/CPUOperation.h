@@ -37,5 +37,6 @@
 - (void)noOp;
 - (ushort)read;
 - (void)write:(ushort)value;
+- (void)jumpSubRoutine:(ushort)subRoutineAdress;
 
 @end
