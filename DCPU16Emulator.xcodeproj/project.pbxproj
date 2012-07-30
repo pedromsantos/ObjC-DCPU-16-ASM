@@ -100,6 +100,7 @@
 		C3E41BFF15C6C0E500311EEA /* Shl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BFC15C6C0E100311EEA /* Shl.m */; };
 		C3E41C0015C6C0E500311EEA /* Shr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41BFE15C6C0E400311EEA /* Shr.m */; };
 		C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0215C6C1D700311EEA /* Jsr.m */; };
+		C3E41C0615C6C2BB00311EEA /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0515C6C2B800311EEA /* Set.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +288,8 @@
 		C3E41BFE15C6C0E400311EEA /* Shr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shr.m; sourceTree = "<group>"; };
 		C3E41C0115C6C1D600311EEA /* Jsr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jsr.h; sourceTree = "<group>"; };
 		C3E41C0215C6C1D700311EEA /* Jsr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsr.m; sourceTree = "<group>"; };
+		C3E41C0415C6C2B600311EEA /* Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
+		C3E41C0515C6C2B800311EEA /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -625,6 +628,8 @@
 				C3E41BE415C5A3AD00311EEA /* Mod.m */,
 				C3E41BE515C5A3AD00311EEA /* Mul.h */,
 				C3E41BE615C5A3AE00311EEA /* Mul.m */,
+				C3E41C0415C6C2B600311EEA /* Set.h */,
+				C3E41C0515C6C2B800311EEA /* Set.m */,
 				C3E41BFB15C6C0DF00311EEA /* Shl.h */,
 				C3E41BFC15C6C0E100311EEA /* Shl.m */,
 				C3E41BFD15C6C0E200311EEA /* Shr.h */,
@@ -822,6 +827,7 @@
 				C3E41BFF15C6C0E500311EEA /* Shl.m in Sources */,
 				C3E41C0015C6C0E500311EEA /* Shr.m in Sources */,
 				C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */,
+				C3E41C0615C6C2BB00311EEA /* Set.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

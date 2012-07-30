@@ -23,6 +23,22 @@
 #import "InstructionBuilder.h"
 #import "CPUInstruction.h"
 #import "Statment.h"
+#import "Add.h"
+#import "And.h"
+#import "Bor.h"
+#import "Div.h"
+#import "Ifb.h"
+#import "Ife.h"
+#import "Ifg.h"
+#import "Ifn.h"
+#import "Jsr.h"
+#import "Mod.h"
+#import "Mul.h"
+#import "Set.h"
+#import "Shl.h"
+#import "Shr.h"
+#import "Sub.h"
+#import "Xor.h"
 
 @interface InstructionBuilder()
 {
@@ -47,77 +63,77 @@
     self.instructionMapper = [NSDictionary dictionaryWithObjectsAndKeys:
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Set alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_SET],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Add alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_ADD],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Sub alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_SUB],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Mul alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_MUL],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Div alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_DIV],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Mod alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_MOD],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Shl alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_SHL],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Shr alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_SHR],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[And alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_AND],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Bor alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_BOR],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Xor alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_XOR],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Ife alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_IFE],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Ifn alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_IFN],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Ifg alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_IFG],
                               (CPUInstruction *) ^()
                               {
-                                  return [[CPUInstruction alloc] initWithOperationA:operationA andOperationB:operationB];
+                                  return [[Ifb alloc] initWithOperationA:operationA andOperationB:operationB];
                               },
                               [NSNumber numberWithInt:OP_IFB],
                               nil];
