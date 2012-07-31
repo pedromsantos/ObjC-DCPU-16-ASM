@@ -294,16 +294,12 @@
             for (int i = 0; i < len; ++i)
             {
                 char current = (char) buffer[i];
-
-                if (current == ' ')
-                {
-                    continue;
-                }
-
                 [statment addDat:(UInt16) current];
             }
         }
 
+        [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+        
     } while (self.lexer.token == COMMA);
 }
 
