@@ -26,14 +26,13 @@
 
 - (ushort)read
 {
-    ushort value = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
-
-    return (ushort) ([self.cpuOperations readMemoryValueAtAddress:self.nextWord + value] & SHORT_MASK);
+    return (ushort) ([self.cpuOperations readMemoryValueAtAddress:self.nextWord + self.registerValue] & SHORT_MASK);
 }
 
 - (void)writeValue:(ushort)value
 {
-    [self.cpuOperations writeMemoryAtAddress:(self.nextWord + self.registerValue) & SHORT_MASK withValue:value];
+    ushort address = (self.nextWord + self.registerValue) & SHORT_MASK;
+    [self.cpuOperations writeMemoryAtAddress:address withValue:value];
 }
 
 - (void)process
@@ -41,7 +40,8 @@
     [self.cpuOperations incrementProgramCounter];
     int programCounter = [self.cpuOperations programCounter];
     self.nextWord = (uint16_t) [self.cpuOperations readMemoryValueAtAddress:programCounter];
-    self.registerValue = (enum operand_register_value) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
+    ushort reg = self.value % NUMBER_OF_REGISTERS;
+    self.registerValue = [self.cpuOperations readGeneralPursoseRegisterValue:reg];
 }
 
 - (int)assembleWithShift:(int)shift
