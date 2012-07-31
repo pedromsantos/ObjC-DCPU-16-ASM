@@ -26,17 +26,32 @@
 
 - (ushort)read
 {
-    return (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.registerValue];
+    ushort value = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value];
+    return value;
 }
 
-- (void)writeValue:(ushort)value
+- (void)writeValue:(ushort)val
 {
-    [self.cpuOperations writeGeneralPursoseRegister:self.registerValue withValue:value];
+    [self.cpuOperations writeGeneralPursoseRegister:self.value withValue:val];
 }
 
 - (int)assembleWithShift:(int)shift
 {
     return (O_REG + self.registerValue) << shift;
+}
+
++ (NSString*)registerNameForIdentifier:(ushort)identifier
+{
+    if(identifier == REG_A) return @"A";
+    if(identifier == REG_B) return @"B";
+    if(identifier == REG_C) return @"C";
+    if(identifier == REG_X) return @"X";
+    if(identifier == REG_Y) return @"Y";
+    if(identifier == REG_Z) return @"Z";
+    if(identifier == REG_I) return @"I";
+    if(identifier == REG_J) return @"J";
+    
+    return @"";
 }
 
 - (void)setRegisterValueForName:(NSString *)name

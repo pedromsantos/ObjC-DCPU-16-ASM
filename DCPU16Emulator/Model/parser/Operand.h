@@ -75,7 +75,7 @@ enum operand_special_register
 @property(nonatomic, assign) uint16_t nextWord;
 @property(nonatomic, assign) uint16_t value;
 @property(nonatomic, strong) NSString *label;
-@property(nonatomic, strong) id <DCPUProtocol> cpuOperations;
+@property(nonatomic, strong) id<DCPUProtocol> cpuOperations;
 
 + (Operand *)newOperand:(enum operand_type)type;
 

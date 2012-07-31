@@ -162,6 +162,8 @@ typedef CPUInstruction *(^creationStrategy)();
             
             return jsrInstruction;
         }
+        
+        return nil;
     }
     
     ushort operandAValue = (ushort)((code >> OperandAShift) & OperandAMask);
@@ -172,7 +174,9 @@ typedef CPUInstruction *(^creationStrategy)();
 
     creationStrategy creator = [instructionMapper objectForKey:[NSNumber numberWithInt:opcode]];
     
-    return creator();
+    CPUInstruction* instruction = creator();
+    
+    return instruction;
 }
 
 @end

@@ -65,6 +65,8 @@ typedef void(^memoryOperationNotification)(NSString *, int, int);
 
 - (int)getValueForRegister:(int)reg;
 
+- (int)setValueForGeneralRegister:(int)reg value:(ushort)value;
+
 - (void)setRegister:(NSString *)registerKey value:(int)newValue;
 
 - (int)getProgramCounter;
@@ -94,13 +96,5 @@ typedef void(^memoryOperationNotification)(NSString *, int, int);
 - (int)peek;
 
 - (int)pop;
-
-- (void)assignResultOfOperation:(memoryOperation)block
-         usingOperand1AtAddress:(int)address1
-                   inMemoryArea:(NSString *)area1
-           andOperand2AtAddress:(int)address2
-                   inMemoryArea:(NSString *)area2
-                      toAddress:(int)address
-                   inMemoryArea:(NSString *)area;
 
 @end

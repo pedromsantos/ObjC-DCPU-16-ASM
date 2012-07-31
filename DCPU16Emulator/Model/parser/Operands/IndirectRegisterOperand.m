@@ -27,21 +27,14 @@
 - (ushort)read
 {
     ushort address = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
-    return (ushort) [self.cpuOperations readMemoryValueAtAddress:address];
+    ushort value = (ushort) [self.cpuOperations readMemoryValueAtAddress:address];
+    return value;
 }
 
 - (void)writeValue:(ushort)value
 {
     ushort address = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
     [self.cpuOperations writeMemoryAtAddress:address withValue:value];
-}
-
-- (void)process
-{
-    [self.cpuOperations incrementProgramCounter];
-    int programCounter = [self.cpuOperations programCounter];
-    self.nextWord = (uint16_t) [self.cpuOperations readMemoryValueAtAddress:programCounter];
-    self.registerValue = (enum operand_register_value) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
 }
 
 - (int)assembleWithShift:(int)shift

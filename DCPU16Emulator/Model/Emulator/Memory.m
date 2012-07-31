@@ -148,45 +148,6 @@
     }
 }
 
-- (void)assignResultOfOperation:(memoryOperation)block
-         usingOperand1AtAddress:(int)address1
-                   inMemoryArea:(NSString *)area1
-           andOperand2AtAddress:(int)address2
-                   inMemoryArea:(NSString *)area2
-                      toAddress:(int)address
-                   inMemoryArea:(NSString *)area
-{
-    int a;
-    int b;
-
-    if ([area1 isEqualToString:REG] || [area1 isEqualToString:LIT] || [area1 isEqualToString:MEM])
-    {
-        a = [self getMemoryValueAtIndex:address1 inMemoryArea:area1];
-    }
-    else
-    {
-        a = address1;
-    }
-
-    if ([area2 isEqualToString:REG] || [area2 isEqualToString:LIT] || [area2 isEqualToString:MEM])
-    {
-        b = [self getMemoryValueAtIndex:address2 inMemoryArea:area2];
-    }
-    else
-    {
-        b = address2;
-    }
-
-    if ([area1 isEqualToString:@"PC"])
-    {
-        [self setProgramCounter:a];
-    }
-    else
-    {
-        [self setMemoryValue:block(a, b) atIndex:address inMemoryArea:area];
-    }
-}
-
 - (void)setMemoryValue:(int)value atIndex:(int)index
 {
     [self setMemoryValue:value atIndex:index inMemoryArea:MEM];
@@ -227,7 +188,6 @@
 - (int)readInstructionAtProgramCounter
 {
     int value = [self peekInstructionAtProgramCounter];
-    [self incrementProgramCounter];
     return value;
 }
 
@@ -270,6 +230,15 @@
 
     int value = [[registers objectAtIndex:(NSUInteger) reg] intValue];
 
+    return value;
+}
+
+- (int)setValueForGeneralRegister:(int)reg value:(ushort)value
+{
+    NSMutableArray *registers = [ram objectForKey:REG];
+    
+    [registers replaceObjectAtIndex:reg withObject:[NSNumber numberWithInt:value]];
+    
     return value;
 }
 

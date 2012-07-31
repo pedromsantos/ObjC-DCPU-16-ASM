@@ -33,6 +33,7 @@
     
     self.operand = oper;
     self.cpuOperations = cpuStateOperations;
+    self.operand.cpuOperations = self.cpuOperations;
     
     return self;
 }
@@ -44,7 +45,7 @@
 
 - (void)write:(ushort)value
 {
-    @throw @"Invalid operation.";
+    return [self.operand writeValue:value];
 }
 
 - (void)setWrite:(ushort)value

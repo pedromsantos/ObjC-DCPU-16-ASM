@@ -25,7 +25,9 @@
 
 - (ushort)read
 {
-    return self.value - 0x20 % NUMBER_OF_LITERALS;
+    ushort value = ((self.value - 0x20) % NUMBER_OF_LITERALS);
+    
+    return value;
 }
 
 @end
