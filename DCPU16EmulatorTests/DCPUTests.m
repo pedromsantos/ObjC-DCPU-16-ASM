@@ -186,5 +186,40 @@
     }
 }
 
-
+- (void)testCanStepThrougthHelloWorldSample
+{
+    NSString *code = @"\n\
+    ; Assembler test for DCPU\n\
+    ; by Markus Persson\n\
+    \n\
+    set a, 0xbeef                        ; Assign 0xbeef to register a\n\
+    set [0x1000], a                      ; Assign memory at 0x1000 to value of register a\n\
+    ifn a, [0x1000]                      ; Compare value of register a to memory at 0x1000 ..\n\
+    set PC, end                          ; .. and jump to end if they don't match\n\
+    \n\
+    set i, 0                             ; Init loop counter, for clarity\n\
+    :nextchar    ife [data+i], 0         ; If the character is 0 ..\n\
+    set PC, end                          ; .. jump to the end\n\
+    set [0x8000+i], [data+i]             ; Video ram starts at 0x8000, copy char there\n\
+    add i, 1                             ; Increase loop counter\n\
+    set PC, nextchar                     ; Loop\n\
+    \n\
+    :data        dat \"Hello world!\"    ; Zero terminated string\n\
+    \n\
+    :end         SET A, 1                ; Freeze the CPU forever";
+    
+    Parser *p = [[Parser alloc] init];
+    [p parseSource:code];
+    Assembler *assembler = [[Assembler alloc] init];
+    [assembler assembleStatments:p.statments];
+    DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
+    
+    BOOL executed = true;
+    
+    while (executed)
+    {
+        executed = [emulator executeInstruction];
+    }
+    
+   }
 @end

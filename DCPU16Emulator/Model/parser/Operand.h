@@ -81,6 +81,8 @@ enum operand_special_register
 
 + (Operand *)newExecutingOperand:(int)code;
 
++ (enum operand_type)operandTypeForName:(NSString *)name;
+
 - (NSString *)token;
 
 - (ushort)read;

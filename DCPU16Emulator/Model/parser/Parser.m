@@ -181,7 +181,7 @@
         @throw [NSString stringWithFormat:@"Expected INSTRUCTION at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
     }
 
-    statment.menemonic = self.lexer.tokenContents;
+    statment.menemonic = [self.lexer.tokenContents uppercaseString];
 }
 
 - (void)parseOperandsForStatment:(Statment *)statment

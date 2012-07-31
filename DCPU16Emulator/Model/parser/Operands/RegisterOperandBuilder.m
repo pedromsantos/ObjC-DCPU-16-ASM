@@ -32,27 +32,29 @@
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    if ([match.content isEqualToString:@"PC"])
+    NSString *operandName = [match.content uppercaseString];
+    
+    if ([operandName isEqualToString:@"PC"])
     {
         return [[ProgramCounterOperand alloc] init];
     }
-    if ([match.content isEqualToString:@"SP"])
+    if ([operandName isEqualToString:@"SP"])
     {
         return [[StackPointerOperand alloc] init];
     }
-    if ([match.content isEqualToString:@"O"])
+    if ([operandName isEqualToString:@"O"])
     {
         return [[OverflowOperand alloc] init];
     }
-    if ([match.content isEqualToString:@"POP"])
+    if ([operandName isEqualToString:@"POP"])
     {
         return [[PopOperand alloc] init];
     }
-    if ([match.content isEqualToString:@"PEEK"])
+    if ([operandName isEqualToString:@"PEEK"])
     {
         return [[PeekOperand alloc] init];
     }
-    if ([match.content isEqualToString:@"PUSH"])
+    if ([operandName isEqualToString:@"PUSH"])
     {
         return [[PushOperand alloc] init];
     }
@@ -62,57 +64,7 @@
 
 - (void)setRegisterValue:(Match *)match
 {
-    self.operand.registerValue = (enum operand_register_value) [self registerValueForName:match.content];
-}
-
-- (int)registerValueForName:(NSString *)name
-{
-    if ([name isEqualToString:@"A"])
-    {
-        return REG_A;
-    } else if ([name isEqualToString:@"B"])
-    {
-        return REG_B;
-    } else if ([name isEqualToString:@"C"])
-    {
-        return REG_C;
-    } else if ([name isEqualToString:@"X"])
-    {
-        return REG_X;
-    } else if ([name isEqualToString:@"Y"])
-    {
-        return REG_Y;
-    } else if ([name isEqualToString:@"Z"])
-    {
-        return REG_Z;
-    } else if ([name isEqualToString:@"I"])
-    {
-        return REG_I;
-    } else if ([name isEqualToString:@"J"])
-    {
-        return REG_J;
-    } else if ([name isEqualToString:@"PC"])
-    {
-        return O_PC;
-    } else if ([name isEqualToString:@"SP"])
-    {
-        return O_SP;
-    } else if ([name isEqualToString:@"O"])
-    {
-        return O_O;
-    } else if ([name isEqualToString:@"POP"])
-    {
-        return O_POP;
-    } else if ([name isEqualToString:@"PEEK"])
-    {
-        return O_PEEK;
-    } else if ([name isEqualToString:@"PUSH"])
-    {
-        return O_PUSH;
-    } else
-    {
-        @throw @"Invalid register.";
-    }
+    self.operand.registerValue = (enum operand_register_value) [RegisterOperand registerIdentifierForName:match.content];
 }
 
 @end

@@ -54,75 +54,70 @@
     return @"";
 }
 
-- (void)setRegisterValueForName:(NSString *)name
++ (int)registerIdentifierForName:(NSString *)name
 {
-    if ([name isEqualToString:@"A"])
+    NSString *registerName = [name uppercaseString];
+    
+    if ([registerName isEqualToString:@"A"])
     {
-        self.registerValue = REG_A;
-    } else if ([name isEqualToString:@"B"])
-    {
-        self.registerValue = REG_B;
-    } else if ([name isEqualToString:@"C"])
-    {
-        self.registerValue = REG_C;
-    } else if ([name isEqualToString:@"X"])
-    {
-        self.registerValue = REG_X;
-    } else if ([name isEqualToString:@"Y"])
-    {
-        self.registerValue = REG_Y;
-    } else if ([name isEqualToString:@"Z"])
-    {
-        self.registerValue = REG_Z;
-    } else if ([name isEqualToString:@"I"])
-    {
-        self.registerValue = REG_I;
-    } else if ([name isEqualToString:@"J"])
-    {
-        self.registerValue = REG_J;
-    } else
-    {
-        @throw @"Invalid register.";
+        return REG_A;
     }
-}
-
-+ (enum operand_type)operandTypeForName:(NSString *)name
-{
-    if ([name length] == 1 && (
-            [name isEqualToString:@"A"] || [name isEqualToString:@"B"] || [name isEqualToString:@"C"] ||
-                    [name isEqualToString:@"X"] || [name isEqualToString:@"Y"] || [name isEqualToString:@"Z"] ||
-                    [name isEqualToString:@"I"] || [name isEqualToString:@"J"]))
+    else if ([registerName isEqualToString:@"B"])
     {
-        return O_REG;
+        return REG_B;
     }
-
-    if ([name isEqualToString:@"PC"])
+    else if ([registerName isEqualToString:@"C"])
+    {
+        return REG_C;
+    }
+    else if ([registerName isEqualToString:@"X"])
+    {
+        return REG_X;
+    }
+    else if ([registerName isEqualToString:@"Y"])
+    {
+        return REG_Y;
+    }
+    else if ([registerName isEqualToString:@"Z"])
+    {
+        return REG_Z;
+    }
+    else if ([registerName isEqualToString:@"I"])
+    {
+        return REG_I;
+    }
+    else if ([registerName isEqualToString:@"J"])
+    {
+        return REG_J;
+    }
+    else if ([registerName isEqualToString:@"PC"])
     {
         return O_PC;
     }
-    if ([name isEqualToString:@"SP"])
+    else if ([registerName isEqualToString:@"SP"])
     {
         return O_SP;
     }
-    if ([name isEqualToString:@"O"])
+    else if ([registerName isEqualToString:@"O"])
     {
         return O_O;
     }
-
-    if ([name isEqualToString:@"POP"])
+    else if ([registerName isEqualToString:@"POP"])
     {
         return O_POP;
     }
-    if ([name isEqualToString:@"PEEK"])
+    else if ([registerName isEqualToString:@"PEEK"])
     {
         return O_PEEK;
     }
-    if ([name isEqualToString:@"PUSH"])
+    else if ([registerName isEqualToString:@"PUSH"])
     {
         return O_PUSH;
     }
-
-    return O_NEXT_WORD;
+    else
+    {
+        @throw @"Invalid register.";
+    }
 }
 
 @end
