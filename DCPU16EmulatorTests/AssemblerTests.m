@@ -89,6 +89,22 @@
     STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x0030, nil);
 }
 
+- (void)testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram
+{
+    NSString *code = @"ADD I, 1";
+    
+    Parser *p = [[Parser alloc] init];
+    
+    [p parseSource:code];
+    
+    Assembler *assembler = [[Assembler alloc] init];
+    
+    [assembler assembleStatments:p.statments];
+    
+    STAssertTrue([assembler.program count] == 1, nil);
+    STAssertEquals([[assembler.program objectAtIndex:0] intValue], 0x8462, nil);
+}
+
 - (void)testAssembleStatmentsCalledWithSetAddressWithHexLiteralGenertesCorrectProgram
 {
     NSString *code = @"SET [0x1000], 0x20";
