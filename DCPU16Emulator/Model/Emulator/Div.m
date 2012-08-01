@@ -26,8 +26,8 @@
 
 - (int)process
 {
-    ushort divisor = [self.operationA read];
-    ushort divident = [self.operationB read];
+    ushort divisor = [self.operationB read];
+    ushort divident = [self.operationA read];
     int result;
     
     if (divisor == 0)
