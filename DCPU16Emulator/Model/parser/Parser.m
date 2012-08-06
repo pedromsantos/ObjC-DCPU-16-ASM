@@ -57,7 +57,7 @@
     return self;
 }
 
-- (id)initWithOperandFcatory:(id <OperandFactoryProtocol>)factory
+- (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory
 {
     self = [super init];
 

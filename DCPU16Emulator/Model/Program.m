@@ -65,8 +65,8 @@
     NSDictionary *instructionData = [[NSMutableDictionary alloc] init];
     [instructionData setValue:self.currentInstruction.label != nil ? self.currentInstruction.label : @"" forKey:@"label"];
     [instructionData setValue:self.currentInstruction.opcode != nil ? self.currentInstruction.opcode : @"" forKey:@"opcode"];
-    [instructionData setValue:self.self.currentInstruction.operand1 != nil ? self.currentInstruction.operand1 : @"" forKey:@"operand1"];
-    [instructionData setValue:self.self.currentInstruction.operand2 != nil ? self.currentInstruction.operand2 : @"" forKey:@"operand2"];
+    [instructionData setValue:self.currentInstruction.operand1 != nil ? self.currentInstruction.operand1 : @"" forKey:@"operand1"];
+    [instructionData setValue:self.currentInstruction.operand2 != nil ? self.currentInstruction.operand2 : @"" forKey:@"operand2"];
     [instructionData setValue:[NSNumber numberWithInt:self.currentInstruction.state] forKey:@"state"];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"InstructionChanged" object:instructionData];

@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 
-#import "Operand.h"
 #import "PopOperand.h"
 #import "PeekOperand.h"
 #import "PushOperand.h"
@@ -54,7 +53,7 @@
     return 0;
 }
 
-- (void)writeValue:(ushort)value
+- (void)writeValue:(ushort)  theValue
 {
     @throw @"Not implemented";
 }

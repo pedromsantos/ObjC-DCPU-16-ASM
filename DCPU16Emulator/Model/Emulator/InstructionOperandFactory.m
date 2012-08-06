@@ -33,7 +33,6 @@
 #import "IndirectNextWordOperand.h"
 #import "NextWordOperand.h"
 #import "LiteralOperand.h"
-#import "NullOperand.h"
 
 @interface InstructionOperandFactory()
 

@@ -23,7 +23,6 @@
 #import "DCPU.h"
 #import "CPUInstruction.h"
 #import "InstructionBuilder.h"
-#import "RegisterOperand.h"
 #import "InstructionOperandFactory.h"
 
 @interface DCPU ()

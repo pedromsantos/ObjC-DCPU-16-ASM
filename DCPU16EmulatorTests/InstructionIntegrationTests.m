@@ -22,27 +22,14 @@
 
 #import "InstructionIntegrationTests.h"
 #import "InstructionBuilder.h"
-#import "CPUInstruction.h"
 #import "InstructionOperandFactory.h"
 #import "Parser.h"
 #import "Assembler.h"
 #import "DCPU.h"
 #import "Add.h"
-#import "And.h"
-#import "Bor.h"
-#import "Div.h"
-#import "Ifb.h"
-#import "Ife.h"
-#import "Ifg.h"
-#import "Ifn.h"
-#import "Jsr.h"
-#import "Mod.h"
-#import "Mul.h"
 #import "Set.h"
 #import "Shl.h"
-#import "Shr.h"
 #import "Sub.h"
-#import "Xor.h"
 
 @implementation InstructionIntegrationTests
 
@@ -110,7 +97,7 @@
             executed = [emulator executeInstruction];
         }
         
-        ushort result = [emulator readGeneralPursoseRegisterValue:self.address];
+        int result = [emulator readGeneralPursoseRegisterValue:self.address];
         STAssertEquals(result, self.outputValue, nil);
     }
 }
