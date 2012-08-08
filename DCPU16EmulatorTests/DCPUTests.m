@@ -188,6 +188,7 @@
 
 - (void)testCanStepThrougthHelloWorldSample
 {
+    /*
     NSString *code = @"\n\
     ; Assembler test for DCPU\n\
     ; by Markus Persson\n\
@@ -210,7 +211,6 @@
     
     //FIXME: Test still not passing
     
-    /*
     Parser *p = [[Parser alloc] init];
     [p parseSource:code];
     Assembler *assembler = [[Assembler alloc] init];
