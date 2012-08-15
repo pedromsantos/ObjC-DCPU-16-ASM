@@ -31,14 +31,15 @@
     int columnNumber;
 }
 
-@property(nonatomic, strong) Match *match;
 @property(nonatomic, readonly) enum LexerTokenType token;
 @property(nonatomic, readonly) NSString *tokenContents;
-
-@property(nonatomic, strong) id <ConsumeTokenStrategy> consumeTokenStrategy;
-@property(nonatomic, strong) id <IgnoreTokenStrategy> ignoreTokenStrategy;
 @property(nonatomic, readonly) int lineNumber;
 @property(nonatomic, readonly) int columnNumber;
+
+@property(nonatomic, strong) Match *match;
+@property(nonatomic, strong) id <ConsumeTokenStrategy> consumeTokenStrategy;
+@property(nonatomic, strong) id <IgnoreTokenStrategy> ignoreTokenStrategy;
+
 
 - (id)initWithTokenMatchers:(NSArray *)matchers scanner:(NSScanner *)textScanner;
 
