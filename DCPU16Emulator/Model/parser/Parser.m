@@ -107,7 +107,7 @@
 
     [self parseEmptyLines];
 
-    BOOL canKeepLexing = [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+    BOOL canKeepLexing = [self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
     if (!canKeepLexing)
     {
@@ -135,16 +135,16 @@
 
 - (void)parseEmptyLines
 {
-    [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+    [self.lexer nextTokenUsingStrategy:(self.peekToken)];
     BOOL canKeepLexing = true;
 
     while ((self.lexer.token == COMMENT || self.lexer.token == WHITESPACE) && canKeepLexing)
     {
-        [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+        [self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
         if (self.lexer.token == COMMENT || self.lexer.token == WHITESPACE)
         {
-            canKeepLexing = [self.lexer consumeNextToken];
+            canKeepLexing = [self.lexer nextToken];
         }
         else
         {
@@ -155,11 +155,11 @@
 
 - (void)parseComments
 {
-    [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+    [self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
     if (self.lexer.token == COMMENT)
     {
-        [self.lexer consumeNextToken];
+        [self.lexer nextToken];
     }
 }
 
@@ -167,14 +167,14 @@
 {
     if (self.lexer.token == LABEL)
     {
-        [self.lexer consumeNextToken];
+        [self.lexer nextToken];
         statment.label = self.lexer.tokenContents;
     }
 }
 
 - (void)parseMenemonicForStatment:(Statment *)statment
 {
-    [self.lexer consumeNextToken];
+    [self.lexer nextToken];
 
     if (self.lexer.token != INSTRUCTION)
     {
@@ -188,7 +188,7 @@
 {
     statment.firstOperand = [self parseOperand];
 
-    [self.lexer consumeNextToken];
+    [self.lexer nextToken];
 
     if (self.lexer.token == COMMA)
     {
@@ -202,7 +202,7 @@
 
 - (Operand *)parseOperand
 {
-    [self.lexer consumeNextToken];
+    [self.lexer nextToken];
 
     if (self.lexer.token == OPENBRACKET)
     {
@@ -222,7 +222,7 @@
 
 - (Operand *)parseIndirectOperand
 {
-    [self.lexer consumeNextToken];
+    [self.lexer nextToken];
 
     Match *leftToken = [[Match alloc] init];
     leftToken.token = self.lexer.token;
@@ -230,11 +230,11 @@
 
     Operand *operand;
 
-    [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+    [self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
     if (self.lexer.token == PLUS)
     {
-        [self.lexer consumeNextToken];
+        [self.lexer nextToken];
         operand = [self parseIndirectOffsetOperand:leftToken];
     }
     else
@@ -250,7 +250,7 @@
 
 - (Operand *)parseIndirectOffsetOperand:(Match *)previousMatch
 {
-    [self.lexer consumeNextToken];
+    [self.lexer nextToken];
 
     return [[[IndirectNextWordOffsetOperandBuilder alloc] initWithLeftToken:previousMatch]
             buildFromMatch:self.lexer.match];
@@ -258,7 +258,7 @@
 
 - (void)assertIndirectOperandIsTerminatedWithACloseBracketToken
 {
-    [self.lexer consumeNextToken];
+    [self.lexer nextToken];
 
     if (self.lexer.token != CLOSEBRACKET)
     {
@@ -272,10 +272,10 @@
     {
         if (self.lexer.token == COMMA)
         {
-            [self.lexer consumeNextToken];
+            [self.lexer nextToken];
         }
 
-        [self.lexer consumeNextToken];
+        [self.lexer nextToken];
 
         if (self.lexer.token == HEX)
         {
@@ -298,7 +298,7 @@
             }
         }
 
-        [self.lexer consumeNextTokenUsingStrategy:(self.peekToken)];
+        [self.lexer nextTokenUsingStrategy:(self.peekToken)];
         
     } while (self.lexer.token == COMMA);
 }

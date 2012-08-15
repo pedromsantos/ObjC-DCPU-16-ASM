@@ -44,8 +44,8 @@
 
 - (id)initWithScanner:(NSScanner *)textScanner;
 
-- (BOOL)consumeNextToken;
+- (BOOL)nextToken;
 
-- (BOOL)consumeNextTokenUsingStrategy:(id <ConsumeTokenStrategy>)strategy;
+- (BOOL)nextTokenUsingStrategy:(id <ConsumeTokenStrategy>)strategy;
 
 @end

@@ -130,20 +130,20 @@
     }
 }
 
-- (BOOL)consumeNextTokenUsingStrategy:(id <ConsumeTokenStrategy>)strategy
+- (BOOL)nextTokenUsingStrategy:(id <ConsumeTokenStrategy>)strategy
 {
     id <ConsumeTokenStrategy> oldStragegy = self.consumeTokenStrategy;
 
     self.consumeTokenStrategy = strategy;
 
-    BOOL result = [self consumeNextToken];
+    BOOL result = [self nextToken];
 
     self.consumeTokenStrategy = oldStragegy;
 
     return result;
 }
 
-- (BOOL)consumeNextToken
+- (BOOL)nextToken
 {
     if (lineRemaining == nil)
     {

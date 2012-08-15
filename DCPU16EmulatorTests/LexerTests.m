@@ -60,9 +60,9 @@
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
 
-    [lexer consumeNextToken];
+    [lexer nextToken];
     int token1 = lexer.token;
-    [lexer consumeNextToken];
+    [lexer nextToken];
     int token2 = lexer.token;
 
     STAssertTrue(token1 != token2, nil);
@@ -78,11 +78,11 @@
 
     id <ConsumeTokenStrategy> consumeTokenStrategy = [[ConsumeToken alloc] init];
 
-    [lexer consumeNextToken];
+    [lexer nextToken];
     int token1 = lexer.token;
-    [lexer consumeNextToken];
+    [lexer nextToken];
     int token2 = lexer.token;
-    [lexer consumeNextTokenUsingStrategy:consumeTokenStrategy];
+    [lexer nextTokenUsingStrategy:consumeTokenStrategy];
     int token3 = lexer.token;
 
     STAssertTrue(token1 == token2 && token1 == token3, nil);
@@ -96,7 +96,7 @@
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
 
-    [lexer consumeNextToken];
+    [lexer nextToken];
 
     STAssertNil(lexer.tokenContents, nil);
 }
@@ -109,7 +109,7 @@
     Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
     lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
 
-    [lexer consumeNextToken];
+    [lexer nextToken];
 
     STAssertTrue(lexer.token == COMMENT, nil);
 }
@@ -127,7 +127,7 @@
 
     for (int i = 0; i < 4; i++)
     {
-        [lexer consumeNextToken];
+        [lexer nextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
     }
 }
@@ -144,7 +144,7 @@
 
     for (int i = 0; i < 6; i++)
     {
-        [lexer consumeNextToken];
+        [lexer nextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
     }
 }
@@ -161,7 +161,7 @@
 
     for (int i = 0; i < 8; i++)
     {
-        [lexer consumeNextToken];
+        [lexer nextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
     }
 }
@@ -178,7 +178,7 @@
 
     for (int i = 0; i < 6; i++)
     {
-        [lexer consumeNextToken];
+        [lexer nextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
     }
 }
@@ -195,7 +195,7 @@
 
     for (int i = 0; i < 6; i++)
     {
-        [lexer consumeNextToken];
+        [lexer nextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
     }
 }
@@ -265,7 +265,7 @@
 
     for (int i = 0; i < 155; i++)
     {
-        [lexer consumeNextToken];
+        [lexer nextToken];
         STAssertTrue(lexer.token == expectedTokens[i], nil);
     }
 }
