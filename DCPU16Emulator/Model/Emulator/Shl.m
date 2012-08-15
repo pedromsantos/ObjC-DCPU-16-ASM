@@ -33,7 +33,7 @@
     result = leftOperand << rigthOperand;
     [self.operationA setOverflowRegister:(ushort)(((leftOperand << rigthOperand) >> 16) & 0xFFFF)];
     
-    [self.operationA write:result];
+    [self.operationA write:(ushort) result];
     
     return result;
 }

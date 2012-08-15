@@ -46,9 +46,9 @@
 
 @synthesize lineRemaining;
 
-// This convinience tokenMatchers init is creating an undesired coupling with RegexTokenMatcher
-// will leave it for now, since it's very convinient. If in the future another matcher and/or token matcher
-// is implemented, that use other matching technique, then this code should be removed.
+// This convenience tokenMatchers init is creating an undesired coupling with RegexTokenMatcher
+// will leave it for now, since it's very convenient. If in the future another matcher and/or token matcher
+// is implemented, that uses other matching technique, then this code should be removed.
 // For now intentionally accepting this bit of technical debt for Lexer usage simplification.
 - (id)initWithScanner:(NSScanner *)textScanner
 {
@@ -156,14 +156,11 @@
 
         if (matchedStartIndex > 0)
         {
-            self.match = nil;
-            enum LexerTokenType token = tokenMatcher.token;
-            NSString *tokenContent = [self.lineRemaining substringWithRange:NSMakeRange(0, (NSUInteger) matchedStartIndex)];
-            self.match = [[Match alloc] initWithToken:token content:tokenContent];
+            [self buildMatchFromToken:tokenMatcher matchedStartIndex:matchedStartIndex];
 
-            [self consumeToken:token characters:matchedStartIndex];
+            [self consumeToken:tokenMatcher.token characters:matchedStartIndex];
 
-            if ([self.ignoreTokenStrategy isTokenToBeIgnored:token])
+            if ([self.ignoreTokenStrategy isTokenToBeIgnored:tokenMatcher.token])
             {
                 continue;
             }
@@ -175,6 +172,13 @@
     }
 
     return NO;
+}
+
+- (void)buildMatchFromToken:(id <TokenMatcher>)tokenMatcher matchedStartIndex:(int)matchedStartIndex
+{
+    self.match = nil;
+    NSString *tokenContent = [self.lineRemaining substringWithRange:NSMakeRange(0, (NSUInteger) matchedStartIndex)];
+    self.match = [[Match alloc] initWithToken:tokenMatcher.token content:tokenContent];
 }
 
 - (void)consumeToken:(enum LexerTokenType)tkn characters:(int)matchedStartIndex

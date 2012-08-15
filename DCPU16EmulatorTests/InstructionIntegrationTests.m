@@ -26,7 +26,6 @@
 #import "Parser.h"
 #import "Assembler.h"
 #import "DCPU.h"
-#import "Add.h"
 #import "Set.h"
 #import "Shl.h"
 #import "Sub.h"
@@ -97,7 +96,7 @@
             executed = [emulator executeInstruction];
         }
         
-        ushort result = [emulator readGeneralPursoseRegisterValue:self.address];
+        ushort result = (ushort) [emulator readGeneralPursoseRegisterValue:self.address];
         STAssertEquals(result, self.outputValue, nil);
     }
 }

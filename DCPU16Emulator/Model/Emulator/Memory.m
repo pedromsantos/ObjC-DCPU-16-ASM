@@ -237,7 +237,7 @@
 {
     NSMutableArray *registers = [ram objectForKey:REG];
     
-    [registers replaceObjectAtIndex:reg withObject:[NSNumber numberWithInt:value]];
+    [registers replaceObjectAtIndex:(NSUInteger) reg withObject:[NSNumber numberWithInt:value]];
     
     return value;
 }

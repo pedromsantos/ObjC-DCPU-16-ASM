@@ -62,7 +62,7 @@
         return false;
     }
 
-    ushort rawInstruction = [self.memory readInstructionAtProgramCounter];
+    ushort rawInstruction = (ushort) [self.memory readInstructionAtProgramCounter];
     CPUInstruction* instruction = [self.instructionBuilder buildFromMachineCode:rawInstruction usingCpuState:self];
     
     if(!self.ignoreNextInstruction)

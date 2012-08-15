@@ -40,7 +40,7 @@
         [self.operationA setOverflowRegister:(ushort)((ushort)((divident << 16) / divisor) & 0xFFFF)];
     }
     
-    [self.operationA write:result];
+    [self.operationA write:(ushort) result];
     
     return result;
 }

@@ -41,7 +41,7 @@
     int programCounter = [self.cpuOperations programCounter];
     self.nextWord = (uint16_t) [self.cpuOperations readMemoryValueAtAddress:programCounter];
     ushort reg = self.value % NUMBER_OF_REGISTERS;
-    self.registerValue = [self.cpuOperations readGeneralPursoseRegisterValue:reg];
+    self.registerValue = (enum operand_register_value) [self.cpuOperations readGeneralPursoseRegisterValue:reg];
 }
 
 - (int)assembleWithShift:(int)shift
