@@ -24,9 +24,7 @@
 
 @interface Program : NSObject
 
-@property(strong, nonatomic) NSMutableArray *instructionSet;
-@property(strong, nonatomic) NSMutableArray *assembledInstructionSet;
-@property(strong, nonatomic) Instruction *currentInstruction;
+@property(strong, nonatomic, readonly) NSMutableArray *assembledInstructionSet;
 
 - (NSString *)assemble;
 

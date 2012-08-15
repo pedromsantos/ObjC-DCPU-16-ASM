@@ -25,18 +25,19 @@
 
 @interface CPUOperation : NSObject
 
-@property(nonatomic, retain) Operand *operand;
+@property(nonatomic, retain, readonly) Operand *operand;
 @property(nonatomic, readonly) ushort read;
-@property(nonatomic, assign) ushort write;
+@property(nonatomic, assign, readonly) ushort write;
+@property(nonatomic, strong, readonly) id<DCPUProtocol> cpuOperations;
+
 @property(nonatomic, assign) BOOL ignoreInstruction;
 @property(nonatomic, assign) ushort overflowRegister;
-@property(nonatomic, strong) id<DCPUProtocol> cpuOperations;
 
 -(id)initWithOperand:(Operand*)operand cpuStateOperations:(id<DCPUProtocol>)cpuStateOperations;
 - (void)process;
 - (void)noOp;
 - (ushort)read;
 - (void)write:(ushort)value;
-- (void)jumpSubRoutine:(ushort)subRoutineAdress;
+- (void)jumpSubRoutine:(ushort)subRoutineAddress;
 
 @end

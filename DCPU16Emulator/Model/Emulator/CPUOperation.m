@@ -22,6 +22,15 @@
 
 #import "CPUOperation.h"
 
+@interface CPUOperation ()
+
+@property(nonatomic, retain, readwrite) Operand *operand;
+@property(nonatomic, readwrite) ushort read;
+@property(nonatomic, assign, readwrite) ushort write;
+@property(nonatomic, strong, readwrite) id <DCPUProtocol> cpuOperations;
+
+@end
+
 @implementation CPUOperation
 
 @synthesize operand;

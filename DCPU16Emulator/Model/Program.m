@@ -24,6 +24,14 @@
 #import "Parser.h"
 #import "Assembler.h"
 
+@interface Program ()
+
+@property(strong, nonatomic) NSMutableArray *instructionSet;
+@property(strong, nonatomic) Instruction *currentInstruction;
+@property(strong, nonatomic, readwrite) NSMutableArray *assembledInstructionSet;
+
+@end
+
 @implementation Program
 
 @synthesize instructionSet;

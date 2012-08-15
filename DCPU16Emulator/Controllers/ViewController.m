@@ -44,9 +44,9 @@
 @synthesize mapRegisterNameToControl;
 
 @synthesize currentInstructionLabel;
-@synthesize currentIbstructionOpCode;
-@synthesize currentIbstructionOperend1;
-@synthesize currentIbstructionOperand2;
+@synthesize currentInstructionOpCode;
+@synthesize currentInstructingOperand1;
+@synthesize currentInstructingOperand2;
 @synthesize instructionTableView;
 
 @synthesize instructionButtonCollection;
@@ -164,17 +164,17 @@
 - (void)bindCurrentInstruction
 {
     self.currentInstructionLabel.text = [self.instructionData objectForKey:@"label"];
-    self.currentIbstructionOpCode.text = [self.instructionData objectForKey:@"opcode"];
-    self.currentIbstructionOperend1.text = [self.instructionData objectForKey:@"operand1"];
-    self.currentIbstructionOperand2.text = [self.instructionData objectForKey:@"operand2"];
+    self.currentInstructionOpCode.text = [self.instructionData objectForKey:@"opcode"];
+    self.currentInstructingOperand1.text = [self.instructionData objectForKey:@"operand1"];
+    self.currentInstructingOperand2.text = [self.instructionData objectForKey:@"operand2"];
 }
 
 - (void)clearCurrentInstructionBind
 {
     self.currentInstructionLabel.text = @"";
-    self.currentIbstructionOpCode.text = @"";
-    self.currentIbstructionOperend1.text = @"";
-    self.currentIbstructionOperand2.text = @"";
+    self.currentInstructionOpCode.text = @"";
+    self.currentInstructingOperand1.text = @"";
+    self.currentInstructingOperand2.text = @"";
 }
 
 - (void)setProgramingKeyboardState
@@ -309,9 +309,9 @@
     [self setInstructionButtonCollection:nil];
     [self setInstructionTableView:nil];
     [self setCurrentInstructionLabel:nil];
-    [self setCurrentIbstructionOpCode:nil];
-    [self setCurrentIbstructionOperend1:nil];
-    [self setCurrentIbstructionOperand2:nil];
+    [self setCurrentInstructionOpCode:nil];
+    [self setCurrentInstructingOperand1:nil];
+    [self setCurrentInstructingOperand2:nil];
     [self setEnterButton:nil];
     [self setClearButton:nil];
     [self setLiteralButton:nil];

@@ -31,7 +31,7 @@
         return 1;
     }
     
-    [self.operationA setIgnoreInstruction:YES];
+    self.operationA.ignoreInstruction = YES;
     return 0;
 }
 

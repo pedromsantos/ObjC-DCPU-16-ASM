@@ -23,23 +23,9 @@
 #import "Memory.h"
 #import "DCPUProtocol.h"
 
-// Masks to get clear results from an INT.
-#define OP_MASK         0xF
-#define A_MASK          0x3F
-#define B_MASK          0x3F
-#define SHORT_MASK      0xFFFF
-
-// Shift width to get clear results from an INT.
-#define A_SHIFT         4
-#define B_SHIFT         10
-#define SHORT_SHIFT     16
-
 @interface DCPU : NSObject <DCPUProtocol>
-{
-    NSString *operandState;
-}
 
-@property(nonatomic, strong) Memory *memory;
+@property(nonatomic, strong, readonly) Memory *memory;
 
 - (id)initWithProgram:(NSArray *)program;
 

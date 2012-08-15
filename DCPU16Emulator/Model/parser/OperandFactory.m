@@ -29,6 +29,13 @@
 
 typedef Operand *(^creationStrategy)(Match *);
 
+@interface OperandFactory ()
+
+@property(nonatomic, strong) NSDictionary *directOperandCreationStrategyMapper;
+@property(nonatomic, strong) NSDictionary *indirectOperandCreationStrategyMapper;
+
+@end
+
 @implementation OperandFactory
 
 @synthesize directOperandCreationStrategyMapper;

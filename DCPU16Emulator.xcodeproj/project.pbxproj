@@ -353,9 +353,9 @@
 		C3860AF915872C2E001F2A3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3860B1715872D02001F2A3D /* Lexer */,
 				C3860B0E15872D02001F2A3D /* Assembler */,
 				C3860B1115872D02001F2A3D /* Emulator */,
-				C3860B1715872D02001F2A3D /* Lexer */,
 				C3860B2115872D02001F2A3D /* parser */,
 				C3860AFA15872C2E001F2A3D /* Instruction.h */,
 				C3860AFB15872C2E001F2A3D /* Instruction.m */,

@@ -26,14 +26,14 @@
 
 - (ushort)read
 {
-    ushort address = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
+    ushort address = (ushort) [self.cpuOperations readGeneralPurposeRegisterValue:self.value % NUMBER_OF_REGISTERS];
     ushort value = (ushort) [self.cpuOperations readMemoryValueAtAddress:address];
     return value;
 }
 
 - (void)writeValue:(ushort)value
 {
-    ushort address = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value % NUMBER_OF_REGISTERS];
+    ushort address = (ushort) [self.cpuOperations readGeneralPurposeRegisterValue:self.value % NUMBER_OF_REGISTERS];
     [self.cpuOperations writeMemoryAtAddress:address withValue:value];
 }
 

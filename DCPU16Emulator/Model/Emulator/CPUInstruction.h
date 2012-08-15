@@ -22,10 +22,16 @@
 
 #include "CPUOperation.h"
 
+// Masks to get clear results from an INT.
+#define SHORT_MASK      0xFFFF
+
+// Shift width to get clear results from an INT.
+#define SHORT_SHIFT     16
+
 @interface CPUInstruction : NSObject
 
-@property(nonatomic, strong) CPUOperation *operationA;
-@property(nonatomic, strong) CPUOperation *operationB;
+@property(nonatomic, strong, readonly) CPUOperation *operationA;
+@property(nonatomic, strong, readonly) CPUOperation *operationB;
 
 - (id)initWithOperationA:(CPUOperation *)operA andOperationB:(CPUOperation *)operB;
 

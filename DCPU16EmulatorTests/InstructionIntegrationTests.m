@@ -96,7 +96,7 @@
             executed = [emulator executeInstruction];
         }
         
-        ushort result = (ushort) [emulator readGeneralPursoseRegisterValue:self.address];
+        ushort result = (ushort) [emulator readGeneralPurposeRegisterValue:self.address];
         STAssertEquals(result, self.outputValue, nil);
     }
 }

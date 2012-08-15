@@ -22,6 +22,12 @@
 
 #import "CPUInstruction.h"
 
+@interface CPUInstruction ()
+@property(nonatomic, strong, readwrite) CPUOperation *operationA;
+@property(nonatomic, strong, readwrite) CPUOperation *operationB;
+
+@end
+
 @implementation CPUInstruction
 
 @synthesize operationA;

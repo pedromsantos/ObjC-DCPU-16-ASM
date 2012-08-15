@@ -27,6 +27,14 @@
 #import "IndirectNextWordOperand.h"
 #import "IndirectNextWordOffsetOperand.h"
 
+@interface Assembler ()
+
+@property(nonatomic, strong, readwrite) NSMutableArray *program;
+@property(nonatomic, strong) NSMutableDictionary *labelDef;
+@property(nonatomic, strong) NSMutableDictionary *labelRef;
+
+@end
+
 @implementation Assembler
 
 @synthesize labelDef;

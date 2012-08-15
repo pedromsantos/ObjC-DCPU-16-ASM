@@ -48,6 +48,10 @@ typedef CPUInstruction *(^creationStrategy)();
     short opcode;
 }
 
+@property(nonatomic, strong) id <InstructionOperandFactoryProtocol> operandFactory;
+@property(nonatomic, strong) NSDictionary *instructionMapper;
+
+
 @end
 
 @implementation InstructionBuilder

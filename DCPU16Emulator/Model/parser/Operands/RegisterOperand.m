@@ -26,13 +26,13 @@
 
 - (ushort)read
 {
-    ushort value = (ushort) [self.cpuOperations readGeneralPursoseRegisterValue:self.value];
+    ushort value = (ushort) [self.cpuOperations readGeneralPurposeRegisterValue:self.value];
     return value;
 }
 
 - (void)writeValue:(ushort)val
 {
-    [self.cpuOperations writeGeneralPursoseRegister:self.value withValue:val];
+    [self.cpuOperations writeGeneralPurposeRegister:self.value withValue:val];
 }
 
 - (int)assembleWithShift:(int)shift

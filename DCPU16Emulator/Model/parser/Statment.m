@@ -34,8 +34,6 @@
 @implementation Statment
 
 @synthesize label;
-@synthesize internalDat;
-@synthesize internalMenemonic;
 @synthesize opcode;
 @synthesize opcodeNonBasic;
 @synthesize firstOperand;
@@ -43,7 +41,7 @@
 
 - (NSArray *)dat
 {
-    return internalDat;
+    return self.internalDat;
 }
 
 - (void)addDat:(UInt16)value
@@ -58,7 +56,7 @@
 
 - (NSString *)menemonic
 {
-    return internalMenemonic;
+    return self.internalMenemonic;
 }
 
 - (void)setMenemonic:(NSString *)menemonic

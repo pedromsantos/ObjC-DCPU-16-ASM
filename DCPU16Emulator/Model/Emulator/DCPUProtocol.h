@@ -27,9 +27,9 @@
 @property(nonatomic, assign) int overflow;
 @property(nonatomic, assign) bool ignoreNextInstruction;
 
-- (int)readGeneralPursoseRegisterValue:(int)reg;
+- (int)readGeneralPurposeRegisterValue:(int)reg;
 
-- (void)writeGeneralPursoseRegister:(int)reg withValue:(ushort)value;
+- (void)writeGeneralPurposeRegister:(int)reg withValue:(ushort)value;
 
 - (int)readMemoryValueAtAddress:(int)address;
 

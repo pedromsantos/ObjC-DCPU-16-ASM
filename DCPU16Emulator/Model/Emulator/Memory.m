@@ -28,6 +28,7 @@
 }
 
 @property(nonatomic, strong) NSMutableDictionary *ram;
+@property(nonatomic, assign) int startAddressOfData;
 
 @end
 

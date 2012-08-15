@@ -28,9 +28,9 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property(weak, nonatomic) IBOutlet UILabel *currentInstructionLabel;
-@property(weak, nonatomic) IBOutlet UILabel *currentIbstructionOpCode;
-@property(weak, nonatomic) IBOutlet UILabel *currentIbstructionOperend1;
-@property(weak, nonatomic) IBOutlet UILabel *currentIbstructionOperand2;
+@property(weak, nonatomic) IBOutlet UILabel *currentInstructionOpCode;
+@property(weak, nonatomic) IBOutlet UILabel *currentInstructingOperand1;
+@property(weak, nonatomic) IBOutlet UILabel *currentInstructingOperand2;
 
 @property(strong, nonatomic) IBOutlet UITableView *instructionTableView;
 

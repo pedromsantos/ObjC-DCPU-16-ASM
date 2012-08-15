@@ -27,11 +27,12 @@
 
 @interface DCPU ()
 {
-    BOOL programCounterSetted;
+    BOOL programCounterChanged;
 }
 
 @property (nonatomic, strong) InstructionBuilder* instructionBuilder;
 @property (nonatomic, strong) id<InstructionOperandFactoryProtocol> operandFactory;
+@property(nonatomic, strong, readwrite) Memory *memory;
 
 @end
 
@@ -75,13 +76,13 @@
         self.ignoreNextInstruction = NO;
     }
     
-    if(!programCounterSetted)
+    if(!programCounterChanged)
     {
         [self incrementProgramCounter];
     }
     else
     {
-        programCounterSetted = NO;
+        programCounterChanged = NO;
     }
     
     return YES;
@@ -94,7 +95,7 @@
 
 - (void)setProgramCounter:(int)value
 {
-    programCounterSetted = YES;
+    programCounterChanged = YES;
     [self.memory setProgramCounter:value];
 }
 
@@ -118,12 +119,12 @@
     [self.memory setOverflow:value];
 }
 
-- (int)readGeneralPursoseRegisterValue:(int)reg;
+- (int)readGeneralPurposeRegisterValue:(int)reg;
 {
     return [self.memory getValueForRegister:reg];
 }
 
-- (void)writeGeneralPursoseRegister:(int)reg withValue:(ushort)value
+- (void)writeGeneralPurposeRegister:(int)reg withValue:(ushort)value
 {
     [self.memory setValueForGeneralRegister:reg value:value];
 }

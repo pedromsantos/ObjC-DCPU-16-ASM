@@ -1719,9 +1719,9 @@
                     <connections>
                         <outlet property="assembledCodeLabel" destination="9kp-AO-9Wt" id="dvC-bA-Iya"/>
                         <outlet property="clearButton" destination="6Lc-1s-34f" id="P0Y-wn-wf0"/>
-                        <outlet property="currentIbstructionOpCode" destination="uTK-ZT-dus" id="S6O-py-r6j"/>
-                        <outlet property="currentIbstructionOperand2" destination="AWL-zW-9ut" id="QGB-uL-3Qo"/>
-                        <outlet property="currentIbstructionOperend1" destination="JC1-wD-f5c" id="qPn-18-nWu"/>
+                        <outlet property="currentInstructionOpCode" destination="uTK-ZT-dus" id="S6O-py-r6j"/>
+                        <outlet property="currentInstructingOperand2" destination="AWL-zW-9ut" id="QGB-uL-3Qo"/>
+                        <outlet property="currentInstructingOperand1" destination="JC1-wD-f5c" id="qPn-18-nWu"/>
                         <outlet property="currentInstructionLabel" destination="Gog-du-DnL" id="qDM-9T-Qck"/>
                         <outlet property="enterButton" destination="0ls-v6-HS7" id="mwo-r2-Lg4"/>
                         <outlet property="inputField" destination="GDJ-W2-UhU" id="g7K-Lf-TrG"/>

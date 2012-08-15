@@ -59,7 +59,7 @@
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
 
     STAssertTrue([emulator executeInstruction], nil);
-    STAssertTrue([emulator readGeneralPursoseRegisterValue:6] == 10, nil);
+    STAssertTrue([emulator readGeneralPurposeRegisterValue:6] == 10, nil);
 }
 
 - (void)testStepCalledWithSetRegisterWithHexLiteralExecutesProgram
@@ -77,7 +77,7 @@
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
 
     STAssertTrue([emulator executeInstruction], nil);
-    STAssertTrue([emulator readGeneralPursoseRegisterValue:0] == 0x30, nil);
+    STAssertTrue([emulator readGeneralPurposeRegisterValue:0] == 0x30, nil);
 }
 
 - (void)testStepCalledWithSetAddressWithHexLiteralExecutesProgram
@@ -133,13 +133,13 @@
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
 
     STAssertTrue([emulator executeInstruction], nil);
-    STAssertTrue([emulator readGeneralPursoseRegisterValue:0] == 0x30, nil);
+    STAssertTrue([emulator readGeneralPurposeRegisterValue:0] == 0x30, nil);
 
     STAssertTrue([emulator executeInstruction], nil);
     STAssertTrue([emulator readMemoryValueAtAddress:0x1000] == 0x20, nil);
 
     STAssertTrue([emulator executeInstruction], nil);
-    STAssertTrue([emulator readGeneralPursoseRegisterValue:0] == 0x10, nil);
+    STAssertTrue([emulator readGeneralPurposeRegisterValue:0] == 0x10, nil);
 }
 
 - (void)testStepCalledWithLoopExecutesProgram
@@ -164,10 +164,10 @@
     DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];
 
     STAssertTrue([emulator executeInstruction], nil);
-    STAssertEquals([emulator readGeneralPursoseRegisterValue:6], 10, nil);
+    STAssertEquals([emulator readGeneralPurposeRegisterValue:6], 10, nil);
 
     STAssertTrue([emulator executeInstruction], nil);
-    STAssertEquals(0x2000, [emulator readGeneralPursoseRegisterValue:0], nil);
+    STAssertEquals(0x2000, [emulator readGeneralPurposeRegisterValue:0], nil);
 
     STAssertTrue([emulator executeInstruction], nil);
     STAssertEquals(0x0, [emulator readMemoryValueAtAddress:0x2000 + 10], nil);
@@ -175,7 +175,7 @@
     for (int i = 9; i > 0; i--)
     {
         STAssertTrue([emulator executeInstruction], nil);
-        STAssertEquals(i, [emulator readGeneralPursoseRegisterValue:6], nil);
+        STAssertEquals(i, [emulator readGeneralPurposeRegisterValue:6], nil);
 
         STAssertTrue([emulator executeInstruction], nil);
         STAssertTrue([emulator executeInstruction], nil);

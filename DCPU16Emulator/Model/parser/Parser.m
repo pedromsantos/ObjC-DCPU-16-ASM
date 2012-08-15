@@ -32,6 +32,7 @@
 
 @interface Parser ()
 
+@property(nonatomic, strong) Lexer *lexer;
 @property(nonatomic, strong) id <ConsumeTokenStrategy> peekToken;
 @property(nonatomic, strong) id <OperandFactoryProtocol> operandFactory;
 
