@@ -24,6 +24,8 @@
 
 @interface OperandBuilder ()
 
+@property(nonatomic, strong, readwrite) Operand *operand;
+
 - (Operand *)CreateOperandFromMatch:(Match *)match;
 
 @end

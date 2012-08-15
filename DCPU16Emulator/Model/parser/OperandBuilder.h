@@ -26,7 +26,7 @@
 
 @interface OperandBuilder : NSObject <OperandBuilderProtocol>
 
-@property(nonatomic, strong) Operand *operand;
+@property(nonatomic, strong, readonly) Operand *operand;
 
 - (Operand *)buildFromMatch:(Match *)match;
 

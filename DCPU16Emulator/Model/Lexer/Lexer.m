@@ -35,6 +35,10 @@
 @end
 
 @implementation Lexer
+{
+    int lineNumber;
+    int columnNumber;
+}
 
 @synthesize match;
 @synthesize scanner;

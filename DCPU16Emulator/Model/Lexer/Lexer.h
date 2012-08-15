@@ -26,10 +26,6 @@
 #import "ConsumeTokenStrategy.h"
 
 @interface Lexer : NSObject
-{
-    int lineNumber;
-    int columnNumber;
-}
 
 @property(nonatomic, readonly) enum LexerTokenType token;
 @property(nonatomic, readonly) NSString *tokenContents;

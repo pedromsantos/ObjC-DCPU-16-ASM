@@ -26,7 +26,6 @@
 @protocol OperandFactoryProtocol <NSObject>
 
 - (Operand *)createDirectOperandForMatch:(Match *)match;
-
 - (Operand *)createIndirectOperandForMatch:(Match *)match;
 
 @end
