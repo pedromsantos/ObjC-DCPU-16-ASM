@@ -34,9 +34,9 @@
 #import "NextWordOperand.h"
 #import "LiteralOperand.h"
 
-@interface InstructionOperandFactory()
+@interface InstructionOperandFactory ()
 
-- (Operand*)createOperandForValue:(ushort)operandValue;
+- (Operand *)createOperandForValue:(ushort)operandValue;
 
 @end
 
@@ -44,70 +44,70 @@
 
 - (id)init
 {
-    self = [super init];
+	self = [super init];
 
-    return self;
+	return self;
 }
 
-- (Operand*)createOperandForValue:(ushort)operandValue
+- (Operand *)createOperandForValue:(ushort)operandValue
 {
-    if(operandValue < O_INDIRECT_REG)
-    {
-        return [[RegisterOperand alloc] init];
-    }
-    else if(operandValue < O_INDIRECT_NEXT_WORD_OFFSET)
-    {
-        return [[IndirectRegisterOperand alloc] init];
-    }
-    else if(operandValue < O_POP)
-    {
-        return [[IndirectNextWordOffsetOperand alloc] init];
-    }
-    else if(operandValue == O_POP)
-    {
-        return [[PopOperand alloc] init];
-    }
-    else if(operandValue == O_PEEK)
-    {
-        return [[PeekOperand alloc] init];
-    }
-    else if(operandValue == O_PUSH)
-    {
-        return [[PushOperand alloc] init];
-    }
-    else if(operandValue == O_SP)
-    {
-        return [[StackPointerOperand alloc] init];
-    }
-    else if(operandValue == O_PC)
-    {
-        return [[ProgramCounterOperand alloc] init];
-    }
-    else if(operandValue == O_O)
-    {
-        return [[OverflowOperand alloc] init];
-    }
-    else if(operandValue == O_INDIRECT_NEXT_WORD)
-    {
-        return [[IndirectNextWordOperand alloc] init];
-    }
-    else if(operandValue == O_NEXT_WORD)
-    {
-        return [[NextWordOperand alloc] init];
-    }
-    else
-    {
-        return [[LiteralOperand alloc] init];
-    }
+	if(operandValue < O_INDIRECT_REG)
+	{
+		return [[RegisterOperand alloc] init];
+	}
+	else if(operandValue < O_INDIRECT_NEXT_WORD_OFFSET)
+	{
+		return [[IndirectRegisterOperand alloc] init];
+	}
+	else if(operandValue < O_POP)
+	{
+		return [[IndirectNextWordOffsetOperand alloc] init];
+	}
+	else if(operandValue == O_POP)
+	{
+		return [[PopOperand alloc] init];
+	}
+	else if(operandValue == O_PEEK)
+	{
+		return [[PeekOperand alloc] init];
+	}
+	else if(operandValue == O_PUSH)
+	{
+		return [[PushOperand alloc] init];
+	}
+	else if(operandValue == O_SP)
+	{
+		return [[StackPointerOperand alloc] init];
+	}
+	else if(operandValue == O_PC)
+	{
+		return [[ProgramCounterOperand alloc] init];
+	}
+	else if(operandValue == O_O)
+	{
+		return [[OverflowOperand alloc] init];
+	}
+	else if(operandValue == O_INDIRECT_NEXT_WORD)
+	{
+		return [[IndirectNextWordOperand alloc] init];
+	}
+	else if(operandValue == O_NEXT_WORD)
+	{
+		return [[NextWordOperand alloc] init];
+	}
+	else
+	{
+		return [[LiteralOperand alloc] init];
+	}
 }
 
 - (Operand *)createFromInstructionOperandValue:(ushort)operandValue
 {
-    Operand* operand = [self createOperandForValue:operandValue];
-    
-    operand.value = operandValue;
-    
-    return operand;
+	Operand *operand = [self createOperandForValue:operandValue];
+
+	operand.value = operandValue;
+
+	return operand;
 }
 
 @end

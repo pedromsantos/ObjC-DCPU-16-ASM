@@ -27,16 +27,16 @@
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    return [[NextWordOperand alloc] init];
+	return [[NextWordOperand alloc] init];
 }
 
 - (void)setNextWordValue:(Match *)match
 {
-    self.operand.nextWord = 0;
+	self.operand.nextWord = 0;
 }
 
 - (void)setLabelValue:(Match *)match
 {
-    self.operand.label = match.content;
+	self.operand.label = match.content;
 }
 @end

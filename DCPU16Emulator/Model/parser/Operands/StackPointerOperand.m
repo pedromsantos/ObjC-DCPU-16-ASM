@@ -26,17 +26,17 @@
 
 - (ushort)read
 {
-    return (ushort) [self.cpuOperations stackPointer];
+	return (ushort) [self.cpuOperations stackPointer];
 }
 
 - (void)writeValue:(ushort)value
 {
-    [self.cpuOperations setStackPointer:value];
+	[self.cpuOperations setStackPointer:value];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    return O_SP << shift;
+	return O_SP << shift;
 }
 
 @end

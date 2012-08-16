@@ -31,105 +31,105 @@
 
 - (enum InstructionInputState)state
 {
-    return instructionState;
+	return instructionState;
 }
 
 - (void)assignLabel:(NSString *)value
 {
-    self.label = value;
-    instructionState = WaitForOpcode;
+	self.label = value;
+	instructionState = WaitForOpcode;
 }
 
 - (void)assignValue:(NSString *)value
 {
-    switch (instructionState)
-    {
-        case WaitForOpcodeOrLabel:
-        case WaitForOpcode:
-            opcode = value;
-            instructionState = WaitForOperand1;
-            break;
-        case WaitForOperand1:
-            operand1 = value;
-            if ([opcode isEqualToString:@"JSR"])
-            {
-                instructionState = Complete;
-            }
-            else
-            {
-                instructionState = WaitForOperand2;
-            }
-            break;
-        case WaitForOperand2:
-            operand2 = value;
-            instructionState = Complete;
-            break;
-        case Complete:
-            break;
-        default:
-            break;
-    }
+	switch(instructionState)
+	{
+		case WaitForOpcodeOrLabel:
+		case WaitForOpcode:
+			opcode = value;
+			instructionState = WaitForOperand1;
+			break;
+		case WaitForOperand1:
+			operand1 = value;
+			if([opcode isEqualToString:@"JSR"])
+			{
+				instructionState = Complete;
+			}
+			else
+			{
+				instructionState = WaitForOperand2;
+			}
+			break;
+		case WaitForOperand2:
+			operand2 = value;
+			instructionState = Complete;
+			break;
+		case Complete:
+			break;
+		default:
+			break;
+	}
 }
 
 - (void)reset
 {
-    instructionState = WaitForOpcodeOrLabel;
-    self.opcode = @"";
-    self.operand1 = @"";
-    self.operand2 = @"";
-    self.label = @"";
+	instructionState = WaitForOpcodeOrLabel;
+	self.opcode = @"";
+	self.operand1 = @"";
+	self.operand2 = @"";
+	self.label = @"";
 }
 
 - (NSArray *)possibleNextInput
 {
-    NSMutableArray *possibleInputList = [[NSMutableArray alloc] init];
+	NSMutableArray *possibleInputList = [[NSMutableArray alloc] init];
 
-    if (instructionState == WaitForOpcodeOrLabel)
-    {
-        [possibleInputList addObject:@"Label"];
-    }
+	if(instructionState == WaitForOpcodeOrLabel)
+	{
+		[possibleInputList addObject:@"Label"];
+	}
 
-    if (instructionState == WaitForOpcodeOrLabel || instructionState == WaitForOpcode)
-    {
-        [possibleInputList addObject:@"JSR"];
-        [possibleInputList addObject:@"SET"];
-        [possibleInputList addObject:@"SHL"];
-        [possibleInputList addObject:@"MOD"];
-        [possibleInputList addObject:@"AND"];
-        [possibleInputList addObject:@"BOR"];
-        [possibleInputList addObject:@"XOR"];
-        [possibleInputList addObject:@"SHR"];
-        [possibleInputList addObject:@"SHL"];
-        [possibleInputList addObject:@"ADD"];
-        [possibleInputList addObject:@"SUB"];
-        [possibleInputList addObject:@"MUL"];
-        [possibleInputList addObject:@"DIV"];
-        [possibleInputList addObject:@"IFE"];
-        [possibleInputList addObject:@"IFN"];
-        [possibleInputList addObject:@"IFG"];
-        [possibleInputList addObject:@"IFB"];
-    }
-    else if (instructionState == WaitForOperand1 || instructionState == WaitForOperand2)
-    {
-        [possibleInputList addObject:@"PC"];
-        [possibleInputList addObject:@"SP"];
-        [possibleInputList addObject:@"O"];
-        [possibleInputList addObject:@"A"];
-        [possibleInputList addObject:@"B"];
-        [possibleInputList addObject:@"C"];
-        [possibleInputList addObject:@"X"];
-        [possibleInputList addObject:@"Y"];
-        [possibleInputList addObject:@"Z"];
-        [possibleInputList addObject:@"I"];
-        [possibleInputList addObject:@"J"];
-        [possibleInputList addObject:@"Lit"];
-        [possibleInputList addObject:@"Ref"];
-        [possibleInputList addObject:@"PUSH"];
-        [possibleInputList addObject:@"POP"];
-        [possibleInputList addObject:@"PEEK"];
-    }
+	if(instructionState == WaitForOpcodeOrLabel || instructionState == WaitForOpcode)
+	{
+		[possibleInputList addObject:@"JSR"];
+		[possibleInputList addObject:@"SET"];
+		[possibleInputList addObject:@"SHL"];
+		[possibleInputList addObject:@"MOD"];
+		[possibleInputList addObject:@"AND"];
+		[possibleInputList addObject:@"BOR"];
+		[possibleInputList addObject:@"XOR"];
+		[possibleInputList addObject:@"SHR"];
+		[possibleInputList addObject:@"SHL"];
+		[possibleInputList addObject:@"ADD"];
+		[possibleInputList addObject:@"SUB"];
+		[possibleInputList addObject:@"MUL"];
+		[possibleInputList addObject:@"DIV"];
+		[possibleInputList addObject:@"IFE"];
+		[possibleInputList addObject:@"IFN"];
+		[possibleInputList addObject:@"IFG"];
+		[possibleInputList addObject:@"IFB"];
+	}
+	else if(instructionState == WaitForOperand1 || instructionState == WaitForOperand2)
+	{
+		[possibleInputList addObject:@"PC"];
+		[possibleInputList addObject:@"SP"];
+		[possibleInputList addObject:@"O"];
+		[possibleInputList addObject:@"A"];
+		[possibleInputList addObject:@"B"];
+		[possibleInputList addObject:@"C"];
+		[possibleInputList addObject:@"X"];
+		[possibleInputList addObject:@"Y"];
+		[possibleInputList addObject:@"Z"];
+		[possibleInputList addObject:@"I"];
+		[possibleInputList addObject:@"J"];
+		[possibleInputList addObject:@"Lit"];
+		[possibleInputList addObject:@"Ref"];
+		[possibleInputList addObject:@"PUSH"];
+		[possibleInputList addObject:@"POP"];
+		[possibleInputList addObject:@"PEEK"];
+	}
 
-    return possibleInputList;
+	return possibleInputList;
 }
 
 @end

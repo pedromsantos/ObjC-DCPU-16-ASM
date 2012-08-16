@@ -28,121 +28,121 @@
 
 - (void)testAssembleStatmentsCalledWithEmptySourceDoesNotGenerateProgram
 {
-    NSString *code = @"";
+	NSString *code = @"";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    STAssertTrue([assembler.program count] == 0, nil);
+	STAssertTrue([assembler.program count] == 0, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithOnlyCommentsDoesNotGenerateProgram
 {
-    NSString *code = @"; Try some basic stuff";
+	NSString *code = @"; Try some basic stuff";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    STAssertTrue([assembler.program count] == 0, nil);
+	STAssertTrue([assembler.program count] == 0, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithSetRegisterWithDecimalLiteralGenertesCorrectProgram
 {
-    NSString *code = @"SET I, 10";
+	NSString *code = @"SET I, 10";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    STAssertTrue([assembler.program count] == 1, nil);
-    STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0xA861, nil);
+	STAssertTrue([assembler.program count] == 1, nil);
+	STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0xA861, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithSetRegisterWithHexLiteralGenertesCorrectProgram
 {
-    NSString *code = @"SET A, 0x30";
+	NSString *code = @"SET A, 0x30";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    STAssertTrue([assembler.program count] == 2, nil);
-    STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x7C01, nil);
-    STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x0030, nil);
+	STAssertTrue([assembler.program count] == 2, nil);
+	STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x7C01, nil);
+	STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x0030, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram
 {
-    NSString *code = @"ADD I, 1";
-    
-    Parser *p = [[Parser alloc] init];
-    
-    [p parseSource:code];
-    
-    Assembler *assembler = [[Assembler alloc] init];
-    
-    [assembler assembleStatments:p.statments];
-    
-    STAssertTrue([assembler.program count] == 1, nil);
-    STAssertEquals([[assembler.program objectAtIndex:0] intValue], 0x8462, nil);
+	NSString *code = @"ADD I, 1";
+
+	Parser *p = [[Parser alloc] init];
+
+	[p parseSource:code];
+
+	Assembler *assembler = [[Assembler alloc] init];
+
+	[assembler assembleStatments:p.statments];
+
+	STAssertTrue([assembler.program count] == 1, nil);
+	STAssertEquals([[assembler.program objectAtIndex:0] intValue], 0x8462, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithSetAddressWithHexLiteralGenertesCorrectProgram
 {
-    NSString *code = @"SET [0x1000], 0x20";
+	NSString *code = @"SET [0x1000], 0x20";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    STAssertTrue([assembler.program count] == 3, nil);
-    STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x7DE1, nil);
-    STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x1000, nil);
-    STAssertTrue([[assembler.program objectAtIndex:2] intValue] == 0x0020, nil);
+	STAssertTrue([assembler.program count] == 3, nil);
+	STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x7DE1, nil);
+	STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x1000, nil);
+	STAssertTrue([[assembler.program objectAtIndex:2] intValue] == 0x0020, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithSetAddressPlusRegiterWithRegiterAddressGenertesCorrectProgram
 {
-    NSString *code = @"SET [0x2000+I], [A]";
+	NSString *code = @"SET [0x2000+I], [A]";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    STAssertTrue([assembler.program count] == 2, nil);
-    STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x2161, nil);
-    STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x2000, nil);
+	STAssertTrue([assembler.program count] == 2, nil);
+	STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x2161, nil);
+	STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x2000, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithNotchSampleGenertesCorrectProgram
 {
-    NSString *code = @"\n\
+	NSString *code = @"\n\
 ; Try some basic stuff\n\
             SET A, 0x30             ; 7c01 0030\n\
             SET [0x1000], 0x20      ; 7de1 1000 0020\n\
@@ -169,31 +169,31 @@
 ; Hang forever. X should now be 0x40 if everything went right.\n\
 :crash      SET PC, crash           ; 7dc1 001a [*]";
 
-    Parser *p = [[Parser alloc] init];
+	Parser *p = [[Parser alloc] init];
 
-    [p parseSource:code];
+	[p parseSource:code];
 
-    NSLog(@"Parser statments = %d", [p.statments count]);
+	NSLog(@"Parser statments = %d", [p.statments count]);
 
-    Assembler *assembler = [[Assembler alloc] init];
+	Assembler *assembler = [[Assembler alloc] init];
 
-    [assembler assembleStatments:p.statments];
+	[assembler assembleStatments:p.statments];
 
-    NSLog(@"Program instructions = %d", [assembler.program count]);
-    STAssertTrue([assembler.program count] == 28, nil);
+	NSLog(@"Program instructions = %d", [assembler.program count]);
+	STAssertTrue([assembler.program count] == 28, nil);
 
-    int expectedInstructions[28] = {
-            0x7c01, 0x0030, 0x7de1, 0x1000, 0x0020, 0x7803, 0x1000, 0xc00d,
-            0x7dc1, 0x001a, 0xa861, 0x7c01, 0x2000, 0x2161, 0x2000, 0x8463,
-            0x806d, 0x7dc1, 0x000d, 0x9031, 0x7c10, 0x0018, 0x7dc1, 0x001a,
-            0x9037, 0x61c1, 0x7dc1, 0x001a
-    };
+	int expectedInstructions[28] = {
+			0x7c01, 0x0030, 0x7de1, 0x1000, 0x0020, 0x7803, 0x1000, 0xc00d,
+			0x7dc1, 0x001a, 0xa861, 0x7c01, 0x2000, 0x2161, 0x2000, 0x8463,
+			0x806d, 0x7dc1, 0x000d, 0x9031, 0x7c10, 0x0018, 0x7dc1, 0x001a,
+			0x9037, 0x61c1, 0x7dc1, 0x001a
+	};
 
-    for (NSUInteger i = 0; i < 28; i++)
-    {
-        NSLog(@"Expected:0x%x Instruction:0x%x", expectedInstructions[i], [[assembler.program objectAtIndex:i] intValue]);
-        STAssertTrue([[assembler.program objectAtIndex:i] intValue] == expectedInstructions[i], nil);
-    }
+	for(NSUInteger i = 0; i < 28; i++)
+	{
+		NSLog(@"Expected:0x%x Instruction:0x%x", expectedInstructions[i], [[assembler.program objectAtIndex:i] intValue]);
+		STAssertTrue([[assembler.program objectAtIndex:i] intValue] == expectedInstructions[i], nil);
+	}
 }
 
 @end

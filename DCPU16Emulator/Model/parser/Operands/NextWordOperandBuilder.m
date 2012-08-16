@@ -28,37 +28,37 @@
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    return [[NextWordOperand alloc] init];
+	return [[NextWordOperand alloc] init];
 }
 
 - (void)setNextWordValue:(Match *)match
 {
-    if (match.token == HEX)
-    {
-        self.operand.nextWord = [match.content parseHexLiteral];
-    }
-    else if (match.token == INT)
-    {
-        self.operand.nextWord = [match.content parseDecimalLiteral];
-    }
+	if(match.token == HEX)
+	{
+		self.operand.nextWord = [match.content parseHexLiteral];
+	}
+	else if(match.token == INT)
+	{
+		self.operand.nextWord = [match.content parseDecimalLiteral];
+	}
 }
 
 - (uint16_t)parseHexLiteral:(NSString *)textLiteral
 {
-    uint outVal;
-    NSScanner *scanner = [NSScanner scannerWithString:textLiteral];
-    [scanner scanHexInt:&outVal];
+	uint outVal;
+	NSScanner *scanner = [NSScanner scannerWithString:textLiteral];
+	[scanner scanHexInt:&outVal];
 
-    return (uint16_t) outVal;
+	return (uint16_t) outVal;
 }
 
 - (uint16_t)parseDecimalLiteral:(NSString *)textLiteral
 {
-    int outVal;
-    NSScanner *scanner = [NSScanner scannerWithString:textLiteral];
-    [scanner scanInt:&outVal];
+	int outVal;
+	NSScanner *scanner = [NSScanner scannerWithString:textLiteral];
+	[scanner scanInt:&outVal];
 
-    return (uint16_t) outVal;
+	return (uint16_t) outVal;
 }
 
 @end

@@ -26,98 +26,122 @@
 
 - (ushort)read
 {
-    ushort value = (ushort) [self.cpuOperations readGeneralPurposeRegisterValue:self.value];
-    return value;
+	ushort value = (ushort) [self.cpuOperations readGeneralPurposeRegisterValue:self.value];
+	return value;
 }
 
 - (void)writeValue:(ushort)val
 {
-    [self.cpuOperations writeGeneralPurposeRegister:self.value withValue:val];
+	[self.cpuOperations writeGeneralPurposeRegister:self.value withValue:val];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    return (O_REG + self.registerValue) << shift;
+	return (O_REG + self.registerValue) << shift;
 }
 
-+ (NSString*)registerNameForIdentifier:(ushort)identifier
++ (NSString *)registerNameForIdentifier:(ushort)identifier
 {
-    if(identifier == REG_A) return @"A";
-    if(identifier == REG_B) return @"B";
-    if(identifier == REG_C) return @"C";
-    if(identifier == REG_X) return @"X";
-    if(identifier == REG_Y) return @"Y";
-    if(identifier == REG_Z) return @"Z";
-    if(identifier == REG_I) return @"I";
-    if(identifier == REG_J) return @"J";
-    
-    return @"";
+	if(identifier == REG_A)
+	{
+		return @"A";
+	}
+	if(identifier == REG_B)
+	{
+		return @"B";
+	}
+	if(identifier == REG_C)
+	{
+		return @"C";
+	}
+	if(identifier == REG_X)
+	{
+		return @"X";
+	}
+	if(identifier == REG_Y)
+	{
+		return @"Y";
+	}
+	if(identifier == REG_Z)
+	{
+		return @"Z";
+	}
+	if(identifier == REG_I)
+	{
+		return @"I";
+	}
+	if(identifier == REG_J)
+	{
+		return @"J";
+	}
+
+	return @"";
 }
 
 + (int)registerIdentifierForName:(NSString *)name
 {
-    NSString *registerName = [name uppercaseString];
-    
-    if ([registerName isEqualToString:@"A"])
-    {
-        return REG_A;
-    }
-    else if ([registerName isEqualToString:@"B"])
-    {
-        return REG_B;
-    }
-    else if ([registerName isEqualToString:@"C"])
-    {
-        return REG_C;
-    }
-    else if ([registerName isEqualToString:@"X"])
-    {
-        return REG_X;
-    }
-    else if ([registerName isEqualToString:@"Y"])
-    {
-        return REG_Y;
-    }
-    else if ([registerName isEqualToString:@"Z"])
-    {
-        return REG_Z;
-    }
-    else if ([registerName isEqualToString:@"I"])
-    {
-        return REG_I;
-    }
-    else if ([registerName isEqualToString:@"J"])
-    {
-        return REG_J;
-    }
-    else if ([registerName isEqualToString:@"PC"])
-    {
-        return O_PC;
-    }
-    else if ([registerName isEqualToString:@"SP"])
-    {
-        return O_SP;
-    }
-    else if ([registerName isEqualToString:@"O"])
-    {
-        return O_O;
-    }
-    else if ([registerName isEqualToString:@"POP"])
-    {
-        return O_POP;
-    }
-    else if ([registerName isEqualToString:@"PEEK"])
-    {
-        return O_PEEK;
-    }
-    else if ([registerName isEqualToString:@"PUSH"])
-    {
-        return O_PUSH;
-    }
-    else
-    {
-        @throw @"Invalid register.";
-    }
+	NSString *registerName = [name uppercaseString];
+
+	if([registerName isEqualToString:@"A"])
+	{
+		return REG_A;
+	}
+	else if([registerName isEqualToString:@"B"])
+	{
+		return REG_B;
+	}
+	else if([registerName isEqualToString:@"C"])
+	{
+		return REG_C;
+	}
+	else if([registerName isEqualToString:@"X"])
+	{
+		return REG_X;
+	}
+	else if([registerName isEqualToString:@"Y"])
+	{
+		return REG_Y;
+	}
+	else if([registerName isEqualToString:@"Z"])
+	{
+		return REG_Z;
+	}
+	else if([registerName isEqualToString:@"I"])
+	{
+		return REG_I;
+	}
+	else if([registerName isEqualToString:@"J"])
+	{
+		return REG_J;
+	}
+	else if([registerName isEqualToString:@"PC"])
+	{
+		return O_PC;
+	}
+	else if([registerName isEqualToString:@"SP"])
+	{
+		return O_SP;
+	}
+	else if([registerName isEqualToString:@"O"])
+	{
+		return O_O;
+	}
+	else if([registerName isEqualToString:@"POP"])
+	{
+		return O_POP;
+	}
+	else if([registerName isEqualToString:@"PEEK"])
+	{
+		return O_PEEK;
+	}
+	else if([registerName isEqualToString:@"PUSH"])
+	{
+		return O_PUSH;
+	}
+	else
+	{
+		@throw @"Invalid register.";
+	}
 }
 
 @end

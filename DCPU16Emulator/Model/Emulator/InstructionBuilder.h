@@ -31,7 +31,8 @@
 
 @interface InstructionBuilder : NSObject
 
--(id) initWithInstructionOperandFactory:(id<InstructionOperandFactoryProtocol> )factory;
--(CPUInstruction*) buildFromMachineCode:(ushort)code usingCpuState:(id<DCPUProtocol>)cpuStateOperations;
+- (id)initWithInstructionOperandFactory:(id <InstructionOperandFactoryProtocol>)factory;
+
+- (CPUInstruction *)buildFromMachineCode:(ushort)code usingCpuState:(id <DCPUProtocol>)cpuStateOperations;
 
 @end

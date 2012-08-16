@@ -26,16 +26,16 @@
 
 - (int)process
 {
-    ushort leftOperand = [self.operationA read];
-    ushort rigthOperand = [self.operationB read];
-    int result;
-    
-    result = leftOperand << rigthOperand;
-    [self.operationA setOverflowRegister:(ushort)(((leftOperand << rigthOperand) >> 16) & 0xFFFF)];
-    
-    [self.operationA write:(ushort) result];
-    
-    return result;
+	ushort leftOperand = [self.operationA read];
+	ushort rigthOperand = [self.operationB read];
+	int result;
+
+	result = leftOperand << rigthOperand;
+	[self.operationA setOverflowRegister:(ushort) (((leftOperand << rigthOperand) >> 16) & 0xFFFF)];
+
+	[self.operationA write:(ushort) result];
+
+	return result;
 }
 
 @end

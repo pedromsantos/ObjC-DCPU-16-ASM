@@ -31,27 +31,27 @@
 
 - (id)initWithToken:(enum LexerTokenType)tokenType pattern:(NSString *)pattern
 {
-    self = [super init];
+	self = [super init];
 
-    if (self == nil)
-    {
-        return nil;
-    }
+	if(self == nil)
+	{
+		return nil;
+	}
 
-    RegexMatcher *regexMatcher = [[RegexMatcher alloc] initWithPattern:pattern];
-    self.matcher = regexMatcher;
+	RegexMatcher *regexMatcher = [[RegexMatcher alloc] initWithPattern:pattern];
+	self.matcher = regexMatcher;
 
-    self.token = tokenType;
+	self.token = tokenType;
 
-    return self;
+	return self;
 }
 
 - (void)matchToken:(NSString *)text
 {
-    int end = [self.matcher match:text];
-    NSString* matchedText = [text substringWithRange:NSMakeRange(0, (NSUInteger) end)];
-    
-    self.content = matchedText;
+	int end = [self.matcher match:text];
+	NSString *matchedText = [text substringWithRange:NSMakeRange(0, (NSUInteger) end)];
+
+	self.content = matchedText;
 }
 
 @end

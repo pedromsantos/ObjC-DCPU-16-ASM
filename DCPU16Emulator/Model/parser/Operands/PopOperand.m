@@ -26,15 +26,15 @@
 
 - (ushort)read
 {
-    ushort value = (ushort) [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations stackPointer]];
-    [self.cpuOperations incrementStackPointer];
+	ushort value = (ushort) [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations stackPointer]];
+	[self.cpuOperations incrementStackPointer];
 
-    return value;
+	return value;
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    return O_POP << shift;
+	return O_POP << shift;
 }
 
 @end

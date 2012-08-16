@@ -28,16 +28,16 @@
 @property(nonatomic, assign) ushort inputValue;
 @property(nonatomic, assign) ushort outputValue;
 @property(nonatomic, assign) ushort address;
-@property(nonatomic, copy) NSString* inputCode;
+@property(nonatomic, copy) NSString *inputCode;
 
 - (id)initWithInvocation:(NSInvocation *)anInvocation
-              inputValue:(ushort)value
+			  inputValue:(ushort)value
  expectedInstructionType:(Class)expectedType;
 
 - (id)initWithInvocation:(NSInvocation *)anInvocation
-               inputCode:(NSString*)code
-          expectedOutput:(ushort)output
-               atAddress:(ushort)address;
+			   inputCode:(NSString *)code
+		  expectedOutput:(ushort)output
+			   atAddress:(ushort)address;
 
 
 @end

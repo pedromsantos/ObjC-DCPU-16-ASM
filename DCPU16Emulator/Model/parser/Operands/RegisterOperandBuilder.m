@@ -32,39 +32,39 @@
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    NSString *operandName = [match.content uppercaseString];
-    
-    if ([operandName isEqualToString:@"PC"])
-    {
-        return [[ProgramCounterOperand alloc] init];
-    }
-    if ([operandName isEqualToString:@"SP"])
-    {
-        return [[StackPointerOperand alloc] init];
-    }
-    if ([operandName isEqualToString:@"O"])
-    {
-        return [[OverflowOperand alloc] init];
-    }
-    if ([operandName isEqualToString:@"POP"])
-    {
-        return [[PopOperand alloc] init];
-    }
-    if ([operandName isEqualToString:@"PEEK"])
-    {
-        return [[PeekOperand alloc] init];
-    }
-    if ([operandName isEqualToString:@"PUSH"])
-    {
-        return [[PushOperand alloc] init];
-    }
+	NSString *operandName = [match.content uppercaseString];
 
-    return [[RegisterOperand alloc] init];
+	if([operandName isEqualToString:@"PC"])
+	{
+		return [[ProgramCounterOperand alloc] init];
+	}
+	if([operandName isEqualToString:@"SP"])
+	{
+		return [[StackPointerOperand alloc] init];
+	}
+	if([operandName isEqualToString:@"O"])
+	{
+		return [[OverflowOperand alloc] init];
+	}
+	if([operandName isEqualToString:@"POP"])
+	{
+		return [[PopOperand alloc] init];
+	}
+	if([operandName isEqualToString:@"PEEK"])
+	{
+		return [[PeekOperand alloc] init];
+	}
+	if([operandName isEqualToString:@"PUSH"])
+	{
+		return [[PushOperand alloc] init];
+	}
+
+	return [[RegisterOperand alloc] init];
 }
 
 - (void)setRegisterValue:(Match *)match
 {
-    self.operand.registerValue = (enum operand_register_value) [RegisterOperand registerIdentifierForName:match.content];
+	self.operand.registerValue = (enum operand_register_value) [RegisterOperand registerIdentifierForName:match.content];
 }
 
 @end

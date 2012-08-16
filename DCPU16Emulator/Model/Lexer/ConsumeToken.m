@@ -26,7 +26,7 @@
 
 - (BOOL)isTokenToBeConsumed:(enum LexerTokenType)token
 {
-    return YES;
+	return YES;
 }
 
 @end

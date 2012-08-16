@@ -51,257 +51,257 @@
 
 - (id)init
 {
-    self = [super init];
+	self = [super init];
 
-    self.operandFactory = [[OperandFactory alloc] init];
+	self.operandFactory = [[OperandFactory alloc] init];
 
-    return self;
+	return self;
 }
 
 - (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory
 {
-    self = [super init];
+	self = [super init];
 
-    self.operandFactory = factory;
+	self.operandFactory = factory;
 
-    return self;
+	return self;
 }
 
 - (void)parseSource:(NSString *)source
 {
-    NSScanner *codeScanner = [NSScanner scannerWithString:source];
-    self.lexer = [[Lexer alloc] initWithScanner:codeScanner];
+	NSScanner *codeScanner = [NSScanner scannerWithString:source];
+	self.lexer = [[Lexer alloc] initWithScanner:codeScanner];
 
-    self.lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
-    self.lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-    self.peekToken = [[PeekToken alloc] init];
+	self.lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
+	self.lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	self.peekToken = [[PeekToken alloc] init];
 
-    self.statments = [[NSMutableArray alloc] init];
+	self.statments = [[NSMutableArray alloc] init];
 
-    @try
-    {
-        while ([self parseStatment])
-        {
-        }
+	@try
+	{
+		while([self parseStatment])
+		{
+		}
 
-        if (self.didFinishParsingSuccessfully)
-        {
-            self.didFinishParsingSuccessfully();
-        }
-    }
-    @catch (NSString *message)
-    {
-        if (self.didFinishParsingWithError)
-        {
-            self.didFinishParsingWithError(message);
-        }
-        else
-        {
-            @throw;
-        }
-    }
+		if(self.didFinishParsingSuccessfully)
+		{
+			self.didFinishParsingSuccessfully();
+		}
+	}
+	@catch(NSString *message)
+	{
+		if(self.didFinishParsingWithError)
+		{
+			self.didFinishParsingWithError(message);
+		}
+		else
+		{
+			@throw;
+		}
+	}
 }
 
 - (BOOL)parseStatment
 {
-    Statment *statment = [[Statment alloc] init];
+	Statment *statment = [[Statment alloc] init];
 
-    [self parseEmptyLines];
+	[self parseEmptyLines];
 
-    BOOL canKeepLexing = [self.lexer nextTokenUsingStrategy:(self.peekToken)];
+	BOOL canKeepLexing = [self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
-    if (!canKeepLexing)
-    {
-        return NO;
-    }
+	if(!canKeepLexing)
+	{
+		return NO;
+	}
 
-    [self parseLabelForStatment:statment];
-    [self parseMenemonicForStatment:statment];
+	[self parseLabelForStatment:statment];
+	[self parseMenemonicForStatment:statment];
 
-    if ([statment.menemonic isEqualToString:@"DAT"])
-    {
-        [self parseData:statment];
-    }
-    else
-    {
-        [self parseOperandsForStatment:statment];
-    }
+	if([statment.menemonic isEqualToString:@"DAT"])
+	{
+		[self parseData:statment];
+	}
+	else
+	{
+		[self parseOperandsForStatment:statment];
+	}
 
-    [self.statments addObject:statment];
+	[self.statments addObject:statment];
 
-    [self parseComments];
+	[self parseComments];
 
-    return YES;
+	return YES;
 }
 
 - (void)parseEmptyLines
 {
-    [self.lexer nextTokenUsingStrategy:(self.peekToken)];
-    BOOL canKeepLexing = true;
+	[self.lexer nextTokenUsingStrategy:(self.peekToken)];
+	BOOL canKeepLexing = true;
 
-    while ((self.lexer.token == COMMENT || self.lexer.token == WHITESPACE) && canKeepLexing)
-    {
-        [self.lexer nextTokenUsingStrategy:(self.peekToken)];
+	while((self.lexer.token == COMMENT || self.lexer.token == WHITESPACE) && canKeepLexing)
+	{
+		[self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
-        if (self.lexer.token == COMMENT || self.lexer.token == WHITESPACE)
-        {
-            canKeepLexing = [self.lexer nextToken];
-        }
-        else
-        {
-            canKeepLexing = NO;
-        }
-    }
+		if(self.lexer.token == COMMENT || self.lexer.token == WHITESPACE)
+		{
+			canKeepLexing = [self.lexer nextToken];
+		}
+		else
+		{
+			canKeepLexing = NO;
+		}
+	}
 }
 
 - (void)parseComments
 {
-    [self.lexer nextTokenUsingStrategy:(self.peekToken)];
+	[self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
-    if (self.lexer.token == COMMENT)
-    {
-        [self.lexer nextToken];
-    }
+	if(self.lexer.token == COMMENT)
+	{
+		[self.lexer nextToken];
+	}
 }
 
 - (void)parseLabelForStatment:(Statment *)statment
 {
-    if (self.lexer.token == LABEL)
-    {
-        [self.lexer nextToken];
-        statment.label = self.lexer.tokenContents;
-    }
+	if(self.lexer.token == LABEL)
+	{
+		[self.lexer nextToken];
+		statment.label = self.lexer.tokenContents;
+	}
 }
 
 - (void)parseMenemonicForStatment:(Statment *)statment
 {
-    [self.lexer nextToken];
+	[self.lexer nextToken];
 
-    if (self.lexer.token != INSTRUCTION)
-    {
-        @throw [NSString stringWithFormat:@"Expected INSTRUCTION at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-    }
+	if(self.lexer.token != INSTRUCTION)
+	{
+		@throw [NSString stringWithFormat:@"Expected INSTRUCTION at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
+	}
 
-    statment.menemonic = [self.lexer.tokenContents uppercaseString];
+	statment.menemonic = [self.lexer.tokenContents uppercaseString];
 }
 
 - (void)parseOperandsForStatment:(Statment *)statment
 {
-    statment.firstOperand = [self parseOperand];
+	statment.firstOperand = [self parseOperand];
 
-    [self.lexer nextToken];
+	[self.lexer nextToken];
 
-    if (self.lexer.token == COMMA)
-    {
-        statment.secondOperand = [self parseOperand];
-    }
-    else
-    {
-        statment.secondOperand = [Operand newOperand:O_NULL];
-    }
+	if(self.lexer.token == COMMA)
+	{
+		statment.secondOperand = [self parseOperand];
+	}
+	else
+	{
+		statment.secondOperand = [Operand newOperand:O_NULL];
+	}
 }
 
 - (Operand *)parseOperand
 {
-    [self.lexer nextToken];
+	[self.lexer nextToken];
 
-    if (self.lexer.token == OPENBRACKET)
-    {
-        return [self parseIndirectOperand];
-    }
+	if(self.lexer.token == OPENBRACKET)
+	{
+		return [self parseIndirectOperand];
+	}
 
-    Operand *operand = [self.operandFactory createDirectOperandForMatch:self.lexer.match];
+	Operand *operand = [self.operandFactory createDirectOperandForMatch:self.lexer.match];
 
-    if (operand == nil)
-    {
-        @throw [NSString stringWithFormat:@"Expected operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-    }
+	if(operand == nil)
+	{
+		@throw [NSString stringWithFormat:@"Expected operand at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
+	}
 
-    return operand;
+	return operand;
 
 }
 
 - (Operand *)parseIndirectOperand
 {
-    [self.lexer nextToken];
+	[self.lexer nextToken];
 
-    Match *leftToken = [[Match alloc] init];
-    leftToken.token = self.lexer.token;
-    leftToken.content = [self.lexer.tokenContents copy];
+	Match *leftToken = [[Match alloc] init];
+	leftToken.token = self.lexer.token;
+	leftToken.content = [self.lexer.tokenContents copy];
 
-    Operand *operand;
+	Operand *operand;
 
-    [self.lexer nextTokenUsingStrategy:(self.peekToken)];
+	[self.lexer nextTokenUsingStrategy:(self.peekToken)];
 
-    if (self.lexer.token == PLUS)
-    {
-        [self.lexer nextToken];
-        operand = [self parseIndirectOffsetOperand:leftToken];
-    }
-    else
-    {
-        operand = [self.operandFactory createIndirectOperandForMatch:leftToken];
-    }
+	if(self.lexer.token == PLUS)
+	{
+		[self.lexer nextToken];
+		operand = [self parseIndirectOffsetOperand:leftToken];
+	}
+	else
+	{
+		operand = [self.operandFactory createIndirectOperandForMatch:leftToken];
+	}
 
-    [self assertIndirectOperandIsTerminatedWithACloseBracketToken];
+	[self assertIndirectOperandIsTerminatedWithACloseBracketToken];
 
-    return operand;
+	return operand;
 
 }
 
 - (Operand *)parseIndirectOffsetOperand:(Match *)previousMatch
 {
-    [self.lexer nextToken];
+	[self.lexer nextToken];
 
-    return [[[IndirectNextWordOffsetOperandBuilder alloc] initWithLeftToken:previousMatch]
-            buildFromMatch:self.lexer.match];
+	return [[[IndirectNextWordOffsetOperandBuilder alloc] initWithLeftToken:previousMatch]
+												   buildFromMatch:self.lexer.match];
 }
 
 - (void)assertIndirectOperandIsTerminatedWithACloseBracketToken
 {
-    [self.lexer nextToken];
+	[self.lexer nextToken];
 
-    if (self.lexer.token != CLOSEBRACKET)
-    {
-        @throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
-    }
+	if(self.lexer.token != CLOSEBRACKET)
+	{
+		@throw [NSString stringWithFormat:@"Expected CLOSEBRACKET or PLUS at line %d:%d found '%@'", self.lexer.lineNumber, self.lexer.columnNumber, self.lexer.tokenContents];
+	}
 }
 
 - (void)parseData:(Statment *)statment
 {
-    do
-    {
-        if (self.lexer.token == COMMA)
-        {
-            [self.lexer nextToken];
-        }
+	do
+	{
+		if(self.lexer.token == COMMA)
+		{
+			[self.lexer nextToken];
+		}
 
-        [self.lexer nextToken];
+		[self.lexer nextToken];
 
-        if (self.lexer.token == HEX)
-        {
-            [statment addDat:[self.lexer.tokenContents parseHexLiteral]];
-        }
-        else if (self.lexer.token == INT)
-        {
-            [statment addDat:[self.lexer.tokenContents parseDecimalLiteral]];
-        }
-        else if (self.lexer.token == STRING)
-        {
-            int len = [self.lexer.tokenContents length];
-            unichar buffer[len];
-            [self.lexer.tokenContents getCharacters:buffer range:NSMakeRange(0, (NSUInteger) len)];
+		if(self.lexer.token == HEX)
+		{
+			[statment addDat:[self.lexer.tokenContents parseHexLiteral]];
+		}
+		else if(self.lexer.token == INT)
+		{
+			[statment addDat:[self.lexer.tokenContents parseDecimalLiteral]];
+		}
+		else if(self.lexer.token == STRING)
+		{
+			int len = [self.lexer.tokenContents length];
+			unichar buffer[len];
+			[self.lexer.tokenContents getCharacters:buffer range:NSMakeRange(0, (NSUInteger) len)];
 
-            for (int i = 0; i < len; ++i)
-            {
-                char current = (char) buffer[i];
-                [statment addDat:(UInt16) current];
-            }
-        }
+			for(int i = 0; i < len; ++i)
+			{
+				char current = (char) buffer[i];
+				[statment addDat:(UInt16) current];
+			}
+		}
 
-        [self.lexer nextTokenUsingStrategy:(self.peekToken)];
-        
-    } while (self.lexer.token == COMMA);
+		[self.lexer nextTokenUsingStrategy:(self.peekToken)];
+
+	} while(self.lexer.token == COMMA);
 }
 
 @end

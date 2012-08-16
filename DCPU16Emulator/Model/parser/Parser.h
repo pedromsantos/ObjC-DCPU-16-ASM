@@ -23,6 +23,7 @@
 #import "Lexer.h"
 
 typedef void(^parseCompletedSuccessfully)();
+
 typedef void(^parseFailedWithError)(NSString *);
 
 @interface Parser : NSObject

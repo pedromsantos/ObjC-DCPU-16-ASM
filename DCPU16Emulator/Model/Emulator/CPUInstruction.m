@@ -35,31 +35,31 @@
 
 - (id)initWithOperationA:(CPUOperation *)operA andOperationB:(CPUOperation *)operB
 {
-    self = [super init];
+	self = [super init];
 
-    self.operationA = operA;
-    self.operationB = operB;
+	self.operationA = operA;
+	self.operationB = operB;
 
-    return self;
+	return self;
 }
 
 - (int)process
 {
-    return 0;
+	return 0;
 }
 
 - (int)execute
 {
-    [self.operationA process];
-    [self.operationB process];
+	[self.operationA process];
+	[self.operationB process];
 
-    return [self process];
+	return [self process];
 }
 
 - (void)noOp
 {
-    [self.operationA noOp];
-    [self.operationB noOp];
+	[self.operationA noOp];
+	[self.operationB noOp];
 }
 
 @end

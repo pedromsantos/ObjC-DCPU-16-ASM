@@ -26,7 +26,7 @@
 
 - (bool)isTokenToBeIgnored:(enum LexerTokenType)token
 {
-    return NO;
+	return NO;
 }
 
 @end

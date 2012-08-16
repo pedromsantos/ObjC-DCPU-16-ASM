@@ -26,17 +26,17 @@
 
 - (ushort)read
 {
-    return (ushort) [self.cpuOperations overflow];
+	return (ushort) [self.cpuOperations overflow];
 }
 
 - (void)writeValue:(ushort)value
 {
-    [self.cpuOperations setOverflow:value];
+	[self.cpuOperations setOverflow:value];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    return O_O << shift;
+	return O_O << shift;
 }
 
 @end

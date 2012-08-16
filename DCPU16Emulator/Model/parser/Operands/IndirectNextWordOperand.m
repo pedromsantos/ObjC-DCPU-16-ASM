@@ -26,31 +26,31 @@
 
 - (ushort)read
 {
-    return (ushort) [self.cpuOperations readMemoryValueAtAddress:self.nextWord];
+	return (ushort) [self.cpuOperations readMemoryValueAtAddress:self.nextWord];
 }
 
 - (void)writeValue:(ushort)value
 {
-    [self.cpuOperations writeMemoryAtAddress:self.nextWord withValue:value];
+	[self.cpuOperations writeMemoryAtAddress:self.nextWord withValue:value];
 }
 
 - (void)process
 {
-    [self.cpuOperations incrementProgramCounter];
-    int programCounter = [self.cpuOperations programCounter];
-    self.nextWord = (uint16_t) [self.cpuOperations readMemoryValueAtAddress:programCounter];
+	[self.cpuOperations incrementProgramCounter];
+	int programCounter = [self.cpuOperations programCounter];
+	self.nextWord = (uint16_t) [self.cpuOperations readMemoryValueAtAddress:programCounter];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    if ((self.nextWord <= OPERAND_LITERAL_MAX) && !([self.label length] > 0))
-    {
-        return (self.nextWord + OPERAND_LITERAL_OFFSET) << shift;
-    }
-    else
-    {
-        return O_INDIRECT_NEXT_WORD << shift;
-    }
+	if((self.nextWord <= OPERAND_LITERAL_MAX) && !([self.label length] > 0))
+	{
+		return (self.nextWord + OPERAND_LITERAL_OFFSET) << shift;
+	}
+	else
+	{
+		return O_INDIRECT_NEXT_WORD << shift;
+	}
 }
 
 @end

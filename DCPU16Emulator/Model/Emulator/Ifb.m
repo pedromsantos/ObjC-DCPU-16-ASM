@@ -26,13 +26,13 @@
 
 - (int)process
 {
-    if (([self.operationA read] & [self.operationB read]) == 1)
-    {
-        return 1;
-    }
-    
-    self.operationA.ignoreInstruction = YES;
-    return 0;
+	if(([self.operationA read] & [self.operationB read]) == 1)
+	{
+		return 1;
+	}
+
+	self.operationA.ignoreInstruction = YES;
+	return 0;
 }
 
 @end

@@ -26,8 +26,8 @@
 
 - (int)process
 {
-    [self.operationA jumpSubRoutine:[self.operationA read]];
-    return 0;
+	[self.operationA jumpSubRoutine:[self.operationA read]];
+	return 0;
 }
 
 @end

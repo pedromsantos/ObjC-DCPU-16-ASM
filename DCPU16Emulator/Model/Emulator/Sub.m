@@ -26,9 +26,9 @@
 
 - (int)process
 {
-    ushort result = [self.operationA read] - [self.operationB read];
-    [self.operationA write:result];
-    return result;
+	ushort result = [self.operationA read] - [self.operationB read];
+	[self.operationA write:result];
+	return result;
 }
 
 @end

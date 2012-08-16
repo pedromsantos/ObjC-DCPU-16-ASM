@@ -45,17 +45,17 @@
 
 - (NSString *)token;
 {
-    return @"";
+	return @"";
 }
 
 - (ushort)read
 {
-    return 0;
+	return 0;
 }
 
-- (void)writeValue:(ushort)  theValue
+- (void)writeValue:(ushort)theValue
 {
-    @throw @"Not implemented";
+	@throw @"Not implemented";
 }
 
 - (void)process
@@ -70,148 +70,148 @@
 
 - (int)assembleWithShift:(int)shift
 {
-    return 0;
+	return 0;
 }
 
 - (int)assembleOperandWithIndex:(int)index
 {
-    int shift = OPCODE_WIDTH + (index * OPERAND_WIDTH);
+	int shift = OPCODE_WIDTH + (index * OPERAND_WIDTH);
 
-    return [self assembleWithShift:shift];
+	return [self assembleWithShift:shift];
 }
 
 + (enum operand_type)operandTypeForName:(NSString *)name
 {
-    if ([name length] == 1 && (
-                               [name isEqualToString:@"A"] || [name isEqualToString:@"B"] || [name isEqualToString:@"C"] ||
-                               [name isEqualToString:@"X"] || [name isEqualToString:@"Y"] || [name isEqualToString:@"Z"] ||
-                               [name isEqualToString:@"I"] || [name isEqualToString:@"J"]))
-    {
-        return O_REG;
-    }
-    
-    if ([name isEqualToString:@"PC"])
-    {
-        return O_PC;
-    }
-    if ([name isEqualToString:@"SP"])
-    {
-        return O_SP;
-    }
-    if ([name isEqualToString:@"O"])
-    {
-        return O_O;
-    }
-    
-    if ([name isEqualToString:@"POP"])
-    {
-        return O_POP;
-    }
-    if ([name isEqualToString:@"PEEK"])
-    {
-        return O_PEEK;
-    }
-    if ([name isEqualToString:@"PUSH"])
-    {
-        return O_PUSH;
-    }
-    
-    return O_NEXT_WORD;
+	if([name length] == 1 && (
+			[name isEqualToString:@"A"] || [name isEqualToString:@"B"] || [name isEqualToString:@"C"] ||
+			[name isEqualToString:@"X"] || [name isEqualToString:@"Y"] || [name isEqualToString:@"Z"] ||
+			[name isEqualToString:@"I"] || [name isEqualToString:@"J"]))
+	{
+		return O_REG;
+	}
+
+	if([name isEqualToString:@"PC"])
+	{
+		return O_PC;
+	}
+	if([name isEqualToString:@"SP"])
+	{
+		return O_SP;
+	}
+	if([name isEqualToString:@"O"])
+	{
+		return O_O;
+	}
+
+	if([name isEqualToString:@"POP"])
+	{
+		return O_POP;
+	}
+	if([name isEqualToString:@"PEEK"])
+	{
+		return O_PEEK;
+	}
+	if([name isEqualToString:@"PUSH"])
+	{
+		return O_PUSH;
+	}
+
+	return O_NEXT_WORD;
 }
 
 + (Operand *)newOperand:(enum operand_type)type
 {
-    switch (type)
-    {
-        case O_REG:
-            return [[RegisterOperand alloc] init];
-        case O_INDIRECT_REG:
-            return [[IndirectRegisterOperand alloc] init];
-        case O_INDIRECT_NEXT_WORD_OFFSET:
-            return [[IndirectNextWordOffsetOperand alloc] init];
-        case O_POP:
-            return [[PopOperand alloc] init];
-        case O_PEEK:
-            return [[PeekOperand alloc] init];
-        case O_PUSH:
-            return [[PushOperand alloc] init];
-        case O_SP:
-            return [[StackPointerOperand alloc] init];
-        case O_PC:
-            return [[ProgramCounterOperand alloc] init];
-        case O_O:
-            break;
-        case O_INDIRECT_NEXT_WORD:
-            return [[IndirectNextWordOperand alloc] init];
-        case O_NEXT_WORD:
-            return [[NextWordOperand alloc] init];
-        case O_LITERAL:
-            return [[LiteralOperand alloc] init];
-        case O_NULL:
-            return [[NullOperand alloc] init];
-    }
+	switch(type)
+	{
+		case O_REG:
+			return [[RegisterOperand alloc] init];
+		case O_INDIRECT_REG:
+			return [[IndirectRegisterOperand alloc] init];
+		case O_INDIRECT_NEXT_WORD_OFFSET:
+			return [[IndirectNextWordOffsetOperand alloc] init];
+		case O_POP:
+			return [[PopOperand alloc] init];
+		case O_PEEK:
+			return [[PeekOperand alloc] init];
+		case O_PUSH:
+			return [[PushOperand alloc] init];
+		case O_SP:
+			return [[StackPointerOperand alloc] init];
+		case O_PC:
+			return [[ProgramCounterOperand alloc] init];
+		case O_O:
+			break;
+		case O_INDIRECT_NEXT_WORD:
+			return [[IndirectNextWordOperand alloc] init];
+		case O_NEXT_WORD:
+			return [[NextWordOperand alloc] init];
+		case O_LITERAL:
+			return [[LiteralOperand alloc] init];
+		case O_NULL:
+			return [[NullOperand alloc] init];
+	}
 
-    return nil;
+	return nil;
 }
 
 + (Operand *)newExecutingOperand:(int)code
 {
-    Operand *operand;
+	Operand *operand;
 
-    if (code < O_INDIRECT_REG)
-    {
-        operand = [[RegisterOperand alloc] init];
-        operand.registerValue = (enum operand_register_value) code;
-    }
-    else if (code < O_INDIRECT_NEXT_WORD_OFFSET)
-    {
-        operand = [[IndirectNextWordOffsetOperand alloc] init];
-        operand.nextWord = (uint16_t) code;
-    }
-    else if (code < O_POP)
-    {
-        operand = [[PushOperand alloc] init];
-    }
-    else if (code == O_POP)
-    {
-        operand = [[PopOperand alloc] init];
-    }
-    else if (code == O_PEEK)
-    {
-        operand = [[PeekOperand alloc] init];
-    }
-    else if (code == O_PUSH)
-    {
-        operand = [[PushOperand alloc] init];
-    }
-    else if (code == O_SP)
-    {
-        operand = [[StackPointerOperand alloc] init];
-    }
-    else if (code == O_PC)
-    {
-        operand = [[ProgramCounterOperand alloc] init];
-    }
-    else if (code == O_O)
-    {
-        operand = [[OverflowOperand alloc] init];
-    }
-    else if (code == O_INDIRECT_NEXT_WORD)
-    {
-        operand = [[IndirectNextWordOperand alloc] init];
-        operand.nextWord = (uint16_t) code;
-    }
-    else if (code == O_NEXT_WORD)
-    {
-        operand = [[ProgramCounterOperand alloc] init];
-    }
-    else
-    {
-        operand = [[LiteralOperand alloc] init];
-        operand.nextWord = (code - O_LITERAL) % NUM_LITERALS;;
-    }
+	if(code < O_INDIRECT_REG)
+	{
+		operand = [[RegisterOperand alloc] init];
+		operand.registerValue = (enum operand_register_value) code;
+	}
+	else if(code < O_INDIRECT_NEXT_WORD_OFFSET)
+	{
+		operand = [[IndirectNextWordOffsetOperand alloc] init];
+		operand.nextWord = (uint16_t) code;
+	}
+	else if(code < O_POP)
+	{
+		operand = [[PushOperand alloc] init];
+	}
+	else if(code == O_POP)
+	{
+		operand = [[PopOperand alloc] init];
+	}
+	else if(code == O_PEEK)
+	{
+		operand = [[PeekOperand alloc] init];
+	}
+	else if(code == O_PUSH)
+	{
+		operand = [[PushOperand alloc] init];
+	}
+	else if(code == O_SP)
+	{
+		operand = [[StackPointerOperand alloc] init];
+	}
+	else if(code == O_PC)
+	{
+		operand = [[ProgramCounterOperand alloc] init];
+	}
+	else if(code == O_O)
+	{
+		operand = [[OverflowOperand alloc] init];
+	}
+	else if(code == O_INDIRECT_NEXT_WORD)
+	{
+		operand = [[IndirectNextWordOperand alloc] init];
+		operand.nextWord = (uint16_t) code;
+	}
+	else if(code == O_NEXT_WORD)
+	{
+		operand = [[ProgramCounterOperand alloc] init];
+	}
+	else
+	{
+		operand = [[LiteralOperand alloc] init];
+		operand.nextWord = (code - O_LITERAL) % NUM_LITERALS;;
+	}
 
-    return operand;
+	return operand;
 }
 
 @end

@@ -43,74 +43,74 @@ typedef Operand *(^creationStrategy)(Match *);
 
 - (id)init
 {
-    self = [super init];
+	self = [super init];
 
-    self.directOperandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
-            (Operand *) ^(Match *m)
-            {
-                return [[[RegisterOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:REGISTER],
-            (Operand *) ^(Match *m)
-            {
-                return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:LABELREF],
-            (Operand *) ^(Match *m)
-            {
-                return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:HEX],
-            (Operand *) ^(Match *m)
-            {
-                return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:INT],
-            nil];
+	self.directOperandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
+																	 (Operand *) ^(Match *m)
+																	 {
+																		 return [[[RegisterOperandBuilder alloc] init] buildFromMatch:m];
+																	 },
+																	 [NSNumber numberWithInt:REGISTER],
+																	 (Operand *) ^(Match *m)
+																	 {
+																		 return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m];
+																	 },
+																	 [NSNumber numberWithInt:LABELREF],
+																	 (Operand *) ^(Match *m)
+																	 {
+																		 return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m];
+																	 },
+																	 [NSNumber numberWithInt:HEX],
+																	 (Operand *) ^(Match *m)
+																	 {
+																		 return [[[NextWordOperandBuilder alloc] init] buildFromMatch:m];
+																	 },
+																	 [NSNumber numberWithInt:INT],
+																	 nil];
 
-    self.indirectOperandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
-            (Operand *) ^(Match *m)
-            {
-                return [[[IndirectRegisterOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:REGISTER],
-            (Operand *) ^(Match *m)
-            {
-                return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:LABELREF],
-            (Operand *) ^(Match *m)
-            {
-                return [[[IndirectNextWordOperandBuilder alloc] init] buildFromMatch:m];
-            },
-            [NSNumber numberWithInt:HEX],
-            nil];
+	self.indirectOperandCreationStrategyMapper = [NSDictionary dictionaryWithObjectsAndKeys:
+																	   (Operand *) ^(Match *m)
+																	   {
+																		   return [[[IndirectRegisterOperandBuilder alloc] init] buildFromMatch:m];
+																	   },
+																	   [NSNumber numberWithInt:REGISTER],
+																	   (Operand *) ^(Match *m)
+																	   {
+																		   return [[[LabelReferenceOperandBuilder alloc] init] buildFromMatch:m];
+																	   },
+																	   [NSNumber numberWithInt:LABELREF],
+																	   (Operand *) ^(Match *m)
+																	   {
+																		   return [[[IndirectNextWordOperandBuilder alloc] init] buildFromMatch:m];
+																	   },
+																	   [NSNumber numberWithInt:HEX],
+																	   nil];
 
-    return self;
+	return self;
 }
 
 - (Operand *)createDirectOperandForMatch:(Match *)match
 {
-    creationStrategy strategy = [directOperandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:match.token]];
+	creationStrategy strategy = [directOperandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:match.token]];
 
-    if (strategy == nil)
-    {
-        return nil;
-    }
+	if(strategy == nil)
+	{
+		return nil;
+	}
 
-    return strategy(match);
+	return strategy(match);
 }
 
 - (Operand *)createIndirectOperandForMatch:(Match *)match
 {
-    creationStrategy strategy = [indirectOperandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:match.token]];
+	creationStrategy strategy = [indirectOperandCreationStrategyMapper objectForKey:[NSNumber numberWithInt:match.token]];
 
-    if (strategy == nil)
-    {
-        return nil;
-    }
+	if(strategy == nil)
+	{
+		return nil;
+	}
 
-    return strategy(match);
+	return strategy(match);
 }
 
 @end

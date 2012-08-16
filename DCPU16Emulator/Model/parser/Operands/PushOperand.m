@@ -26,12 +26,12 @@
 
 - (void)writeValue:(ushort)value
 {
-    [self.cpuOperations decrementStackPointer];
+	[self.cpuOperations decrementStackPointer];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    return O_PUSH << shift;
+	return O_PUSH << shift;
 }
 
 @end

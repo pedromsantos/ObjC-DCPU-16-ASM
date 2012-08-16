@@ -29,12 +29,12 @@
 
 - (id)initWithToken:(enum LexerTokenType)tokenType content:(NSString *)tokenContent
 {
-    self = [super init];
+	self = [super init];
 
-    self.token = tokenType;
-    self.content = tokenContent;
+	self.token = tokenType;
+	self.content = tokenContent;
 
-    return self;
+	return self;
 }
 
 @end

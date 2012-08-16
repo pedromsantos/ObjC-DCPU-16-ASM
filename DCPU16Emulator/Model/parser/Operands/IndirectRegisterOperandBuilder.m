@@ -27,7 +27,7 @@
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    return [[IndirectRegisterOperand alloc] init];
+	return [[IndirectRegisterOperand alloc] init];
 }
 
 @end

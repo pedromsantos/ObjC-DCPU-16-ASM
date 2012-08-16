@@ -27,11 +27,11 @@
 
 @interface DCPU ()
 {
-    BOOL programCounterChanged;
+	BOOL programCounterChanged;
 }
 
-@property (nonatomic, strong) InstructionBuilder* instructionBuilder;
-@property (nonatomic, strong) id<InstructionOperandFactoryProtocol> operandFactory;
+@property(nonatomic, strong) InstructionBuilder *instructionBuilder;
+@property(nonatomic, strong) id <InstructionOperandFactoryProtocol> operandFactory;
 @property(nonatomic, strong, readwrite) Memory *memory;
 
 @end
@@ -45,113 +45,113 @@
 
 - (id)initWithProgram:(NSArray *)program
 {
-    self = [super init];
+	self = [super init];
 
-    self.memory = [[Memory alloc] init];
-    self.operandFactory = [[InstructionOperandFactory alloc] init];
-    self.instructionBuilder = [[InstructionBuilder alloc] initWithInstructionOperandFactory:operandFactory];
+	self.memory = [[Memory alloc] init];
+	self.operandFactory = [[InstructionOperandFactory alloc] init];
+	self.instructionBuilder = [[InstructionBuilder alloc] initWithInstructionOperandFactory:operandFactory];
 
-    [self.memory load:program];
+	[self.memory load:program];
 
-    return self;
+	return self;
 }
 
 - (BOOL)executeInstruction
 {
-    if ([self.memory peekInstructionAtProgramCounter] == 0x0)
-    {
-        return false;
-    }
+	if([self.memory peekInstructionAtProgramCounter] == 0x0)
+	{
+		return false;
+	}
 
-    ushort rawInstruction = (ushort) [self.memory readInstructionAtProgramCounter];
-    CPUInstruction* instruction = [self.instructionBuilder buildFromMachineCode:rawInstruction usingCpuState:self];
-    
-    if(!self.ignoreNextInstruction)
-    {
-        [instruction execute];
-    }
-    else
-    {
-        [instruction noOp];
-        self.ignoreNextInstruction = NO;
-    }
-    
-    if(!programCounterChanged)
-    {
-        [self incrementProgramCounter];
-    }
-    else
-    {
-        programCounterChanged = NO;
-    }
-    
-    return YES;
+	ushort rawInstruction = (ushort) [self.memory readInstructionAtProgramCounter];
+	CPUInstruction *instruction = [self.instructionBuilder buildFromMachineCode:rawInstruction usingCpuState:self];
+
+	if(!self.ignoreNextInstruction)
+	{
+		[instruction execute];
+	}
+	else
+	{
+		[instruction noOp];
+		self.ignoreNextInstruction = NO;
+	}
+
+	if(!programCounterChanged)
+	{
+		[self incrementProgramCounter];
+	}
+	else
+	{
+		programCounterChanged = NO;
+	}
+
+	return YES;
 }
 
 - (int)programCounter
 {
-    return [self.memory getProgramCounter];
+	return [self.memory getProgramCounter];
 }
 
 - (void)setProgramCounter:(int)value
 {
-    programCounterChanged = YES;
-    [self.memory setProgramCounter:value];
+	programCounterChanged = YES;
+	[self.memory setProgramCounter:value];
 }
 
 - (int)stackPointer
 {
-    return [self.memory getStacPointer];
+	return [self.memory getStacPointer];
 }
 
 - (void)setStackPointer:(int)value
 {
-    [self.memory setStackPointer:value];
+	[self.memory setStackPointer:value];
 }
 
 - (int)overflow
 {
-    return [self.memory getOverflow];
+	return [self.memory getOverflow];
 }
 
 - (void)setOverflow:(int)value
 {
-    [self.memory setOverflow:value];
+	[self.memory setOverflow:value];
 }
 
 - (int)readGeneralPurposeRegisterValue:(int)reg;
 {
-    return [self.memory getValueForRegister:reg];
+	return [self.memory getValueForRegister:reg];
 }
 
 - (void)writeGeneralPurposeRegister:(int)reg withValue:(ushort)value
 {
-    [self.memory setValueForGeneralRegister:reg value:value];
+	[self.memory setValueForGeneralRegister:reg value:value];
 }
 
 - (int)readMemoryValueAtAddress:(int)address
 {
-    return [self.memory getMemoryValueAtIndex:address];
+	return [self.memory getMemoryValueAtIndex:address];
 }
 
 - (void)writeMemoryAtAddress:(int)address withValue:(ushort)value
 {
-    [self.memory setMemoryValue:value atIndex:address];
+	[self.memory setMemoryValue:value atIndex:address];
 }
 
 - (void)incrementProgramCounter
 {
-    [self.memory incrementProgramCounter];
+	[self.memory incrementProgramCounter];
 }
 
 - (void)incrementStackPointer
 {
-    [self.memory incrementStackPointer:1];
+	[self.memory incrementStackPointer:1];
 }
 
 - (void)decrementStackPointer
 {
-    [self.memory incrementStackPointer:-1];
+	[self.memory incrementStackPointer:-1];
 }
 
 @end

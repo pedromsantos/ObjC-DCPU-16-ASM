@@ -36,76 +36,76 @@
 @synthesize operand;
 @synthesize cpuOperations;
 
--(id)initWithOperand:(Operand*)oper cpuStateOperations:(id<DCPUProtocol>)cpuStateOperations
+- (id)initWithOperand:(Operand *)oper cpuStateOperations:(id <DCPUProtocol>)cpuStateOperations
 {
-    self = [super init];
-    
-    self.operand = oper;
-    self.cpuOperations = cpuStateOperations;
-    self.operand.cpuOperations = self.cpuOperations;
-    
-    return self;
+	self = [super init];
+
+	self.operand = oper;
+	self.cpuOperations = cpuStateOperations;
+	self.operand.cpuOperations = self.cpuOperations;
+
+	return self;
 }
 
 - (ushort)read
 {
-    return [self.operand read];
+	return [self.operand read];
 }
 
 - (void)write:(ushort)value
 {
-    return [self.operand writeValue:value];
+	return [self.operand writeValue:value];
 }
 
 - (void)setWrite:(ushort)value
 {
-    if (value > USHRT_MAX)
-    {
-        [self.cpuOperations setOverflow:0x0001];
-    }
-    else if (value < 0)
-    {
-        [self.cpuOperations setOverflow:USHRT_MAX];
-    }
+	if(value > USHRT_MAX)
+	{
+		[self.cpuOperations setOverflow:0x0001];
+	}
+	else if(value < 0)
+	{
+		[self.cpuOperations setOverflow:USHRT_MAX];
+	}
 
-    [self.operand writeValue:value];
+	[self.operand writeValue:value];
 }
 
 - (BOOL)ignoreInstruction
 {
-    return [self.cpuOperations ignoreNextInstruction];
+	return [self.cpuOperations ignoreNextInstruction];
 }
 
 - (void)setIgnoreInstruction:(BOOL)value
 {
-    [self.cpuOperations setIgnoreNextInstruction:value];
+	[self.cpuOperations setIgnoreNextInstruction:value];
 }
 
 - (ushort)overflowRegister
 {
-    return (ushort) [self.cpuOperations overflow];
+	return (ushort) [self.cpuOperations overflow];
 }
 
 - (void)setOverflowRegister:(ushort)value
 {
-    [self.cpuOperations setOverflow:value];
+	[self.cpuOperations setOverflow:value];
 }
 
 - (void)process
 {
-    [self.operand process];
+	[self.operand process];
 }
 
 - (void)noOp
 {
-    [self.operand noOp];
+	[self.operand noOp];
 }
 
 - (void)jumpSubRoutine:(ushort)subRoutineAdress
 {
-    [self.cpuOperations decrementStackPointer];
-    [self.cpuOperations writeMemoryAtAddress:[self.cpuOperations stackPointer] withValue:(ushort) [self.cpuOperations programCounter]];
-    [self.cpuOperations setProgramCounter:subRoutineAdress];
+	[self.cpuOperations decrementStackPointer];
+	[self.cpuOperations writeMemoryAtAddress:[self.cpuOperations stackPointer] withValue:(ushort) [self.cpuOperations programCounter]];
+	[self.cpuOperations setProgramCounter:subRoutineAdress];
 }
 
 @end

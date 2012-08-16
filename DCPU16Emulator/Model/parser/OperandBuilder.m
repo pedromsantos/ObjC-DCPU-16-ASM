@@ -36,18 +36,18 @@
 
 - (Operand *)buildFromMatch:(Match *)match
 {
-    self.operand = [self CreateOperandFromMatch:match];
+	self.operand = [self CreateOperandFromMatch:match];
 
-    [self setRegisterValue:match];
-    [self setNextWordValue:match];
-    [self setLabelValue:match];
+	[self setRegisterValue:match];
+	[self setNextWordValue:match];
+	[self setLabelValue:match];
 
-    return operand;
+	return operand;
 }
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    return nil;
+	return nil;
 }
 
 - (void)setRegisterValue:(Match *)match

@@ -28,19 +28,19 @@
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    return [[IndirectNextWordOperand alloc] init];
+	return [[IndirectNextWordOperand alloc] init];
 }
 
 - (void)setNextWordValue:(Match *)match
 {
-    if (match.token == HEX)
-    {
-        self.operand.nextWord = [match.content parseHexLiteral];
-    }
-    else if (match.token == INT)
-    {
-        self.operand.nextWord = [match.content parseDecimalLiteral];
-    }
+	if(match.token == HEX)
+	{
+		self.operand.nextWord = [match.content parseHexLiteral];
+	}
+	else if(match.token == INT)
+	{
+		self.operand.nextWord = [match.content parseDecimalLiteral];
+	}
 }
 
 

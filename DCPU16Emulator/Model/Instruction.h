@@ -22,16 +22,16 @@
 
 enum InstructionInputState
 {
-    WaitForOpcodeOrLabel,
-    WaitForOpcode,
-    WaitForOperand1,
-    WaitForOperand2,
-    Complete
+	WaitForOpcodeOrLabel,
+	WaitForOpcode,
+	WaitForOperand1,
+	WaitForOperand2,
+	Complete
 };
 
 @interface Instruction : NSObject
 {
-    enum InstructionInputState instructionState;
+	enum InstructionInputState instructionState;
 }
 
 @property(nonatomic, readonly) enum InstructionInputState state;

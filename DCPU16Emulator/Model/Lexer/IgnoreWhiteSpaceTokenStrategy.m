@@ -26,7 +26,7 @@
 
 - (bool)isTokenToBeIgnored:(enum LexerTokenType)token
 {
-    return token == WHITESPACE;
+	return token == WHITESPACE;
 }
 
 @end

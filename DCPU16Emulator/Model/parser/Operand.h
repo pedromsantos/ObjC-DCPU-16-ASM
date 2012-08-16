@@ -34,39 +34,39 @@
 
 enum operand_type
 {
-    O_REG = 0x00,
-    O_INDIRECT_REG = 0x08,
-    O_INDIRECT_NEXT_WORD_OFFSET = 0x10,
-    O_POP = 0x18,
-    O_PEEK = 0x19,
-    O_PUSH = 0x1A,
-    O_SP = 0x1B,
-    O_PC = 0x1C,
-    O_O = 0x1D,
-    O_INDIRECT_NEXT_WORD = 0x1E,
-    O_NEXT_WORD = 0x1F,
-    O_LITERAL = 0x20,
+	O_REG = 0x00,
+	O_INDIRECT_REG = 0x08,
+	O_INDIRECT_NEXT_WORD_OFFSET = 0x10,
+	O_POP = 0x18,
+	O_PEEK = 0x19,
+	O_PUSH = 0x1A,
+	O_SP = 0x1B,
+	O_PC = 0x1C,
+	O_O = 0x1D,
+	O_INDIRECT_NEXT_WORD = 0x1E,
+	O_NEXT_WORD = 0x1F,
+	O_LITERAL = 0x20,
 
-    O_NULL = 0xDEAD,
+	O_NULL = 0xDEAD,
 };
 
 enum operand_register_value
 {
-    REG_A,
-    REG_B,
-    REG_C,
-    REG_X,
-    REG_Y,
-    REG_Z,
-    REG_I,
-    REG_J,
+	REG_A,
+	REG_B,
+	REG_C,
+	REG_X,
+	REG_Y,
+	REG_Z,
+	REG_I,
+	REG_J,
 };
 
 enum operand_special_register
 {
-    SREG_PC,
-    SREG_SP,
-    SREG_O,
+	SREG_PC,
+	SREG_SP,
+	SREG_O,
 };
 
 @interface Operand : NSObject
@@ -75,7 +75,7 @@ enum operand_special_register
 @property(nonatomic, assign) uint16_t nextWord;
 @property(nonatomic, assign) uint16_t value;
 @property(nonatomic, strong) NSString *label;
-@property(nonatomic, strong) id<DCPUProtocol> cpuOperations;
+@property(nonatomic, strong) id <DCPUProtocol> cpuOperations;
 
 + (Operand *)newOperand:(enum operand_type)type;
 

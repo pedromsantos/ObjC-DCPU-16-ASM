@@ -26,23 +26,23 @@
 
 - (int)process
 {
-    ushort divisor = [self.operationB read];
-    ushort divident = [self.operationA read];
-    int result;
-    
-    if (divisor == 0)
-    {
-        result = 0;
-    }
-    else
-    {
-        result = divident / divisor;
-        [self.operationA setOverflowRegister:(ushort)((ushort)((divident << 16) / divisor) & 0xFFFF)];
-    }
-    
-    [self.operationA write:(ushort) result];
-    
-    return result;
+	ushort divisor = [self.operationB read];
+	ushort divident = [self.operationA read];
+	int result;
+
+	if(divisor == 0)
+	{
+		result = 0;
+	}
+	else
+	{
+		result = divident / divisor;
+		[self.operationA setOverflowRegister:(ushort) ((ushort) ((divident << 16) / divisor) & 0xFFFF)];
+	}
+
+	[self.operationA write:(ushort) result];
+
+	return result;
 }
 
 @end

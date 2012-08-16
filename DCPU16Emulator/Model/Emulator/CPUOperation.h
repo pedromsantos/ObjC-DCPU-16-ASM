@@ -28,16 +28,21 @@
 @property(nonatomic, retain, readonly) Operand *operand;
 @property(nonatomic, readonly) ushort read;
 @property(nonatomic, assign, readonly) ushort write;
-@property(nonatomic, strong, readonly) id<DCPUProtocol> cpuOperations;
+@property(nonatomic, strong, readonly) id <DCPUProtocol> cpuOperations;
 
 @property(nonatomic, assign) BOOL ignoreInstruction;
 @property(nonatomic, assign) ushort overflowRegister;
 
--(id)initWithOperand:(Operand*)operand cpuStateOperations:(id<DCPUProtocol>)cpuStateOperations;
+- (id)initWithOperand:(Operand *)operand cpuStateOperations:(id <DCPUProtocol>)cpuStateOperations;
+
 - (void)process;
+
 - (void)noOp;
+
 - (ushort)read;
+
 - (void)write:(ushort)value;
+
 - (void)jumpSubRoutine:(ushort)subRoutineAddress;
 
 @end

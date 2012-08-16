@@ -26,25 +26,25 @@
 
 - (ushort)read
 {
-    [self.cpuOperations incrementProgramCounter];
-    return (ushort) [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations programCounter]];
+	[self.cpuOperations incrementProgramCounter];
+	return (ushort) [self.cpuOperations readMemoryValueAtAddress:[self.cpuOperations programCounter]];
 }
 
 - (void)noOp
 {
-    [self.cpuOperations incrementProgramCounter];
+	[self.cpuOperations incrementProgramCounter];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    if ((self.nextWord <= OPERAND_LITERAL_MAX) && !([self.label length] > 0))
-    {
-        return (self.nextWord + OPERAND_LITERAL_OFFSET) << shift;
-    }
-    else
-    {
-        return O_NEXT_WORD << shift;
-    }
+	if((self.nextWord <= OPERAND_LITERAL_MAX) && !([self.label length] > 0))
+	{
+		return (self.nextWord + OPERAND_LITERAL_OFFSET) << shift;
+	}
+	else
+	{
+		return O_NEXT_WORD << shift;
+	}
 }
 
 @end

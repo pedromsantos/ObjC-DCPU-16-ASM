@@ -31,12 +31,12 @@
 
 - (UITableViewCell *)drawCellForInstruction:(Instruction *)instruction
 {
-    self.label.text = instruction.label;
-    self.opcode.text = instruction.opcode;
-    self.operand1.text = instruction.operand1;
-    self.operand2.text = instruction.operand2;
+	self.label.text = instruction.label;
+	self.opcode.text = instruction.opcode;
+	self.operand1.text = instruction.operand1;
+	self.operand2.text = instruction.operand2;
 
-    return self;
+	return self;
 }
 
 - (IBAction)delButtonPressed

@@ -26,8 +26,8 @@
 
 - (int)process
 {
-    [self.operationA write:[self.operationB read]];
-    return 0;
+	[self.operationA write:[self.operationB read]];
+	return 0;
 }
 
 @end

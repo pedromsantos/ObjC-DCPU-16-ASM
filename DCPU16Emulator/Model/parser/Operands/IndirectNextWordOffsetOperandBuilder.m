@@ -36,21 +36,21 @@
 
 - (id)initWithLeftToken:(Match *)token
 {
-    self = [super init];
+	self = [super init];
 
-    self.leftToken = token;
+	self.leftToken = token;
 
-    return self;
+	return self;
 }
 
 - (Operand *)CreateOperandFromMatch:(Match *)match
 {
-    return [[IndirectNextWordOffsetOperand alloc] init];
+	return [[IndirectNextWordOffsetOperand alloc] init];
 }
 
 - (void)setNextWordValue:(Match *)match
 {
-    self.operand.nextWord = [leftToken.content parseHexLiteral];
+	self.operand.nextWord = [leftToken.content parseHexLiteral];
 }
 
 @end

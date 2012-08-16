@@ -26,17 +26,17 @@
 
 - (ushort)read
 {
-    return (ushort) [self.cpuOperations programCounter];
+	return (ushort) [self.cpuOperations programCounter];
 }
 
 - (void)writeValue:(ushort)value
 {
-    [self.cpuOperations setProgramCounter:value];
+	[self.cpuOperations setProgramCounter:value];
 }
 
 - (int)assembleWithShift:(int)shift
 {
-    return O_PC << shift;
+	return O_PC << shift;
 }
 
 @end

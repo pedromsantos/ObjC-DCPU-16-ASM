@@ -28,7 +28,7 @@
 
 - (void)awakeFromNib
 {
-    self.titleLabel.font = [UIFont fontWithName:@"DS-Digital" size:fontSize];
+	self.titleLabel.font = [UIFont fontWithName:@"DS-Digital" size:fontSize];
 }
 
 @end

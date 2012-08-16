@@ -29,7 +29,7 @@
 
 - (void)awakeFromNib
 {
-    [self setFont:[UIFont fontWithName:@"DS-Digital" size:fontSize]];
+	[self setFont:[UIFont fontWithName:@"DS-Digital" size:fontSize]];
 }
 
 @end

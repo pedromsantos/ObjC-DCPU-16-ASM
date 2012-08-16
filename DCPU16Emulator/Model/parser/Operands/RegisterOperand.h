@@ -24,7 +24,8 @@
 
 @interface RegisterOperand : Operand
 
-+ (NSString*)registerNameForIdentifier:(ushort)identifier;
++ (NSString *)registerNameForIdentifier:(ushort)identifier;
+
 + (int)registerIdentifierForName:(NSString *)name;
 
 @end

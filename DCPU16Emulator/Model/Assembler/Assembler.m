@@ -43,130 +43,130 @@
 
 - (void)assembleStatments:(NSArray *)statments
 {
-    self.labelDef = [[NSMutableDictionary alloc] init];
-    self.labelRef = [[NSMutableDictionary alloc] init];
-    self.program = [[NSMutableArray alloc] init];
+	self.labelDef = [[NSMutableDictionary alloc] init];
+	self.labelRef = [[NSMutableDictionary alloc] init];
+	self.program = [[NSMutableArray alloc] init];
 
-    for (Statment *statment in statments)
-    {
-        [self assembleStatment:statment];
-    }
+	for(Statment *statment in statments)
+	{
+		[self assembleStatment:statment];
+	}
 
-    [self resolveLabelReferences];
+	[self resolveLabelReferences];
 }
 
 - (void)assembleStatment:(Statment *)statment
 {
-    int opCode = statment.opcode;
+	int opCode = statment.opcode;
 
-    [self processLabelInStatment:statment];
+	[self processLabelInStatment:statment];
 
-    if ([self processDatInStament:statment])
-    {
-        return;
-    }
+	if([self processDatInStament:statment])
+	{
+		return;
+	}
 
-    if (statment.opcode == 0)
-    {
-        if (![statment.secondOperand isKindOfClass:[NullOperand class]])
-        {
-            @throw @"Non-basic opcode must have single operand.";
-        }
+	if(statment.opcode == 0)
+	{
+		if(![statment.secondOperand isKindOfClass:[NullOperand class]])
+		{
+			@throw @"Non-basic opcode must have single operand.";
+		}
 
-        switch (statment.opcodeNonBasic)
-        {
-            case OP_JSR:
-            {
-                opCode = 0;
-                opCode |= OP_JSR << OPCODE_WIDTH;
-                opCode |= [self assembleOperand:statment.firstOperand forOpCode:0 withIndex:1];
-                [self addOpCode:opCode];
-                [self assembleOperandNextWord:statment.firstOperand];
-                break;
-            }
-            default:
-            {
-                @throw @"Unhandled non-basic opcode";
-            }
-        }
-    }
-    else
-    {
-        opCode = [self assembleOperand:statment.firstOperand forOpCode:opCode withIndex:0];
-        opCode = [self assembleOperand:statment.secondOperand forOpCode:opCode withIndex:1];
+		switch(statment.opcodeNonBasic)
+		{
+			case OP_JSR:
+			{
+				opCode = 0;
+				opCode |= OP_JSR << OPCODE_WIDTH;
+				opCode |= [self assembleOperand:statment.firstOperand forOpCode:0 withIndex:1];
+				[self addOpCode:opCode];
+				[self assembleOperandNextWord:statment.firstOperand];
+				break;
+			}
+			default:
+			{
+				@throw @"Unhandled non-basic opcode";
+			}
+		}
+	}
+	else
+	{
+		opCode = [self assembleOperand:statment.firstOperand forOpCode:opCode withIndex:0];
+		opCode = [self assembleOperand:statment.secondOperand forOpCode:opCode withIndex:1];
 
-        [self addOpCode:opCode];
+		[self addOpCode:opCode];
 
-        [self assembleOperandNextWord:statment.firstOperand];
-        [self assembleOperandNextWord:statment.secondOperand];
-    }
+		[self assembleOperandNextWord:statment.firstOperand];
+		[self assembleOperandNextWord:statment.secondOperand];
+	}
 }
 
 - (void)processLabelInStatment:(Statment *)statment
 {
-    if ([statment.label length] > 0)
-    {
-        [self.labelDef setObject:[NSNumber numberWithInt:[program count]] forKey:[statment.label substringFromIndex:1]];
-    }
+	if([statment.label length] > 0)
+	{
+		[self.labelDef setObject:[NSNumber numberWithInt:[program count]] forKey:[statment.label substringFromIndex:1]];
+	}
 }
 
 - (BOOL)processDatInStament:(Statment *)statment
 {
-    if ([statment.dat count] != 0)
-    {
-        for (NSNumber *value in statment.dat)
-        {
-            [self addOpCode:[value intValue]];
-        }
+	if([statment.dat count] != 0)
+	{
+		for(NSNumber *value in statment.dat)
+		{
+			[self addOpCode:[value intValue]];
+		}
 
-        return YES;
-    }
+		return YES;
+	}
 
-    return NO;
+	return NO;
 }
 
 - (void)addOpCode:(int)opCode
 {
-    [program addObject:[NSNumber numberWithInt:opCode]];
+	[program addObject:[NSNumber numberWithInt:opCode]];
 }
 
 - (int)assembleOperand:(Operand *)operand forOpCode:(int)opCode withIndex:(int)index
 {
-    return opCode |= [operand assembleOperandWithIndex:index];
+	return opCode |= [operand assembleOperandWithIndex:index];
 }
 
 - (void)assembleOperandNextWord:(Operand *)operand
 {
-    if ([operand isKindOfClass:[NextWordOperand class]] || [operand isKindOfClass:[IndirectNextWordOperand class]] ||
-            [operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
-    {
-        if ([operand.label length] > 0)
-        {
-            [self.labelRef setObject:operand.label forKey:[NSNumber numberWithInt:[self.program count]]];
-            [self addOpCode:0];
-        }
-        else if (operand.nextWord > OPERAND_LITERAL_MAX)
-        {
-            [self addOpCode:operand.nextWord];
-        }
-    }
+	if([operand isKindOfClass:[NextWordOperand class]] || [operand isKindOfClass:[IndirectNextWordOperand class]] ||
+	   [operand isKindOfClass:[IndirectNextWordOffsetOperand class]])
+	{
+		if([operand.label length] > 0)
+		{
+			[self.labelRef setObject:operand.label forKey:[NSNumber numberWithInt:[self.program count]]];
+			[self addOpCode:0];
+		}
+		else if(operand.nextWord > OPERAND_LITERAL_MAX)
+		{
+			[self addOpCode:operand.nextWord];
+		}
+	}
 }
 
 - (void)resolveLabelReferences
 {
-    for (NSNumber *instruction in labelRef.keyEnumerator)
-    {
-        NSString *label = [labelRef objectForKey:instruction];
+	for(NSNumber *instruction in labelRef.keyEnumerator)
+	{
+		NSString *label = [labelRef objectForKey:instruction];
 
-        BOOL containsKey = ([labelDef objectForKey:label] != nil);
+		BOOL containsKey = ([labelDef objectForKey:label] != nil);
 
-        if (containsKey)
-        {
-            NSUInteger index = (NSUInteger) [instruction intValue];
-            NSNumber *key = [labelDef objectForKey:label];
-            [self.program replaceObjectAtIndex:index withObject:key];
-        }
-    }
+		if(containsKey)
+		{
+			NSUInteger index = (NSUInteger) [instruction intValue];
+			NSNumber *key = [labelDef objectForKey:label];
+			[self.program replaceObjectAtIndex:index withObject:key];
+		}
+	}
 }
 
 @end
