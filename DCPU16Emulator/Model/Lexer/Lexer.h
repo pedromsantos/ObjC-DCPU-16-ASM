@@ -28,7 +28,7 @@
 @interface Lexer : NSObject
 
 @property(nonatomic, readonly) enum LexerTokenType token;
-@property(nonatomic, readonly) NSString *tokenContents;
+@property(nonatomic, copy, readonly) NSString *tokenContents;
 @property(nonatomic, readonly) int lineNumber;
 @property(nonatomic, readonly) int columnNumber;
 

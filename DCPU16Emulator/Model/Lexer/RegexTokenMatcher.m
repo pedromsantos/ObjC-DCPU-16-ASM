@@ -25,6 +25,7 @@
 
 @implementation RegexTokenMatcher
 
+@synthesize content;
 @synthesize matcher;
 @synthesize token;
 
@@ -45,9 +46,12 @@
     return self;
 }
 
-- (int)match:(NSString *)text
+- (void)matchToken:(NSString *)text
 {
-    return [self.matcher match:text];
+    int end = [self.matcher match:text];
+    NSString* matchedText = [text substringWithRange:NSMakeRange(0, (NSUInteger) end)];
+    
+    self.content = matchedText;
 }
 
 @end

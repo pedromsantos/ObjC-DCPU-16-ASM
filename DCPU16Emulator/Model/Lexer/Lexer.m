@@ -20,12 +20,16 @@
  * SOFTWARE.
  */
 
+#import "SOCQ+NSArray.h"
+
 #import "RegexTokenMatcher.h"
 #import "PeekToken.h"
 #import "Lexer.h"
 
 @interface Lexer ()
 
+@property(nonatomic, readwrite) enum LexerTokenType token;
+@property(nonatomic, copy, readwrite) NSString *tokenContents;
 @property(nonatomic, strong) NSString *lineRemaining;
 @property(nonatomic, strong) NSArray *tokenMatchers;
 @property(nonatomic, strong) NSScanner *scanner;
@@ -40,11 +44,11 @@
     int columnNumber;
 }
 
-@synthesize match;
 @synthesize scanner;
+@synthesize token;
 @synthesize lineNumber;
 @synthesize columnNumber;
-@synthesize tokenMatchers;
+@synthesize match;
 @synthesize ignoreTokenStrategy;
 @synthesize consumeTokenStrategy;
 
@@ -57,20 +61,20 @@
 - (id)initWithScanner:(NSScanner *)textScanner
 {
     NSArray *matchers = [NSArray arrayWithObjects:
-            [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
-            [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
-            [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
-            [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
-            [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
-            [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
-            [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
-            [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
-            [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
-            [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
-            [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
-            [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
-            [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
-            nil];
+                         [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
+                         [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
+                         [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
+                         [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
+                         [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
+                         [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
+                         [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
+                         [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
+                         [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
+                         [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
+                         [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
+                         [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
+                         [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
+                         nil];
 
     return [self initWithTokenMatchers:matchers scanner:textScanner];
 }
@@ -153,44 +157,47 @@
     {
         return NO;
     }
-
-    for (id <TokenMatcher> tokenMatcher in self.tokenMatchers)
+    
+    [self matchToken];
+    
+    if ([self.ignoreTokenStrategy isTokenToBeIgnored:self.token])
     {
-        int matchedStartIndex = [tokenMatcher match:self.lineRemaining];
-
-        if (matchedStartIndex > 0)
-        {
-            [self buildMatchFromToken:tokenMatcher matchedStartIndex:matchedStartIndex];
-
-            [self consumeToken:tokenMatcher.token characters:matchedStartIndex];
-
-            if ([self.ignoreTokenStrategy isTokenToBeIgnored:tokenMatcher.token])
-            {
-                continue;
-            }
-
-            [self readNextLine];
-
-            return true;
-        }
+        [self nextToken];
     }
-
-    return NO;
+    
+    return YES;
 }
 
-- (void)buildMatchFromToken:(id <TokenMatcher>)tokenMatcher matchedStartIndex:(int)matchedStartIndex
+- (void)matchToken
 {
-    self.match = nil;
-    NSString *tokenContent = [self.lineRemaining substringWithRange:NSMakeRange(0, (NSUInteger) matchedStartIndex)];
-    self.match = [[Match alloc] initWithToken:tokenMatcher.token content:tokenContent];
+    NSArray* matchers = [self.tokenMatchers where:^(id obj)
+                                      {
+                                          id<TokenMatcher> matcher = (id<TokenMatcher>)obj;
+                                          [matcher matchToken:self.lineRemaining];
+                                          return (BOOL)([matcher.content length] > 0);
+                                      }];
+    
+    id<TokenMatcher> tokenMatcher = [matchers firstObject];
+    
+    if(tokenMatcher == nil)
+    {
+        @throw [NSString stringWithFormat:@"Unable to match against any tokens at line %d position %d \"%@\"",
+                lineNumber,
+                columnNumber,
+                lineRemaining];
+    }
+    
+    self.match = tokenMatcher;
+    [self consumeToken:tokenMatcher.token characters:tokenMatcher.content];
+    [self readNextLine];
 }
 
-- (void)consumeToken:(enum LexerTokenType)tkn characters:(int)matchedStartIndex
+- (void)consumeToken:(enum LexerTokenType)tkn characters:(NSString*)matched
 {
     if ([self.consumeTokenStrategy isTokenToBeConsumed:tkn] || [self.ignoreTokenStrategy isTokenToBeIgnored:tkn])
     {
-        columnNumber += matchedStartIndex;
-        self.lineRemaining = [self.lineRemaining substringFromIndex:(NSUInteger) matchedStartIndex];
+        columnNumber += [matched length];
+        self.lineRemaining = [self.lineRemaining substringFromIndex:[matched length]];
     }
 }
 

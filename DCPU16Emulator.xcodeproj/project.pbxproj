@@ -102,6 +102,10 @@
 		C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0215C6C1D700311EEA /* Jsr.m */; };
 		C3E41C0615C6C2BB00311EEA /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0515C6C2B800311EEA /* Set.m */; };
 		C3E41C0915C6C6AE00311EEA /* InstructionIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E41C0815C6C6AD00311EEA /* InstructionIntegrationTests.m */; };
+		C3EB038A15DBF96B004A2ACB /* SOCQ+NSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB038115DBF96B004A2ACB /* SOCQ+NSArray.m */; };
+		C3EB038B15DBF96B004A2ACB /* SOCQ+NSDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB038315DBF96B004A2ACB /* SOCQ+NSDictionary.m */; };
+		C3EB038C15DBF96B004A2ACB /* SOCQ+NSSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB038515DBF96B004A2ACB /* SOCQ+NSSet.m */; };
+		C3EB038D15DBF96B004A2ACB /* SOCQCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EB038915DBF96B004A2ACB /* SOCQCore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +297,16 @@
 		C3E41C0515C6C2B800311EEA /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
 		C3E41C0715C6C6AD00311EEA /* InstructionIntegrationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionIntegrationTests.h; sourceTree = "<group>"; };
 		C3E41C0815C6C6AD00311EEA /* InstructionIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionIntegrationTests.m; sourceTree = "<group>"; };
+		C3EB038015DBF96B004A2ACB /* SOCQ+NSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SOCQ+NSArray.h"; sourceTree = "<group>"; };
+		C3EB038115DBF96B004A2ACB /* SOCQ+NSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SOCQ+NSArray.m"; sourceTree = "<group>"; };
+		C3EB038215DBF96B004A2ACB /* SOCQ+NSDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SOCQ+NSDictionary.h"; sourceTree = "<group>"; };
+		C3EB038315DBF96B004A2ACB /* SOCQ+NSDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SOCQ+NSDictionary.m"; sourceTree = "<group>"; };
+		C3EB038415DBF96B004A2ACB /* SOCQ+NSSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SOCQ+NSSet.h"; sourceTree = "<group>"; };
+		C3EB038515DBF96B004A2ACB /* SOCQ+NSSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SOCQ+NSSet.m"; sourceTree = "<group>"; };
+		C3EB038615DBF96B004A2ACB /* SOCQ-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SOCQ-Prefix.pch"; sourceTree = "<group>"; };
+		C3EB038715DBF96B004A2ACB /* SOCQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCQ.h; sourceTree = "<group>"; };
+		C3EB038815DBF96B004A2ACB /* SOCQCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCQCore.h; sourceTree = "<group>"; };
+		C3EB038915DBF96B004A2ACB /* SOCQCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOCQCore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,17 +565,18 @@
 		C3B6BA38153DE4FE0013163A /* DCPU16Emulator */ = {
 			isa = PBXGroup;
 			children = (
-				C3860AF615872C2E001F2A3D /* Controllers */,
-				C3860AF915872C2E001F2A3D /* Model */,
-				C3860AFE15872C2E001F2A3D /* UIControls */,
-				C3860B0315872C2E001F2A3D /* Views */,
 				C3B6BA41153DE4FE0013163A /* AppDelegate.h */,
 				C3B6BA42153DE4FE0013163A /* AppDelegate.m */,
+				C3860AF615872C2E001F2A3D /* Controllers */,
 				C3966731157B64C700F99113 /* DS-Digital.ttf */,
 				C3901326157AC82F00A387D0 /* images */,
 				C3B6BA47153DE4FE0013163A /* MainStoryboard_iPad.storyboard */,
 				C3B6BA44153DE4FE0013163A /* MainStoryboard_iPhone.storyboard */,
+				C3860AF915872C2E001F2A3D /* Model */,
 				C3B6BA39153DE4FE0013163A /* Supporting Files */,
+				C3860AFE15872C2E001F2A3D /* UIControls */,
+				C3EB034E15DBF94A004A2ACB /* vendor */,
+				C3860B0315872C2E001F2A3D /* Views */,
 			);
 			path = DCPU16Emulator;
 			sourceTree = "<group>";
@@ -645,6 +660,32 @@
 				C3E41BEC15C5A4C400311EEA /* Xor.m */,
 			);
 			name = CPUInstructions;
+			sourceTree = "<group>";
+		};
+		C3EB034E15DBF94A004A2ACB /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB037F15DBF96B004A2ACB /* SOCQ */,
+			);
+			path = vendor;
+			sourceTree = SOURCE_ROOT;
+		};
+		C3EB037F15DBF96B004A2ACB /* SOCQ */ = {
+			isa = PBXGroup;
+			children = (
+				C3EB038015DBF96B004A2ACB /* SOCQ+NSArray.h */,
+				C3EB038115DBF96B004A2ACB /* SOCQ+NSArray.m */,
+				C3EB038215DBF96B004A2ACB /* SOCQ+NSDictionary.h */,
+				C3EB038315DBF96B004A2ACB /* SOCQ+NSDictionary.m */,
+				C3EB038415DBF96B004A2ACB /* SOCQ+NSSet.h */,
+				C3EB038515DBF96B004A2ACB /* SOCQ+NSSet.m */,
+				C3EB038615DBF96B004A2ACB /* SOCQ-Prefix.pch */,
+				C3EB038715DBF96B004A2ACB /* SOCQ.h */,
+				C3EB038815DBF96B004A2ACB /* SOCQCore.h */,
+				C3EB038915DBF96B004A2ACB /* SOCQCore.m */,
+			);
+			name = SOCQ;
+			path = SOCQ/SOCQ;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -833,6 +874,10 @@
 				C3E41C0015C6C0E500311EEA /* Shr.m in Sources */,
 				C3E41C0315C6C1DA00311EEA /* Jsr.m in Sources */,
 				C3E41C0615C6C2BB00311EEA /* Set.m in Sources */,
+				C3EB038A15DBF96B004A2ACB /* SOCQ+NSArray.m in Sources */,
+				C3EB038B15DBF96B004A2ACB /* SOCQ+NSDictionary.m in Sources */,
+				C3EB038C15DBF96B004A2ACB /* SOCQ+NSSet.m in Sources */,
+				C3EB038D15DBF96B004A2ACB /* SOCQCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
