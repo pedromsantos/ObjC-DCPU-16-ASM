@@ -45,6 +45,8 @@
 
 - (id)init
 {
+    self = [super init];
+    
 	ram = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
 			[NSNumber numberWithInt:0], PC,
 			[NSNumber numberWithInt:0], SP,

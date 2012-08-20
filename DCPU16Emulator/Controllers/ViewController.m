@@ -22,6 +22,7 @@
 
 #import "ViewController.h"
 #import "InstructionCell.h"
+#import "NimbusCore.h"
 
 @interface ViewController ()
 
@@ -60,28 +61,38 @@
 
 - (IBAction)instructionButtonPressed:(UIButton *)sender
 {
+    NIDPRINTMETHODNAME();
+    
 	[self.program assignValueToCurrentInstruction:sender.titleLabel.text];
 }
 
 - (IBAction)clsButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	[self.program resetCurrentInstruction];
 }
 
 - (IBAction)enterButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	[self.program FinishedInstructionEdit];
 	[self.instructionTableView reloadData];
 }
 
 - (IBAction)literalButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	NSString *data = self.inputField.text;
 	[self.program assignValueToCurrentInstruction:data];
 }
 
 - (IBAction)labelButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	NSString *data = self.inputField.text;
 
 	if([data hasPrefix:@":"])
@@ -96,6 +107,8 @@
 
 - (IBAction)referenceButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	NSString *data = self.inputField.text;
 
 	if([data hasPrefix:@"["] && [data hasSuffix:@"]"])
@@ -118,11 +131,15 @@
 
 - (IBAction)nextButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	[self.emulator executeInstruction];
 }
 
 - (void)resetEmulator
 {
+    NIDPRINTMETHODNAME();
+    
 	self.emulator = [[DCPU alloc] initWithProgram:(self.program.assembledInstructionSet)];
 
 	self.emulator.memory.registerDidChange = ^(NSString *registerName, int value)
@@ -144,6 +161,8 @@
 
 - (IBAction)assembleButtonPressed
 {
+    NIDPRINTMETHODNAME();
+    
 	assembledCodeLabel.text = [self.program assemble];
 	assembledCodeLabel.numberOfLines = 0;
 	[assembledCodeLabel sizeToFit];
@@ -154,6 +173,8 @@
 
 - (void)resetCPULabels
 {
+    NIDPRINTMETHODNAME();
+    
 	for(int i = 1000; i <= 1010; i++)
 	{
 		UILabel *registerControlToUpdate = ((UILabel *) [self.view viewWithTag:i]);
@@ -163,6 +184,8 @@
 
 - (void)bindCurrentInstruction
 {
+    NIDPRINTMETHODNAME();
+    
 	self.currentInstructionLabel.text = [self.instructionData objectForKey:@"label"];
 	self.currentInstructionOpCode.text = [self.instructionData objectForKey:@"opcode"];
 	self.currentInstructingOperand1.text = [self.instructionData objectForKey:@"operand1"];
@@ -171,6 +194,8 @@
 
 - (void)clearCurrentInstructionBind
 {
+    NIDPRINTMETHODNAME();
+    
 	self.currentInstructionLabel.text = @"";
 	self.currentInstructionOpCode.text = @"";
 	self.currentInstructingOperand1.text = @"";
@@ -179,6 +204,8 @@
 
 - (void)setProgramingKeyboardState
 {
+    NIDPRINTMETHODNAME();
+    
 	for(UIButton *button in self.instructionButtonCollection)
 	{
 		[button setEnabled:NO];
@@ -207,17 +234,23 @@
 
 - (int)instructionState
 {
+    NIDPRINTMETHODNAME();
+    
 	return [[self.instructionData objectForKey:@"state"] intValue];
 }
 
 - (void)editStateChanged:(NSNotification *)notification
 {
+    NIDPRINTMETHODNAME();
+    
 	self.possibleNextInput = [notification object];
 	[self setProgramingKeyboardState];
 }
 
 - (void)instructionChanged:(NSNotification *)notification
 {
+    NIDPRINTMETHODNAME();
+    
 	self.instructionData = [notification object];
 	[self setProgramingKeyboardState];
 	[self bindCurrentInstruction];
@@ -225,17 +258,23 @@
 
 - (void)instructionSetChanged:(NSNotification *)notification
 {
+    NIDPRINTMETHODNAME();
+    
 	self.instructionSet = [notification object];
 	[self.instructionTableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    NIDPRINTMETHODNAME();
+    
 	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NIDPRINTMETHODNAME();
+    
 	return [self.instructionSet count];
 }
 
@@ -272,6 +311,8 @@
 
 - (void)viewDidLoad
 {
+    NIDPRINTMETHODNAME();
+    
 	[super viewDidLoad];
 
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -303,6 +344,8 @@
 
 - (void)viewDidUnload
 {
+    NIDPRINTMETHODNAME();
+    
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 	[center removeObserver:self];
 
