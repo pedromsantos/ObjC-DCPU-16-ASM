@@ -20,7 +20,9 @@
  * SOFTWARE.
  */
 
-#import "Lexer.h"
+#import "OperandFactoryProtocol.h"
+
+@protocol LexerProtocol;
 
 typedef void(^parseCompletedSuccessfully)();
 
@@ -32,8 +34,8 @@ typedef void(^parseFailedWithError)(NSString *);
 @property(nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
 @property(nonatomic, copy) parseFailedWithError didFinishParsingWithError;
 
-- (id)init;
+- (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory;
 
-- (void)parseSource:(NSString *)source;
+- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)lexer;
 
 @end

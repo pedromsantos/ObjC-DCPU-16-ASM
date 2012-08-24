@@ -23,6 +23,10 @@
 #import "AssemblerTests.h"
 #import "Assembler.h"
 #import "Parser.h"
+#import "OperandFactory.h"
+#import "Lexer.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
+#import "ConsumeToken.h"
 
 @implementation AssemblerTests
 
@@ -30,9 +34,11 @@
 {
 	NSString *code = @"";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -45,9 +51,11 @@
 {
 	NSString *code = @"; Try some basic stuff";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -60,9 +68,11 @@
 {
 	NSString *code = @"SET I, 10";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -76,9 +86,11 @@
 {
 	NSString *code = @"SET A, 0x30";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -89,19 +101,21 @@
 	STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x0030, nil);
 }
 
-- (void)testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram
+- (void)testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGeneratesCorrectProgram
 {
 	NSString *code = @"ADD I, 1";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
 	[assembler assembleStatments:p.statments];
 
-	STAssertTrue([assembler.program count] == 1, nil);
+	STAssertEquals((int)[assembler.program count],  1, nil);
 	STAssertEquals([[assembler.program objectAtIndex:0] intValue], 0x8462, nil);
 }
 
@@ -109,35 +123,39 @@
 {
 	NSString *code = @"SET [0x1000], 0x20";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
 	[assembler assembleStatments:p.statments];
 
-	STAssertTrue([assembler.program count] == 3, nil);
-	STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x7DE1, nil);
-	STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x1000, nil);
-	STAssertTrue([[assembler.program objectAtIndex:2] intValue] == 0x0020, nil);
+	STAssertEquals((int)[assembler.program count],  3, nil);
+	STAssertEquals([[assembler.program objectAtIndex:0] intValue], 0x7DE1, nil);
+	STAssertEquals([[assembler.program objectAtIndex:1] intValue], 0x1000, nil);
+	STAssertEquals([[assembler.program objectAtIndex:2] intValue], 0x0020, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithSetAddressPlusRegiterWithRegiterAddressGenertesCorrectProgram
 {
 	NSString *code = @"SET [0x2000+I], [A]";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
 	[assembler assembleStatments:p.statments];
 
-	STAssertTrue([assembler.program count] == 2, nil);
-	STAssertTrue([[assembler.program objectAtIndex:0] intValue] == 0x2161, nil);
-	STAssertTrue([[assembler.program objectAtIndex:1] intValue] == 0x2000, nil);
+	STAssertEquals((int)[assembler.program count], 2, nil);
+	STAssertEquals([[assembler.program objectAtIndex:0] intValue], 0x2161, nil);
+	STAssertEquals([[assembler.program objectAtIndex:1] intValue], 0x2000, nil);
 }
 
 - (void)testAssembleStatmentsCalledWithNotchSampleGenertesCorrectProgram
@@ -169,17 +187,16 @@
 ; Hang forever. X should now be 0x40 if everything went right.\n\
 :crash      SET PC, crash           ; 7dc1 001a [*]";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+																 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
-
-	NSLog(@"Parser statments = %d", [p.statments count]);
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
 	[assembler assembleStatments:p.statments];
 
-	NSLog(@"Program instructions = %d", [assembler.program count]);
 	STAssertTrue([assembler.program count] == 28, nil);
 
 	int expectedInstructions[28] = {
@@ -192,7 +209,7 @@
 	for(NSUInteger i = 0; i < 28; i++)
 	{
 		NSLog(@"Expected:0x%x Instruction:0x%x", expectedInstructions[i], [[assembler.program objectAtIndex:i] intValue]);
-		STAssertTrue([[assembler.program objectAtIndex:i] intValue] == expectedInstructions[i], nil);
+		STAssertEquals([[assembler.program objectAtIndex:i] intValue], expectedInstructions[i], nil);
 	}
 }
 

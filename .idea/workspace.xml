@@ -2,88 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e535faa-f6f6-4ad4-b52d-05874a89d501" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ObjC-DCPU-16-ASM.iml" afterPath="$PROJECT_DIR$/.idea/ObjC-DCPU-16-ASM.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/administrator.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/administrator.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/AppDelegate.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Controllers/ViewController.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Controllers/ViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Add.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Add.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/And.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/And.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Bor.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Bor.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/CPUInstruction.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/CPUInstruction.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/CPUOperation.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/CPUOperation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/CPUOperation.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/CPUOperation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/DCPU.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/DCPU.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Div.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Div.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ifb.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ifb.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ife.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ife.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ifg.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ifg.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ifn.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Ifn.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/InstructionBuilder.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/InstructionBuilder.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/InstructionBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/InstructionBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/InstructionOperandFactory.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/InstructionOperandFactory.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Jsr.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Jsr.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Memory.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Memory.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Mod.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Mod.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Mul.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Mul.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Set.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Set.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Shl.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Shl.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Shr.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Shr.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Sub.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Sub.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Xor.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Xor.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Instruction.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Instruction.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Instruction.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Instruction.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/ConsumeToken.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/ConsumeToken.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/IgnoreNoneTokenStrategy.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/IgnoreNoneTokenStrategy.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/IgnoreWhiteSpaceTokenStrategy.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/IgnoreWhiteSpaceTokenStrategy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/DCPU16Emulator.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerTokenType.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerTokenType.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Match.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Match.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/PeekToken.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/PeekToken.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/RegexMatcher.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/RegexMatcher.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/RegexTokenMatcher.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/RegexTokenMatcher.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/TokenMatcher.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/TokenMatcher.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/NSString+ParseHex_ParseInt.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/NSString+ParseHex_ParseInt.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operand.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operand.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactory.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactory.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactoryProtocol.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactoryProtocol.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOffsetOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOffsetOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOffsetOperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOffsetOperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectNextWordOperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectRegisterOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectRegisterOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectRegisterOperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/IndirectRegisterOperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/LabelReferenceOperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/LabelReferenceOperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/LiteralOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/LiteralOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/NextWordOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/NextWordOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/NextWordOperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/NextWordOperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/OverflowOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/OverflowOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/PeekOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/PeekOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/PopOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/PopOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/ProgramCounterOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/ProgramCounterOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/PushOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/PushOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/RegisterOperand.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/RegisterOperand.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/RegisterOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/RegisterOperand.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/RegisterOperandBuilder.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/RegisterOperandBuilder.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/StackPointerOperand.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Operands/StackPointerOperand.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Statment.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Statment.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Statment.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Statment.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/UIControls/DigitalFontButton.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/UIControls/DigitalFontButton.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/UIControls/DigitalFontLabel.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/UIControls/DigitalFontLabel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Views/InstructionCell.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Views/InstructionCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/main.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/main.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.h" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionOperandFactoryTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionOperandFactoryTests.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/RegExMatcherTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/RegExMatcherTests.m" />
     </list>
     <ignored path="DCPU16Emulator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,97 +33,41 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_5.1_2" />
   <component name="FavoritesManager">
     <favorites_list name="DCPU16Emulator" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LexerTests.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m">
+      <file leaf-file-name="Lexer.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="45" selection-start="3833" selection-end="3833" vertical-scroll-proportion="0.32935917">
-              <folding />
+            <state line="108" column="52" selection-start="4295" selection-end="4295" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1143#1167#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstructionOperandFactoryTests.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/InstructionOperandFactoryTests.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstructionIntegrationTests.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="0" selection-start="4258" selection-end="4258" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstructionIntegrationTests.h" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DCPUTests.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="17" selection-start="5740" selection-end="5740" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssemblerTests.m" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AssemblerTests.m" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="111" column="29" selection-start="4227" selection-end="4227" vertical-scroll-proportion="0.30666667">
+              <folding>
+                <element signature="e#1112#1138#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppDelegate.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/AppDelegate.m">
+      <file leaf-file-name="LexerTests.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstructionCell.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Views/InstructionCell.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SOCQ+NSArray.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/SOCQ/SOCQ/SOCQ+NSArray.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SOCQ+NSArray.h" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/SOCQ/SOCQ/SOCQ+NSArray.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="128" column="9" selection-start="3998" selection-end="3999" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1143#1165#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -208,27 +85,27 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/Memory.m" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Match.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactory.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactory.m" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Statment.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Statment.m" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Program.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandBuilder.h" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandBuilder.m" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/OperandFactoryProtocol.h" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.h" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.m" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" />
+        <option value="$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m" />
+        <option value="$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m" />
+        <option value="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" />
+        <option value="$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m" />
+        <option value="$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2" />
+    <option name="x" value="-4" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="805" />
@@ -259,16 +136,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="DirectoryView.Xcode">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCPU16Emulator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeDirectoryView$1$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -281,6 +148,62 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16EmulatorTests" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="DirectoryView.Xcode">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeDirectoryView$1$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -290,40 +213,55 @@
     <property name="options.lastSelected" value="preferences.sourceCode.Objective-C" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="OCUnit.UnitTests">
-    <configuration default="true" type="OCUnitRunConfiguration" factoryName="OCUnit" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16EmulatorTests" CONFIG_NAME="Debug" DESTINATION_ID="iphonesimulator_5.1_1" DEBUGGER="LLDB" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <method>
-        <option name="com.jetbrains.cidr.execution.BuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="com.jetbrains.cidr.execution.StopCurrentSessionBeforeRunTaskProvider$StopCurrentSessionBeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16Emulator" CONFIG_NAME="Debug" DESTINATION_ID="iphonesimulator_5.1_2" RUN_TARGET_PROJECT_NAME="DCPU16Emulator" RUN_TARGET_NAME="DCPU16Emulator" DEBUGGER="LLDB" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <method>
-        <option name="com.jetbrains.cidr.execution.BuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="com.jetbrains.cidr.execution.StopCurrentSessionBeforeRunTaskProvider$StopCurrentSessionBeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="false" name="DCPU16Emulator" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="DCPU16Emulator" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16Emulator" CONFIG_NAME="Debug" DESTINATION_ID="iphonesimulator_5.1_2" RUN_TARGET_PROJECT_NAME="DCPU16Emulator" RUN_TARGET_NAME="DCPU16Emulator" DEBUGGER="LLDB" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <configuration default="false" name="-[AssemblerTests testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram]" type="OCUnitRunConfiguration" factoryName="OCUnit" temporary="true" SCHEME_NAME="-[AssemblerTests testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram]" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16EmulatorTests" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" TEST_CLASS="AssemblerTests">
       <envs />
       <RunnerSettings RunnerId="AppRunner" />
       <ConfigurationWrapper RunnerId="AppRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="UnitTests" type="OCUnitRunConfiguration" factoryName="OCUnit" SCHEME_NAME="UnitTests" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16EmulatorTests" CONFIG_NAME="Debug" DESTINATION_ID="iphonesimulator_5.1_2" DEBUGGER="LLDB" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <configuration default="false" name="All in LexerTests" type="OCUnitRunConfiguration" factoryName="OCUnit" temporary="true" SCHEME_NAME="All in LexerTests" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16EmulatorTests" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" TEST_CLASS="LexerTests">
       <envs />
       <RunnerSettings RunnerId="AppRunner" />
       <ConfigurationWrapper RunnerId="AppRunner" />
       <method />
     </configuration>
-    <list size="2">
+    <configuration default="true" type="OCUnitRunConfiguration" factoryName="OCUnit" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16EmulatorTests" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16Emulator" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" RUN_TARGET_PROJECT_NAME="DCPU16Emulator" RUN_TARGET_NAME="DCPU16Emulator" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="DCPU16Emulator" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="DCPU16Emulator" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16Emulator" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" RUN_TARGET_PROJECT_NAME="DCPU16Emulator" RUN_TARGET_NAME="DCPU16Emulator" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <RunnerSettings RunnerId="AppRunner" />
+      <ConfigurationWrapper RunnerId="AppRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UnitTests" type="OCUnitRunConfiguration" factoryName="OCUnit" SCHEME_NAME="UnitTests" PROJECT_NAME="DCPU16Emulator" TARGET_NAME="DCPU16EmulatorTests" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE">
+      <envs />
+      <RunnerSettings RunnerId="AppRunner" />
+      <ConfigurationWrapper RunnerId="AppRunner" />
+      <method />
+    </configuration>
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.DCPU16Emulator" />
       <item index="1" class="java.lang.String" itemvalue="OCUnit.UnitTests" />
+      <item index="2" class="java.lang.String" itemvalue="OCUnit.-[AssemblerTests testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram]" />
+      <item index="3" class="java.lang.String" itemvalue="OCUnit.All in LexerTests" />
     </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="OCUnit.All in LexerTests" />
+        <item index="1" class="java.lang.String" itemvalue="OCUnit.-[AssemblerTests testAssembleStatmentsCalledWithAddRegisterWithIntLiteralGenertesCorrectProgram]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
@@ -353,26 +291,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="22" width="1440" height="805" extended-state="0" />
-    <editor active="true" />
+    <frame x="-4" y="22" width="1440" height="805" extended-state="0" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982357" sideWeight="0.6005626" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994374" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982357" sideWeight="0.6708861" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994374" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -397,7 +335,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -407,7 +344,6 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
@@ -427,118 +363,142 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="OCExceptionBreakpointType">
+          <properties />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="278" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Emulator/DCPU.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="55" selection-start="2731" selection-end="2731" vertical-scroll-proportion="0.5906433">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Controllers/ViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="48" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
+        <state line="91" column="12" selection-start="2806" selection-end="2806" vertical-scroll-proportion="0.3323398">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Instruction.m">
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Controllers/ViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.05263158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nimbus/src/overview/src/NIOverviewSwizzling.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="85" selection-start="4420" selection-end="4420" vertical-scroll-proportion="0.3508772" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.h">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="29" selection-start="1409" selection-end="1410" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Program.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="138" column="43" selection-start="4940" selection-end="4940" vertical-scroll-proportion="0.6333333">
+          <folding>
+            <element signature="e#1143#1162#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="38" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1480#1498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="21" selection-start="1696" selection-end="1696" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/UIControls/DigitalFontButton.m">
+    <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/UIControls/DigitalFontLabel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/SOCQ/SOCQ/SOCQ+NSArray.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/SOCQ/SOCQ/SOCQ+NSArray.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Views/InstructionCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/AppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="282" column="4" selection-start="10796" selection-end="10796" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1143#1166#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="17" selection-start="5740" selection-end="5740" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="175" column="4" selection-start="6441" selection-end="6441" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1143#1164#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="0" selection-start="4258" selection-end="4258" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="93" column="56" selection-start="2803" selection-end="3108" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1132#1171#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/InstructionOperandFactoryTests.m">
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="34" column="31" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1143#1160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="52" selection-start="4295" selection-end="4295" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1143#1167#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="45" selection-start="3833" selection-end="3833" vertical-scroll-proportion="0.32935917">
-          <folding />
+        <state line="128" column="9" selection-start="3998" selection-end="3999" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1143#1165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="29" selection-start="4227" selection-end="4227" vertical-scroll-proportion="0.30666667">
+          <folding>
+            <element signature="e#1112#1138#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

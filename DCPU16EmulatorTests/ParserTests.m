@@ -29,6 +29,10 @@
 #import "ProgramCounterOperand.h"
 #import "IndirectRegisterOperand.h"
 #import "IndirectNextWordOffsetOperand.h"
+#import "Lexer.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
+#import "ConsumeToken.h"
+#import "OperandFactory.h"
 
 @implementation ParserTests
 
@@ -36,9 +40,11 @@
 {
 	NSString *code = @"";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+												 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 0, nil);
 }
@@ -47,9 +53,11 @@
 {
 	NSString *code = @"; Try some basic stuff";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 0, nil);
 }
@@ -58,9 +66,11 @@
 {
 	NSString *code = @"SET I, 10";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 1, nil);
 
@@ -78,9 +88,11 @@
 {
 	NSString *code = @"SET A, 0x30";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 1, nil);
 
@@ -98,9 +110,11 @@
 {
 	NSString *code = @"SET [0x1000], 0x20";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 1, nil);
 
@@ -118,9 +132,11 @@
 {
 	NSString *code = @"SET [0x2000+I], [A]";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 1, nil);
 
@@ -138,9 +154,11 @@
 {
 	NSString *code = @"SET PC, crash";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 1, nil);
 
@@ -158,9 +176,11 @@
 {
 	NSString *code = @"JSR testsub";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 1, nil);
 
@@ -178,42 +198,50 @@
 {
 	NSString *code = @"JSM testsub";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+													 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
 	p.didFinishParsingWithError = ^(NSString *message)
 	{
 		STAssertTrue([message isEqualToString:@"Expected INSTRUCTION at line 1:3 found 'JSM'"], nil);
 	};
 
-	[p parseSource:code];
+	[p parseSource:code withLexer:lexer];
 }
 
 - (void)testParseCalledWithInvalidOperandThrows
 {
 	NSString *code = @"JSR \"testsub\"";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
 
 	p.didFinishParsingWithError = ^(NSString *message)
 	{
 		STAssertTrue([message isEqualToString:@"Expected operand at line 1:13 found '\"testsub\"'"], nil);
 	};
 
-	[p parseSource:code];
+	[p parseSource:code withLexer:lexer];
 }
 
 - (void)testParseCalledWithUnclosedBracketThrows
 {
 	NSString *code = @"SET [0x1000, 0x20";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+															 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
 
 	p.didFinishParsingWithError = ^(NSString *message)
 	{
 		STAssertTrue([message isEqualToString:@"Expected CLOSEBRACKET or PLUS at line 1:12 found ','"], nil);
 	};
 
-	[p parseSource:code];
+	[p parseSource:code withLexer:lexer];
 }
 
 - (void)testParseCalledWithNotchSampleGeneratesCorrectNumberOfStatments
@@ -248,9 +276,11 @@
     ; [*]: Note that these can be one word shorter and one cycle faster by using the short form (0x00-0x1f) of literals,\n\
     ;      but my assembler doesn't support short form labels yet.";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	STAssertTrue([p.statments count] == 17, nil);
 }

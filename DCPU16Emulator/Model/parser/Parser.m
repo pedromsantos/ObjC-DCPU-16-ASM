@@ -20,19 +20,15 @@
  */
 
 #import "Parser.h"
+#import "Lexer.h"
 #import "Statment.h"
 #import "PeekToken.h"
-#import "ConsumeToken.h"
 #import "NSString+ParseHex_ParseInt.h"
-#import "IgnoreWhiteSpaceTokenStrategy.h"
-
 #import "IndirectNextWordOffsetOperandBuilder.h"
-#import "OperandFactoryProtocol.h"
-#import "OperandFactory.h"
 
 @interface Parser ()
 
-@property(nonatomic, strong) Lexer *lexer;
+@property(nonatomic, strong) id<LexerProtocol> lexer;
 @property(nonatomic, strong) id <ConsumeTokenStrategy> peekToken;
 @property(nonatomic, strong) id <OperandFactoryProtocol> operandFactory;
 
@@ -49,15 +45,6 @@
 @synthesize didFinishParsingSuccessfully;
 @synthesize didFinishParsingWithError;
 
-- (id)init
-{
-	self = [super init];
-
-	self.operandFactory = [[OperandFactory alloc] init];
-
-	return self;
-}
-
 - (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory
 {
 	self = [super init];
@@ -67,16 +54,13 @@
 	return self;
 }
 
-- (void)parseSource:(NSString *)source
+- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)lexer
 {
-	NSScanner *codeScanner = [NSScanner scannerWithString:source];
-	self.lexer = [[Lexer alloc] initWithScanner:codeScanner];
-
-	self.lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
-	self.lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	self.lexer = lexer;
 	self.peekToken = [[PeekToken alloc] init];
-
 	self.statments = [[NSMutableArray alloc] init];
+
+	[self.lexer lexSource:source];
 
 	@try
 	{

@@ -24,6 +24,10 @@
 #import "DCPU.h"
 #import "Assembler.h"
 #import "Parser.h"
+#import "Lexer.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
+#import "ConsumeToken.h"
+#import "OperandFactory.h"
 
 @implementation DCPUTests
 
@@ -31,9 +35,11 @@
 {
 	NSString *code = @"; Try some basic stuff";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -48,9 +54,11 @@
 {
 	NSString *code = @"SET I, 10";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -66,9 +74,11 @@
 {
 	NSString *code = @"SET A, 0x30";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -84,9 +94,11 @@
 {
 	NSString *code = @"SET [0x1000], 0x20";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -102,9 +114,11 @@
 {
 	NSString *code = @"SET [0x2000+I], [A]";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -122,9 +136,11 @@
     SET [0x1000], 0x20      ; 7de1 1000 0020\n\
     SUB A, [0x1000]         ; 7803 1000\n";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 
@@ -153,9 +169,11 @@
     IFN I, 0                ; 806d\n\
     SET PC, loop            ; 7dc1 000d [*]\n";
 
-	Parser *p = [[Parser alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+														 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	[p parseSource:code];
+	Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 

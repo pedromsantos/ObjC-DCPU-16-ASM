@@ -26,40 +26,20 @@
 #import "PeekToken.h"
 #import "ConsumeToken.h"
 #import "IgnoreWhiteSpaceTokenStrategy.h"
+#import "IgnoreNoneTokenStrategy.h"
 
 @implementation LexerTests
 
 @synthesize tokenDefinitions;
 
-- (void)setUp
-{
-	self.tokenDefinitions = [NSArray arrayWithObjects:
-											 [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
-											 [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
-											 [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
-											 [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
-											 [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
-											 [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
-											 [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
-											 [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
-											 [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
-											 [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
-											 [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
-											 [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
-											 [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
-											 nil];
-
-	[super setUp];
-}
-
-- (void)testNextCosumesAndReturnsNextToken
+- (void)testNextConsumesAndReturnsNextToken
 {
 	NSString *code = @"SET A, 0x30";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+										 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
+	[lexer lexSource:code];
 	[lexer nextToken];
 	int token1 = lexer.token;
 	[lexer nextToken];
@@ -71,10 +51,11 @@
 - (void)testPeekReadsWithoutConsumingToken
 {
 	NSString *code = @"SET A, 0x30";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[PeekToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[PeekToken alloc] init]];
+
+	[lexer lexSource:code];
 
 	id <ConsumeTokenStrategy> consumeTokenStrategy = [[ConsumeToken alloc] init];
 
@@ -91,116 +72,120 @@
 - (void)testNextCalledWithEmptySourceNotGenerateTokens
 {
 	NSString *code = @"";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
+	[lexer lexSource:code];
 	[lexer nextToken];
 
 	STAssertNil(lexer.tokenContents, nil);
 }
 
-- (void)testNextCalledWithCommentOnlyGenertesCorrectTokens
+- (void)testNextCalledWithCommentOnlyGeneratesCorrectTokens
 {
 	NSString *code = @"; Try some basic stuff";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
+	[lexer lexSource:code];
 	[lexer nextToken];
 
-	STAssertTrue(lexer.token == COMMENT, nil);
+	STAssertEquals(lexer.token, COMMENT, nil);
 }
 
-- (void)testNextCalledWithIgnoreWhitespaceGenertesCorrectTokens
+- (void)testNextCalledWithIgnoreWhitespaceGeneratesCorrectTokens
 {
 	NSString *code = @"SET A, 0x30";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
-	lexer.ignoreTokenStrategy = [[IgnoreWhiteSpaceTokenStrategy alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	[lexer lexSource:code];
 
 	int expectedTokens[4] = { INSTRUCTION, REGISTER, COMMA, HEX };
 
 	for(int i = 0; i < 4; i++)
 	{
 		[lexer nextToken];
-		STAssertTrue(lexer.token == expectedTokens[i], nil);
+		STAssertEquals(lexer.token, expectedTokens[i], nil);
 	}
 }
 
-- (void)testNextCalledWithSetRegisterWithHexLiteralGenertesCorrectTokens
+- (void)testNextCalledWithSetRegisterWithHexLiteralGeneratesCorrectTokens
 {
 	NSString *code = @"SET A, 0x30";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreNoneTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	[lexer lexSource:code];
 
 	int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, HEX };
 
 	for(int i = 0; i < 6; i++)
 	{
 		[lexer nextToken];
-		STAssertTrue(lexer.token == expectedTokens[i], nil);
+		STAssertEquals(lexer.token, expectedTokens[i], nil);
 	}
 }
 
-- (void)testNextCalledWithSetMemoryAddressWithLiteralGenertesCorrectInstructionSet
+- (void)testNextCalledWithSetMemoryAddressWithLiteralGeneratesCorrectInstructionSet
 {
 	NSString *code = @"SET [0x1000], 0x20";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreNoneTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	[lexer lexSource:code];
 
 	int expectedTokens[8] = { INSTRUCTION, WHITESPACE, OPENBRACKET, HEX, CLOSEBRACKET, COMMA, WHITESPACE, HEX };
 
 	for(int i = 0; i < 8; i++)
 	{
 		[lexer nextToken];
-		STAssertTrue(lexer.token == expectedTokens[i], nil);
+		STAssertEquals(lexer.token, expectedTokens[i], nil);
 	}
 }
 
-- (void)testNextCalledWithSetRegisterWithDecimalLiteralGenertesCorrectInstructionSet
+- (void)testNextCalledWithSetRegisterWithDecimalLiteralGeneratesCorrectInstructionSet
 {
 	NSString *code = @"SET I, 10";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreNoneTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	[lexer lexSource:code];
 
 	int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, INT };
 
 	for(int i = 0; i < 6; i++)
 	{
 		[lexer nextToken];
-		STAssertTrue(lexer.token == expectedTokens[i], nil);
+		STAssertEquals(lexer.token, expectedTokens[i], nil);
 	}
 }
 
-- (void)testNextCalledWithSetRegisterWithLabelRefGenertesCorrectInstructionSet
+- (void)testNextCalledWithSetRegisterWithLabelRefGeneratesCorrectInstructionSet
 {
 	NSString *code = @"SET PC, crash";
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreNoneTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+	[lexer lexSource:code];
 
 	int expectedTokens[6] = { INSTRUCTION, WHITESPACE, REGISTER, COMMA, WHITESPACE, LABELREF };
 
 	for(int i = 0; i < 6; i++)
 	{
 		[lexer nextToken];
-		STAssertTrue(lexer.token == expectedTokens[i], nil);
+		STAssertEquals(lexer.token, expectedTokens[i], nil);
 	}
 }
 
-- (void)testNextCalledWithNotchSampleGenertesCorrectInstructionSet
+- (void)testNextCalledWithNotchSampleGeneratesCorrectInstructionSet
 {
 	NSString *code = @"\n\
 ; Try some basic stuff\n\
@@ -229,10 +214,10 @@
 ; Hang forever. X should now be 0x40 if everything went right.\n\
 :crash      SET PC, crash            ; 7dc1 001a [*]";
 
-	NSScanner *codeScanner = [NSScanner scannerWithString:code];
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreNoneTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
 
-	Lexer *lexer = [[Lexer alloc] initWithTokenMatchers:self.tokenDefinitions scanner:codeScanner];
-	lexer.consumeTokenStrategy = [[ConsumeToken alloc] init];
+	[lexer lexSource:code];
 
 	int expectedTokens[155] = {
 			COMMENT,
@@ -266,7 +251,7 @@
 	for(int i = 0; i < 155; i++)
 	{
 		[lexer nextToken];
-		STAssertTrue(lexer.token == expectedTokens[i], nil);
+		STAssertEquals(lexer.token, expectedTokens[i], nil);
 	}
 }
 

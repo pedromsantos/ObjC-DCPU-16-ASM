@@ -29,6 +29,10 @@
 #import "Set.h"
 #import "Shl.h"
 #import "Sub.h"
+#import "Lexer.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
+#import "ConsumeToken.h"
+#import "OperandFactory.h"
 
 @implementation InstructionIntegrationTests
 
@@ -83,8 +87,12 @@
 {
 	if(self.inputCode != nil)
 	{
-		Parser *p = [[Parser alloc] init];
-		[p parseSource:self.inputCode];
+		Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+															 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
+		Parser *p = [[Parser alloc] initWithOperandFactory:[[OperandFactory alloc] init]];
+		[p parseSource:self.inputCode withLexer:lexer];
+
 		Assembler *assembler = [[Assembler alloc] init];
 		[assembler assembleStatments:p.statments];
 		DCPU *emulator = [[DCPU alloc] initWithProgram:(assembler.program)];

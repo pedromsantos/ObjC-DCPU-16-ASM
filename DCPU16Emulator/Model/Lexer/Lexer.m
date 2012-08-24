@@ -31,6 +31,8 @@
 @property(nonatomic, strong) NSString *lineRemaining;
 @property(nonatomic, strong) NSArray *tokenMatchers;
 @property(nonatomic, strong) NSScanner *scanner;
+@property(nonatomic, strong) id <ConsumeTokenStrategy> consumeTokenStrategy;
+@property(nonatomic, strong) id <IgnoreTokenStrategy> ignoreTokenStrategy;
 
 - (void)readNextLine;
 
@@ -56,7 +58,9 @@
 // will leave it for now, since it's very convenient. If in the future another matcher and/or token matcher
 // is implemented, that uses other matching technique, then this code should be removed.
 // For now intentionally accepting this bit of technical debt for Lexer usage simplification.
-- (id)initWithScanner:(NSScanner *)textScanner
+
+- (id)initWithIgnoreTokenStrategy:(id<IgnoreTokenStrategy>)ignoreStrategy
+			 consumeTokenStrategy:(id<ConsumeTokenStrategy>)consumeStrategy
 {
 	NSArray *matchers = [NSArray arrayWithObjects:
 										 [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
@@ -74,25 +78,12 @@
 										 [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
 										 nil];
 
-	return [self initWithTokenMatchers:matchers scanner:textScanner];
-}
 
-- (id)initWithTokenMatchers:(NSArray *)matchers scanner:(NSScanner *)textScanner
-{
-	self = [super init];
-
-	if(self == nil)
-	{
-		return nil;
-	}
-
-	self.consumeTokenStrategy = [[PeekToken alloc] init];
 	self.tokenMatchers = matchers;
-	self.scanner = textScanner;
+	self.ignoreTokenStrategy = ignoreStrategy;
+	self.consumeTokenStrategy = consumeStrategy;
 	lineNumber = 0;
 	columnNumber = 0;
-
-	[self readNextLine];
 
 	return self;
 }
@@ -107,10 +98,14 @@
 	return self.match.content;
 }
 
+- (void)lexSource:(NSString*)source
+{
+	self.scanner = [NSScanner scannerWithString:source];
+	[self readNextLine];
+}
+
 - (void)readNextLine
 {
-	if([self.lineRemaining length] == 0)
-	{
 		NSString *readLine = nil;
 
 		do
@@ -124,7 +119,6 @@
 			self.lineRemaining = readLine;
 
 		} while(self.lineRemaining != nil && [self.lineRemaining length] == 0);
-	}
 }
 
 - (void)setLineAndColumnNumberForNewLine:(NSString *)newLine
@@ -187,7 +181,6 @@
 
 	self.match = tokenMatcher;
 	[self consumeToken:tokenMatcher.token characters:tokenMatcher.content];
-	[self readNextLine];
 }
 
 - (void)consumeToken:(enum LexerTokenType)tkn characters:(NSString *)matched
@@ -196,6 +189,11 @@
 	{
 		columnNumber += [matched length];
 		self.lineRemaining = [self.lineRemaining substringFromIndex:[matched length]];
+
+		if([self.lineRemaining length] == 0)
+		{
+			[self readNextLine];
+		}
 	}
 }
 

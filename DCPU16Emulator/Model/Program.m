@@ -23,6 +23,9 @@
 #import "Program.h"
 #import "Parser.h"
 #import "Assembler.h"
+#import "IgnoreWhiteSpaceTokenStrategy.h"
+#import "ConsumeToken.h"
+#import "Lexer.h"
 
 @interface Program ()
 
@@ -47,7 +50,7 @@
 
 	[self notifyEditStateChanged];
 	[self notifyInstructionChanged];
-	[self notifyinstructionSetChanged];
+	[self notifyInstructionSetChanged];
 
 	return self;
 }
@@ -80,7 +83,7 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"InstructionChanged" object:instructionData];
 }
 
-- (void)notifyinstructionSetChanged
+- (void)notifyInstructionSetChanged
 {
 	NSArray *instructionSetData = self.instructionSet;
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"InstructionSetChanged" object:instructionSetData];
@@ -116,7 +119,7 @@
 
 	[self notifyEditStateChanged];
 	[self notifyInstructionChanged];
-	[self notifyinstructionSetChanged];
+	[self notifyInstructionSetChanged];
 }
 
 - (NSString *)assemble
@@ -126,8 +129,11 @@
 
 	NSString *code = source;
 
+	Lexer *lexer = [[Lexer alloc] initWithIgnoreTokenStrategy:[[IgnoreWhiteSpaceTokenStrategy alloc] init]
+											 consumeTokenStrategy:[[ConsumeToken alloc] init]];
+
 	Parser *p = [[Parser alloc] init];
-	[p parseSource:code];
+	[p parseSource:code withLexer:lexer];
 
 	Assembler *assembler = [[Assembler alloc] init];
 	[assembler assembleStatments:p.statments];
