@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e535faa-f6f6-4ad4-b52d-05874a89d501" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ObjC-DCPU-16-ASM.iml" afterPath="$PROJECT_DIR$/.idea/ObjC-DCPU-16-ASM.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/administrator.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/administrator.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/DCPU16Emulator.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/InstructionIntegrationTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m" afterPath="$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m" />
     </list>
     <ignored path="DCPU16Emulator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,34 +28,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Lexer.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m">
+      <file leaf-file-name="Parser.h" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="52" selection-start="4295" selection-end="4295" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1143#1167#0" expanded="true" />
-              </folding>
+            <state line="41" column="41" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.877193">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssemblerTests.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m">
+      <file leaf-file-name="LexerProtocol.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="29" selection-start="4227" selection-end="4227" vertical-scroll-proportion="0.30666667">
-              <folding>
-                <element signature="e#1112#1138#0" expanded="true" />
-              </folding>
+            <state line="33" column="76" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LexerTests.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m">
+      <file leaf-file-name="Parser.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="9" selection-start="3998" selection-end="3999" vertical-scroll-proportion="0.0">
+            <state line="36" column="44" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1143#1165#0" expanded="true" />
+                <element signature="e#1065#1083#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,9 +76,7 @@
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.h" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.m" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" />
-        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" />
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Program.m" />
         <option value="$PROJECT_DIR$/DCPU16EmulatorTests/ParserTests.m" />
         <option value="$PROJECT_DIR$/DCPU16EmulatorTests/DCPUTests.m" />
@@ -101,6 +84,8 @@
         <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/Lexer.m" />
         <option value="$PROJECT_DIR$/DCPU16EmulatorTests/LexerTests.m" />
         <option value="$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m" />
+        <option value="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" />
       </list>
     </option>
   </component>
@@ -191,6 +176,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCPU16Emulator" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -292,18 +299,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="22" width="1440" height="805" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982357" sideWeight="0.6708861" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982357" sideWeight="0.6708861" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -370,7 +377,7 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="278" />
+      <option name="time" value="285" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -407,35 +414,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="29" selection-start="1409" selection-end="1410" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Program.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="138" column="43" selection-start="4940" selection-end="4940" vertical-scroll-proportion="0.6333333">
           <folding>
             <element signature="e#1143#1162#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="38" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1480#1498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="21" selection-start="1696" selection-end="1696" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -495,10 +479,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16EmulatorTests/AssemblerTests.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="29" selection-start="4227" selection-end="4227" vertical-scroll-proportion="0.30666667">
+        <state line="130" column="75" selection-start="4902" selection-end="4902" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#1112#1138#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="76" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="44" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1065#1083#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="41" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.877193">
+          <folding />
         </state>
       </provider>
     </entry>

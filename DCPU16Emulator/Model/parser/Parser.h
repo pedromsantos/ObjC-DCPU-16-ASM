@@ -36,6 +36,6 @@ typedef void(^parseFailedWithError)(NSString *);
 
 - (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory;
 
-- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)lexer;
+- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)theLexer;
 
 @end

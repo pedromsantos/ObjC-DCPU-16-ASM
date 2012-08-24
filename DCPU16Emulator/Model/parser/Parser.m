@@ -20,7 +20,7 @@
  */
 
 #import "Parser.h"
-#import "Lexer.h"
+#import "LexerProtocol.h"
 #import "Statment.h"
 #import "PeekToken.h"
 #import "NSString+ParseHex_ParseInt.h"
@@ -28,7 +28,7 @@
 
 @interface Parser ()
 
-@property(nonatomic, strong) id<LexerProtocol> lexer;
+@property(nonatomic, strong) id <LexerProtocol> lexer;
 @property(nonatomic, strong) id <ConsumeTokenStrategy> peekToken;
 @property(nonatomic, strong) id <OperandFactoryProtocol> operandFactory;
 
@@ -54,9 +54,9 @@
 	return self;
 }
 
-- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)lexer
+- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)theLexer
 {
-	self.lexer = lexer;
+	self.lexer = theLexer;
 	self.peekToken = [[PeekToken alloc] init];
 	self.statments = [[NSMutableArray alloc] init];
 

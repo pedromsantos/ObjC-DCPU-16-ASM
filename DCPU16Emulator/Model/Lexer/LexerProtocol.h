@@ -23,6 +23,7 @@
 #import "LexerTokenType.h"
 
 @class Match;
+@protocol ConsumeTokenStrategy;
 
 @protocol LexerProtocol <NSObject>
 
