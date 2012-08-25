@@ -20,27 +20,24 @@
  * SOFTWARE.
  */
 
-#import "LexerTokenType.h"
+#import "Parser.h"
 
-@class Match;
-@protocol ConsumeTokenStrategy;
+@protocol LexerProtocol;
 
-@protocol LexerProtocol <NSObject>
+typedef void(^parseCompletedSuccessfully)();
 
-@property(nonatomic, readonly) enum LexerTokenType token;
+typedef void(^parseFailedWithError)(NSString *);
 
-@property(nonatomic, copy, readonly) NSString *tokenContents;
+@protocol ParserProtocol <NSObject>
 
-@property(nonatomic, readonly) int lineNumber;
+@property(nonatomic, strong) NSMutableArray *statments;
 
-@property(nonatomic, readonly) int columnNumber;
+@property(nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
 
-@property(nonatomic, strong) Match *match;
+@property(nonatomic, copy) parseFailedWithError didFinishParsingWithError;
 
-- (void)lexSource:(NSString*)source;
+- (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory;
 
-- (BOOL)nextToken;
-
-- (BOOL)nextTokenUsingStrategy:(id <ConsumeTokenStrategy>)strategy;
+- (void)parseSource:(NSString *)source withLexer:(id <LexerProtocol>)theLexer;
 
 @end

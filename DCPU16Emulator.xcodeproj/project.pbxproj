@@ -424,6 +424,7 @@
 		C3EB038715DBF96B004A2ACB /* SOCQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCQ.h; sourceTree = "<group>"; };
 		C3EB038815DBF96B004A2ACB /* SOCQCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOCQCore.h; sourceTree = "<group>"; };
 		C3EB038915DBF96B004A2ACB /* SOCQCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOCQCore.m; sourceTree = "<group>"; };
+		D91FC2A6BA4874F20FB3B47A /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserProtocol.h; sourceTree = "<group>"; };
 		D91FC8F60ED3A467BE07175F /* LexerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -666,7 +667,6 @@
 		C3860B1715872D02001F2A3D /* Lexer */ = {
 			isa = PBXGroup;
 			children = (
-				D91FC8F60ED3A467BE07175F /* LexerProtocol.h */,
 				C36657F71589320900753B2D /* ConsumeToken.h */,
 				C36657F81589320900753B2D /* ConsumeToken.m */,
 				C36657F4158930EB00753B2D /* ConsumeTokenStrategy.h */,
@@ -677,6 +677,7 @@
 				C36657FE158932E900753B2D /* IgnoreWhiteSpaceTokenStrategy.m */,
 				C3860B1815872D02001F2A3D /* Lexer.h */,
 				C3860B1915872D02001F2A3D /* Lexer.m */,
+				D91FC8F60ED3A467BE07175F /* LexerProtocol.h */,
 				C3860B1A15872D02001F2A3D /* LexerTokenType.h */,
 				C3084AE3158D02860045125E /* Match.h */,
 				C3084AE4158D02860045125E /* Match.m */,
@@ -695,6 +696,7 @@
 		C3860B2115872D02001F2A3D /* parser */ = {
 			isa = PBXGroup;
 			children = (
+				D91FC2A6BA4874F20FB3B47A /* ParserProtocol.h */,
 				C3860B2715872D02001F2A3D /* Operands */,
 				C3860B4215872D02001F2A3D /* Parser.h */,
 				C3860B4315872D02001F2A3D /* Parser.m */,

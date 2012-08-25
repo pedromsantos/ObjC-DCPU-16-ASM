@@ -21,21 +21,10 @@
  */
 
 #import "OperandFactoryProtocol.h"
+#import "ParserProtocol.h"
 
 @protocol LexerProtocol;
 
-typedef void(^parseCompletedSuccessfully)();
-
-typedef void(^parseFailedWithError)(NSString *);
-
-@interface Parser : NSObject
-
-@property(nonatomic, strong) NSMutableArray *statments;
-@property(nonatomic, copy) parseCompletedSuccessfully didFinishParsingSuccessfully;
-@property(nonatomic, copy) parseFailedWithError didFinishParsingWithError;
-
-- (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory;
-
-- (void)parseSource:(NSString *)source withLexer:(id<LexerProtocol>)theLexer;
+@interface Parser : NSObject <ParserProtocol>
 
 @end
