@@ -21,6 +21,7 @@
 
 #import "Parser.h"
 #import "LexerProtocol.h"
+#import "OperandFactory.h"
 #import "Statment.h"
 #import "PeekToken.h"
 #import "NSString+ParseHex_ParseInt.h"
@@ -44,6 +45,15 @@
 
 @synthesize didFinishParsingSuccessfully;
 @synthesize didFinishParsingWithError;
+
+- (id)init
+{
+    self = [super init];
+    
+	self.operandFactory = [[OperandFactory init] alloc];;
+    
+	return self;
+}
 
 - (id)initWithOperandFactory:(id <OperandFactoryProtocol>)factory
 {
@@ -101,18 +111,8 @@
 
 	[self parseLabelForStatment:statment];
 	[self parseMenemonicForStatment:statment];
-
-	if([statment.menemonic isEqualToString:@"DAT"])
-	{
-		[self parseData:statment];
-	}
-	else
-	{
-		[self parseOperandsForStatment:statment];
-	}
-
+    [self parseOperandsForStatment:statment];
 	[self.statments addObject:statment];
-
 	[self parseComments];
 
 	return YES;
@@ -167,6 +167,11 @@
 	}
 
 	statment.menemonic = [self.lexer.tokenContents uppercaseString];
+    
+    if([statment.menemonic isEqualToString:@"DAT"])
+	{
+		[self parseData:statment];
+	}
 }
 
 - (void)parseOperandsForStatment:(Statment *)statment
@@ -202,7 +207,6 @@
 	}
 
 	return operand;
-
 }
 
 - (Operand *)parseIndirectOperand

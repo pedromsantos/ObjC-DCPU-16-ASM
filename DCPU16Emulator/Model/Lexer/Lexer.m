@@ -26,6 +26,9 @@
 #import "PeekToken.h"
 #import "Lexer.h"
 
+#import "IgnoreNoneTokenStrategy.h"
+#import "PeekToken.h"
+
 @interface Lexer ()
 
 @property(nonatomic, strong) NSString *lineRemaining;
@@ -54,11 +57,39 @@
 
 @synthesize lineRemaining;
 
+- (id)init
+{
+	NSArray *matchers = [NSArray arrayWithObjects:
+                         [[RegexTokenMatcher alloc] initWithToken:INSTRUCTION pattern:@"\\b(((?i)dat)|((?i)set)|((?i)add)|((?i)sub)|((?i)mul)|((?i)div)|((?i)mod)|((?i)shl)|((?i)shr)|((?i)and)|((?i)bor)|((?i)xor)|((?i)ife)|((?i)ifn)|((?i)ifg)|((?i)ifb)|((?i)jsr))\\b"],
+                         [[RegexTokenMatcher alloc] initWithToken:REGISTER pattern:@"\\b(((?i)a)|((?i)b)|((?i)c)|((?i)x)|((?i)y)|((?i)z)|((?i)i)|((?i)j)|((?i)pop)|((?i)push)|((?i)peek)|((?i)pc)|((?i)sp)|((?i)o))\\b"],
+                         [[RegexTokenMatcher alloc] initWithToken:WHITESPACE pattern:@"(\\r\\n|\\s+)"],
+                         [[RegexTokenMatcher alloc] initWithToken:COMMENT pattern:@";.*$"],
+                         [[RegexTokenMatcher alloc] initWithToken:LABEL pattern:@":\\w+"],
+                         [[RegexTokenMatcher alloc] initWithToken:HEX pattern:@"(0x[0-9a-fA-F]+)"],
+                         [[RegexTokenMatcher alloc] initWithToken:INT pattern:@"[0-9]+"],
+                         [[RegexTokenMatcher alloc] initWithToken:PLUS pattern:@"\\+"],
+                         [[RegexTokenMatcher alloc] initWithToken:COMMA pattern:@","],
+                         [[RegexTokenMatcher alloc] initWithToken:OPENBRACKET pattern:@"[\\[\\(]"],
+                         [[RegexTokenMatcher alloc] initWithToken:CLOSEBRACKET pattern:@"[\\]\\)]"],
+                         [[RegexTokenMatcher alloc] initWithToken:STRING pattern:@"@?\"(\"\"|[^\"])*\""],
+                         [[RegexTokenMatcher alloc] initWithToken:LABELREF pattern:@"[a-zA-Z0-9_]+"],
+                         nil];
+    
+    
+	self.tokenMatchers = matchers;
+	self.ignoreTokenStrategy = [[IgnoreNoneTokenStrategy alloc] init];
+	self.consumeTokenStrategy = [[PeekToken alloc] init];
+	lineNumber = 0;
+	columnNumber = 0;
+    
+	return self;
+}
+
+
 // This convenience tokenMatchers init is creating an undesired coupling with RegexTokenMatcher
 // will leave it for now, since it's very convenient. If in the future another matcher and/or token matcher
 // is implemented, that uses other matching technique, then this code should be removed.
 // For now intentionally accepting this bit of technical debt for Lexer usage simplification.
-
 - (id)initWithIgnoreTokenStrategy:(id<IgnoreTokenStrategy>)ignoreStrategy
 			 consumeTokenStrategy:(id<ConsumeTokenStrategy>)consumeStrategy
 {

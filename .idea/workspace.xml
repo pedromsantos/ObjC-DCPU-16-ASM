@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e535faa-f6f6-4ad4-b52d-05874a89d501" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/ParserProtocol.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/DCPU16Emulator.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/Lexer/LexerProtocol.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" afterPath="$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h" />
-    </list>
+    <list default="true" id="7e535faa-f6f6-4ad4-b52d-05874a89d501" name="Default" comment="" />
     <ignored path="DCPU16Emulator.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Parser.h" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Parser.h" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.63596493">
+            <state line="30" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -65,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.m" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Parser.m" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="25" selection-start="1789" selection-end="1789" vertical-scroll-proportion="0.0">
+            <state line="58" column="74" selection-start="1909" selection-end="1909" vertical-scroll-proportion="0.5365127">
               <folding />
             </state>
           </provider>
@@ -393,7 +387,7 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="304" />
+      <option name="time" value="309" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -476,13 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="25" selection-start="1789" selection-end="1789" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/Assembler/Assembler.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -506,7 +493,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.63596493">
+        <state line="30" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DCPU16Emulator/Model/parser/Parser.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="74" selection-start="1909" selection-end="1909" vertical-scroll-proportion="0.5365127">
           <folding />
         </state>
       </provider>
