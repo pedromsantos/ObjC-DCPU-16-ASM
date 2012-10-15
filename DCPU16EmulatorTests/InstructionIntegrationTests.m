@@ -155,7 +155,7 @@
 	[self addTestCreateWhenCalledWithValueinput:0x7803 createsExpectedInstructionType:[Sub class] toTestSuite:testSuite];
 	[self addTestCreateWhenCalledWithValueinput:0x9037 createsExpectedInstructionType:[Shl class] toTestSuite:testSuite];
 
-	NSArray *registerNames = [NSArray arrayWithObjects:@"A", @"B", @"C", @"I", @"J", @"X", @"Y", @"Z", nil];
+	NSArray *registerNames = @[@"A", @"B", @"C", @"I", @"J", @"X", @"Y", @"Z"] ;
 	ushort registerIds[] = { REG_A, REG_B, REG_C, REG_I, REG_J, REG_X, REG_Y, REG_Z };
 	int regId = 0;
 

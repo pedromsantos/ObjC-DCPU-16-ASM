@@ -1,22 +1,22 @@
 /*
  * Copyright (C) 2012 Pedro Santos @pedromsantos
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights 
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
- * copies of the Software, and to permit persons to whom the Software is 
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in 
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
 
@@ -94,7 +94,7 @@
     NIDPRINTMETHODNAME();
     
 	NSString *data = self.inputField.text;
-
+    
 	if([data hasPrefix:@":"])
 	{
 		[self.program assignLabelToCurrentInstruction:data];
@@ -110,7 +110,7 @@
     NIDPRINTMETHODNAME();
     
 	NSString *data = self.inputField.text;
-
+    
 	if([data hasPrefix:@"["] && [data hasSuffix:@"]"])
 	{
 		[self.program assignValueToCurrentInstruction:data];
@@ -141,20 +141,20 @@
     NIDPRINTMETHODNAME();
     
 	self.emulator = [[DCPU alloc] initWithProgram:(self.program.assembledInstructionSet)];
-
+    
 	self.emulator.memory.registerDidChange = ^(NSString *registerName, int value)
 	{
 		int regIndex = [[self.mapRegisterNameToControl objectForKey:registerName] intValue];
-
+        
 		UILabel *registerControlToUpdate = ((UILabel *) [self.view viewWithTag:regIndex + 1000]);
-
+        
 		registerControlToUpdate.text = [NSString stringWithFormat:@"0x%X", value];
 	};
-
+    
 	self.emulator.memory.generalRegisterDidChange = ^(int regIndex, int value)
 	{
 		UILabel *registerControlToUpdate = ((UILabel *) [self.view viewWithTag:regIndex + 1003]);
-
+        
 		registerControlToUpdate.text = [NSString stringWithFormat:@"0x%X", value];
 	};
 }
@@ -166,7 +166,7 @@
 	assembledCodeLabel.text = [self.program assemble];
 	assembledCodeLabel.numberOfLines = 0;
 	[assembledCodeLabel sizeToFit];
-
+    
 	[self resetEmulator];
 	[self resetCPULabels];
 }
@@ -210,13 +210,13 @@
 	{
 		[button setEnabled:NO];
 	}
-
+    
 	for(UIButton *button in self.instructionButtonCollection)
 	{
 		for(NSString *title in self.possibleNextInput)
 		{
 			NSString *buttonLabelText = button.titleLabel.text;
-
+            
 			if([buttonLabelText isEqualToString:title])
 			{
 				[button setEnabled:YES];
@@ -224,7 +224,7 @@
 			}
 		}
 	}
-
+    
 	[self.enterButton setEnabled:[self instructionState] == Complete];
 	[self.labelButton setEnabled:[self instructionState] == WaitForOpcodeOrLabel];
 	[self.literalButton setEnabled:[self instructionState] == WaitForOperand1 || [self instructionState] == WaitForOperand2];
@@ -281,17 +281,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *MyCellIdentifier = @"instructionCell";
-
+    
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyCellIdentifier];
-
+    
 	if(cell == nil)
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 									  reuseIdentifier:MyCellIdentifier];
 	}
-
+    
 	NSArray *instructionCellList = [self loadNibForCellInTable:tableView];
-
+    
 	for(id obj in instructionCellList)
 	{
 		if([obj isKindOfClass:[InstructionCell class]])
@@ -300,7 +300,7 @@
 			cell = [obj drawCellForInstruction:instruction];
 		}
 	}
-
+    
 	return cell;
 }
 
@@ -314,31 +314,31 @@
     NIDPRINTMETHODNAME();
     
 	[super viewDidLoad];
-
+    
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-
+    
 	[center addObserver:self selector:@selector(editStateChanged:) name:@"EditStateChanged" object:nil];
 	[center addObserver:self selector:@selector(instructionChanged:) name:@"InstructionChanged" object:nil];
 	[center addObserver:self selector:@selector(instructionSetChanged:) name:@"InstructionSetChanged" object:nil];
-
+    
 	self.program = [[Program alloc] init];
-
+    
 	[self.instructionTableView reloadData];
-
-	self.mapRegisterNameToControl = [NSDictionary dictionaryWithObjectsAndKeys:
-														  @"PC", [NSNumber numberWithInt:1000],
-														  @"SP", [NSNumber numberWithInt:1001],
-														  @"O", [NSNumber numberWithInt:1002],
-														  @"A", [NSNumber numberWithInt:1003],
-														  @"B", [NSNumber numberWithInt:1004],
-														  @"C", [NSNumber numberWithInt:1005],
-														  @"X", [NSNumber numberWithInt:1006],
-														  @"Y", [NSNumber numberWithInt:1007],
-														  @"Z", [NSNumber numberWithInt:1008],
-														  @"I", [NSNumber numberWithInt:1009],
-														  @"J", [NSNumber numberWithInt:1010],
-														  nil];
-
+    
+	self.mapRegisterNameToControl = @{
+        @1000: @"PC",
+        @1001: @"SP",
+        @1002: @"O",
+        @1003: @"A",
+        @1004: @"B",
+        @1005: @"C",
+        @1006: @"X",
+        @1007: @"Y",
+        @1008: @"Z",
+        @1009: @"I",
+        @1010: @"J",
+    };
+    
 	[self setProgramingKeyboardState];
 }
 
@@ -348,7 +348,7 @@
     
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 	[center removeObserver:self];
-
+    
 	[self setInstructionButtonCollection:nil];
 	[self setInstructionTableView:nil];
 	[self setCurrentInstructionLabel:nil];
@@ -362,9 +362,9 @@
 	[self setReferenceButton:nil];
 	[self setInputField:nil];
 	[self setAssembledCodeLabel:nil];
-
+    
 	[self setProgram:nil];
-
+    
 	[super viewDidUnload];
 }
 

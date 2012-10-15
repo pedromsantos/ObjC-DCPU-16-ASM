@@ -78,7 +78,6 @@
 		C3B6BA43153DE4FE0013163A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B6BA42153DE4FE0013163A /* AppDelegate.m */; };
 		C3B6BA46153DE4FE0013163A /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B6BA44153DE4FE0013163A /* MainStoryboard_iPhone.storyboard */; };
 		C3B6BA49153DE4FE0013163A /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B6BA47153DE4FE0013163A /* MainStoryboard_iPad.storyboard */; };
-		C3B6BA54153DE4FE0013163A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA53153DE4FE0013163A /* SenTestingKit.framework */; };
 		C3B6BA55153DE4FE0013163A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA32153DE4FE0013163A /* UIKit.framework */; };
 		C3B6BA56153DE4FE0013163A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA34153DE4FE0013163A /* Foundation.framework */; };
 		C3B6BA5E153DE4FE0013163A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3B6BA5C153DE4FE0013163A /* InfoPlist.strings */; };
@@ -144,6 +143,7 @@
 		CE0303CB1629B497003C8197 /* NIOverviewPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03039F1629B497003C8197 /* NIOverviewPageView.m */; };
 		CE0303CC1629B497003C8197 /* NIOverviewSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0303A11629B497003C8197 /* NIOverviewSwizzling.m */; };
 		CE0303CD1629B497003C8197 /* NIOverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0303A31629B497003C8197 /* NIOverviewView.m */; };
+		CEE214351629E10900046C9C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6BA53153DE4FE0013163A /* SenTestingKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -450,7 +450,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3B6BA54153DE4FE0013163A /* SenTestingKit.framework in Frameworks */,
+				CEE214351629E10900046C9C /* SenTestingKit.framework in Frameworks */,
 				C3B6BA55153DE4FE0013163A /* UIKit.framework in Frameworks */,
 				C3B6BA56153DE4FE0013163A /* Foundation.framework in Frameworks */,
 			);

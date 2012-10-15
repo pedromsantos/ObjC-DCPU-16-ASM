@@ -31,8 +31,8 @@
 {
     
 #if DEBUG
-	[NIOverview applicationDidFinishLaunching];
-    [NIOverview addOverviewToWindow:self.window];
+  [NIOverview applicationDidFinishLaunching];
+  [NIOverview addOverviewToWindow:self.window];
 #endif
     
 	return YES;
