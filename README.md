@@ -13,9 +13,7 @@ Inspiration: https://github.com/swetland/dcpu16
            : http://0x10c.com/
            : http://0x10c.com/doc/dcpu-16.txt
 
-This is free and open source software. If you like and use it, flattr it ([flattr?][WhatisFlattr]). Thx.
-
-[![][FlattrButton]][FlattrLink] 
+[![endorse](http://api.coderwall.com/pedromsantos/endorsecount.png)](http://coderwall.com/pedromsantos)
 
 Also checkout my .Net/C# implementation https://github.com/pedromsantos/DCPU16.Net
 
