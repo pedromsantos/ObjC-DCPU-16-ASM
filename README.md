@@ -1,4 +1,4 @@
-Just another DCPU implementation.
+Just another Incomplete DCPU implementation. I'll be working on it whenever I feel bored.
 
 Getting started:
 The project now has a minimal UI.
